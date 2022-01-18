@@ -1,6 +1,6 @@
 import unittest
 from src.DeclarationFactory import DeclarationFactory as df
-from src.IntType import IntType
+from natives.IntType import IntType
 
 class DeclarationFactoryTest(unittest.TestCase):
 

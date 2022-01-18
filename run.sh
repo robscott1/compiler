@@ -1,5 +1,5 @@
 #!/bin/bash
 
-python3 Compiler.py $1.mini
+python3 src/Compiler.py $1.mini
 
 

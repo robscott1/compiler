@@ -1,4 +1,4 @@
-from src.Type import Type
+from natives.Type import Type
 
 class IntType(Type):
 

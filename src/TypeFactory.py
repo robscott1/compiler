@@ -1,5 +1,5 @@
-from src.types.TypeDeclaration import TypeDeclaration
-from src.types.Type import Type
+from natives.TypeDeclaration import TypeDeclaration
+from natives.Type import Type
 
 class TypeFactory:
 

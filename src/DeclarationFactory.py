@@ -1,6 +1,6 @@
 from src.Declaration import Declaration
-from src.Type import Type
-from src.IntType import IntType
+from natives.Type import Type
+from natives.IntType import IntType
 
 
 class DeclarationFactory:
