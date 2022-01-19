@@ -1,8 +1,8 @@
 from Declaration import Declaration
-from natives.BoolType import BoolType
-from natives.Type import Type
-from natives.IntType import IntType
-from natives.BoolType import BoolType
+from BoolType import BoolType
+from Type import Type
+from IntType import IntType
+from BoolType import BoolType
 
 def type_switch(type):
     if type == "int":
