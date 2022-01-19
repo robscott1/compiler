@@ -1,4 +1,7 @@
-class TypeDeclaration:
+from Type import Type
+
+
+class TypeDeclaration(Type):
     
     def __init__(self, line, id, fields):
         self.line = line

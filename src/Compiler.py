@@ -2,6 +2,7 @@ import sys
 import subprocess
 import json
 
+from TypeChecker import TypeChecker
 from TypeFactory import TypeFactory as tf
 
 
@@ -17,9 +18,8 @@ def main():
     with open(f"{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
-    types = json_repr.get("types")
-    types = list(map(lambda x: tf.generate(x), types))
-    print(types)
+    type_checker = TypeChecker()
+    type_checker.build_type_map(json_repr)
 
     
 

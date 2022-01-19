@@ -2,6 +2,7 @@ from src.BoolType import BoolType
 from src.IntType import IntType
 from src.TypeFactory import TypeFactory as tf
 
+
 class TypeChecker:
 
     def __init__(self):
@@ -14,17 +15,20 @@ class TypeChecker:
     '''
     Checks to make sure there is not a Type with the same name.
     Global initialization will have further checks. 
+    @:parameters:
+        - type_decl: a TypeDeclaration
+    
     @validations:
         - No duplicate names
         - Does not start with a number
         - Any Types in each Declaration are valid
     '''
+
     def check_type_decl(cls, type_decl):
         if type_decl.id in cls.type_map:
             return False
         if type_decl.id[0].isnumeric():
             return False
-
         return True
 
     '''
@@ -32,8 +36,9 @@ class TypeChecker:
     each field (if applicable). Needs to pass along the working map
     to the TypeFactory, then subsequently the Declaration factory.
     '''
+
     def build_type_map(self, json):
         for td in json.get("types"):
             t = tf.generate(td, self.type_map)
-            self.type_map[t.id] = t.__class__
+            self.type_map[t.id] = t
         print(self.type_map)

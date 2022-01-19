@@ -2,6 +2,7 @@ from TypeDeclaration import TypeDeclaration
 from DeclarationFactory import DeclarationFactory as df
 from Type import Type
 
+
 class TypeFactory:
 
     def generate(t, type_map) -> Type:
@@ -17,6 +18,3 @@ class TypeFactory:
             declarations.append(df.generate(f_line, f_id, f_type, type_map))
 
         return TypeDeclaration(line, id, declarations)
-
-
-        
