@@ -2,6 +2,8 @@ import sys
 import subprocess
 import json
 
+from TypeFactory import TypeFactory as tf
+
 
 def main():
     if len(sys.argv) != 2:
@@ -15,7 +17,9 @@ def main():
     with open(f"{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
-    print(json_repr.keys())
+    types = json_repr.get("types")
+    types = list(map(lambda x: tf.generate(x), types))
+    print(types)
 
     
 

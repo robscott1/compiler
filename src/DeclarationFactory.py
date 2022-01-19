@@ -1,14 +1,19 @@
-from src.Declaration import Declaration
+from Declaration import Declaration
+from natives.BoolType import BoolType
 from natives.Type import Type
 from natives.IntType import IntType
+from natives.BoolType import BoolType
 
+def type_switch(type):
+    if type == "int":
+        return IntType()
+    elif type == "bool":
+        return BoolType()
+    return None
 
 class DeclarationFactory:
+
+    def generate(line, id, type):
+        type = type_switch(type)
+        return Declaration(line, type, id)
     
-    def type_switch(self, type:str) -> Type:
-        if type == "int":
-            return IntType()
-    
-    def generate(self, line_num, type_str: str, id:str):
-        type = self.type_switch(type_str)
-        return Declaration(line_num, type, id)

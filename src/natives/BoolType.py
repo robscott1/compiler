@@ -1,9 +1,8 @@
 from natives.Type import Type
 
-class IntType(Type):
-
+class BoolType(Type):
     def __init__(self):
-        super()
+        super();
 
     def __repr__(self):
-        return "int"
+        return "bool"
