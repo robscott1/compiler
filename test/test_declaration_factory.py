@@ -1,5 +1,4 @@
-from BoolType import BoolType
-from src.DeclarationFactory import DeclarationFactory as df
+from src.BoolType import BoolType
 from src.DeclarationFactory import type_switch
 from src.IntType import IntType
 

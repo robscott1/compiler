@@ -11,6 +11,6 @@ import pytest
 def test_check_type_decl(expected, in_dict):
     type_checker = TypeChecker()
     type0 = TypeDeclaration("3", "B", [])
-    type_checker.types[type0.id] = type0
+    type_checker.type_map[type0.id] = type0
     in_type = TypeDeclaration(**in_dict)
     assert type_checker.check_type_decl(in_type) == expected
