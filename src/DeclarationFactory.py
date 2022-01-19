@@ -1,8 +1,8 @@
-from Declaration import Declaration
-from BoolType import BoolType
-from Type import Type
-from IntType import IntType
-from BoolType import BoolType
+from src.Declaration import Declaration
+from src.BoolType import BoolType
+from src.Type import Type
+from src.IntType import IntType
+from src.BoolType import BoolType
 
 def type_switch(type):
     if type == "int":
