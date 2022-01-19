@@ -1,1 +1,6 @@
 ast/
+.pytest_cache
+*.json
+*.mini
+Pipfile
+
