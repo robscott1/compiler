@@ -1,6 +1,6 @@
 from TypeDeclaration import TypeDeclaration
-from src.DeclarationFactory import DeclarationFactory as df
-from natives.Type import Type
+from DeclarationFactory import DeclarationFactory as df
+from Type import Type
 
 class TypeFactory:
 
