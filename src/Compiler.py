@@ -20,6 +20,7 @@ def main():
     type_checker = TypeChecker()
     print(type_checker.build_type_map(json_repr))
     print(type_checker.build_global_map(json_repr))
+    print(json_repr.get("functions"))
 
 
 if __name__ == "__main__":

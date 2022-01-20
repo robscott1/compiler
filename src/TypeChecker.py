@@ -13,7 +13,7 @@ class TypeChecker:
             "int": IntType,
             "bool": BoolType,
         }
-        self.globals = {}
+        self.global_map = {}
 
     '''
     Checks to make sure there is not a Type with the same name.
@@ -30,7 +30,7 @@ class TypeChecker:
     '''
 
     def check_type_decl_or_global(cls, type_decl, location):
-        if type_decl.id in (cls.type_map if location else cls.globals):
+        if type_decl.id in (cls.type_map if location else cls.global_map):
             raise Exception("Duplicate name error.")
         if type_decl.type not in cls.type_map:
             raise Exception("Undeclared type reference.")
@@ -62,6 +62,6 @@ class TypeChecker:
         for obj in json.get("declarations"):
             d = df.generate(**obj)
             self.check_type_decl_or_global(d, GLOBAL_FLAG)
-            self.globals[d.id] = d
-        return self.globals
+            self.global_map[d.id] = d
+        return self.global_map
 
