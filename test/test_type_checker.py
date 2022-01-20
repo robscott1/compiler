@@ -51,6 +51,9 @@ def test_build_global_map(exp_size, declarations, types):
         ({"line": 1, "id": "A", "fields": []},
          {"declarations": [{"line": 1, "type": "B", "id": "a"}]}),
         ({"line": 1, "id": "A", "fields": []},
+         {"declarations": [{"line": 1, "type": "A", "id": "a"},
+                           {"line": 3, "type": "int", "id": "2b"}]}),
+        ({"line": 1, "id": "A", "fields": []},
          {"declarations": [{"line": 1, "type": "A", "id": "1a"},
                            {"line": 3, "type": "int", "id": "2b"}]})
     ]
