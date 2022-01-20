@@ -20,6 +20,7 @@ def main():
 
     type_checker = TypeChecker()
     type_checker.build_type_map(json_repr)
+    print(json_repr.get("declarations"))
 
     
 

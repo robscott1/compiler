@@ -42,3 +42,15 @@ class TypeChecker:
             t = tf.generate(td, self.type_map)
             self.type_map[t.id] = t
         print(self.type_map)
+        return self.type_map
+
+    '''
+    Creates map of all global variables that get initialized under the
+    Declarations key of the program. 
+    
+    @validations:
+        - Types initialized exist (dont need to check fields yet)
+        - No duplicate names
+    '''
+    def build_global_map(self, json):
+        return {}
