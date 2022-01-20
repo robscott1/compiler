@@ -28,7 +28,7 @@ class DeclarationFactory:
         - string_type: (str) representation of itself
         - type_map: (dict) map of all types
     '''
-    def generate(d_line: int, d_id: str, string_type: dict, type_map):
+    def generate(line: int, id: str, type: dict):
         # object_type = type_switch(string_type, type_map)
-        return Declaration(d_line, string_type, d_id)
+        return Declaration(line, type, id)
     
