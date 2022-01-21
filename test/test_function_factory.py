@@ -10,22 +10,17 @@ from FunctionFactory import FunctionFactory
           'parameters': [{'line': 17, 'type': 'int', 'id': 'i'}, {'line': 17, 'type': 'B', 'id': 'j'}],
           'return_type': 'A',
           'locals': [{'line': 19, 'type': 'int', 'id': 'f'}, {'line': 19, 'type': 'int', 'id': 'l'},
-                           {'line': 19, 'type': 'int', 'id': 'k'}], 'body': [{'line': 20, 'stmt': 'return',
-                                                                              'exp': {'line': 20, 'exp': 'dot',
-                                                                                      'left': {'line': 20, 'exp': 'dot',
-                                                                                               'left': {'line': 20,
-                                                                                                        'exp': 'dot',
-                                                                                                        'left': {
-                                                                                                            'line': 20,
-                                                                                                            'exp': 'dot',
-                                                                                                            'left': {
-                                                                                                                'line': 20,
-                                                                                                                'exp': 'id',
-                                                                                                                'id': 'b'},
-                                                                                                            'id': 'a'},
-                                                                                                        'id': 'a'},
-                                                                                               'id': 'a'},
-                                                                                      'id': 'a'}}]},
+                     {'line': 19, 'type': 'int', 'id': 'k'}], "body": [
+                {
+                    "line": 38,
+                    "stmt": "return",
+                    "exp": {
+                        "line": 38,
+                        "exp": "num",
+                        "value": "3"
+                    }
+                }
+            ]},
          {"size": 2})
 
     ]

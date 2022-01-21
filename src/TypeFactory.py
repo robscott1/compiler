@@ -5,7 +5,7 @@ from Type import Type
 
 class TypeFactory:
 
-    def generate(t, type_map) -> Type:
+    def generate(t) -> Type:
         line = t.get("line")
         id = t.get("id")
         fields = t.get("fields")
