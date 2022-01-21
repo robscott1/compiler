@@ -15,6 +15,6 @@ class TypeFactory:
             f_line = field.get("line")
             f_id = field.get("id")
             f_type = field.get("type")
-            declarations.append(df.generate(f_line, f_id, f_type, type_map))
+            declarations.append(df.generate(f_line, f_id, f_type))
 
         return TypeDeclaration(line, id, declarations)

@@ -59,7 +59,6 @@ class TypeChecker:
     '''
     def build_global_map(self, json):
         for obj in json.get("declarations"):
-            obj["type_map"] = self.type_map
             d = df.generate(**obj)
             self.global_map[d.id] = d
         return self.global_map
