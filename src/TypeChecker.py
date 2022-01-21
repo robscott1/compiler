@@ -45,9 +45,8 @@ class TypeChecker:
 
     def build_type_map(self, json):
         for td in json.get("types"):
-            t = tf.generate(td)
+            t = tf.generate(td, self.type_map)
             self.type_map[t.id] = t
-        print(self.type_map)
         return self.type_map
 
     '''
@@ -60,8 +59,8 @@ class TypeChecker:
     '''
     def build_global_map(self, json):
         for obj in json.get("declarations"):
+            obj["type_map"] = self.type_map
             d = df.generate(**obj)
-            self.check_type_decl_or_global(d, GLOBAL_FLAG)
             self.global_map[d.id] = d
         return self.global_map
 

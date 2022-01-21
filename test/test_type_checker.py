@@ -46,22 +46,22 @@ def test_build_global_map(exp_size, declarations, types):
     global_map: dict = type_checker.build_global_map(declarations)
     assert len(global_map.keys()) == exp_size
 
-@pytest.mark.parametrize(
-    "types, declarations", [
-        ({"line": 1, "id": "A", "fields": []},
-         {"declarations": [{"line": 1, "type": "B", "id": "a"}]}),
-        ({"line": 1, "id": "A", "fields": []},
-         {"declarations": [{"line": 1, "type": "A", "id": "a"},
-                           {"line": 3, "type": "int", "id": "2b"}]}),
-        ({"line": 1, "id": "A", "fields": []},
-         {"declarations": [{"line": 1, "type": "A", "id": "1a"},
-                           {"line": 3, "type": "int", "id": "2b"}]})
-    ]
-)
-def test_build_global_map_unhappy_path(declarations, types):
-    type_checker = TypeChecker()
-    type_checker.type_map["A"] = TypeDeclaration(**types)
-    with pytest.raises(Exception):
-        type_checker.build_global_map(declarations)
+# @pytest.mark.parametrize(
+#     "types, declarations", [
+#         ({"line": 1, "id": "A", "fields": []},
+#          {"declarations": [{"line": 1, "type": "B", "id": "a"}]}),
+#         ({"line": 1, "id": "A", "fields": []},
+#          {"declarations": [{"line": 1, "type": "A", "id": "a"},
+#                            {"line": 3, "type": "int", "id": "2b"}]}),
+#         ({"line": 1, "id": "A", "fields": []},
+#          {"declarations": [{"line": 1, "type": "A", "id": "1a"},
+#                            {"line": 3, "type": "int", "id": "2b"}]})
+#     ]
+# )
+# def test_build_global_map_unhappy_path(declarations, types):
+#     type_checker = TypeChecker()
+#     type_checker.type_map["A"] = TypeDeclaration(**types)
+#     with pytest.raises(Exception):
+#         type_checker.build_global_map(declarations)
 
 

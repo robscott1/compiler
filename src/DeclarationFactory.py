@@ -2,16 +2,14 @@ from Type import Type
 from src.Declaration import Declaration
 from src.IntType import IntType
 from src.BoolType import BoolType
-
+from src.StructType import StructType
 
 def type_switch(t:str, type_map):
     if t == "int":
         return IntType()
     if t == "bool":
         return BoolType()
-    if t in type_map:
-        return type_map.get(t)
-    return None
+    return StructType(t)
 
 
 class DeclarationFactory:
@@ -28,7 +26,6 @@ class DeclarationFactory:
         - string_type: (str) representation of itself
         - type_map: (dict) map of all types
     '''
-    def generate(line: int, id: str, type: dict):
-        # object_type = type_switch(string_type, type_map)
-        return Declaration(line, type, id)
-    
+    def generate(line: int, id: str, type: dict, type_map: dict):
+        object_type = type_switch(type, type_map)
+        return Declaration(line, object_type, id)

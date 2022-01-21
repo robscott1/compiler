@@ -5,7 +5,7 @@ from Type import Type
 
 class TypeFactory:
 
-    def generate(t) -> Type:
+    def generate(t, type_map) -> Type:
         line = t.get("line")
         id = t.get("id")
         fields = t.get("fields")
@@ -15,6 +15,6 @@ class TypeFactory:
             f_line = field.get("line")
             f_id = field.get("id")
             f_type = field.get("type")
-            declarations.append(df.generate(f_line, f_id, f_type))
+            declarations.append(df.generate(f_line, f_id, f_type, type_map))
 
         return TypeDeclaration(line, id, declarations)
