@@ -3,7 +3,7 @@ import subprocess
 import json
 
 from TypeChecker import TypeChecker
-from TypeFactory import TypeFactory as tf
+from FunctionFactory import FunctionFactory as ff
 
 
 def main():
@@ -20,7 +20,8 @@ def main():
     type_checker = TypeChecker()
     print(type_checker.build_type_map(json_repr))
     print(type_checker.build_global_map(json_repr))
-    print(json_repr.get("functions"))
+    fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
+    print(fns)
 
 
 if __name__ == "__main__":

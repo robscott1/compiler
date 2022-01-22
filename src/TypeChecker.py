@@ -45,7 +45,7 @@ class TypeChecker:
 
     def build_type_map(self, json):
         for td in json.get("types"):
-            t = tf.generate(td, self.type_map)
+            t = tf.generate(td)
             self.type_map[t.id] = t
         return self.type_map
 
