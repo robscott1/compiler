@@ -23,3 +23,5 @@ def test_binary_expression_operator(operator, exp):
     bin = BinaryExpression.generate(ExpressionFactory.generate, args)
     assert hasattr(bin, "operator")
     assert bin.operator == exp
+    assert isinstance(bin.rht, Expression)
+    assert isinstance(bin.lft, Expression)
