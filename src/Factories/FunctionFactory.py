@@ -2,6 +2,7 @@ from Factories.DeclarationFactory import DeclarationFactory as df
 from Factories.DeclarationFactory import type_switch
 from Function import Function
 from Statements.AssignmentStatement import AssignmentStatement
+from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
 from Statements.ReturnStatement import ReturnStatement
 from Statements.Statement import Statement
@@ -40,5 +41,8 @@ class FunctionFactory:
             stmt["then"] = cls.statement_switch(then_dict)
             stmt["else"] = cls.statement_switch(else_dict)
             return ConditionalStatement.generate(stmt)
+        elif stmt_purpose == "block":
+            return BlockStatement.generate(cls.statement_switch, stmt)
+
 
 
