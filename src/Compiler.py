@@ -3,7 +3,7 @@ import subprocess
 import json
 
 from TypeChecker import TypeChecker
-from FunctionFactory import FunctionFactory as ff
+from Factories.FunctionFactory import FunctionFactory as ff
 
 
 def main():

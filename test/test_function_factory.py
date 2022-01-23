@@ -1,7 +1,7 @@
 import pytest
 
 from Function import Function
-from FunctionFactory import FunctionFactory
+from Factories.FunctionFactory import FunctionFactory
 
 
 @pytest.mark.parametrize(
@@ -9,8 +9,7 @@ from FunctionFactory import FunctionFactory
         ({'line': 17, 'id': 'f',
           'parameters': [],
           'return_type': 'A',
-          'declarations': [], "body": [
-            ]},
+          'declarations': [], "body": []},
          {"size": 0})
     ]
 )

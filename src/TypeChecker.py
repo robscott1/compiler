@@ -1,7 +1,7 @@
 from src.BoolType import BoolType
 from src.IntType import IntType
-from src.TypeFactory import TypeFactory as tf
-from src.DeclarationFactory import DeclarationFactory as df
+from Factories.TypeFactory import TypeFactory as tf
+from Factories.DeclarationFactory import DeclarationFactory as df
 
 GLOBAL_FLAG = 0
 

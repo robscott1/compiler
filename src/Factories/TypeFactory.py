@@ -1,5 +1,5 @@
 from TypeDeclaration import TypeDeclaration
-from DeclarationFactory import DeclarationFactory as df
+from Factories.DeclarationFactory import DeclarationFactory as df
 from Type import Type
 
 

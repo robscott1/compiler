@@ -1,12 +1,13 @@
-from DeclarationFactory import DeclarationFactory as df
-from DeclarationFactory import type_switch
+from Factories.DeclarationFactory import DeclarationFactory as df
+from Factories.DeclarationFactory import type_switch
 from Function import Function
 
-class FunctionFactory:
 
-    '''
+class FunctionFactory:
+    """
     Declarations (JSON representation) --> Locals (Function obj)
-    '''
+    """
+
     @classmethod
     def generate(cls, line, id, parameters, return_type, declarations, body):
         locals = list(map(lambda x: df.generate(**x), declarations))
@@ -21,3 +22,5 @@ class FunctionFactory:
             "body": body
         }
         return Function(**args)
+
+
