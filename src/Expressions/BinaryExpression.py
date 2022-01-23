@@ -6,16 +6,14 @@ from Operator import Operator
 
 class BinaryExpression(Expression):
     def __init__(self, line: int, operator: Operator,
-                 left: Expression, right: Expression):
+                 lft: Expression, rht: Expression):
         super(BinaryExpression, self).__init__(line)
         self.operator = operator
-        self.left = left
-        self.right = right
+        self.lft = lft
+        self.rht = rht
 
     @classmethod
-    def generate(cls, line: int, operator: str, left: Expression,
-                 right: Expression
-                 ):
+    def generate(cls, exp: dict):
         op_map = {
             "*": Operator.TIMES,
             "/": Operator.DIVIDE,
@@ -30,5 +28,6 @@ class BinaryExpression(Expression):
             "&&": Operator.AND,
             "||": Operator.OR
         }
-        return BinaryExpression(line, op_map.get(operator),
-                                left, right)
+        exp.pop("exp")
+        exp["operator"] = op_map.get(exp["operator"])
+        return BinaryExpression(**exp)

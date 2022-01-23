@@ -14,10 +14,11 @@ from Operator import Operator
 def test_binary_expression_operator(operator, exp):
     args = {
         "line": 4,
+        "exp": "exp",  # There is an "exp" in json. Useless here
         "operator": operator,
-        "left": Expression(4),
-        "right": Expression(3)
+        "lft": Expression(4),
+        "rht": Expression(3)
     }
-    bin = BinaryExpression.generate(**args)
+    bin = BinaryExpression.generate(args)
     assert hasattr(bin, "operator")
     assert bin.operator == exp
