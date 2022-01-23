@@ -1,5 +1,7 @@
 from Expressions.BinaryExpression import BinaryExpression
 from Expressions.IntExpression import IntExpression
+from Expressions.InvocationExpression import InvocationExpression
+from Expressions.NullExpression import NullExpression
 
 
 class ExpressionFactory:
@@ -10,4 +12,9 @@ class ExpressionFactory:
         if e == "num":
             return IntExpression.generate(exp)
         elif e == "binary":
-            return BinaryExpression.generate(exp)
+            return BinaryExpression.generate(cls.generate, exp)
+        elif e == "invocation":
+            return InvocationExpression.generate(cls.generate, exp)
+
+        else:
+            return NullExpression(exp.get("line"))
