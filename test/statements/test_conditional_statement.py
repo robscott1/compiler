@@ -28,9 +28,8 @@ from Statements.ReturnStatement import ReturnStatement
     ]
 )
 def test_test_conditional_statement_generate(input):
-    input["then"] = FunctionFactory.statement_switch(input["then"])
-    input["else"] = FunctionFactory.statement_switch(input["else"])
-    stmt = ConditionalStatement.generate(input)
+    stmt = ConditionalStatement.generate(
+        FunctionFactory.statement_switch, input)
     assert hasattr(stmt, "guard")
     assert hasattr(stmt, "then_block")
     assert stmt.then_block.__class__ == AssignmentStatement

@@ -6,6 +6,7 @@ from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
 from Statements.ReturnStatement import ReturnStatement
 from Statements.Statement import Statement
+from Statements.WhileStatement import WhileStatement
 
 
 class FunctionFactory:
@@ -17,6 +18,7 @@ class FunctionFactory:
     def generate(cls, line, id, parameters, return_type, declarations, body):
         locals = list(map(lambda x: df.generate(**x), declarations))
         parameters = list(map(lambda x: df.generate(**x), parameters))
+        body = list(map(lambda x: cls.statement_switch(x), body))
         return_type = type_switch(return_type)
         args = {
             "line": line,
@@ -36,13 +38,12 @@ class FunctionFactory:
         elif stmt_purpose == "assign":
             return AssignmentStatement.generate(stmt)
         elif stmt_purpose == "if":
-            then_dict = stmt.get("then")
-            else_dict = stmt.get("else")
-            stmt["then"] = cls.statement_switch(then_dict)
-            stmt["else"] = cls.statement_switch(else_dict)
-            return ConditionalStatement.generate(stmt)
+            return ConditionalStatement.generate(cls.statement_switch, stmt)
         elif stmt_purpose == "block":
             return BlockStatement.generate(cls.statement_switch, stmt)
+        elif stmt_purpose == "while":
+            return WhileStatement.generate(cls.statement_switch, stmt)
+
 
 
 

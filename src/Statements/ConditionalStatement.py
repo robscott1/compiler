@@ -13,12 +13,13 @@ class ConditionalStatement(Statement):
         self.else_block = else_block
 
     @classmethod
-    def generate(cls, stmt: dict):
+    def generate(cls, func, stmt: dict):
         line = stmt.get("line")
         exp_dict = stmt.get("guard")
         guard = ExpressionFactory.generate(exp_dict)
-        then_block = stmt.get("then")
-        else_block = stmt.get("else")
+        then_block = func(stmt.get("then"))
+        # Assume there is not an else block
+        else_block = None
+        if "else" in stmt:
+            else_block = func(stmt.get("else"))
         return ConditionalStatement(line, guard, then_block, else_block)
-
-

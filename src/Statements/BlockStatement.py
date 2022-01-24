@@ -18,6 +18,8 @@ class BlockStatement(Statement):
 
     @classmethod
     def generate(cls, func, stmt: dict):
+        if "list" not in stmt:
+            print("found")
         statements = list(map(
             lambda x: func(x), stmt.get("list"))
         ) if len(stmt.get("list")) != 0 \

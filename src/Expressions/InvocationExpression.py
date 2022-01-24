@@ -16,5 +16,6 @@ class InvocationExpression(Expression):
     def generate(cls, fn, exp: dict):
         exp.pop("exp")
         exp["args"] = list(map(
-            lambda x: fn(x), exp.get("args")))
+            lambda x: fn(x), exp.get("args"))) \
+            if exp["args"] != [] else []
         return InvocationExpression(**exp)

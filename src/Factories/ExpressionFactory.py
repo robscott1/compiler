@@ -1,7 +1,11 @@
 from Expressions.BinaryExpression import BinaryExpression
+from Expressions.DotExpression import DotExpression
+from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
 from Expressions.InvocationExpression import InvocationExpression
+from Expressions.NewExpression import NewExpression
 from Expressions.NullExpression import NullExpression
+from Expressions.TrueExpression import TrueExpression
 
 
 class ExpressionFactory:
@@ -15,6 +19,16 @@ class ExpressionFactory:
             return BinaryExpression.generate(cls.generate, exp)
         elif e == "invocation":
             return InvocationExpression.generate(cls.generate, exp)
+        elif e == "new":
+            return NewExpression.generate(exp)
+        elif e == "dot":
+            return DotExpression.generate(cls.generate, exp)
+        elif e == "true":
+            return TrueExpression(exp.get("line"))
+        elif e == "id":
+            return IdentifierExpression(exp.get("line"), exp.get("id"))
+        elif e == "null":
+            return NullExpression(exp.get("line"))
 
         else:
-            return NullExpression(exp.get("line"))
+            raise Exception("Invalid Expression.")
