@@ -1,3 +1,4 @@
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
@@ -12,7 +13,9 @@ class ReturnStatement(Statement, object):
     @classmethod
     def generate(cls, stmt: dict):
         if "exp" not in stmt:
-            raise Exception("Statement must include a return expression", stmt.get("line"))
+            raise CompilerError(stmt.get("line"),
+                                "Statement needs return value.",
+                                statement=stmt)
         expression = ExpressionFactory.generate(stmt.get("exp"))
         line = stmt.get("line")
         return ReturnStatement(line, expression)

@@ -2,18 +2,17 @@ from src.BoolType import BoolType
 from src.IntType import IntType
 from Factories.TypeFactory import TypeFactory as tf
 from Factories.DeclarationFactory import DeclarationFactory as df
+from Factories.FunctionFactory import FunctionFactory as ff
 
 GLOBAL_FLAG = 0
 
 
 class TypeChecker:
 
-    def __init__(self):
-        self.type_map = {
-            "int": IntType,
-            "bool": BoolType,
-        }
-        self.global_map = {}
+    def __init__(self, json: dict):
+        self.type_map = self.build_type_map(json.get("types"))
+        self.global_map = self.build_global_map(json.get("declarations"))
+        self.fn_map = self.build_fn_map(json.get("functions"))
 
     '''
     Checks to make sure there is not a Type with the same name.
@@ -28,7 +27,7 @@ class TypeChecker:
         - Does not start with a number
         - Any Types in each Declaration are valid
     '''
-
+    @classmethod
     def check_type_decl_or_global(cls, type_decl, location):
         if type_decl.id in (cls.type_map if location else cls.global_map):
             raise Exception("Duplicate name error.")
@@ -42,12 +41,13 @@ class TypeChecker:
     each field (if applicable). Needs to pass along the working map
     to the TypeFactory, then subsequently the Declaration factory.
     '''
-
-    def build_type_map(self, json):
-        for td in json.get("types"):
+    @classmethod
+    def build_type_map(cls, types: list):
+        type_map = {"int": IntType, "bool": BoolType}
+        for td in types:
             t = tf.generate(td)
-            self.type_map[t.id] = t
-        return self.type_map
+            type_map[t.id] = t
+        return type_map
 
     '''
     Creates map of all global variables that get initialized under the
@@ -57,9 +57,30 @@ class TypeChecker:
         - Types initialized exist (dont need to check fields yet)
         - No duplicate names
     '''
-    def build_global_map(self, json):
-        for obj in json.get("declarations"):
+    @classmethod
+    def build_global_map(cls, globals: list):
+        global_map = {}
+        for obj in globals:
             d = df.generate(**obj)
-            self.global_map[d.id] = d
-        return self.global_map
+            global_map[d.id] = d
+        return global_map
+
+    """
+    Builds map of all functions using the FunctionFactory
+    
+    @:param:
+        - dictionary from JSON parser.
+    
+    @validations:
+        - Proper syntax based on Statement rules and expression rules
+    """
+    @classmethod
+    def build_fn_map(cls, funcs: list):
+        fn_map = {}
+        for f in funcs:
+            fn = ff.generate(**f)
+            fn_map[fn.id] = fn
+        return fn_map
+
+
 

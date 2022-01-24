@@ -2,6 +2,7 @@ import sys
 import subprocess
 import json
 
+from CompilerError import CompilerError
 from TypeChecker import TypeChecker
 from Factories.FunctionFactory import FunctionFactory as ff
 
@@ -9,7 +10,7 @@ from Factories.FunctionFactory import FunctionFactory as ff
 def main():
     if len(sys.argv) != 2:
         print("Usage: Compiler <filename>")
-    
+
     filename = sys.argv[1]
     with open(f"{filename}.json", 'w') as out_file:
         subprocess.run(["java", "-jar", "MiniCompiler.jar", filename], stdout=out_file)
@@ -17,15 +18,11 @@ def main():
     with open(f"{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
-    type_checker = TypeChecker()
-    print(type_checker.build_type_map(json_repr))
-    print(type_checker.build_global_map(json_repr))
     try:
         fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
-        print(fns)
-
-    except Exception as e:
-        print(f"Error: {e.args[0]}")
+    except CompilerError as e:
+        print(e.__repr__())
+        exit()
 
 
 if __name__ == "__main__":

@@ -2,10 +2,10 @@ from Expressions.Expression import Expression
 from Statements.Statement import Statement
 
 
-class CompilerError:
+class CompilerError(BaseException):
 
     def __init__(self, line: int, msg: str,
-                 statement: Statement = None, expression: Expression = None
+                 statement=None, expression=None
                  ):
         self.line = line
         self.msg = msg
