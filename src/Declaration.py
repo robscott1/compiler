@@ -4,6 +4,7 @@ class Declaration:
         self.line = line
         self.type = type
         self.id = id
+        self.initialized = False
 
     def __repr__(self):
         return f"{self.id} ({self.type}) on line {self.line}"

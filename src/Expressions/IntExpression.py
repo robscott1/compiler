@@ -12,3 +12,6 @@ class IntExpression(Expression):
         value = exp.get("value")
         return IntExpression(line, value)
 
+    def type_check(self, tc):
+        pass
+

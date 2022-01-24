@@ -6,3 +6,6 @@ class Expression:
     '''
     def __init__(self, line: int):
         self.line = line
+
+    def type_check(self, tc):
+        pass

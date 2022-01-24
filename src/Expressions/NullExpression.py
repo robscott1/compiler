@@ -5,3 +5,6 @@ class NullExpression(Expression):
 
     def __init__(self, line: int):
         super(NullExpression, self).__init__(line)
+
+    def type_check(self, tc):
+        pass
