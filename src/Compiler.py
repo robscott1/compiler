@@ -24,8 +24,8 @@ def main():
         fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
         print(fns)
 
-    except Exception:
-        print(f"Error caught. Exiting...")
+    except Exception as e:
+        print(f"Error: {e.args[0]}")
 
 
 if __name__ == "__main__":

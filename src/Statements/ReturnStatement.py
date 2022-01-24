@@ -12,7 +12,7 @@ class ReturnStatement(Statement, object):
     @classmethod
     def generate(cls, stmt: dict):
         if "exp" not in stmt:
-            raise Exception("Statement must include a return expression")
+            raise Exception("Statement must include a return expression", stmt.get("line"))
         expression = ExpressionFactory.generate(stmt.get("exp"))
         line = stmt.get("line")
         return ReturnStatement(line, expression)
