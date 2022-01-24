@@ -5,7 +5,7 @@ from Statements.Statement import Statement
 class CompilerError(BaseException):
 
     def __init__(self, line: int, msg: str,
-                 code: str, statement=None, expression=None
+                 code: str = None, statement=None, expression=None
                  ):
         self.line = line
         self.msg = msg

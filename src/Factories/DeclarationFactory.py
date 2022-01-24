@@ -22,11 +22,10 @@ class DeclarationFactory:
     instantiation of itself as a member. Otherwise the Type would be null.
 
     @:parameters:
-        - d_line: (int) Declaration line number
-        - d_id: (str) String id of declaration
-        - string_type: (str) representation of itself
-        - type_map: (dict) map of all types
+        - line: (int) Declaration line number
+        - id: (str) String id of declaration
+        - type: (str) representation of itself
     '''
-    def generate(line: int, id: str, type: dict):
+    def generate(line: int, id: str, type: str):
         object_type = type_switch(type)
         return Declaration(line, object_type, id)

@@ -18,6 +18,8 @@ def main():
     with open(f"{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
+
+    tc = TypeChecker(json_repr)
     try:
         fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
     except CompilerError as e:

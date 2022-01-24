@@ -9,7 +9,7 @@ def type_checker():
         "types": [{"line": 1, "id": "A", "fields": []}],
         "declarations": [{"line": 1, "type": "A", "id": "a"}],
         "functions": [{'line': 17, 'id': 'f',
-                       'parameters': [], 'return_type': 'A',
-                       'declarations':[], "body": []}]
+                       'parameters': [{"line": 3, "type": "int", "id": "j"}],
+                       'return_type': 'A', 'declarations': [], "body": []}]
     }
     return TypeChecker(param)
