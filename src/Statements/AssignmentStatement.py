@@ -2,7 +2,6 @@ from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from LvalueId import LvalueId
 from Statements.Statement import Statement
-from TypeChecker import TypeChecker
 from l_value import Lvalue
 
 

@@ -1,3 +1,4 @@
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
 
 
@@ -11,3 +12,15 @@ class NewExpression(Expression):
     def generate(cls, exp: dict):
         exp.pop("exp")
         return NewExpression(**exp)
+
+    def type_check(self, tc):
+        if self.id not in tc.type_map:
+            error_spec = {
+                "line": self.line,
+                "msg": "Undeclared type reference.",
+                "expression": self,
+                "code": "001"
+
+            }
+            raise CompilerError(**error_spec)
+

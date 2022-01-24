@@ -63,7 +63,7 @@ fun main() int
       {
          print 7;
       }
-      f(g(1,new B),new B);
+      f(g(1,new B),new B);2
       print f(g(1,new B),new B).i endl;
    }
    return 0;
