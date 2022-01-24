@@ -20,7 +20,6 @@ class NewExpression(Expression):
                 "msg": "Undeclared type reference.",
                 "expression": self,
                 "code": "001"
-
             }
             raise CompilerError(**error_spec)
 

@@ -1,0 +1,2 @@
+001: Undeclared type in NewExpression
+002: Undeclared function in InvocationExpression

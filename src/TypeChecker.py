@@ -13,6 +13,7 @@ class TypeChecker:
         self.type_map = self.build_type_map(json.get("types"))
         self.global_map = self.build_global_map(json.get("declarations"))
         self.fn_map = self.build_fn_map(json.get("functions"))
+        self.current_scope = self.fn_map.get("main")
 
     '''
     Checks to make sure there is not a Type with the same name.
@@ -81,6 +82,8 @@ class TypeChecker:
             fn = ff.generate(**f)
             fn_map[fn.id] = fn
         return fn_map
+
+
 
 
 

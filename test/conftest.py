@@ -10,6 +10,6 @@ def type_checker():
         "declarations": [{"line": 1, "type": "A", "id": "a"}],
         "functions": [{'line': 17, 'id': 'f',
                        'parameters': [], 'return_type': 'A',
-                       'declarations': [], "body": []}]
+                       'declarations':[], "body": []}]
     }
     return TypeChecker(param)
