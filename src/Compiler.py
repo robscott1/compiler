@@ -20,8 +20,12 @@ def main():
     type_checker = TypeChecker()
     print(type_checker.build_type_map(json_repr))
     print(type_checker.build_global_map(json_repr))
-    fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
-    print(fns)
+    try:
+        fns = list(map(lambda x: ff.generate(**x), json_repr.get("functions")))
+        print(fns)
+
+    except Exception:
+        print(f"Error caught. Exiting...")
 
 
 if __name__ == "__main__":

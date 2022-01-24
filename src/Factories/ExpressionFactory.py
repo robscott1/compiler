@@ -1,5 +1,6 @@
 from Expressions.BinaryExpression import BinaryExpression
 from Expressions.DotExpression import DotExpression
+from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
 from Expressions.InvocationExpression import InvocationExpression
@@ -25,6 +26,8 @@ class ExpressionFactory:
             return DotExpression.generate(cls.generate, exp)
         elif e == "true":
             return TrueExpression(exp.get("line"))
+        elif e == "false":
+            return FalseExpression(exp.get("line"))
         elif e == "id":
             return IdentifierExpression(exp.get("line"), exp.get("id"))
         elif e == "null":
