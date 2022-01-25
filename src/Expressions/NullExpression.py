@@ -1,4 +1,5 @@
 from Expressions.Expression import Expression
+from NullType import NullType
 
 
 class NullExpression(Expression):
@@ -6,5 +7,5 @@ class NullExpression(Expression):
     def __init__(self, line: int):
         super(NullExpression, self).__init__(line)
 
-    def type_check(self, tc):
-        pass
+    def of_type(self, tc):
+        return NullType()

@@ -38,32 +38,5 @@ class InvocationExpression(Expression):
         - # args and respective arg-type match the function being invoked
     """
 
-    def type_check(self, tc):
-        param = {
-            "line": self.line,
-            "msg": "Bad function invocation.",
-            "expression": self,
-            "code": "002"
-        }
-        # closures ?
-        if self.id not in tc.fn_map:
-            raise CompilerError(**param)
-
-        for exp, act in list(
-                zip_longest(tc.fn_map.get(self.id).parameters,
-                            self.args, fillvalue=None)):
-            # if there is a mismatch # of arguments
-            if exp == None or act == None:
-                raise CompilerError(**param)
-
-            # type check each expression
-            act.type_check(tc)
-
-
-
-            # variable is within scope or in global map
-            if not isinstance(act, IntExpression):
-                if act.id not in tc.global_map:
-                    raise CompilerError(**param)
-                if not tc.current_scope.id_in_scope(act.id):
-                    raise CompilerError(**param)
+    def of_type(self, tc):
+        return tc.fn_map.get(self.id).return_type

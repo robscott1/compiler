@@ -1,4 +1,5 @@
 from Expressions.Expression import Expression
+from IntType import IntType
 
 
 class IntExpression(Expression):
@@ -12,6 +13,6 @@ class IntExpression(Expression):
         value = exp.get("value")
         return IntExpression(line, value)
 
-    def type_check(self, tc):
-        pass
+    def of_type(self, tc):
+        return IntType()
 

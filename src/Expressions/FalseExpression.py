@@ -1,3 +1,4 @@
+from BoolType import BoolType
 from Expressions.Expression import Expression
 
 
@@ -6,5 +7,5 @@ class FalseExpression(Expression):
     def __init__(self, line: int):
         super(FalseExpression, self).__init__(line)
 
-    def type_check(self, tc):
-        pass
+    def of_type(self, tc):
+        return BoolType()

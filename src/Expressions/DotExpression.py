@@ -1,4 +1,7 @@
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
+from src.StructType import StructType
+from TypeDeclaration import TypeDeclaration
 
 
 class DotExpression(Expression):
@@ -13,4 +16,14 @@ class DotExpression(Expression):
         exp.pop("exp")
         exp["left"] = fn(exp.get("left"))
         return DotExpression(**exp)
+
+    def of_type(self, tc):
+        lft_type = self.left.of_type(tc)
+        if not isinstance(lft_type, StructType):
+            raise CompilerError(self.line, f"Type {lft_type} has no fields.")
+        if lft_type.id not in tc.type_map:
+            raise CompilerError(self.line, f"Type {lft_type} undeclared.")
+        target_struct: TypeDeclaration = tc.type_map.get(lft_type.id)
+        return target_struct.get_field_type(self.id)
+
 

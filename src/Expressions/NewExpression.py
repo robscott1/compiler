@@ -22,4 +22,5 @@ class NewExpression(Expression):
                 "code": "001"
             }
             raise CompilerError(**error_spec)
+        return tc.type_map.get(self.id)
 

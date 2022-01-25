@@ -22,5 +22,14 @@ class Function:
                 return True
         return False
 
+    def get_id_type(self, id: str):
+        for param in self.parameters:
+            if param.id == id:
+                return param.type
+        for decl in self.locals:
+            if decl.id == id:
+                return decl.type
+        return False
+
 
 

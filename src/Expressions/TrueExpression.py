@@ -1,3 +1,4 @@
+from BoolType import BoolType
 from Expressions.Expression import Expression
 
 
@@ -7,4 +8,4 @@ class TrueExpression(Expression):
         super(TrueExpression, self).__init__(line)
 
     def type_check(self, tc):
-        pass
+        return BoolType();
