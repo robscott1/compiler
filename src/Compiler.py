@@ -2,9 +2,7 @@ import sys
 import subprocess
 import json
 
-from CompilerError import CompilerError
 from TypeChecker import TypeChecker
-from Factories.FunctionFactory import FunctionFactory as ff
 
 
 def main():

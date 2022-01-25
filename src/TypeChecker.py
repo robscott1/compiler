@@ -27,8 +27,8 @@ class TypeChecker:
         - No duplicate names
         - Does not start with a number
         - Any Types in each Declaration are valid
+
     '''
-    @classmethod
     def check_type_decl_or_global(cls, type_decl, location):
         if type_decl.id in (cls.type_map if location else cls.global_map):
             raise Exception("Duplicate name error.")
@@ -83,6 +83,10 @@ class TypeChecker:
             fn_map[fn.id] = fn
         return fn_map
 
+    def get_id_type(self, id: str):
+        if self.current_scope.id_in_scope(id):
+            return self.current_scope.get_id_type(id)
+        return self.global_map.get(id).type
 
 
 
