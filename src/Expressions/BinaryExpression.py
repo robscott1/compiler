@@ -16,20 +16,29 @@ class BinaryExpression(Expression):
         self.rht = rht
 
     def of_type(self, tc):
-        returns_int = set(Operator.TIMES, Operator.DIVIDE, Operator.PLUS,
-                          Operator.MINUS
-                          )
+        returns_int = {Operator.TIMES, Operator.DIVIDE, Operator.PLUS, Operator.MINUS}
         if self.operator in returns_int:
-            lft_ret = self.lft.of_type()
-            rht_ret = self.rht.of_type()
-            if lft_ret != rht_ret or isinstance(lft_ret, BoolType):
+            lft_ret = self.lft.of_type(tc)
+            rht_ret = self.rht.of_type(tc)
+            if not lft_ret.equals(rht_ret) or isinstance(lft_ret, BoolType):
                 raise CompilerError(self.line, "BinExp", self, "004")
             return IntType()
         else:
-            lft_ret = self.lft.of_type()
-            rht_ret = self.rht.of_type()
-            if lft_ret != rht_ret or isinstance(lft_ret, IntType):
-                raise CompilerError(self.line, "BinExp", self, "004")
+            lft_ret = self.lft.of_type(tc)
+            rht_ret = self.rht.of_type(tc)
+            # Make sure left and right evaluate to bools
+            if self.operator is Operator.OR or self.operator is Operator.AND:
+                if not lft_ret.equals(rht_ret) or isinstance(lft_ret, IntType):
+                    raise CompilerError(self.line, "BinExp", self, "004")
+            # Make sure left and right match only
+            elif self.operator is Operator.EQ or self.operator is Operator.NE:
+                if not lft_ret.equals(rht_ret):
+                    raise CompilerError(self.line, "BinExp", self, "004")
+            # Make sure left and right evaluate to ints
+            else:
+                if not lft_ret.equals(rht_ret) or isinstance(lft_ret, BoolType):
+                    raise CompilerError(self.line, "BinExp", self, "004")
+
             return BoolType()
 
 

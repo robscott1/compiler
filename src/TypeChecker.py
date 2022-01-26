@@ -1,5 +1,5 @@
-from src.BoolType import BoolType
-from src.IntType import IntType
+from BoolType import BoolType
+from IntType import IntType
 from Factories.TypeFactory import TypeFactory as tf
 from Factories.DeclarationFactory import DeclarationFactory as df
 from Factories.FunctionFactory import FunctionFactory as ff

@@ -1,3 +1,5 @@
+from BoolType import BoolType
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
@@ -23,3 +25,17 @@ class ConditionalStatement(Statement):
         if "else" in stmt:
             else_block = func(stmt.get("else"))
         return ConditionalStatement(line, guard, then_block, else_block)
+
+    """
+    Analysis of conditional guard and statements after
+    
+    @validations:
+        - guard Expression must evaluate to a booltype [x]
+        - analyze then and else statements [x]
+    """
+    def analyze(self, tc):
+        if not isinstance(self.guard.of_type(tc), BoolType):
+            raise CompilerError(self.line, "Conditional needs boolean.", code="100")
+        self.then_block.analyze(tc)
+        self.else_block.analyze(tc)
+

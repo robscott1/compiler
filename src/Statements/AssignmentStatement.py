@@ -19,7 +19,7 @@ class AssignmentStatement(Statement):
         source = ExpressionFactory.generate(source_dict)
         lvalue_id_dict = stmt.get("target")
         lvalue_id = LvalueId(**lvalue_id_dict)
-        return AssignmentStatement(line, source, lvalue_id)
+        return AssignmentStatement(line, lvalue_id, source)
 
     """
     Static analysis of target value and expression being assigned to it.
@@ -30,7 +30,7 @@ class AssignmentStatement(Statement):
     @validations:
         - value being assigned has been initialized [x]
         - is not a param of function [x]
-        - type of initialized variable = type of expression []
+        - type of initialized variable = type of expression [x]
     """
     def analyze(self, tc):
         target_id = self.target.id
@@ -41,7 +41,7 @@ class AssignmentStatement(Statement):
 
         target_type = tc.get_id_type(self.target.id)
         src_type = self.source.of_type(tc)
-        if target_type.equals(src_type):
+        if not target_type.equals(src_type):
             raise CompilerError(self.line, "Bad assignment.", code="202")
 
 

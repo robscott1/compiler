@@ -1,8 +1,8 @@
 from Type import Type
-from src.Declaration import Declaration
-from src.IntType import IntType
-from src.BoolType import BoolType
-from src.StructType import StructType
+from Declaration import Declaration
+from IntType import IntType
+from BoolType import BoolType
+from StructType import StructType
 
 
 def type_switch(t:str):

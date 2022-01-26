@@ -1,5 +1,5 @@
-from src.TypeChecker import TypeChecker
-from src.TypeDeclaration import TypeDeclaration
+from TypeChecker import TypeChecker
+from TypeDeclaration import TypeDeclaration
 import pytest
 
 

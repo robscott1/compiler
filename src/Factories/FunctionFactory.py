@@ -4,6 +4,7 @@ from Function import Function
 from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
+from Statements.InvocationStatement import InvocationStatement
 from Statements.ReturnStatement import ReturnStatement
 from Statements.Statement import Statement
 from Statements.WhileStatement import WhileStatement
@@ -33,6 +34,8 @@ class FunctionFactory:
     @classmethod
     def statement_switch(cls, stmt: dict) -> Statement:
         stmt_purpose = stmt.get("stmt")
+        if stmt_purpose == "invocation":
+            return InvocationStatement.generate(stmt)
         if stmt_purpose == "return":
             return ReturnStatement.generate(stmt)
         elif stmt_purpose == "assign":

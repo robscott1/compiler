@@ -1,2 +1,6 @@
 001: Undeclared type in NewExpression
 002: Undeclared function in InvocationExpression
+100: ConditionalExpression guard does not evaluate to BoolType
+200: Target Id undeclared in AssignmentStatement
+201: Target Id is parameter of function. Re-assignment prohibited
+202: Target type and source type do not match in AssignmentStatement

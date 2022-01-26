@@ -1,5 +1,6 @@
 from CompilerError import CompilerError
 from Expressions.Expression import Expression
+from StructType import StructType
 
 
 class NewExpression(Expression):
@@ -13,14 +14,10 @@ class NewExpression(Expression):
         exp.pop("exp")
         return NewExpression(**exp)
 
-    def type_check(self, tc):
+    def of_type(self, tc):
         if self.id not in tc.type_map:
-            error_spec = {
-                "line": self.line,
-                "msg": "Undeclared type reference.",
-                "expression": self,
-                "code": "001"
-            }
-            raise CompilerError(**error_spec)
-        return tc.type_map.get(self.id)
+            raise CompilerError(
+                self.line, "Undeclared type reference", code="400"
+            )
+        return StructType(self.id)
 

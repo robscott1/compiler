@@ -1,6 +1,6 @@
 from CompilerError import CompilerError
 from Expressions.Expression import Expression
-from src.StructType import StructType
+from StructType import StructType
 from TypeDeclaration import TypeDeclaration
 
 
