@@ -1,3 +1,5 @@
+from BoolType import BoolType
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
@@ -22,3 +24,11 @@ class WhileStatement(Statement):
         stmt["body"] = list(map(lambda x: fn(x), body_statements))
         stmt["guard"] = ExpressionFactory.generate(stmt.get("guard"))
         return WhileStatement(**stmt)
+
+    def analyze(self, tc):
+        if not isinstance(self.guard.of_type(tc), BoolType):
+            raise CompilerError(
+                self.line, "While guard must evaluate to a bool.", code="600"
+            )
+        for s in self.body:
+            s.analyze(tc)

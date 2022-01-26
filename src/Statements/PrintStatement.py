@@ -1,5 +1,7 @@
+from CompilerError import CompilerError
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
+from IntType import IntType
 from Statements.Statement import Statement
 
 
@@ -13,5 +15,11 @@ class PrintStatement(Statement):
     def generate(cls, stmt: dict):
         stmt["exp"] = ExpressionFactory.generate(stmt.get("exp"))
         stmt.pop("stmt")
+        stmt.pop("endl")
         return PrintStatement(**stmt)
 
+    def analyze(self, tc):
+        if not isinstance(self.expression.of_type(tc), IntType):
+            raise CompilerError(
+                self.line, "Print statement must print an int"
+            )

@@ -4,3 +4,5 @@
 200: Target Id undeclared in AssignmentStatement
 201: Target Id is parameter of function. Re-assignment prohibited
 202: Target type and source type do not match in AssignmentStatement
+500: Unexpected return type
+600: While Statement does not evaluate to BoolType

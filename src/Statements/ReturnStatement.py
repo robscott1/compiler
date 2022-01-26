@@ -19,3 +19,11 @@ class ReturnStatement(Statement, object):
         expression = ExpressionFactory.generate(stmt.get("exp"))
         line = stmt.get("line")
         return ReturnStatement(line, expression)
+
+    def analyze(self, tc):
+        exp_return_type = tc.current_scope.return_type
+        return_type = self.expression.of_type(tc)
+        if not return_type.equals(exp_return_type):
+            raise CompilerError(
+                self.line, "Unexpected return type.", code="500"
+            )

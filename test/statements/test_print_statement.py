@@ -5,7 +5,7 @@ from Statements.PrintStatement import PrintStatement
 
 @pytest.mark.parametrize(
     "input", [
-        ({"line": 51, "stmt": "print",
+        ({"line": 51, "stmt": "print", "endl": "false",
           "exp": {"line": 51, "exp": "num", "value": "1"}
         })
     ]

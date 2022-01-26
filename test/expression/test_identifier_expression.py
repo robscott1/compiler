@@ -16,3 +16,5 @@ def test_identifier_expression_of_type(input, type_checker):
         Declaration(55, IntType(), input.get("id"))
     t = id_exp.of_type(type_checker)
     assert t.__class__ == IntType
+
+

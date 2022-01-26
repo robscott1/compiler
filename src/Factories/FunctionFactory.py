@@ -5,6 +5,7 @@ from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
 from Statements.InvocationStatement import InvocationStatement
+from Statements.PrintStatement import PrintStatement
 from Statements.ReturnStatement import ReturnStatement
 from Statements.Statement import Statement
 from Statements.WhileStatement import WhileStatement
@@ -46,6 +47,8 @@ class FunctionFactory:
             return BlockStatement.generate(cls.statement_switch, stmt)
         elif stmt_purpose == "while":
             return WhileStatement.generate(cls.statement_switch, stmt)
+        elif stmt_purpose == "print":
+            return PrintStatement.generate(stmt)
 
 
 

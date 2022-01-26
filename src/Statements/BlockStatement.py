@@ -25,3 +25,7 @@ class BlockStatement(Statement):
         ) if len(stmt.get("list")) != 0 \
             else cls.empty_block()
         return BlockStatement(-1, statements)
+
+    def analyze(self, tc):
+        for s in self.statements:
+            s.analyze(tc)
