@@ -2,6 +2,7 @@ import sys
 import subprocess
 import json
 
+from CompilerError import CompilerError
 from TypeChecker import TypeChecker
 
 
@@ -17,6 +18,10 @@ def main():
         json_repr = dict(json.load(out_file))
 
     tc = TypeChecker(json_repr)
+    try:
+        tc.analyze()
+    except CompilerError as e:
+        print(e.__repr__())
 
     print(tc)
 

@@ -33,9 +33,9 @@ class Function:
             if param.id == id:
                 return True
 
-    def analyze(self):
+    def analyze(self, tc):
         for stmt in self.body:
-            stmt.analyze()
+            stmt.analyze(tc)
 
 
 

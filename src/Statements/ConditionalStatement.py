@@ -37,5 +37,6 @@ class ConditionalStatement(Statement):
         if not isinstance(self.guard.of_type(tc), BoolType):
             raise CompilerError(self.line, "Conditional needs boolean.", code="100")
         self.then_block.analyze(tc)
-        self.else_block.analyze(tc)
+        if self.else_block is not None:
+            self.else_block.analyze(tc)
 

@@ -88,6 +88,11 @@ class TypeChecker:
             return self.current_scope.get_id_type(id)
         return self.global_map.get(id).type
 
+    def analyze(self):
+        for fn in self.fn_map.values():
+            self.current_scope = self.fn_map.get(fn.id)
+            fn.analyze(self)
+
 
 
 

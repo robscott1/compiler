@@ -21,9 +21,9 @@ class IdentifierExpression(Expression):
         if self.id in tc.global_map:
             glb = tc.global_map.get(self.id)
             return glb.type
-        elif self.id in tc.current_scope:
+        elif tc.current_scope.id_in_scope(self.id):
             glb = tc.current_scope.get_id_type(self.id)
-            return glb.type
+            return glb
 
         raise CompilerError(self.line, "Unexpected id.", code="006")
 

@@ -1,3 +1,4 @@
+from CompilerError import CompilerError
 from Factories.DeclarationFactory import DeclarationFactory as df
 from Factories.DeclarationFactory import type_switch
 from Function import Function
@@ -34,21 +35,24 @@ class FunctionFactory:
 
     @classmethod
     def statement_switch(cls, stmt: dict) -> Statement:
-        stmt_purpose = stmt.get("stmt")
-        if stmt_purpose == "invocation":
-            return InvocationStatement.generate(stmt)
-        if stmt_purpose == "return":
-            return ReturnStatement.generate(stmt)
-        elif stmt_purpose == "assign":
-            return AssignmentStatement.generate(stmt)
-        elif stmt_purpose == "if":
-            return ConditionalStatement.generate(cls.statement_switch, stmt)
-        elif stmt_purpose == "block":
-            return BlockStatement.generate(cls.statement_switch, stmt)
-        elif stmt_purpose == "while":
-            return WhileStatement.generate(cls.statement_switch, stmt)
-        elif stmt_purpose == "print":
-            return PrintStatement.generate(stmt)
+        try:
+            stmt_purpose = stmt.get("stmt")
+            if stmt_purpose == "invocation":
+                return InvocationStatement.generate(stmt)
+            if stmt_purpose == "return":
+                return ReturnStatement.generate(stmt)
+            elif stmt_purpose == "assign":
+                return AssignmentStatement.generate(stmt)
+            elif stmt_purpose == "if":
+                return ConditionalStatement.generate(cls.statement_switch, stmt)
+            elif stmt_purpose == "block":
+                return BlockStatement.generate(cls.statement_switch, stmt)
+            elif stmt_purpose == "while":
+                return WhileStatement.generate(cls.statement_switch, stmt)
+            elif stmt_purpose == "print":
+                return PrintStatement.generate(stmt)
+        except CompilerError as e:
+            print(e.msg)
 
 
 
