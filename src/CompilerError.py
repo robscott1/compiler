@@ -14,4 +14,4 @@ class CompilerError(BaseException):
         self.code = code
 
     def __repr__(self):
-        return f"Error: {self.line}: {self.msg}"
+        return f"Error: {self.line}: {self.msg} - {self.code}"

@@ -16,7 +16,7 @@ class NewExpression(Expression):
 
     def of_type(self, tc):
         if self.id not in tc.type_map:
-            raise CompilerError(
+            error_out(
                 self.line, "Undeclared type reference", code="400"
             )
         return StructType(self.id)

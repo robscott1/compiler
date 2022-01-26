@@ -1,4 +1,5 @@
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from StructType import StructType
 from Type import Type
@@ -25,6 +26,6 @@ class IdentifierExpression(Expression):
             glb = tc.current_scope.get_id_type(self.id)
             return glb
 
-        raise CompilerError(self.line, "Unexpected id.", code="006")
+        error_out(self.line, "Unexpected id.", code="006")
 
 

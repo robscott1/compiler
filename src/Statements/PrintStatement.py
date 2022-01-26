@@ -1,4 +1,5 @@
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from IntType import IntType
@@ -20,6 +21,6 @@ class PrintStatement(Statement):
 
     def analyze(self, tc):
         if not isinstance(self.expression.of_type(tc), IntType):
-            raise CompilerError(
+            error_out(
                 self.line, "Print statement must print an int"
             )

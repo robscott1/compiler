@@ -1,4 +1,5 @@
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
@@ -13,9 +14,10 @@ class ReturnStatement(Statement, object):
     @classmethod
     def generate(cls, stmt: dict):
         if "exp" not in stmt:
-            raise CompilerError(stmt.get("line"),
+            error_out(stmt.get("line"),
                                 "Statement needs return value.",
-                                statement=stmt)
+                                code="111"
+                      )
         expression = ExpressionFactory.generate(stmt.get("exp"))
         line = stmt.get("line")
         return ReturnStatement(line, expression)
@@ -24,6 +26,6 @@ class ReturnStatement(Statement, object):
         exp_return_type = tc.current_scope.return_type
         return_type = self.expression.of_type(tc)
         if not return_type.equals(exp_return_type):
-            raise CompilerError(
+            error_out(
                 self.line, "Unexpected return type.", code="500"
             )

@@ -1,4 +1,5 @@
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Type import Type
 
 
@@ -17,6 +18,6 @@ class TypeDeclaration(Type):
         for field in self.fields:
             if field.id == target:
                 return field.type
-        raise CompilerError(self.line,
+        error_out(self.line,
                             f"Undeclared field within {self.id}",
                             code="005")

@@ -1,5 +1,6 @@
 from BoolType import BoolType
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
@@ -35,7 +36,7 @@ class ConditionalStatement(Statement):
     """
     def analyze(self, tc):
         if not isinstance(self.guard.of_type(tc), BoolType):
-            raise CompilerError(self.line, "Conditional needs boolean.", code="100")
+            error_out(self.line, "Conditional needs boolean.", code="100")
         self.then_block.analyze(tc)
         if self.else_block is not None:
             self.else_block.analyze(tc)

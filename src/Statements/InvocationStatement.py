@@ -1,4 +1,5 @@
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Expressions.InvocationExpression import InvocationExpression
 from Factories.ExpressionFactory import ExpressionFactory
@@ -31,17 +32,17 @@ class InvocationStatement(Statement):
         inv_args = self.exp.args
         inv_id = self.exp.id
         if inv_id not in tc.fn_map:
-            raise CompilerError(self.line, f"Undeclared function: {inv_id}", code=300)
+            error_out(self.line, f"Undeclared function: {inv_id}", code=300)
         fn_params = tc.fn_map.get(inv_id).parameters
         if len(inv_args) != len(fn_params):
-            raise CompilerError(self.line,
+            error_out(self.line,
                                 f"Unexpected number of arguments: {inv_args}", code=301)
         params = tc.fn_map.get(inv_id).parameters
         for arg, param in list(zip(inv_args, params)):
             arg_type = arg.of_type(tc)
             param_type = param.type
             if not arg_type.equals(param_type):
-                raise CompilerError(
+                error_out(
                     self.line, f"Mismatching types for arguments", code=302
                 )
 

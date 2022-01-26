@@ -2,6 +2,7 @@ from enum import Enum
 
 from BoolType import BoolType
 from CompilerError import CompilerError
+from ErrorOut import error_out
 from Expressions.Expression import Expression
 from IntType import IntType
 from Operator import Operator
@@ -21,7 +22,7 @@ class BinaryExpression(Expression):
             lft_ret = self.lft.of_type(tc)
             rht_ret = self.rht.of_type(tc)
             if not lft_ret.equals(rht_ret) or isinstance(lft_ret, BoolType):
-                raise CompilerError(self.line, "BinExp", self, "004")
+                error_out(self.line, "BinExp", "004")
             return IntType()
         else:
             lft_ret = self.lft.of_type(tc)
@@ -29,15 +30,15 @@ class BinaryExpression(Expression):
             # Make sure left and right evaluate to bools
             if self.operator is Operator.OR or self.operator is Operator.AND:
                 if not lft_ret.equals(rht_ret) or isinstance(lft_ret, IntType):
-                    raise CompilerError(self.line, "BinExp", self, "004")
+                    error_out(self.line, "BinExp", "004")
             # Make sure left and right match only
             elif self.operator is Operator.EQ or self.operator is Operator.NE:
                 if not lft_ret.equals(rht_ret):
-                    raise CompilerError(self.line, "BinExp", self, "004")
+                    error_out(self.line, "BinExp", "004")
             # Make sure left and right evaluate to ints
             else:
                 if not lft_ret.equals(rht_ret) or isinstance(lft_ret, BoolType):
-                    raise CompilerError(self.line, "BinExp", self, "004")
+                    error_out(self.line, "BinExp", "004")
 
             return BoolType()
 
