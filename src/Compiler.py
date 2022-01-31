@@ -23,8 +23,6 @@ def main():
     except CompilerError as e:
         print(e.__repr__())
 
-    print(tc)
-
 
 if __name__ == "__main__":
     main()

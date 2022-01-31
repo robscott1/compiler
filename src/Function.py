@@ -1,3 +1,5 @@
+from ControlFlowNode import ControlFlowNode
+from ErrorOut import error_out
 from Type import Type
 
 
@@ -36,6 +38,11 @@ class Function:
     def analyze(self, tc):
         for stmt in self.body:
             stmt.analyze(tc)
+        if not ControlFlowNode.generate(self.body).valid_control_flow():
+            error_out(self.line, "Illegal control flow.", "611")
+
+
+
 
 
 

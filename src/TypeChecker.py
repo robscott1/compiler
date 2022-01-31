@@ -1,4 +1,5 @@
 from BoolType import BoolType
+from ControlFlowNode import ControlFlowNode
 from IntType import IntType
 from Factories.TypeFactory import TypeFactory as tf
 from Factories.DeclarationFactory import DeclarationFactory as df
@@ -14,6 +15,7 @@ class TypeChecker:
         self.global_map = self.build_global_map(json.get("declarations"))
         self.fn_map = self.build_fn_map(json.get("functions"))
         self.current_scope = self.fn_map.get("main")
+        self.control_flow = None
 
     '''
     Checks to make sure there is not a Type with the same name.
@@ -92,7 +94,5 @@ class TypeChecker:
         for fn in self.fn_map.values():
             self.current_scope = self.fn_map.get(fn.id)
             fn.analyze(self)
-
-
 
 

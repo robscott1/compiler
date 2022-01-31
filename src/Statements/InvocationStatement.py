@@ -36,7 +36,7 @@ class InvocationStatement(Statement):
         fn_params = tc.fn_map.get(inv_id).parameters
         if len(inv_args) != len(fn_params):
             error_out(self.line,
-                                f"Unexpected number of arguments: {inv_args}", code=301)
+                                f"Unexpected number of arguments.", code=301)
         params = tc.fn_map.get(inv_id).parameters
         for arg, param in list(zip(inv_args, params)):
             arg_type = arg.of_type(tc)

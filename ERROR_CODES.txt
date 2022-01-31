@@ -8,4 +8,5 @@
 444: Type has not fields
 445: Type is not declared
 500: Unexpected return type
+511: Illegal control flow
 600: While Statement does not evaluate to BoolType
