@@ -17,7 +17,7 @@ bool bob;
 fun f(int i, struct B j) struct A
 {
    int l, k;
-   return b.a.a.a.a;              # remove i
+   return b.a.a.a.a.i;              # remove i
 }
 
 fun foo(int n) int

@@ -1,6 +1,7 @@
 from CompilerError import CompilerError
 from ErrorOut import error_out
 from Expressions.Expression import Expression
+from Expressions.NullExpression import NullExpression
 from Factories.ExpressionFactory import ExpressionFactory
 from Statements.Statement import Statement
 
@@ -14,10 +15,7 @@ class ReturnStatement(Statement, object):
     @classmethod
     def generate(cls, stmt: dict):
         if "exp" not in stmt:
-            error_out(stmt.get("line"),
-                                "Statement needs return value.",
-                                code="111"
-                      )
+            stmt["exp"] = {"line": stmt.get("line"), "exp": "null"}
         expression = ExpressionFactory.generate(stmt.get("exp"))
         line = stmt.get("line")
         return ReturnStatement(line, expression)
