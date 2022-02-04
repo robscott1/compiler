@@ -1,3 +1,7 @@
+import json
+import subprocess
+import sys
+
 import pytest
 
 from TypeChecker import TypeChecker
@@ -159,3 +163,12 @@ def control_flow_example():
         ]
     }
     return TypeChecker(param)
+
+
+def program_to_json(filename):
+    with open(f"{filename}.json", 'w') as out_file:
+        subprocess.run(["java", "-jar", "../MiniCompiler.jar", filename], stdout=out_file)
+    with open(f"{filename}.json", 'r') as out_file:
+        json_repr = dict(json.load(out_file))
+
+    return json_repr
