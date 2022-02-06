@@ -66,17 +66,17 @@ class ControlFlowNode:
             if isinstance(stmt, InvocationStatement):
                 curr_node.statements.append(stmt)
             if isinstance(stmt, ConditionalStatement):
-                link_me.append(curr_node)
+                link_me.add(curr_node)
                 then_node, cfg = ControlFlowNode.generate(stmt.then_block, cfg, link_me)
                 if stmt.else_block is None:
-                    link_me.append(then_node)
-                    link_me.append(curr_node)
+                    link_me.add(then_node)
+                    link_me.add(curr_node)
                 else:
                     # Gotta add it again because it got cleared on the then_block
-                    link_me.append(curr_node)
+                    link_me.add(curr_node)
                     else_node, cfg = ControlFlowNode.generate(stmt.else_block, cfg, link_me)
-                    link_me.append(else_node)
-                    link_me.append(then_node)
+                    link_me.add(else_node)
+                    link_me.add(then_node)
 
                 if body.has_next():
                     tmp = ControlFlowNode()
