@@ -1,7 +1,14 @@
+import uuid
+
 from ErrorOut import error_out
+from ExtranceNode import ExtranceNode
+from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
+from Statements.InvocationStatement import InvocationStatement
+from Statements.PrintStatement import PrintStatement
 from Statements.ReturnStatement import ReturnStatement
+import graphviz
 
 
 class ControlFlowNode:
@@ -25,25 +32,58 @@ class ControlFlowNode:
 
     """
     def __init__(self):
-        self.child_nodes = []
+        self.id = str(uuid.uuid4())
+        self.predecessors = []
+        self.successors = []
+        self.statements = []
         self.is_leaf = False
 
     @classmethod
-    def generate(cls, body):
-        node = ControlFlowNode()
+    def generate(cls, body, cfg, link_me):
+        curr_node = ControlFlowNode()
+        cfg.node(curr_node.id)
+        for node in link_me:
+            curr_node.predecessors.append(node)
+            node.successors.append(curr_node)
+            cfg.edge(node.id, curr_node.id)
+        link_me.clear()
+
         if isinstance(body, BlockStatement):
             body = body.statements
+
         for stmt in body:
             if isinstance(stmt, ReturnStatement):
-                node.is_leaf = True
+                curr_node.is_leaf = True
+                curr_node.statements.append(stmt)
+                break
+            if isinstance(stmt, PrintStatement):
+                curr_node.statements.append(stmt)
+            if isinstance(stmt, AssignmentStatement):
+                curr_node.statements.append(stmt)
+            if isinstance(stmt, InvocationStatement):
+                curr_node.statements.append(stmt)
             if isinstance(stmt, ConditionalStatement):
-                child_node = cls.generate(stmt.then_block)
-                node.child_nodes.append(child_node)
-                if stmt.else_block is not None:
-                    child_node = cls.generate(stmt.else_block)
-                    node.child_nodes.append(child_node)
+                link_me.append(curr_node)
+                then_node, cfg = ControlFlowNode.generate(stmt.then_block, cfg, link_me)
+                if stmt.else_block is None:
+                    link_me.append(then_node)
+                    link_me.append(curr_node)
+                else:
+                    # Gotta add it again because it got cleared on the then_block
+                    link_me.append(curr_node)
+                    else_node, cfg = ControlFlowNode.generate(stmt.else_block, cfg, link_me)
+                    link_me.append(else_node)
+                    link_me.append(then_node)
+                tmp = ControlFlowNode()
+                cfg.node(tmp.id)
+                for node in link_me:
+                    tmp.predecessors.append(node)
+                    node.successors.append(tmp)
+                    cfg.edge(node.id, tmp.id)
+                link_me.clear()
+                curr_node = tmp
 
-        return node
+        return curr_node, cfg
 
     def valid_control_flow(self):
         return self.valid_path(self)
