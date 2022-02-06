@@ -2,6 +2,7 @@ import uuid
 
 from ErrorOut import error_out
 from ExtranceNode import ExtranceNode
+from StatementIterator import StatementIterator
 from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
@@ -51,7 +52,9 @@ class ControlFlowNode:
         if isinstance(body, BlockStatement):
             body = body.statements
 
-        for stmt in body:
+        body = StatementIterator(body)
+        while body.has_next():
+            stmt = body.next()
             if isinstance(stmt, ReturnStatement):
                 curr_node.is_leaf = True
                 curr_node.statements.append(stmt)
@@ -74,14 +77,16 @@ class ControlFlowNode:
                     else_node, cfg = ControlFlowNode.generate(stmt.else_block, cfg, link_me)
                     link_me.append(else_node)
                     link_me.append(then_node)
-                tmp = ControlFlowNode()
-                cfg.node(tmp.id)
-                for node in link_me:
-                    tmp.predecessors.append(node)
-                    node.successors.append(tmp)
-                    cfg.edge(node.id, tmp.id)
-                link_me.clear()
-                curr_node = tmp
+
+                if body.has_next():
+                    tmp = ControlFlowNode()
+                    cfg.node(tmp.id)
+                    for node in link_me:
+                        tmp.predecessors.append(node)
+                        node.successors.append(tmp)
+                        cfg.edge(node.id, tmp.id)
+                    link_me.clear()
+                    curr_node = tmp
 
         return curr_node, cfg
 
