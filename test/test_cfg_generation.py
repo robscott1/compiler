@@ -7,7 +7,8 @@ from conftest import program_to_json
 
 
 @pytest.mark.parametrize(
-    "file", ["simple-if-else"]
+    "file", ["simple-if-else",
+             "ret-error"]
 )
 def test_cfg_generation(file):
     param = program_to_json(f"../mini/{file}.mini")

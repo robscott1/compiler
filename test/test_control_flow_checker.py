@@ -17,9 +17,16 @@ def test_build_control_flow_check():
     assert len(cfn_list) == 2
 
 
-def test_valid_control_flow():
-    params = program_to_json("../mini/ret.mini")
+@pytest.mark.parametrize(
+    "input_file, exp_outcome", [
+        ("../mini/ret.mini", True),
+        ("../mini/ret-error.mini", False),
+        ("../mini/simple-if-else.mini", True)
+    ]
+)
+def test_valid_control_flow(input_file, exp_outcome):
+    params = program_to_json(input_file)
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
         root, cfg = ControlFlowNode.generate(fn.body, graphviz.Digraph(), set())
-        assert root.valid_control_flow()
+        assert root.valid_control_flow() == exp_outcome
