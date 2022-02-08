@@ -37,7 +37,7 @@ class ControlFlowNode:
         self.predecessors = []
         self.successors = []
         self.statements = []
-        self.is_leaf = False
+        self.has_return = False
 
     @classmethod
     def generate(cls, body, cfg, link_me):
@@ -56,7 +56,7 @@ class ControlFlowNode:
         while body.has_next():
             stmt = body.next()
             if isinstance(stmt, ReturnStatement):
-                curr_node.is_leaf = True
+                curr_node.has_return = True
                 curr_node.statements.append(stmt)
                 break
             if isinstance(stmt, PrintStatement):
@@ -97,12 +97,12 @@ class ControlFlowNode:
         return self.valid_path(self)
 
     def no_children(self):
-        return len(self.child_nodes) == 0
+        return len(self.successors) == 0
 
     def valid_path(self, node):
         if node.no_children():
-            return node.is_leaf
-        for child in node.child_nodes:
+            return node.has_return
+        for child in node.successors:
             if not self.valid_path(child):
                 return False
         return True
