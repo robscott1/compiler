@@ -6,27 +6,20 @@ from ControlFlowNode import ControlFlowNode
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
-@pytest.mark.skip("in progress")
-def test_build_control_flow_check():
-    cfn_list = []
-    params = program_to_json("../mini/simple-if-else")
-    tc = TypeChecker(params)
-    for fn in tc.fn_map.values():
-        root = ControlFlowNode.generate(fn.body)
-        cfn_list.append(root)
-    assert len(cfn_list) == 2
-
 
 @pytest.mark.parametrize(
     "input_file, exp_outcome", [
-        ("../mini/ret.mini", True),
-        ("../mini/ret-error.mini", False),
-        ("../mini/simple-if-else.mini", True)
+        ("ret", True),
+        ("ret-error", False),
+        ("simple-if-else-no-end-return", False),
+        ("while-loop", True),
+        ("while-with-if-hanging", True)
     ]
 )
 def test_valid_control_flow(input_file, exp_outcome):
-    params = program_to_json(input_file)
+    params = program_to_json(f"../mini/{input_file}.mini")
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
         root, cfg = ControlFlowNode.generate(fn.body, graphviz.Digraph(), set())
+        cfg.render(f"../cfg/{input_file}")
         assert root.valid_control_flow() == exp_outcome

@@ -1,7 +1,0 @@
-digraph {
-	"b25035d8-7b3d-4334-adfa-d218c93ea770"
-	"d666ab42-3a14-414b-bf77-d6fc42c0c259"
-	"b25035d8-7b3d-4334-adfa-d218c93ea770" -> "d666ab42-3a14-414b-bf77-d6fc42c0c259"
-	"14dcde66-8cca-4724-b073-0fd7f478b30f"
-	"b25035d8-7b3d-4334-adfa-d218c93ea770" -> "14dcde66-8cca-4724-b073-0fd7f478b30f"
-}

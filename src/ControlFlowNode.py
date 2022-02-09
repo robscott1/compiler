@@ -11,6 +11,8 @@ from Statements.PrintStatement import PrintStatement
 from Statements.ReturnStatement import ReturnStatement
 import graphviz
 
+from Statements.WhileStatement import WhileStatement
+
 
 class ControlFlowNode:
 
@@ -59,13 +61,8 @@ class ControlFlowNode:
                 curr_node.has_return = True
                 curr_node.statements.append(stmt)
                 break
-            if isinstance(stmt, PrintStatement):
-                curr_node.statements.append(stmt)
-            if isinstance(stmt, AssignmentStatement):
-                curr_node.statements.append(stmt)
-            if isinstance(stmt, InvocationStatement):
-                curr_node.statements.append(stmt)
             if isinstance(stmt, ConditionalStatement):
+                curr_node.statements.append(stmt.guard)
                 link_me.add(curr_node)
                 then_node, cfg = ControlFlowNode.generate(stmt.then_block, cfg, link_me)
                 if stmt.else_block is None:
@@ -82,16 +79,35 @@ class ControlFlowNode:
                         link_me.add(then_node)
 
                 if body.has_next():
-                    tmp = ControlFlowNode()
-                    cfg.node(tmp.id)
-                    for node in link_me:
-                        tmp.predecessors.append(node)
-                        node.successors.append(tmp)
-                        cfg.edge(node.id, tmp.id)
-                    link_me.clear()
-                    curr_node = tmp
+                    curr_node = cls.next_node(cfg, link_me)
+
+            if isinstance(stmt, WhileStatement):
+                curr_node.statements.append(stmt.guard)
+                link_me.add(curr_node)
+                then_do, cfg = ControlFlowNode.generate(stmt.body, cfg, link_me)
+                if then_do.no_children():
+                    link_me.add(then_do)
+                converge, cfg = ControlFlowNode.generate([], cfg, link_me)
+                converge.successors.append(curr_node)
+                cfg.edge(converge.id, curr_node.id)
+                link_me.add(curr_node)
+                curr_node = cls.next_node(cfg, link_me)
+            # Deleted the Statements where nothing happens
+            else:
+                curr_node.statements.append(stmt)
 
         return curr_node, cfg
+
+    @classmethod
+    def next_node(cls, cfg, link_me):
+        tmp = ControlFlowNode()
+        cfg.node(tmp.id)
+        for node in link_me:
+            tmp.predecessors.append(node)
+            node.successors.append(tmp)
+            cfg.edge(node.id, tmp.id)
+        link_me.clear()
+        return tmp
 
     def valid_control_flow(self):
         return self.valid_path(self)

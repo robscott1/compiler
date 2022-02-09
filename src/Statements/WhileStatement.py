@@ -33,3 +33,5 @@ class WhileStatement(Statement):
             )
         for s in self.body:
             s.analyze(tc)
+
+
