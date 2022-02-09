@@ -91,8 +91,10 @@ class ControlFlowNode:
                 converge.successors.append(curr_node)
                 cfg.edge(converge.id, curr_node.id)
                 link_me.add(curr_node)
-                curr_node = cls.next_node(cfg, link_me)
-            # Deleted the Statements where nothing happens
+
+                if body.has_next():
+                    curr_node = cls.next_node(cfg, link_me)
+
             else:
                 curr_node.statements.append(stmt)
 

@@ -10,7 +10,8 @@ from conftest import program_to_json
     "file", ["simple-if-else-no-end-return",
              "ret-error",
              "while-loop",
-             "while-with-if-hanging"]
+             "while-with-if-hanging",
+             "while-if-else-no-end-ret"]
 )
 def test_cfg_generation(file):
     param = program_to_json(f"../mini/{file}.mini")
