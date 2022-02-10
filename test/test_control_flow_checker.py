@@ -23,5 +23,4 @@ def test_valid_control_flow(input_file, exp_outcome):
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
         root, cfg = ControlFlowNode.generate(fn.body, graphviz.Digraph(), set())
-        cfg.render(f"../cfg/{input_file}")
         assert root.valid_control_flow() == exp_outcome

@@ -135,9 +135,10 @@ class ControlFlowNode:
         return len(self.successors) == 0
 
     def valid_path(self, node):
+        node.visited = True
         if node.no_children():
             return node.has_return
-        for child in node.successors:
+        for child in list(filter(lambda x: not x.visited, node.successors)):
             if not self.valid_path(child):
                 return False
         return True
