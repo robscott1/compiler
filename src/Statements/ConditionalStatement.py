@@ -41,3 +41,5 @@ class ConditionalStatement(Statement):
         if self.else_block is not None:
             self.else_block.analyze(tc)
 
+    def to_string(self):
+        return "if {cond}"

@@ -27,3 +27,6 @@ class ReturnStatement(Statement, object):
             error_out(
                 self.line, "Unexpected return type.", code="500"
             )
+
+    def to_string(self):
+        return "return"

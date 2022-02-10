@@ -9,3 +9,6 @@ class TrueExpression(Expression):
 
     def of_type(self, tc):
         return BoolType();
+
+    def to_string(self):
+        return "if true"

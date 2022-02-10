@@ -64,3 +64,6 @@ class BinaryExpression(Expression):
         exp["rht"] = fn(exp.get("rht"))
         exp["operator"] = op_map.get(exp["operator"])
         return BinaryExpression(**exp)
+
+    def to_string(self):
+        return "binop"

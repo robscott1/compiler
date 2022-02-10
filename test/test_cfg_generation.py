@@ -11,11 +11,14 @@ from conftest import program_to_json
              "ret-error",
              "while-loop",
              "while-with-if-hanging",
-             "while-if-else-no-end-ret"]
+             "while-if-else-no-end-ret",
+             "if-else-to-while"]
 )
 def test_cfg_generation(file):
     param = program_to_json(f"../mini/{file}.mini")
     tc = TypeChecker(param)
     main_fn = tc.fn_map.get("main")
     graph, cfg = ControlFlowNode.generate(main_fn.body, graphviz.Digraph(), set())
+    test_cfg = graph.generate_cfg(graphviz.Digraph())
     cfg.render(f"../cfg/{file}")
+    test_cfg.render(f"../cfg/{file}-test")

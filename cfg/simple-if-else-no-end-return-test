@@ -1,0 +1,9 @@
+digraph {
+	"3a5dbd1e-7a3f-4512-a324-cdc6fb9eb10a" [label=return]
+	"445edda8-316e-469d-b9eb-d842e98f7174" [label=print]
+	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" [label="print
+if true
+if {cond}"]
+	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" -> "3a5dbd1e-7a3f-4512-a324-cdc6fb9eb10a"
+	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" -> "445edda8-316e-469d-b9eb-d842e98f7174"
+}

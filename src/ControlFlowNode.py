@@ -40,10 +40,13 @@ class ControlFlowNode:
         self.successors = []
         self.statements = []
         self.has_return = False
+        self.visited = False
+
 
     @classmethod
     def generate(cls, body, cfg, link_me):
         curr_node = ControlFlowNode()
+        root = curr_node
         cfg.node(curr_node.id)
         for node in link_me:
             curr_node.predecessors.append(node)
@@ -98,7 +101,21 @@ class ControlFlowNode:
             else:
                 curr_node.statements.append(stmt)
 
-        return curr_node, cfg
+        return root, cfg
+
+    def generate_cfg(self, cfg):
+        if self.visited:
+            return cfg
+        self.visited = True
+        if self.no_children():
+            cfg.node(self.id, label=self.instructions_string())
+            return cfg
+        for node in self.successors:
+            node.generate_cfg(cfg)
+        cfg.node(self.id, label=self.instructions_string())
+        for node in self.successors:
+            cfg.edge(self.id, node.id)
+        return cfg
 
     @classmethod
     def next_node(cls, cfg, link_me):
@@ -124,6 +141,10 @@ class ControlFlowNode:
             if not self.valid_path(child):
                 return False
         return True
+
+    def instructions_string(self):
+        return "\n".join(list(map(lambda x: x.to_string(), self.statements)))
+
 
 
 
