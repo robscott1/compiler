@@ -22,5 +22,5 @@ def test_valid_control_flow(input_file, exp_outcome):
     params = program_to_json(f"../mini/{input_file}.mini")
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
-        root, cfg = ControlFlowNode.generate(fn.body, graphviz.Digraph(), set())
+        root = ControlFlowNode.generate(fn.body, set())
         assert root.valid_control_flow() == exp_outcome

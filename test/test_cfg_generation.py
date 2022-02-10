@@ -18,7 +18,6 @@ def test_cfg_generation(file):
     param = program_to_json(f"../mini/{file}.mini")
     tc = TypeChecker(param)
     main_fn = tc.fn_map.get("main")
-    graph, cfg = ControlFlowNode.generate(main_fn.body, graphviz.Digraph(), set())
+    graph = ControlFlowNode.generate(main_fn.body, set())
     test_cfg = graph.generate_cfg(graphviz.Digraph(), None)
-    cfg.render(f"../cfg/{file}")
     test_cfg.render(f"../cfg/{file}-test")

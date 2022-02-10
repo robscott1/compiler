@@ -1,17 +1,17 @@
 digraph {
-	"458b4af6-771f-4176-a5e2-f70bfda9beb1" [label="if {cond}"]
-	"e96e7518-7e70-4d89-884a-a3d4fc6cc8f5" [label=print]
-	"458b4af6-771f-4176-a5e2-f70bfda9beb1" -> "e96e7518-7e70-4d89-884a-a3d4fc6cc8f5"
-	"61c85ad3-4d32-4347-a853-cec8db1f9d6c" [label="while {cond}"]
-	"e96e7518-7e70-4d89-884a-a3d4fc6cc8f5" -> "61c85ad3-4d32-4347-a853-cec8db1f9d6c"
-	"459fca2f-81d4-48a4-9d58-e66c8ed8837d" [label=print]
-	"61c85ad3-4d32-4347-a853-cec8db1f9d6c" -> "459fca2f-81d4-48a4-9d58-e66c8ed8837d"
-	"560a53a6-9d93-46cb-ae00-00e28a0f5f3a" [label=""]
-	"459fca2f-81d4-48a4-9d58-e66c8ed8837d" -> "560a53a6-9d93-46cb-ae00-00e28a0f5f3a"
-	"560a53a6-9d93-46cb-ae00-00e28a0f5f3a" -> "61c85ad3-4d32-4347-a853-cec8db1f9d6c"
-	"f7c06300-4803-4707-ba8d-c9ecbc779927" [label=return]
-	"61c85ad3-4d32-4347-a853-cec8db1f9d6c" -> "f7c06300-4803-4707-ba8d-c9ecbc779927"
-	"eacafeb1-237a-4880-b134-405806994296" [label=print]
-	"458b4af6-771f-4176-a5e2-f70bfda9beb1" -> "eacafeb1-237a-4880-b134-405806994296"
-	"eacafeb1-237a-4880-b134-405806994296" -> "61c85ad3-4d32-4347-a853-cec8db1f9d6c"
+	"d2ac3c0b-68e5-4c3a-9426-060eedd9c8ff" [label="if {cond}"]
+	"814b6a2e-98d5-44f1-9baf-ea02ed2dee74" [label=print]
+	"d2ac3c0b-68e5-4c3a-9426-060eedd9c8ff" -> "814b6a2e-98d5-44f1-9baf-ea02ed2dee74"
+	"1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24" [label="while {cond}"]
+	"814b6a2e-98d5-44f1-9baf-ea02ed2dee74" -> "1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24"
+	"1ae5bcf8-b2bc-46fe-bb11-58770f5c8406" [label=print]
+	"1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24" -> "1ae5bcf8-b2bc-46fe-bb11-58770f5c8406"
+	"ffa57ba1-c3a6-4b6e-a021-a6ddf7c421fd" [label=""]
+	"1ae5bcf8-b2bc-46fe-bb11-58770f5c8406" -> "ffa57ba1-c3a6-4b6e-a021-a6ddf7c421fd"
+	"ffa57ba1-c3a6-4b6e-a021-a6ddf7c421fd" -> "1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24"
+	"fb9017db-2149-4181-948f-38ea089b6de9" [label=return]
+	"1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24" -> "fb9017db-2149-4181-948f-38ea089b6de9"
+	"63944ea4-695a-4156-8301-acf597a4ed5f" [label=print]
+	"d2ac3c0b-68e5-4c3a-9426-060eedd9c8ff" -> "63944ea4-695a-4156-8301-acf597a4ed5f"
+	"63944ea4-695a-4156-8301-acf597a4ed5f" -> "1d7e5f4d-c93b-4f73-94cd-ffd486e5ef24"
 }
