@@ -1,9 +1,6 @@
 digraph {
-	"3a5dbd1e-7a3f-4512-a324-cdc6fb9eb10a" [label=return]
-	"445edda8-316e-469d-b9eb-d842e98f7174" [label=print]
-	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" [label="print
-if true
-if {cond}"]
-	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" -> "3a5dbd1e-7a3f-4512-a324-cdc6fb9eb10a"
-	"e13b977c-a67f-4272-b9f5-7e58dd5849ff" -> "445edda8-316e-469d-b9eb-d842e98f7174"
+	"8cd34990-fbe3-469f-a10b-dd17ea9fde79" [label=return]
+	"6906998a-10ed-4413-a3d0-dff4cf73305f" -> "8cd34990-fbe3-469f-a10b-dd17ea9fde79"
+	"72952359-8ec3-4b5d-a127-cf1258a348b9" [label=print]
+	"6906998a-10ed-4413-a3d0-dff4cf73305f" -> "72952359-8ec3-4b5d-a127-cf1258a348b9"
 }

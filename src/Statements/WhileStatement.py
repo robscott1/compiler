@@ -34,4 +34,7 @@ class WhileStatement(Statement):
         for s in self.body:
             s.analyze(tc)
 
+    def to_string(self):
+        return "while {cond}"
+
 

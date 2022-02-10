@@ -65,7 +65,7 @@ class ControlFlowNode:
                 curr_node.statements.append(stmt)
                 break
             if isinstance(stmt, ConditionalStatement):
-                curr_node.statements.append(stmt.guard)
+                curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_node, cfg = ControlFlowNode.generate(stmt.then_block, cfg, link_me)
                 if stmt.else_block is None:
@@ -85,7 +85,7 @@ class ControlFlowNode:
                     curr_node = cls.next_node(cfg, link_me)
 
             if isinstance(stmt, WhileStatement):
-                curr_node.statements.append(stmt.guard)
+                curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_do, cfg = ControlFlowNode.generate(stmt.body, cfg, link_me)
                 if then_do.no_children():
@@ -103,18 +103,16 @@ class ControlFlowNode:
 
         return root, cfg
 
-    def generate_cfg(self, cfg):
+    def generate_cfg(self, cfg, prev):
         if self.visited:
+            cfg.edge(prev.id, self.id)
             return cfg
         self.visited = True
-        if self.no_children():
+        if prev is not None:
             cfg.node(self.id, label=self.instructions_string())
-            return cfg
+            cfg.edge(prev.id, self.id)
         for node in self.successors:
-            node.generate_cfg(cfg)
-        cfg.node(self.id, label=self.instructions_string())
-        for node in self.successors:
-            cfg.edge(self.id, node.id)
+            node.generate_cfg(cfg, self)
         return cfg
 
     @classmethod
