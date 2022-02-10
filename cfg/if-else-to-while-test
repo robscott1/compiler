@@ -1,17 +1,17 @@
 digraph {
-	"9c7fd971-0da5-4863-bea3-f2625eec20a0" [label=print]
-	"8cebe0d9-ba81-4dbf-a5be-6eed23f7666f" -> "9c7fd971-0da5-4863-bea3-f2625eec20a0"
-	"7d3677b7-e070-4d42-84c0-dca6e872a313" [label="if {cond}
-while {cond}"]
-	"9c7fd971-0da5-4863-bea3-f2625eec20a0" -> "7d3677b7-e070-4d42-84c0-dca6e872a313"
-	"4a25e7cb-690f-4575-915f-bcc241883328" [label=print]
-	"7d3677b7-e070-4d42-84c0-dca6e872a313" -> "4a25e7cb-690f-4575-915f-bcc241883328"
-	"68ca6e00-c493-49b2-abbe-519cbe2fb2a8" [label=""]
-	"4a25e7cb-690f-4575-915f-bcc241883328" -> "68ca6e00-c493-49b2-abbe-519cbe2fb2a8"
-	"68ca6e00-c493-49b2-abbe-519cbe2fb2a8" -> "7d3677b7-e070-4d42-84c0-dca6e872a313"
-	"1f541e14-3efc-4fac-a9e0-6a9b566ad41d" [label=return]
-	"7d3677b7-e070-4d42-84c0-dca6e872a313" -> "1f541e14-3efc-4fac-a9e0-6a9b566ad41d"
-	"ffce1e62-9bca-46d5-8043-d3c93bf67832" [label=print]
-	"8cebe0d9-ba81-4dbf-a5be-6eed23f7666f" -> "ffce1e62-9bca-46d5-8043-d3c93bf67832"
-	"ffce1e62-9bca-46d5-8043-d3c93bf67832" -> "7d3677b7-e070-4d42-84c0-dca6e872a313"
+	"3ca17ee3-6801-4e5e-9815-611cf13aa585" [label="if {cond}"]
+	"88acd3d9-bcbe-4f22-8ced-6c0285cd2dd9" [label=print]
+	"3ca17ee3-6801-4e5e-9815-611cf13aa585" -> "88acd3d9-bcbe-4f22-8ced-6c0285cd2dd9"
+	"b6298aaf-382f-4f55-a967-77236c432fae" [label="while {cond}"]
+	"88acd3d9-bcbe-4f22-8ced-6c0285cd2dd9" -> "b6298aaf-382f-4f55-a967-77236c432fae"
+	"5d79d32b-1b83-4f1e-abad-466ea2f61064" [label=print]
+	"b6298aaf-382f-4f55-a967-77236c432fae" -> "5d79d32b-1b83-4f1e-abad-466ea2f61064"
+	"a3d76741-993a-4ffc-9175-81f89d398016" [label=""]
+	"5d79d32b-1b83-4f1e-abad-466ea2f61064" -> "a3d76741-993a-4ffc-9175-81f89d398016"
+	"a3d76741-993a-4ffc-9175-81f89d398016" -> "b6298aaf-382f-4f55-a967-77236c432fae"
+	"2a829e43-b257-4f7b-a287-cd5b0fc7d1b7" [label=return]
+	"b6298aaf-382f-4f55-a967-77236c432fae" -> "2a829e43-b257-4f7b-a287-cd5b0fc7d1b7"
+	"7f1a7a9e-b873-44b2-9357-81b758d4d7a6" [label=print]
+	"3ca17ee3-6801-4e5e-9815-611cf13aa585" -> "7f1a7a9e-b873-44b2-9357-81b758d4d7a6"
+	"7f1a7a9e-b873-44b2-9357-81b758d4d7a6" -> "b6298aaf-382f-4f55-a967-77236c432fae"
 }

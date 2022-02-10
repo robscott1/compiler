@@ -64,7 +64,7 @@ class ControlFlowNode:
                 curr_node.has_return = True
                 curr_node.statements.append(stmt)
                 break
-            if isinstance(stmt, ConditionalStatement):
+            elif isinstance(stmt, ConditionalStatement):
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_node, cfg = ControlFlowNode.generate(stmt.then_block, cfg, link_me)
@@ -84,7 +84,7 @@ class ControlFlowNode:
                 if body.has_next():
                     curr_node = cls.next_node(cfg, link_me)
 
-            if isinstance(stmt, WhileStatement):
+            elif isinstance(stmt, WhileStatement):
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_do, cfg = ControlFlowNode.generate(stmt.body, cfg, link_me)
@@ -111,6 +111,8 @@ class ControlFlowNode:
         if prev is not None:
             cfg.node(self.id, label=self.instructions_string())
             cfg.edge(prev.id, self.id)
+        else:
+            cfg.node(self.id, label=self.instructions_string())
         for node in self.successors:
             node.generate_cfg(cfg, self)
         return cfg
