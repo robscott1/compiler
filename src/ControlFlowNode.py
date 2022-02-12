@@ -34,13 +34,14 @@ class ControlFlowNode:
         - statements (List<Statement>): ?? idk if needed, list of statements
 
     """
-    def __init__(self):
+    def __init__(self, label=None):
         self.id = str(uuid.uuid4())
         self.predecessors = []
         self.successors = []
         self.statements = []
         self.has_return = False
         self.visited = False
+        self.label = label
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -89,6 +90,7 @@ class ControlFlowNode:
                 if then_do.no_children():
                     link_me.add(then_do)
                 converge = ControlFlowNode.generate([], link_me, leaf_nodes)
+                converge.label = "while converge"
                 converge.successors.append(curr_node)
                 link_me.add(curr_node)
 
@@ -106,10 +108,10 @@ class ControlFlowNode:
             return cfg
         self.visited = True
         if prev is not None:
-            cfg.node(self.id, label=self.instructions_string())
+            cfg.node(self.id, label=self.cfg_label())
             cfg.edge(prev.id, self.id)
         else:
-            cfg.node(self.id, label=self.instructions_string())
+            cfg.node(self.id, label=self.cfg_label())
         for node in self.successors:
             node.visualize_cfg(cfg, self)
         return cfg
@@ -138,8 +140,11 @@ class ControlFlowNode:
                 return False
         return True
 
-    def instructions_string(self):
-        return "\n".join(list(map(lambda x: x.to_string(), self.statements)))
+    def cfg_label(self):
+        if self.label is None:
+            return "\n".join(list(map(lambda x: x.to_string(), self.statements)))
+        else:
+            return self.label
 
 
 

@@ -46,9 +46,9 @@ class Function:
         leaf_nodes = set()
         link_me = set()
         root = ControlFlowNode.generate(self.body, link_me, leaf_nodes)
-        enter_node = ControlFlowNode()
+        enter_node = ControlFlowNode(label="Enter")
         enter_node.successors.append(root)
-        exit_node = ControlFlowNode()
+        exit_node = ControlFlowNode(label="Exit")
         for leaf in leaf_nodes:
             leaf.successors.append(exit_node)
             exit_node.predecessors.append(leaf)
