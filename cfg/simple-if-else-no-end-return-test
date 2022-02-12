@@ -1,8 +1,0 @@
-digraph {
-	"78143717-9724-42f4-a684-21cad9fd5d64" [label="print
-if {cond}"]
-	"89e33547-b1f7-4e67-8ebe-5b91443cae4f" [label=return]
-	"78143717-9724-42f4-a684-21cad9fd5d64" -> "89e33547-b1f7-4e67-8ebe-5b91443cae4f"
-	"8eb4ee68-c33a-442b-9515-3332648cbe94" [label=print]
-	"78143717-9724-42f4-a684-21cad9fd5d64" -> "8eb4ee68-c33a-442b-9515-3332648cbe94"
-}

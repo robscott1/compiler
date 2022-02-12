@@ -12,12 +12,14 @@ from conftest import program_to_json
              "while-loop",
              "while-with-if-hanging",
              "while-if-else-no-end-ret",
-             "if-else-to-while"]
+             "if-else-to-while",
+             "ret"]
 )
 def test_cfg_generation(file):
     param = program_to_json(f"../mini/{file}.mini")
     tc = TypeChecker(param)
     main_fn = tc.fn_map.get("main")
-    graph = ControlFlowNode.generate(main_fn.body, set())
-    test_cfg = graph.generate_cfg(graphviz.Digraph(), None)
-    test_cfg.render(f"../cfg/{file}-test")
+    graph = ControlFlowNode.generate(main_fn.body, set(), set())
+    main_fn.create_cfg()
+    test_cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None)
+    test_cfg.render(f"../cfg/{file}")

@@ -42,9 +42,8 @@ class ControlFlowNode:
         self.has_return = False
         self.visited = False
 
-
     @classmethod
-    def generate(cls, body, link_me):
+    def generate(cls, body, link_me, leaf_nodes):
         curr_node = ControlFlowNode()
         root = curr_node
         for node in link_me:
@@ -61,11 +60,12 @@ class ControlFlowNode:
             if isinstance(stmt, ReturnStatement):
                 curr_node.has_return = True
                 curr_node.statements.append(stmt)
+                leaf_nodes.add(curr_node)
                 break
             elif isinstance(stmt, ConditionalStatement):
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
-                then_node = ControlFlowNode.generate(stmt.then_block, link_me)
+                then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
                 if stmt.else_block is None:
                     if len(then_node.successors) == 0:
                         link_me.add(then_node)
@@ -73,7 +73,7 @@ class ControlFlowNode:
                 else:
                     # Gotta add it again because it got cleared on the then_block
                     link_me.add(curr_node)
-                    else_node = ControlFlowNode.generate(stmt.else_block, link_me)
+                    else_node = ControlFlowNode.generate(stmt.else_block, link_me, leaf_nodes)
                     if len(else_node.successors) == 0:
                         link_me.add(else_node)
                     if len(then_node.successors) == 0:
@@ -85,10 +85,10 @@ class ControlFlowNode:
             elif isinstance(stmt, WhileStatement):
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
-                then_do = ControlFlowNode.generate(stmt.body, link_me)
+                then_do = ControlFlowNode.generate(stmt.body, link_me, leaf_nodes)
                 if then_do.no_children():
                     link_me.add(then_do)
-                converge = ControlFlowNode.generate([], link_me)
+                converge = ControlFlowNode.generate([], link_me, leaf_nodes)
                 converge.successors.append(curr_node)
                 link_me.add(curr_node)
 
@@ -100,7 +100,7 @@ class ControlFlowNode:
 
         return root
 
-    def generate_cfg(self, cfg, prev):
+    def visualize_cfg(self, cfg, prev):
         if self.visited:
             cfg.edge(prev.id, self.id)
             return cfg
@@ -111,7 +111,7 @@ class ControlFlowNode:
         else:
             cfg.node(self.id, label=self.instructions_string())
         for node in self.successors:
-            node.generate_cfg(cfg, self)
+            node.visualize_cfg(cfg, self)
         return cfg
 
     @classmethod

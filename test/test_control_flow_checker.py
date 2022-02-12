@@ -15,12 +15,12 @@ from conftest import program_to_json
         ("while-loop", True),
         ("while-with-if-hanging", True),
         ("if-else-to-while", True),
-        ("while-if-else-no-end-ret", True)
+        ("while-if-else-no-end-ret", True),
     ]
 )
 def test_valid_control_flow(input_file, exp_outcome):
     params = program_to_json(f"../mini/{input_file}.mini")
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
-        root = ControlFlowNode.generate(fn.body, set())
+        root = ControlFlowNode.generate(fn.body, set(), set())
         assert root.valid_control_flow() == exp_outcome

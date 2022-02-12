@@ -14,6 +14,7 @@ class Function:
         self.return_type = return_type
         self.locals = locals
         self.body = body
+        self.cfg = None
 
     def id_in_scope(self, id: str):
         for decl in self.locals:
@@ -38,8 +39,20 @@ class Function:
     def analyze(self, tc):
         for stmt in self.body:
             stmt.analyze(tc)
-        if not ControlFlowNode.generate(self.body, set()).valid_control_flow():
+        if not ControlFlowNode.generate(self.body, set(), set()).valid_control_flow():
             error_out(self.line, "Illegal control flow.", "611")
+
+    def create_cfg(self):
+        leaf_nodes = set()
+        link_me = set()
+        root = ControlFlowNode.generate(self.body, link_me, leaf_nodes)
+        enter_node = ControlFlowNode()
+        enter_node.successors.append(root)
+        exit_node = ControlFlowNode()
+        for leaf in leaf_nodes:
+            leaf.successors.append(exit_node)
+            exit_node.predecessors.append(leaf)
+        self.cfg = enter_node
 
 
 

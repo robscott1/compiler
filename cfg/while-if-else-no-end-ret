@@ -1,15 +1,20 @@
 digraph {
-	"f7b03dc9-cf5a-457f-ae46-921af1d658e1"
-	"27b25cb9-c11a-420c-8cf4-7b66065fe773"
-	"f7b03dc9-cf5a-457f-ae46-921af1d658e1" -> "27b25cb9-c11a-420c-8cf4-7b66065fe773"
-	"02aeab94-5857-4efb-8d0e-2d20d7972d5b"
-	"27b25cb9-c11a-420c-8cf4-7b66065fe773" -> "02aeab94-5857-4efb-8d0e-2d20d7972d5b"
-	"1d9d17d7-94e7-45d7-95ec-c837760dc800"
-	"27b25cb9-c11a-420c-8cf4-7b66065fe773" -> "1d9d17d7-94e7-45d7-95ec-c837760dc800"
-	"e8bd80e5-0dc0-4a2d-890a-fad57a4c0821"
-	"1d9d17d7-94e7-45d7-95ec-c837760dc800" -> "e8bd80e5-0dc0-4a2d-890a-fad57a4c0821"
-	"02aeab94-5857-4efb-8d0e-2d20d7972d5b" -> "e8bd80e5-0dc0-4a2d-890a-fad57a4c0821"
-	"e8bd80e5-0dc0-4a2d-890a-fad57a4c0821" -> "f7b03dc9-cf5a-457f-ae46-921af1d658e1"
-	"7b4a5b2e-56d4-47cb-b415-0ca3d8e80d38"
-	"f7b03dc9-cf5a-457f-ae46-921af1d658e1" -> "7b4a5b2e-56d4-47cb-b415-0ca3d8e80d38"
+	"89285b80-6221-4ed5-a80f-0b2cd6f436f3" [label=""]
+	"90a98fed-e3b3-4ea6-9542-272cf3565588" [label="while {cond}"]
+	"89285b80-6221-4ed5-a80f-0b2cd6f436f3" -> "90a98fed-e3b3-4ea6-9542-272cf3565588"
+	"49e8894e-7bc8-4385-9daf-e171d41abcf2" [label="if {cond}"]
+	"90a98fed-e3b3-4ea6-9542-272cf3565588" -> "49e8894e-7bc8-4385-9daf-e171d41abcf2"
+	"54e2b068-d4e2-445c-ae18-b3625a36d5b7" [label=print]
+	"49e8894e-7bc8-4385-9daf-e171d41abcf2" -> "54e2b068-d4e2-445c-ae18-b3625a36d5b7"
+	"b7baed66-2554-47bf-addf-e086c6d66fe7" [label=""]
+	"54e2b068-d4e2-445c-ae18-b3625a36d5b7" -> "b7baed66-2554-47bf-addf-e086c6d66fe7"
+	"b7baed66-2554-47bf-addf-e086c6d66fe7" -> "90a98fed-e3b3-4ea6-9542-272cf3565588"
+	"f68c2664-b41f-4563-afde-94dcfd57ffb4" [label=return]
+	"49e8894e-7bc8-4385-9daf-e171d41abcf2" -> "f68c2664-b41f-4563-afde-94dcfd57ffb4"
+	"f68c2664-b41f-4563-afde-94dcfd57ffb4" -> "b7baed66-2554-47bf-addf-e086c6d66fe7"
+	"87c76c79-7463-4ff2-bd99-c4b882243fce" [label=""]
+	"f68c2664-b41f-4563-afde-94dcfd57ffb4" -> "87c76c79-7463-4ff2-bd99-c4b882243fce"
+	"d0b7c092-0863-438a-b9f1-92774da9d6bb" [label=return]
+	"90a98fed-e3b3-4ea6-9542-272cf3565588" -> "d0b7c092-0863-438a-b9f1-92774da9d6bb"
+	"d0b7c092-0863-438a-b9f1-92774da9d6bb" -> "87c76c79-7463-4ff2-bd99-c4b882243fce"
 }

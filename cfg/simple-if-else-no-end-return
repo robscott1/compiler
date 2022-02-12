@@ -1,7 +1,12 @@
 digraph {
-	"3ab8f61a-7968-4b0d-9ea9-305502a47f13"
-	"939aa67f-46b5-4fba-9f4b-4be2c3c77b75"
-	"3ab8f61a-7968-4b0d-9ea9-305502a47f13" -> "939aa67f-46b5-4fba-9f4b-4be2c3c77b75"
-	"a9d06b34-d331-44c8-b05d-6e2ceca64370"
-	"3ab8f61a-7968-4b0d-9ea9-305502a47f13" -> "a9d06b34-d331-44c8-b05d-6e2ceca64370"
+	"4d5e8c8c-87bf-48df-ad77-ed54b05c7e4f" [label=""]
+	"bc1c4294-7acc-48f4-893b-a350eafb3516" [label="print
+if {cond}"]
+	"4d5e8c8c-87bf-48df-ad77-ed54b05c7e4f" -> "bc1c4294-7acc-48f4-893b-a350eafb3516"
+	"d70d7556-1b66-46cb-8ec6-3fa8c65e2b4d" [label=return]
+	"bc1c4294-7acc-48f4-893b-a350eafb3516" -> "d70d7556-1b66-46cb-8ec6-3fa8c65e2b4d"
+	"83cc0782-56b3-4b54-81bc-14657392dba6" [label=""]
+	"d70d7556-1b66-46cb-8ec6-3fa8c65e2b4d" -> "83cc0782-56b3-4b54-81bc-14657392dba6"
+	"b9b225b6-ea78-4634-9d49-9924f2c83c04" [label=print]
+	"bc1c4294-7acc-48f4-893b-a350eafb3516" -> "b9b225b6-ea78-4634-9d49-9924f2c83c04"
 }
