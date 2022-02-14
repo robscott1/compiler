@@ -1,0 +1,8 @@
+digraph {
+	"2c747450-2e39-4e03-8c7b-ad83f5a4d00e" [label="%0 = alloca i32"]
+	"a7ae2449-b572-4ce4-8101-0d3293d3ee54" [label="%1 = alloca i32
+%2 = alloca i32"]
+	"2c747450-2e39-4e03-8c7b-ad83f5a4d00e" -> "a7ae2449-b572-4ce4-8101-0d3293d3ee54"
+	"22362330-f760-4499-9afc-1f8cc2ea7d14" [label=""]
+	"a7ae2449-b572-4ce4-8101-0d3293d3ee54" -> "22362330-f760-4499-9afc-1f8cc2ea7d14"
+}

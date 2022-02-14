@@ -1,3 +1,6 @@
+from Instructions.Instruction import Instruction
+
+
 class Declaration:
 
     def __init__(self, line, type, id):
@@ -8,3 +11,4 @@ class Declaration:
 
     def __repr__(self):
         return f"{self.id} ({self.type}) on line {self.line}"
+

@@ -1,21 +1,14 @@
 import uuid
 
-from ErrorOut import error_out
-from ExtranceNode import ExtranceNode
+from Factories.InstructionFactory import InstructionFactory
 from StatementIterator import StatementIterator
-from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
-from Statements.InvocationStatement import InvocationStatement
-from Statements.PrintStatement import PrintStatement
 from Statements.ReturnStatement import ReturnStatement
-import graphviz
-
 from Statements.WhileStatement import WhileStatement
 
 
 class ControlFlowNode:
-
     """
     ControlFlowNode
 
@@ -34,6 +27,7 @@ class ControlFlowNode:
         - statements (List<Statement>): ?? idk if needed, list of statements
 
     """
+
     def __init__(self, label=None):
         self.id = str(uuid.uuid4())
         self.predecessors = []
@@ -42,6 +36,7 @@ class ControlFlowNode:
         self.has_return = False
         self.visited = False
         self.label = label
+        self.instructions = []
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -102,18 +97,18 @@ class ControlFlowNode:
 
         return root
 
-    def visualize_cfg(self, cfg, prev):
+    def visualize_cfg(self, cfg, prev, type_map, mem_mngr):
         if self.visited:
             cfg.edge(prev.id, self.id)
             return cfg
         self.visited = True
         if prev is not None:
-            cfg.node(self.id, label=self.cfg_label())
+            cfg.node(self.id, label=self.generate_instructions(type_map, mem_mngr))
             cfg.edge(prev.id, self.id)
         else:
-            cfg.node(self.id, label=self.cfg_label())
+            cfg.node(self.id, label=self.generate_instructions(type_map, mem_mngr))
         for node in self.successors:
-            node.visualize_cfg(cfg, self)
+            node.visualize_cfg(cfg, self, type_map, mem_mngr)
         return cfg
 
     @classmethod
@@ -142,12 +137,14 @@ class ControlFlowNode:
 
     def cfg_label(self):
         if self.label is None:
-            return "\n".join(list(map(lambda x: x.to_string(), self.statements)))
+            return "\n".join(list(map(lambda x: x.to_string())))
         else:
             return self.label
 
+    def generate_instructions(self, type_map, mem_mngr):
+        for stmt in self.statements:
+            instr = InstructionFactory.create_instruction(stmt, type_map, mem_mngr)
+            self.instructions.append(instr)
 
-
-
-
+        return "\n".join(list(map(lambda x: x.to_text(), self.instructions)))
 

@@ -1,12 +1,12 @@
 digraph {
-	"78736730-ff29-445f-8551-7dac1c6bcef4" [label=Enter]
-	"5722fa58-756b-48a3-90ac-2f259841c299" [label="print
+	"38436ec9-bae2-4c83-8f49-df82e692a887" [label=Enter]
+	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" [label="print
 if {cond}"]
-	"78736730-ff29-445f-8551-7dac1c6bcef4" -> "5722fa58-756b-48a3-90ac-2f259841c299"
-	"24428676-f5e6-447f-bae7-f326f990cfc2" [label=return]
-	"5722fa58-756b-48a3-90ac-2f259841c299" -> "24428676-f5e6-447f-bae7-f326f990cfc2"
-	"eebf489b-6eab-4880-b9a5-9064a439fdd0" [label=Exit]
-	"24428676-f5e6-447f-bae7-f326f990cfc2" -> "eebf489b-6eab-4880-b9a5-9064a439fdd0"
-	"e6dcf1f1-2163-4493-b244-0646822b43aa" [label=print]
-	"5722fa58-756b-48a3-90ac-2f259841c299" -> "e6dcf1f1-2163-4493-b244-0646822b43aa"
+	"38436ec9-bae2-4c83-8f49-df82e692a887" -> "7f95b57f-f811-4073-8a56-1cbfd6a81e9c"
+	"6d982eef-ca25-4c96-9e9a-56f3605e5721" [label=return]
+	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" -> "6d982eef-ca25-4c96-9e9a-56f3605e5721"
+	"b58e7efa-08b2-4b50-b421-f8298d2c7c60" [label=Exit]
+	"6d982eef-ca25-4c96-9e9a-56f3605e5721" -> "b58e7efa-08b2-4b50-b421-f8298d2c7c60"
+	"fc3e975a-74a6-490c-a927-43668bb98076" [label=print]
+	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" -> "fc3e975a-74a6-490c-a927-43668bb98076"
 }

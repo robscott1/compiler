@@ -1,4 +1,3 @@
-from CompilerError import CompilerError
 from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
