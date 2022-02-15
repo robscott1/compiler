@@ -1,20 +1,20 @@
 digraph {
-	"5359c9a7-74a8-42e2-ad18-e76d96645111" [label=Enter]
-	"7dab07e7-7fea-4b19-98c4-cb833a324ecd" [label="while {cond}"]
-	"5359c9a7-74a8-42e2-ad18-e76d96645111" -> "7dab07e7-7fea-4b19-98c4-cb833a324ecd"
-	"e91984bb-c530-4d38-a93c-740b2d62f32f" [label="if {cond}"]
-	"7dab07e7-7fea-4b19-98c4-cb833a324ecd" -> "e91984bb-c530-4d38-a93c-740b2d62f32f"
-	"ead2e46a-d65e-41b0-97d4-4d8301281c1b" [label=print]
-	"e91984bb-c530-4d38-a93c-740b2d62f32f" -> "ead2e46a-d65e-41b0-97d4-4d8301281c1b"
-	"f829e96e-8c70-47f6-8ece-86b135463747" [label="while converge"]
-	"ead2e46a-d65e-41b0-97d4-4d8301281c1b" -> "f829e96e-8c70-47f6-8ece-86b135463747"
-	"f829e96e-8c70-47f6-8ece-86b135463747" -> "7dab07e7-7fea-4b19-98c4-cb833a324ecd"
-	"568b1f74-9244-43b9-b1b4-1c84eacd75c5" [label=return]
-	"e91984bb-c530-4d38-a93c-740b2d62f32f" -> "568b1f74-9244-43b9-b1b4-1c84eacd75c5"
-	"568b1f74-9244-43b9-b1b4-1c84eacd75c5" -> "f829e96e-8c70-47f6-8ece-86b135463747"
-	"bdab1598-2e0a-4b8d-a59e-e5ab6688485a" [label=Exit]
-	"568b1f74-9244-43b9-b1b4-1c84eacd75c5" -> "bdab1598-2e0a-4b8d-a59e-e5ab6688485a"
-	"95244023-fe1a-4aba-a561-c01ab6306fae" [label=return]
-	"7dab07e7-7fea-4b19-98c4-cb833a324ecd" -> "95244023-fe1a-4aba-a561-c01ab6306fae"
-	"95244023-fe1a-4aba-a561-c01ab6306fae" -> "bdab1598-2e0a-4b8d-a59e-e5ab6688485a"
+	"f22e796d-ae6e-4248-8d2c-216dbcd4cb8b" [label=""]
+	"818f19de-dd73-42f0-bab5-c6c7cf8da03d" [label="%0 = alloca i32"]
+	"f22e796d-ae6e-4248-8d2c-216dbcd4cb8b" -> "818f19de-dd73-42f0-bab5-c6c7cf8da03d"
+	"f01dc332-f437-4f8b-abb8-07de4c24a3e0" [label="%1 = alloca i32"]
+	"818f19de-dd73-42f0-bab5-c6c7cf8da03d" -> "f01dc332-f437-4f8b-abb8-07de4c24a3e0"
+	"5be26fe1-bc62-4694-9c0b-22c0f2c309e6" [label="%2 = alloca i32"]
+	"f01dc332-f437-4f8b-abb8-07de4c24a3e0" -> "5be26fe1-bc62-4694-9c0b-22c0f2c309e6"
+	"c7d40c36-db42-4cfb-b066-f2894718231f" [label=""]
+	"5be26fe1-bc62-4694-9c0b-22c0f2c309e6" -> "c7d40c36-db42-4cfb-b066-f2894718231f"
+	"c7d40c36-db42-4cfb-b066-f2894718231f" -> "818f19de-dd73-42f0-bab5-c6c7cf8da03d"
+	"ec1dfea8-be00-4f92-b688-5fcd1b134a60" [label="%3 = alloca i32"]
+	"f01dc332-f437-4f8b-abb8-07de4c24a3e0" -> "ec1dfea8-be00-4f92-b688-5fcd1b134a60"
+	"ec1dfea8-be00-4f92-b688-5fcd1b134a60" -> "c7d40c36-db42-4cfb-b066-f2894718231f"
+	"5d336ac7-03e8-4504-bb4c-39e5e799770a" [label=""]
+	"ec1dfea8-be00-4f92-b688-5fcd1b134a60" -> "5d336ac7-03e8-4504-bb4c-39e5e799770a"
+	"fcaa4cf2-3185-4649-ba2a-2ccbc08a1b11" [label="%4 = alloca i32"]
+	"818f19de-dd73-42f0-bab5-c6c7cf8da03d" -> "fcaa4cf2-3185-4649-ba2a-2ccbc08a1b11"
+	"fcaa4cf2-3185-4649-ba2a-2ccbc08a1b11" -> "5d336ac7-03e8-4504-bb4c-39e5e799770a"
 }

@@ -3,7 +3,7 @@ import graphviz
 import pytest as pytest
 
 from ControlFlowNode import ControlFlowNode
-from TemporaryMemoryManager import TemporaryMemoryManager
+from InstructionsManager import InstructionsManager
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
@@ -35,7 +35,7 @@ def test_enter_node_instructions(input_file):
     params = program_to_json(f"../mini/{input_file}.mini")
     tc = TypeChecker(params)
     main_fn = tc.fn_map.get("main")
-    mem_mngr = TemporaryMemoryManager()
+    instr_mngr = InstructionsManager(tc)
     main_fn.create_cfg()
-    cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None, tc, mem_mngr)
+    cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None, instr_mngr)
     cfg.render(f"../cfg/{input_file}")

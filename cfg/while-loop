@@ -1,14 +1,14 @@
 digraph {
-	"a129ae1a-ff0b-4fec-a510-cc5f26ff217b" [label=Enter]
-	"5f9d1957-111d-4fad-8cc4-633d590a4674" [label="while {cond}"]
-	"a129ae1a-ff0b-4fec-a510-cc5f26ff217b" -> "5f9d1957-111d-4fad-8cc4-633d590a4674"
-	"5f5f6bcb-880e-4cce-a979-d912513e4f90" [label=print]
-	"5f9d1957-111d-4fad-8cc4-633d590a4674" -> "5f5f6bcb-880e-4cce-a979-d912513e4f90"
-	"279dbca4-f844-403c-942a-952d86fd1036" [label="while converge"]
-	"5f5f6bcb-880e-4cce-a979-d912513e4f90" -> "279dbca4-f844-403c-942a-952d86fd1036"
-	"279dbca4-f844-403c-942a-952d86fd1036" -> "5f9d1957-111d-4fad-8cc4-633d590a4674"
-	"12cf4203-bc21-4e75-9fca-f11afd49d4e0" [label=return]
-	"5f9d1957-111d-4fad-8cc4-633d590a4674" -> "12cf4203-bc21-4e75-9fca-f11afd49d4e0"
-	"ff55c358-9b2a-457e-a777-5ceed91d8cd7" [label=Exit]
-	"12cf4203-bc21-4e75-9fca-f11afd49d4e0" -> "ff55c358-9b2a-457e-a777-5ceed91d8cd7"
+	"f8e95d7a-6465-4dff-af0d-f54729a87db3" [label=""]
+	"4d319717-f6b1-4946-b445-1e8f95fb97c3" [label="%0 = alloca i32"]
+	"f8e95d7a-6465-4dff-af0d-f54729a87db3" -> "4d319717-f6b1-4946-b445-1e8f95fb97c3"
+	"71738114-5a71-4539-b321-75149766d72a" [label="%1 = alloca i32"]
+	"4d319717-f6b1-4946-b445-1e8f95fb97c3" -> "71738114-5a71-4539-b321-75149766d72a"
+	"f5737bb9-787c-4656-a67b-62264e6715ab" [label=""]
+	"71738114-5a71-4539-b321-75149766d72a" -> "f5737bb9-787c-4656-a67b-62264e6715ab"
+	"f5737bb9-787c-4656-a67b-62264e6715ab" -> "4d319717-f6b1-4946-b445-1e8f95fb97c3"
+	"4fa13998-c548-4bda-aff1-6b95ef08e5ba" [label="%2 = alloca i32"]
+	"4d319717-f6b1-4946-b445-1e8f95fb97c3" -> "4fa13998-c548-4bda-aff1-6b95ef08e5ba"
+	"81c3ba83-e81e-48bb-b7c7-db47892a0fb3" [label=""]
+	"4fa13998-c548-4bda-aff1-6b95ef08e5ba" -> "81c3ba83-e81e-48bb-b7c7-db47892a0fb3"
 }

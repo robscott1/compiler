@@ -1,6 +1,7 @@
 import uuid
 
 from Factories.InstructionFactory import InstructionFactory
+from InstructionsManager import InstructionsManager
 from StatementIterator import StatementIterator
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
@@ -97,18 +98,18 @@ class ControlFlowNode:
 
         return root
 
-    def visualize_cfg(self, cfg, prev, type_map, mem_mngr):
+    def visualize_cfg(self, cfg, prev, instr_mngr):
         if self.visited:
             cfg.edge(prev.id, self.id)
             return cfg
         self.visited = True
         if prev is not None:
-            cfg.node(self.id, label=self.generate_instructions(type_map, mem_mngr))
+            cfg.node(self.id, label=self.generate_instructions(instr_mngr))
             cfg.edge(prev.id, self.id)
         else:
-            cfg.node(self.id, label=self.generate_instructions(type_map, mem_mngr))
+            cfg.node(self.id, label=self.generate_instructions(instr_mngr))
         for node in self.successors:
-            node.visualize_cfg(cfg, self, type_map, mem_mngr)
+            node.visualize_cfg(cfg, self, instr_mngr)
         return cfg
 
     @classmethod
@@ -141,10 +142,18 @@ class ControlFlowNode:
         else:
             return self.label
 
-    def generate_instructions(self, type_map, mem_mngr):
+    """
+    Could we make text instructions in one pass so that it can do its thing in the
+    event that there are more than one instructions involved?
+    
+    - create_instruction just returns string when its done, not as object instructions
+    - but we want object instructions because we will be using that later to walk through
+    """
+
+    def generate_instructions(self, instr_mngr: InstructionsManager):
+        instr_mngr.clear_instructions_list()
         for stmt in self.statements:
-            instr = InstructionFactory.create_instruction(stmt, type_map, mem_mngr)
-            self.instructions.append(instr)
+            InstructionFactory.create_instruction(stmt, instr_mngr)
 
-        return "\n".join(list(map(lambda x: x.to_text(), self.instructions)))
-
+        return "\n".join(list(map(lambda x: x.to_text(),
+                                  instr_mngr.get_complete_instructions())))

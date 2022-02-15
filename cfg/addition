@@ -1,8 +1,9 @@
 digraph {
-	"2c747450-2e39-4e03-8c7b-ad83f5a4d00e" [label="%0 = alloca i32"]
-	"a7ae2449-b572-4ce4-8101-0d3293d3ee54" [label="%1 = alloca i32
+	"5c566be4-866a-4d48-8e5f-704b7ec53fa4" [label="%0 = alloca i32"]
+	"fd010fd1-e57b-492f-916a-93970eab21a5" [label="%1 = add i32 4, 2
+%0 = load i32, i32* %1
 %2 = alloca i32"]
-	"2c747450-2e39-4e03-8c7b-ad83f5a4d00e" -> "a7ae2449-b572-4ce4-8101-0d3293d3ee54"
-	"22362330-f760-4499-9afc-1f8cc2ea7d14" [label=""]
-	"a7ae2449-b572-4ce4-8101-0d3293d3ee54" -> "22362330-f760-4499-9afc-1f8cc2ea7d14"
+	"5c566be4-866a-4d48-8e5f-704b7ec53fa4" -> "fd010fd1-e57b-492f-916a-93970eab21a5"
+	"55d80c76-4728-4b04-a66d-32861b102687" [label=""]
+	"fd010fd1-e57b-492f-916a-93970eab21a5" -> "55d80c76-4728-4b04-a66d-32861b102687"
 }

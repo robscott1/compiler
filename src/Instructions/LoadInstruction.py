@@ -1,0 +1,47 @@
+from BoolType import BoolType
+from Expressions.IdentifierExpression import IdentifierExpression
+from Expressions.IntExpression import IntExpression
+from Instructions.Instruction import Instruction
+from InstructionsManager import InstructionsManager
+from IntType import IntType
+from Statements.AssignmentStatement import AssignmentStatement
+
+
+class StoreInstruction(Instruction):
+
+    def __init__(self, result, type, type_cast, location):
+        self.result = result
+        self.type = type
+        self.type_cast = type_cast
+        self.location = location
+
+    @classmethod
+    def generate(cls, code: AssignmentStatement,
+                 instr_mngr: InstructionsManager,
+                 factory_fn):
+        result = instr_mngr.get(code.target.id)
+        type = cls.type_switch(code.source, instr_mngr.type_map)
+        location = cls.eval_source(code.source, instr_mngr, factory_fn)
+
+        instruction = StoreInstruction(result, type, type, location)
+        instr_mngr.add_instruction(instruction)
+        return instruction
+
+    @classmethod
+    def type_switch(cls, source, type_map):
+        return source.of_type(type_map)
+
+    @classmethod
+    def eval_source(cls, source, instr_mngr: InstructionsManager, factory_fn):
+        if not isinstance(source, IntExpression):
+            instr = factory_fn(source, instr_mngr)
+            instr_mngr.add_instruction(instr)
+            return instr.result
+        elif isinstance(source, IdentifierExpression):
+            return instr_mngr.get(source.id)
+        else:
+            return source
+
+    def to_text(self):
+        return f"{self.result} = load {self.type.to_value()}, " \
+               f"{self.type.to_value()}* {self.location}"

@@ -16,3 +16,6 @@ class IntExpression(Expression):
     def of_type(self, tc):
         return IntType()
 
+    def to_value(self):
+        return f"{self.value}"
+

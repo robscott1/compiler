@@ -1,18 +1,18 @@
 digraph {
-	"02d72329-de67-4776-b9fc-ba78521e56c4" [label=Enter]
-	"2e8c4ddc-48a2-4f08-8491-05275f62ef11" [label="while {cond}"]
-	"02d72329-de67-4776-b9fc-ba78521e56c4" -> "2e8c4ddc-48a2-4f08-8491-05275f62ef11"
-	"3b714d56-8ac1-479f-b5a1-539584dbd9e7" [label="print
-if {cond}"]
-	"2e8c4ddc-48a2-4f08-8491-05275f62ef11" -> "3b714d56-8ac1-479f-b5a1-539584dbd9e7"
-	"336cc363-5c1c-41b2-b4da-d0dbefe57ea1" [label=print]
-	"3b714d56-8ac1-479f-b5a1-539584dbd9e7" -> "336cc363-5c1c-41b2-b4da-d0dbefe57ea1"
-	"bc1a6da6-d15e-4b2d-b109-72117fb4c98a" [label="while converge"]
-	"336cc363-5c1c-41b2-b4da-d0dbefe57ea1" -> "bc1a6da6-d15e-4b2d-b109-72117fb4c98a"
-	"bc1a6da6-d15e-4b2d-b109-72117fb4c98a" -> "2e8c4ddc-48a2-4f08-8491-05275f62ef11"
-	"3b714d56-8ac1-479f-b5a1-539584dbd9e7" -> "bc1a6da6-d15e-4b2d-b109-72117fb4c98a"
-	"8038eb5f-3373-4ab0-9aed-169d825ef369" [label=return]
-	"2e8c4ddc-48a2-4f08-8491-05275f62ef11" -> "8038eb5f-3373-4ab0-9aed-169d825ef369"
-	"044f5811-e12d-4dd1-ac52-d881da6a2ef8" [label=Exit]
-	"8038eb5f-3373-4ab0-9aed-169d825ef369" -> "044f5811-e12d-4dd1-ac52-d881da6a2ef8"
+	"f7e45931-ed62-4ca0-b452-d634c0409688" [label=""]
+	"a87f2df9-b7c1-46b3-a57a-ac8fa742eb21" [label="%0 = alloca i32"]
+	"f7e45931-ed62-4ca0-b452-d634c0409688" -> "a87f2df9-b7c1-46b3-a57a-ac8fa742eb21"
+	"2d067eab-6aee-4812-a10a-845f6e860a61" [label="%1 = alloca i32
+%2 = alloca i32"]
+	"a87f2df9-b7c1-46b3-a57a-ac8fa742eb21" -> "2d067eab-6aee-4812-a10a-845f6e860a61"
+	"4c910ca2-a14f-4b8f-b138-0468a676cf76" [label="%3 = alloca i32"]
+	"2d067eab-6aee-4812-a10a-845f6e860a61" -> "4c910ca2-a14f-4b8f-b138-0468a676cf76"
+	"78867cc0-8fe8-487d-ad7a-37976315cdd7" [label=""]
+	"4c910ca2-a14f-4b8f-b138-0468a676cf76" -> "78867cc0-8fe8-487d-ad7a-37976315cdd7"
+	"78867cc0-8fe8-487d-ad7a-37976315cdd7" -> "a87f2df9-b7c1-46b3-a57a-ac8fa742eb21"
+	"2d067eab-6aee-4812-a10a-845f6e860a61" -> "78867cc0-8fe8-487d-ad7a-37976315cdd7"
+	"b9fcc13c-9bf8-42e4-88b8-9ba5d4df0db3" [label="%4 = alloca i32"]
+	"a87f2df9-b7c1-46b3-a57a-ac8fa742eb21" -> "b9fcc13c-9bf8-42e4-88b8-9ba5d4df0db3"
+	"189273e0-51af-4643-8de5-fcd25e9f455c" [label=""]
+	"b9fcc13c-9bf8-42e4-88b8-9ba5d4df0db3" -> "189273e0-51af-4643-8de5-fcd25e9f455c"
 }

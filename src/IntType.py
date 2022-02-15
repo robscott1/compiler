@@ -10,3 +10,6 @@ class IntType(Type):
 
     def equals(self, other):
         return isinstance(other, self.__class__)
+
+    def to_value(self):
+        return "i32"

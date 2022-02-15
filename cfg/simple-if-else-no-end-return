@@ -1,12 +1,12 @@
 digraph {
-	"38436ec9-bae2-4c83-8f49-df82e692a887" [label=Enter]
-	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" [label="print
-if {cond}"]
-	"38436ec9-bae2-4c83-8f49-df82e692a887" -> "7f95b57f-f811-4073-8a56-1cbfd6a81e9c"
-	"6d982eef-ca25-4c96-9e9a-56f3605e5721" [label=return]
-	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" -> "6d982eef-ca25-4c96-9e9a-56f3605e5721"
-	"b58e7efa-08b2-4b50-b421-f8298d2c7c60" [label=Exit]
-	"6d982eef-ca25-4c96-9e9a-56f3605e5721" -> "b58e7efa-08b2-4b50-b421-f8298d2c7c60"
-	"fc3e975a-74a6-490c-a927-43668bb98076" [label=print]
-	"7f95b57f-f811-4073-8a56-1cbfd6a81e9c" -> "fc3e975a-74a6-490c-a927-43668bb98076"
+	"e5b74972-9297-476e-bc77-83690222c0f2" [label=""]
+	"71724f87-94f7-4bab-8c7e-ecfe91eb8a89" [label="%0 = alloca i32
+%1 = alloca i32"]
+	"e5b74972-9297-476e-bc77-83690222c0f2" -> "71724f87-94f7-4bab-8c7e-ecfe91eb8a89"
+	"456432d1-3b8a-4110-bdf4-9720eb07817d" [label="%2 = alloca i32"]
+	"71724f87-94f7-4bab-8c7e-ecfe91eb8a89" -> "456432d1-3b8a-4110-bdf4-9720eb07817d"
+	"d52e5f44-f243-43ef-9148-9a7f28f8fae5" [label=""]
+	"456432d1-3b8a-4110-bdf4-9720eb07817d" -> "d52e5f44-f243-43ef-9148-9a7f28f8fae5"
+	"b557dccd-9d3c-4dac-a7a4-52aeb416e4bb" [label="%3 = alloca i32"]
+	"71724f87-94f7-4bab-8c7e-ecfe91eb8a89" -> "b557dccd-9d3c-4dac-a7a4-52aeb416e4bb"
 }

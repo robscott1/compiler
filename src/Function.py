@@ -1,6 +1,6 @@
 from ControlFlowNode import ControlFlowNode
 from ErrorOut import error_out
-from TemporaryMemoryManager import TemporaryMemoryManager
+from InstructionsManager import InstructionsManager
 from Type import Type
 
 
@@ -56,9 +56,9 @@ class Function:
             exit_node.predecessors.append(leaf)
         self.cfg = enter_node
 
-    def generate_llvm(self, type_map, local_map):
-        mem_mngr = TemporaryMemoryManager()
-        self.cfg.generate_instructions(type_map, local_map, mem_mngr)
+    def generate_llvm(self, type_map):
+        instr_mngr = InstructionsManager(type_map)
+        self.cfg.generate_instructions(type_map, instr_mngr)
 
 
 
