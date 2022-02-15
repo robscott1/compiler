@@ -1,10 +1,13 @@
 from Declaration import Declaration
 from Expressions.BinaryExpression import BinaryExpression
+from Expressions.InvocationExpression import InvocationExpression
 from Instructions.AllocationInstruction import AllocationInstruction
 from Instructions.BinOpInstruction import BinOpInstruction
+from Instructions.InvocationInstruction import InvocationInstruction
 from Instructions.LoadInstruction import StoreInstruction
 from IntType import IntType
 from Statements.AssignmentStatement import AssignmentStatement
+from Statements.InvocationStatement import InvocationStatement
 
 
 class InstructionFactory:
@@ -17,7 +20,8 @@ class InstructionFactory:
             return BinOpInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, AssignmentStatement):
             return StoreInstruction.generate(code, instr_mngr, cls.create_instruction)
-
+        elif isinstance(code, InvocationStatement):
+            return InvocationInstruction.generate(code.exp, instr_mngr, cls.create_instruction)
         else:
             return AllocationInstruction.generate(instr_mngr,
                                                   Declaration("32", IntType(), "k"))
