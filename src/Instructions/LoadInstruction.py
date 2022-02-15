@@ -1,6 +1,8 @@
 from BoolType import BoolType
+from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
+from Expressions.TrueExpression import TrueExpression
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
 from IntType import IntType
@@ -33,12 +35,15 @@ class StoreInstruction(Instruction):
 
     @classmethod
     def eval_source(cls, source, instr_mngr: InstructionsManager, factory_fn):
-        if not isinstance(source, IntExpression):
+        if isinstance(source, IdentifierExpression):
+            return instr_mngr.get(source.id)
+        elif not (isinstance(source, IntExpression) or \
+                  isinstance(source, FalseExpression) or \
+                  isinstance(source, TrueExpression)
+        ):
             instr = factory_fn(source, instr_mngr)
             instr_mngr.add_instruction(instr)
             return instr.result
-        elif isinstance(source, IdentifierExpression):
-            return instr_mngr.get(source.id)
         else:
             return source
 
