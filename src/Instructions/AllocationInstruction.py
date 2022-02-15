@@ -30,6 +30,7 @@ class AllocationInstruction(Instruction):
         instr = AllocationInstruction("alloca", type, result)
         instr_mngr.store(code.id, result)
         instr_mngr.add_instruction(instr)
+        return instr
 
     def to_text(self):
         return f"{self.result} = {self.op} {self.type}"
@@ -39,8 +40,8 @@ class AllocationInstruction(Instruction):
 
     @classmethod
     def type_switch(cls, t):
-        if isinstance(t, IntType):
+        if t == "int":
             return "i32"
-        elif isinstance(t, BoolType):
+        elif t == "bool":
             return "bool"
 

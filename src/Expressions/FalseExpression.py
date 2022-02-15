@@ -9,3 +9,6 @@ class FalseExpression(Expression):
 
     def of_type(self, tc):
         return BoolType()
+
+    def to_value(self):
+        return "false"

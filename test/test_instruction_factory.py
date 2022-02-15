@@ -18,7 +18,6 @@ def test_allocation_instruction(file, code):
     tc = TypeChecker(params)
     instr_mngr = InstructionsManager(tc)
     instr = InstructionFactory.create_instruction(code, instr_mngr)
-    instr = instr[0]
     assert hasattr(instr, "result")
     assert hasattr(instr, "type")
     assert hasattr(instr, "op")

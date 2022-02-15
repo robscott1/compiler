@@ -1,7 +1,7 @@
 from Declaration import Declaration
 from Expressions.BinaryExpression import BinaryExpression
 from Instructions.AllocationInstruction import AllocationInstruction
-from Instructions.ArithmeticInstruction import ArithmeticInstruction
+from Instructions.BinOpInstruction import BinOpInstruction
 from Instructions.LoadInstruction import StoreInstruction
 from IntType import IntType
 from Statements.AssignmentStatement import AssignmentStatement
@@ -14,7 +14,7 @@ class InstructionFactory:
         if isinstance(code, Declaration):
             return AllocationInstruction.generate(instr_mngr, code)
         elif isinstance(code, BinaryExpression):
-            return ArithmeticInstruction.generate(code, instr_mngr, cls.create_instruction)
+            return BinOpInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, AssignmentStatement):
             return StoreInstruction.generate(code, instr_mngr, cls.create_instruction)
 
