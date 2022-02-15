@@ -1,12 +1,15 @@
 digraph {
-	"74ae179d-0f56-4565-b593-01465330f9a9" [label=""]
-	"038b47a6-c779-4b90-9080-c268f204577b" [label="%0 = alloca None"]
-	"74ae179d-0f56-4565-b593-01465330f9a9" -> "038b47a6-c779-4b90-9080-c268f204577b"
-	"e9293128-3cc9-402a-8bd3-9be280fb8413" [label="%1 = alloca None"]
-	"038b47a6-c779-4b90-9080-c268f204577b" -> "e9293128-3cc9-402a-8bd3-9be280fb8413"
-	"71827a78-cb62-4f74-a46c-cfdfb129d32c" [label=""]
-	"e9293128-3cc9-402a-8bd3-9be280fb8413" -> "71827a78-cb62-4f74-a46c-cfdfb129d32c"
-	"d45fb163-585e-45be-90fd-55c7ef11774d" [label="%2 = alloca None"]
-	"038b47a6-c779-4b90-9080-c268f204577b" -> "d45fb163-585e-45be-90fd-55c7ef11774d"
-	"d45fb163-585e-45be-90fd-55c7ef11774d" -> "71827a78-cb62-4f74-a46c-cfdfb129d32c"
+	"faa6d90f-7333-42ae-89e4-d2c4d3339d27" [label="%0 = alloca None"]
+	"bac3b9a8-2c71-4501-8a13-875afe84b1ce" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f9f2520a460>"]
+	"faa6d90f-7333-42ae-89e4-d2c4d3339d27" -> "bac3b9a8-2c71-4501-8a13-875afe84b1ce"
+	"89cbc759-26bf-4115-91a7-327bbdd91b05" [label="%1 = alloca None
+%1 = alloca None"]
+	"bac3b9a8-2c71-4501-8a13-875afe84b1ce" -> "89cbc759-26bf-4115-91a7-327bbdd91b05"
+	"d9474fb4-e443-41df-819f-dc7873cb1f35" [label=""]
+	"89cbc759-26bf-4115-91a7-327bbdd91b05" -> "d9474fb4-e443-41df-819f-dc7873cb1f35"
+	"a3fca3a7-4870-4810-a4a3-822fd9c431fb" [label=""]
+	"d9474fb4-e443-41df-819f-dc7873cb1f35" -> "a3fca3a7-4870-4810-a4a3-822fd9c431fb"
+	"2fdee755-5f04-45f4-baee-7f76642dac4e" [label=""]
+	"89cbc759-26bf-4115-91a7-327bbdd91b05" -> "2fdee755-5f04-45f4-baee-7f76642dac4e"
+	"2fdee755-5f04-45f4-baee-7f76642dac4e" -> "a3fca3a7-4870-4810-a4a3-822fd9c431fb"
 }

@@ -41,7 +41,7 @@ class BinOpInstruction(Instruction):
         elif op == Operator.AND:
             return "and", "bool"
         else:
-            return "mul"
+            return "mul", "i32"
 
     @classmethod
     def eval_operand(cls, operand: Expression,

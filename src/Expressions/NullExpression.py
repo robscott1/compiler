@@ -9,3 +9,6 @@ class NullExpression(Expression):
 
     def of_type(self, tc):
         return NullType()
+
+    def to_value(self):
+        return "void"

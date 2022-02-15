@@ -5,6 +5,7 @@ class InstructionsManager:
         self._values = dict()
         self.type_map = type_map
         self._ordered_instr_list = list()
+        self._current_node = None
 
     def next_tmp(self):
         result = f"%{self._current_number}"
@@ -28,6 +29,12 @@ class InstructionsManager:
 
     def clear_instructions_list(self):
         self._ordered_instr_list.clear()
+
+    def set_current_node(self, node):
+        self._current_node = node
+
+    def current_node(self):
+        return self._current_node
 
 
 

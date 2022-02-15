@@ -1,5 +1,6 @@
 import uuid
 
+from Expressions.Expression import Expression
 from Factories.InstructionFactory import InstructionFactory
 from InstructionsManager import InstructionsManager
 from StatementIterator import StatementIterator
@@ -48,6 +49,10 @@ class ControlFlowNode:
             node.successors.append(curr_node)
         link_me.clear()
 
+        if isinstance(body, Expression):
+            curr_node.statements.append(body)
+            return curr_node
+
         if isinstance(body, BlockStatement):
             body = body.statements
 
@@ -60,7 +65,8 @@ class ControlFlowNode:
                 leaf_nodes.add(curr_node)
                 break
             elif isinstance(stmt, ConditionalStatement):
-                curr_node.statements.append(stmt)
+                link_me.add(curr_node)
+                curr_node = ControlFlowNode.generate(stmt.guard, link_me, leaf_nodes)
                 link_me.add(curr_node)
                 then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
                 if stmt.else_block is None:
@@ -152,6 +158,7 @@ class ControlFlowNode:
 
     def generate_instructions(self, instr_mngr: InstructionsManager):
         instr_mngr.clear_instructions_list()
+        instr_mngr.set_current_node(self)
         for stmt in self.statements:
             InstructionFactory.create_instruction(stmt, instr_mngr)
 
