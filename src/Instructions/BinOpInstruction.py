@@ -77,5 +77,7 @@ class BinOpInstruction(Instruction):
         return f"{self.result}"
 
     def to_text(self):
-        return f"{self.result} = {self.op} {self.type} {self.left}, " \
-               f"{self.right}"
+        left = self.left if isinstance(self.left, str) else self.left.to_value()
+        right = self.right if isinstance(self.right, str) else self.right.to_value()
+        return f"{self.result} = {self.op} {self.type} {left}, " \
+               f"{right}"

@@ -110,6 +110,8 @@ class ControlFlowNode:
 
                 if body.has_next():
                     curr_node = cls.next_node(link_me)
+                else:
+                    leaf_nodes.add(curr_node)
 
             else:
                 curr_node.statements.append(stmt)

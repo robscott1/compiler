@@ -1,16 +1,18 @@
 import pytest
 
+from BoolType import BoolType
 from Declaration import Declaration
 from Factories.InstructionFactory import InstructionFactory
 from InstructionsManager import InstructionsManager
+from IntType import IntType
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
 
 @pytest.mark.parametrize(
     "file, code", [
-        ("addition", Declaration("44", "int", "k")),
-        ("addition", Declaration("44", "bool", "k"))
+        ("addition", Declaration("44", IntType(), "k")),
+        ("addition", Declaration("44", BoolType(), "k"))
     ]
 )
 def test_allocation_instruction(file, code):
