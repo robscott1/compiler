@@ -1,7 +1,6 @@
 import graphviz
 import pytest
 
-from ControlFlowNode import ControlFlowNode
 from InstructionsManager import InstructionsManager
 from TypeChecker import TypeChecker
 from conftest import program_to_json

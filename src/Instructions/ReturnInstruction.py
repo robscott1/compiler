@@ -21,7 +21,9 @@ class ReturnInstruction(Instruction):
                  instr_mngr: InstructionsManager, factory_fn):
         type = code.expression.of_type(instr_mngr.type_map)
         value = cls.eval_value(code.expression, instr_mngr, factory_fn).to_value()
-        return ReturnInstruction("ret", type, value)
+        instr = ReturnInstruction("ret", type, value)
+        instr_mngr.add_instruction(instr)
+        return instr
 
     @classmethod
     def eval_value(cls, arg: Expression,

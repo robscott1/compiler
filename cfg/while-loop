@@ -1,16 +1,16 @@
 digraph {
-	"bab46f7c-17e5-4d03-a6e6-876dc34f6a8d" [label=""]
-	"f666bc03-91b8-4a7a-9311-271d78c1594c" [label=""]
-	"bab46f7c-17e5-4d03-a6e6-876dc34f6a8d" -> "f666bc03-91b8-4a7a-9311-271d78c1594c"
-	"a5e97dc0-47bf-433b-940b-0518781ef9a4" [label="%0 = alloca None"]
-	"f666bc03-91b8-4a7a-9311-271d78c1594c" -> "a5e97dc0-47bf-433b-940b-0518781ef9a4"
-	"5a50e0aa-bcc8-43f8-9a44-2cb8250b71f5" [label="%1 = alloca None"]
-	"a5e97dc0-47bf-433b-940b-0518781ef9a4" -> "5a50e0aa-bcc8-43f8-9a44-2cb8250b71f5"
-	"ff335b35-77d0-4572-aeca-013bacd706fa" [label=""]
-	"5a50e0aa-bcc8-43f8-9a44-2cb8250b71f5" -> "ff335b35-77d0-4572-aeca-013bacd706fa"
-	"ff335b35-77d0-4572-aeca-013bacd706fa" -> "a5e97dc0-47bf-433b-940b-0518781ef9a4"
-	"424d9d38-84e8-4927-a67b-a999196bd235" [label=""]
-	"a5e97dc0-47bf-433b-940b-0518781ef9a4" -> "424d9d38-84e8-4927-a67b-a999196bd235"
-	"13f38807-b2ff-4114-8669-8f3afbe3ccf3" [label=""]
-	"424d9d38-84e8-4927-a67b-a999196bd235" -> "13f38807-b2ff-4114-8669-8f3afbe3ccf3"
+	"98cac75d-4ad0-4b17-b8b5-7ce83e1e80e3" [label=""]
+	"305a893e-366d-4b89-bba7-7a5e65de2f7e" [label=""]
+	"98cac75d-4ad0-4b17-b8b5-7ce83e1e80e3" -> "305a893e-366d-4b89-bba7-7a5e65de2f7e"
+	"b2800452-04c0-414b-82d5-c4eea429addc" [label="%0 = alloca None"]
+	"305a893e-366d-4b89-bba7-7a5e65de2f7e" -> "b2800452-04c0-414b-82d5-c4eea429addc"
+	"589fc91a-15d6-4810-ae20-d5f9c9d6e075" [label="%1 = alloca None"]
+	"b2800452-04c0-414b-82d5-c4eea429addc" -> "589fc91a-15d6-4810-ae20-d5f9c9d6e075"
+	"89a9e5b2-7b25-49d4-bb50-77cab959046c" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f46fc59b640>"]
+	"589fc91a-15d6-4810-ae20-d5f9c9d6e075" -> "89a9e5b2-7b25-49d4-bb50-77cab959046c"
+	"89a9e5b2-7b25-49d4-bb50-77cab959046c" -> "b2800452-04c0-414b-82d5-c4eea429addc"
+	"e9075088-e0db-4168-8f22-c96b6a0017a1" [label="ret i32 2"]
+	"b2800452-04c0-414b-82d5-c4eea429addc" -> "e9075088-e0db-4168-8f22-c96b6a0017a1"
+	"a92680eb-7bf6-498a-ab41-271887e5daad" [label=""]
+	"e9075088-e0db-4168-8f22-c96b6a0017a1" -> "a92680eb-7bf6-498a-ab41-271887e5daad"
 }

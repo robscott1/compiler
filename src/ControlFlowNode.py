@@ -6,6 +6,7 @@ from InstructionsManager import InstructionsManager
 from StatementIterator import StatementIterator
 from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
+from Statements.JumpStatement import JumpStatement
 from Statements.ReturnStatement import ReturnStatement
 from Statements.WhileStatement import WhileStatement
 
@@ -66,7 +67,13 @@ class ControlFlowNode:
                 break
             elif isinstance(stmt, ConditionalStatement):
                 link_me.add(curr_node)
-                curr_node = ControlFlowNode.generate(stmt.guard, link_me, leaf_nodes)
+                cond = ControlFlowNode()
+                for node in link_me:
+                    node.successors.append(cond)
+                    cond.predecessors.append(node)
+                link_me.clear()
+                cond.statements.append(stmt)
+                curr_node = cond
                 link_me.add(curr_node)
                 then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
                 if stmt.else_block is None:
@@ -92,8 +99,8 @@ class ControlFlowNode:
                 then_do = ControlFlowNode.generate(stmt.body, link_me, leaf_nodes)
                 if then_do.no_children():
                     link_me.add(then_do)
-                converge = ControlFlowNode.generate([], link_me, leaf_nodes)
-                converge.label = "while converge"
+                jmp = JumpStatement(stmt.line, curr_node)
+                converge = ControlFlowNode.generate([jmp], link_me, leaf_nodes)
                 converge.successors.append(curr_node)
                 link_me.add(curr_node)
 

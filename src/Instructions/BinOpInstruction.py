@@ -61,6 +61,8 @@ class BinOpInstruction(Instruction):
     def eval_operand(cls, operand: Expression,
                      instr_mngr: InstructionsManager,
                      factory_fn):
+        if isinstance(operand, IdentifierExpression):
+            return instr_mngr.get(operand.id)
         if not (isinstance(operand, IntExpression) \
                 or isinstance(operand, TrueExpression) \
                 or isinstance(operand, FalseExpression)
@@ -68,8 +70,6 @@ class BinOpInstruction(Instruction):
             instr = factory_fn(operand, instr_mngr)
             instr_mngr.add_instruction(instr)
             return instr
-        elif isinstance(operand, IdentifierExpression):
-            return instr_mngr.get(operand.id)
         else:
             return operand
 
@@ -77,5 +77,5 @@ class BinOpInstruction(Instruction):
         return f"{self.result}"
 
     def to_text(self):
-        return f"{self.result} = {self.op} {self.type} {self.left.to_value()}, " \
-               f"{self.right.to_value()}"
+        return f"{self.result} = {self.op} {self.type} {self.left}, " \
+               f"{self.right}"
