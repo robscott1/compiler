@@ -1,18 +1,18 @@
 digraph {
-	"b5343891-6312-45a9-8b6f-3c9426aea34a" [label=""]
-	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" [label="%0 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c23f3310>
-br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2277a00> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3fa0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3ee0>"]
-	"b5343891-6312-45a9-8b6f-3c9426aea34a" -> "9604989a-36e2-4ba3-80c1-10d4ce4ee7bb"
-	"cdb860bc-4169-4750-b4c4-4599ae1cb68f" [label="ret i32 2"]
-	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" -> "cdb860bc-4169-4750-b4c4-4599ae1cb68f"
-	"8f9f5632-94eb-49f0-b091-2fb0e5dfc933" [label=""]
-	"cdb860bc-4169-4750-b4c4-4599ae1cb68f" -> "8f9f5632-94eb-49f0-b091-2fb0e5dfc933"
-	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" [label="%1 = icmp lt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c23f3460>
-br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2277af0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3df0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3100>"]
-	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" -> "dc8ef69b-459d-4232-adac-4bd7b87f0f45"
-	"ef16a720-2435-464f-8a18-acc01c31d00f" [label="%2 = alloca None"]
-	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" -> "ef16a720-2435-464f-8a18-acc01c31d00f"
-	"d37d4487-ba20-48ce-b9cc-5faaa74c4ce1" [label="ret i32 0"]
-	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" -> "d37d4487-ba20-48ce-b9cc-5faaa74c4ce1"
-	"d37d4487-ba20-48ce-b9cc-5faaa74c4ce1" -> "8f9f5632-94eb-49f0-b091-2fb0e5dfc933"
+	c1 [label=""]
+	c4 [label="%0 = icmp gt i1 None, 0
+br i1 %0 label 87 label 53"]
+	c1 -> c4
+	87 [label="ret i32 2"]
+	c4 -> 87
+	"3c" [label=""]
+	87 -> "3c"
+	53 [label="%1 = icmp lt i1 None, 0
+br i1 %1 label 96 label 13"]
+	c4 -> 53
+	96 [label="%2 = alloca None"]
+	53 -> 96
+	13 [label="ret i32 0"]
+	53 -> 13
+	13 -> "3c"
 }

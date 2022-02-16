@@ -31,21 +31,25 @@ class StoreInstruction(Instruction):
 
     @classmethod
     def type_switch(cls, source, type_map):
-        return source.of_type(type_map)
+        t = source.of_type(type_map)
+        if isinstance(t, BoolType):
+            return "i1"
+        else:
+            return "i32"
 
     @classmethod
     def eval_source(cls, source, instr_mngr: InstructionsManager, factory_fn):
         if isinstance(source, IdentifierExpression):
             return instr_mngr.get(source.id)
-        elif not (isinstance(source, IntExpression) or \
+        elif (isinstance(source, IntExpression) or \
                   isinstance(source, FalseExpression) or \
                   isinstance(source, TrueExpression)
         ):
+            return source.to_value()
+        else:
             instr = factory_fn(source, instr_mngr)
             instr_mngr.add_instruction(instr)
             return instr.result
-        else:
-            return source
 
     def to_text(self):
         return f"{self.result} = load {self.type}, " \

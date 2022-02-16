@@ -1,29 +1,29 @@
 digraph {
-	"2709f4c4-7bb6-4365-b99b-cf8dd3b17df9" [label="%0 = alloca None
+	37 [label="%0 = alloca None
 %1 = alloca None
 %2 = alloca None"]
-	"7e241788-e6a6-4fa9-b890-a13a8ca0c0f5" [label="%2 = load <BoolType.BoolType object at 0x7f37c20197c0>, <BoolType.BoolType object at 0x7f37c20197c0>* <Expressions.TrueExpression.TrueExpression object at 0x7f37c2016a00>
-br i1 %2 label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019550> label <ControlFlowNode.ControlFlowNode object at 0x7f37c20195e0>"]
-	"2709f4c4-7bb6-4365-b99b-cf8dd3b17df9" -> "7e241788-e6a6-4fa9-b890-a13a8ca0c0f5"
-	"be61604d-87d8-4bcc-9a58-f00d28850024" [label="%0 = load <IntType.IntType object at 0x7f37c2019820>, <IntType.IntType object at 0x7f37c2019820>* <Expressions.IntExpression.IntExpression object at 0x7f37c2016a60>"]
-	"7e241788-e6a6-4fa9-b890-a13a8ca0c0f5" -> "be61604d-87d8-4bcc-9a58-f00d28850024"
-	"3f262573-167b-45d8-8d14-28722a3c23a5" [label="br i1 %2 label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019640> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019700>"]
-	"be61604d-87d8-4bcc-9a58-f00d28850024" -> "3f262573-167b-45d8-8d14-28722a3c23a5"
-	"56ccec67-b6dc-443c-954f-8e36adf40364" [label="%0 = load <IntType.IntType object at 0x7f37c2019820>, <IntType.IntType object at 0x7f37c2019820>* <Expressions.IntExpression.IntExpression object at 0x7f37c2016f10>
-%3 = icmp lt i1 %0, <Expressions.IntExpression.IntExpression object at 0x7f37c20190d0>
-%2 = load <BoolType.BoolType object at 0x7f37c2019910>, <BoolType.BoolType object at 0x7f37c2019910>* %3
-%4 = add i32 %0, <Expressions.IntExpression.IntExpression object at 0x7f37c20192b0>
-%0 = load <IntType.IntType object at 0x7f37c2019a00>, <IntType.IntType object at 0x7f37c2019a00>* %4"]
-	"3f262573-167b-45d8-8d14-28722a3c23a5" -> "56ccec67-b6dc-443c-954f-8e36adf40364"
-	"2c71211f-bc83-4061-90ed-8ad3708c91fc" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019610>"]
-	"56ccec67-b6dc-443c-954f-8e36adf40364" -> "2c71211f-bc83-4061-90ed-8ad3708c91fc"
-	"2c71211f-bc83-4061-90ed-8ad3708c91fc" -> "3f262573-167b-45d8-8d14-28722a3c23a5"
-	"142d5349-2dcc-4369-8833-5be26ff40c8f" [label="ret i32 2"]
-	"3f262573-167b-45d8-8d14-28722a3c23a5" -> "142d5349-2dcc-4369-8833-5be26ff40c8f"
-	"6cabaf3d-bcad-4723-b87a-968d255cdcba" [label=""]
-	"142d5349-2dcc-4369-8833-5be26ff40c8f" -> "6cabaf3d-bcad-4723-b87a-968d255cdcba"
-	"a9da90f6-8b47-485f-9fb4-ddc54157dd29" [label="%5 = add i32 <Expressions.IntExpression.IntExpression object at 0x7f37c2016c10>, <Expressions.IntExpression.IntExpression object at 0x7f37c2016c70>
-%2 = load <IntType.IntType object at 0x7f37c2019790>, <IntType.IntType object at 0x7f37c2019790>* %5"]
-	"7e241788-e6a6-4fa9-b890-a13a8ca0c0f5" -> "a9da90f6-8b47-485f-9fb4-ddc54157dd29"
-	"a9da90f6-8b47-485f-9fb4-ddc54157dd29" -> "3f262573-167b-45d8-8d14-28722a3c23a5"
+	75 [label="%2 = load i1, i1* true
+br i1 %2 label 9d label f7"]
+	37 -> 75
+	"9d" [label="%0 = load i32, i32* 4"]
+	75 -> "9d"
+	c7 [label="br i1 %2 label 2c label ef"]
+	"9d" -> c7
+	"2c" [label="%0 = load i32, i32* 1
+%3 = icmp lt i1 %0, 5
+%2 = load i1, i1* %3
+%4 = add i32 %0, 1
+%0 = load i32, i32* %4"]
+	c7 -> "2c"
+	78 [label="br label c7"]
+	"2c" -> 78
+	78 -> c7
+	ef [label="ret i32 2"]
+	c7 -> ef
+	"8a" [label=""]
+	ef -> "8a"
+	f7 [label="%5 = add i32 3, 2
+%2 = load i32, i32* %5"]
+	75 -> f7
+	f7 -> c7
 }

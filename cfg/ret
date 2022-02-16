@@ -1,14 +1,14 @@
 digraph {
-	"8cbcea1f-cf22-4a70-bc60-a191acb54fed" [label="%0 = alloca None"]
-	"83208123-97ce-432c-94a8-b9651bf6af50" [label="%0 = load <IntType.IntType object at 0x7f37c2019e50>, <IntType.IntType object at 0x7f37c2019e50>* <Expressions.IntExpression.IntExpression object at 0x7f37c2019ac0>
-%1 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c2019790>
-br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2019ee0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019d00> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019d90>"]
-	"8cbcea1f-cf22-4a70-bc60-a191acb54fed" -> "83208123-97ce-432c-94a8-b9651bf6af50"
-	"4ab7ddcf-c94c-48cd-8b8b-d2975877a48a" [label="ret i32 1"]
-	"83208123-97ce-432c-94a8-b9651bf6af50" -> "4ab7ddcf-c94c-48cd-8b8b-d2975877a48a"
-	"c8fa82f6-f9b7-4c08-a60a-8d14f3857278" [label=""]
-	"4ab7ddcf-c94c-48cd-8b8b-d2975877a48a" -> "c8fa82f6-f9b7-4c08-a60a-8d14f3857278"
-	"c39d4206-664d-4ada-be1a-710be095f644" [label="ret i32 1"]
-	"83208123-97ce-432c-94a8-b9651bf6af50" -> "c39d4206-664d-4ada-be1a-710be095f644"
-	"c39d4206-664d-4ada-be1a-710be095f644" -> "c8fa82f6-f9b7-4c08-a60a-8d14f3857278"
+	"0a" [label="%0 = alloca None"]
+	"0e" [label="%0 = load i32, i32* 1
+%1 = icmp gt i1 None, 0
+br i1 %1 label d1 label 9f"]
+	"0a" -> "0e"
+	d1 [label="ret i32 1"]
+	"0e" -> d1
+	ec [label=""]
+	d1 -> ec
+	"9f" [label="ret i32 1"]
+	"0e" -> "9f"
+	"9f" -> ec
 }

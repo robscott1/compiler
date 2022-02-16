@@ -24,8 +24,8 @@ class ConditionalInstruction(Instruction):
                  ):
         op = "br i1"
         guard = cls.eval_guard(code.guard, instr_mngr, factory_fn)
-        then_label = f"label {instr_mngr.current_node().successors[0]}"
-        else_label = f"label {instr_mngr.current_node().successors[1]}"
+        then_label = f"label {instr_mngr.current_node().successors[0].id}"
+        else_label = f"label {instr_mngr.current_node().successors[1].id}"
         instr = ConditionalInstruction(op, guard, then_label, else_label)
         instr_mngr.add_instruction(instr)
         return instr
@@ -49,7 +49,8 @@ class ConditionalInstruction(Instruction):
             instr_mngr.add_instruction(instr)
             return instr
         else:
-            return guard
+            return guard.to_value()
 
     def to_text(self):
-        return f"{self.op} {self.guard} {self.then_label} {self.else_label}"
+        guard = self.guard if isinstance(self.guard, str) else self.guard.to_value()
+        return f"{self.op} {guard} {self.then_label} {self.else_label}"

@@ -11,7 +11,7 @@ class JumpInstruction(Instruction):
 
     @classmethod
     def generate(cls, code: JumpStatement, instr_mngr: InstructionsManager):
-        instr = JumpInstruction("br label", code.jmp_to())
+        instr = JumpInstruction("br label", code.jmp_to().id)
         instr_mngr.add_instruction(instr)
         return instr
 

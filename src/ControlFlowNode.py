@@ -32,7 +32,7 @@ class ControlFlowNode:
     """
 
     def __init__(self, label=None):
-        self.id = str(uuid.uuid4())
+        self.id = str(uuid.uuid4())[-3:-1]
         self.predecessors = []
         self.successors = []
         self.statements = []

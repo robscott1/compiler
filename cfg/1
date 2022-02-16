@@ -1,13 +1,13 @@
 digraph {
-	"5234c499-6330-4233-9e0b-d33529010840" [label="%0 = alloca None
+	b1 [label="%0 = alloca None
 %1 = alloca None
 %2 = alloca None
 %3 = alloca None
 %4 = alloca None
 %5 = alloca None"]
-	"1fa54303-db51-4e1d-8489-1e5d6c702b39" [label="%6 = alloca None
+	"2e" [label="%6 = alloca None
 ret i32 0"]
-	"5234c499-6330-4233-9e0b-d33529010840" -> "1fa54303-db51-4e1d-8489-1e5d6c702b39"
-	"9224834d-d519-47f3-8f8d-d95eb4d72d58" [label=""]
-	"1fa54303-db51-4e1d-8489-1e5d6c702b39" -> "9224834d-d519-47f3-8f8d-d95eb4d72d58"
+	b1 -> "2e"
+	"4c" [label=""]
+	"2e" -> "4c"
 }

@@ -1,14 +1,17 @@
 digraph {
-	"36ce1ae1-c2a9-42cc-8a69-75c2a9cf6c71" [label=""]
-	"625bb82d-690b-42aa-a185-214d5aacaa3b" [label="br i1 <Expressions.TrueExpression.TrueExpression object at 0x7f37c2277ca0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2277190> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2277610>"]
-	"36ce1ae1-c2a9-42cc-8a69-75c2a9cf6c71" -> "625bb82d-690b-42aa-a185-214d5aacaa3b"
-	"eb655822-fe51-4c19-86d6-935b1da74765" [label="%0 = alloca None"]
-	"625bb82d-690b-42aa-a185-214d5aacaa3b" -> "eb655822-fe51-4c19-86d6-935b1da74765"
-	"2e2dda78-ad41-4196-82f5-40269a2f734e" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3670>"]
-	"eb655822-fe51-4c19-86d6-935b1da74765" -> "2e2dda78-ad41-4196-82f5-40269a2f734e"
-	"2e2dda78-ad41-4196-82f5-40269a2f734e" -> "625bb82d-690b-42aa-a185-214d5aacaa3b"
-	"5f64e52e-0e28-4765-85b7-c31a04469414" [label="ret i32 2"]
-	"625bb82d-690b-42aa-a185-214d5aacaa3b" -> "5f64e52e-0e28-4765-85b7-c31a04469414"
-	"f3d08d7b-104c-4881-bc29-d2e097a8d576" [label=""]
-	"5f64e52e-0e28-4765-85b7-c31a04469414" -> "f3d08d7b-104c-4881-bc29-d2e097a8d576"
+	"1e" [label="%0 = alloca None"]
+	fd [label="%0 = load i32, i32* 4"]
+	"1e" -> fd
+	dd [label="%1 = icmp lt i1 %0, 4
+br i1 %1 label c4 label 58"]
+	fd -> dd
+	c4 [label="%2 = alloca None"]
+	dd -> c4
+	f6 [label="br label dd"]
+	c4 -> f6
+	f6 -> dd
+	58 [label="ret i32 2"]
+	dd -> 58
+	f6 [label=""]
+	58 -> f6
 }

@@ -1,20 +1,20 @@
 digraph {
-	"ffc9ff7f-e7f5-435a-9fc0-8e21d5f67377" [label="%0 = alloca None"]
-	"f2506e01-ae65-4ef9-b84c-b184df8b2261" [label="%0 = load <IntType.IntType object at 0x7f37c2016160>, <IntType.IntType object at 0x7f37c2016160>* <Expressions.IntExpression.IntExpression object at 0x7f37c2277d90>"]
-	"ffc9ff7f-e7f5-435a-9fc0-8e21d5f67377" -> "f2506e01-ae65-4ef9-b84c-b184df8b2261"
-	"98eae3ea-c4fe-451d-81d2-80bcb91632f5" [label="br i1 <Expressions.TrueExpression.TrueExpression object at 0x7f37c2277bb0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205ca60> label <ControlFlowNode.ControlFlowNode object at 0x7f37c20160a0>"]
-	"f2506e01-ae65-4ef9-b84c-b184df8b2261" -> "98eae3ea-c4fe-451d-81d2-80bcb91632f5"
-	"fff2f666-b3f9-4efa-8c41-af809065ebc4" [label="%1 = alloca None
-br i1 <Expressions.TrueExpression.TrueExpression object at 0x7f37c205c250> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205c9a0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205cfd0>"]
-	"98eae3ea-c4fe-451d-81d2-80bcb91632f5" -> "fff2f666-b3f9-4efa-8c41-af809065ebc4"
-	"13152a22-5ea0-4a75-af85-32b7a5d6cdd7" [label="%2 = alloca None"]
-	"fff2f666-b3f9-4efa-8c41-af809065ebc4" -> "13152a22-5ea0-4a75-af85-32b7a5d6cdd7"
-	"3d915e2f-d918-4932-986a-99f2e1c32fbc" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f37c205cc70>"]
-	"13152a22-5ea0-4a75-af85-32b7a5d6cdd7" -> "3d915e2f-d918-4932-986a-99f2e1c32fbc"
-	"3d915e2f-d918-4932-986a-99f2e1c32fbc" -> "98eae3ea-c4fe-451d-81d2-80bcb91632f5"
-	"fff2f666-b3f9-4efa-8c41-af809065ebc4" -> "3d915e2f-d918-4932-986a-99f2e1c32fbc"
-	"a09bd1fd-376f-4f9e-bd41-03804aabb765" [label="ret i32 2"]
-	"98eae3ea-c4fe-451d-81d2-80bcb91632f5" -> "a09bd1fd-376f-4f9e-bd41-03804aabb765"
-	"ba9cea77-fa9f-443c-9209-d5db1da47af0" [label=""]
-	"a09bd1fd-376f-4f9e-bd41-03804aabb765" -> "ba9cea77-fa9f-443c-9209-d5db1da47af0"
+	"6d" [label="%0 = alloca None"]
+	fb [label="%0 = load i32, i32* 3"]
+	"6d" -> fb
+	dd [label="br i1 true label 87 label 8e"]
+	fb -> dd
+	87 [label="%1 = alloca None
+br i1 true label 00 label 75"]
+	dd -> 87
+	00 [label="%2 = alloca None"]
+	87 -> 00
+	75 [label="br label dd"]
+	00 -> 75
+	75 -> dd
+	87 -> 75
+	"8e" [label="ret i32 2"]
+	dd -> "8e"
+	c9 [label=""]
+	"8e" -> c9
 }

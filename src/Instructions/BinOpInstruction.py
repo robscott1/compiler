@@ -71,7 +71,7 @@ class BinOpInstruction(Instruction):
             instr_mngr.add_instruction(instr)
             return instr
         else:
-            return operand
+            return operand.to_value()
 
     def to_value(self):
         return f"{self.result}"

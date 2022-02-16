@@ -1,12 +1,12 @@
 digraph {
-	"208a72c5-60c9-40f8-9147-56c0050df3f1" [label=""]
-	"ae3b60a4-82ea-4388-b048-1245f15def87" [label="%0 = alloca None
-br i1 <Expressions.TrueExpression.TrueExpression object at 0x7f37c205cbb0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205ca30> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205cfa0>"]
-	"208a72c5-60c9-40f8-9147-56c0050df3f1" -> "ae3b60a4-82ea-4388-b048-1245f15def87"
-	"8889e83c-4305-46ad-a18e-1a2352620fa4" [label="ret i32 2"]
-	"ae3b60a4-82ea-4388-b048-1245f15def87" -> "8889e83c-4305-46ad-a18e-1a2352620fa4"
-	"3a7d057a-aa07-471d-8b82-a0e7ed93c225" [label=""]
-	"8889e83c-4305-46ad-a18e-1a2352620fa4" -> "3a7d057a-aa07-471d-8b82-a0e7ed93c225"
-	"f3e46eba-e73d-4d6d-a0d5-65b832f9b9b3" [label="%1 = alloca None"]
-	"ae3b60a4-82ea-4388-b048-1245f15def87" -> "f3e46eba-e73d-4d6d-a0d5-65b832f9b9b3"
+	"3c" [label=""]
+	07 [label="%0 = alloca None
+br i1 true label b1 label 93"]
+	"3c" -> 07
+	b1 [label="ret i32 2"]
+	07 -> b1
+	b1 [label=""]
+	b1 -> b1
+	93 [label="%1 = alloca None"]
+	07 -> 93
 }
