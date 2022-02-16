@@ -1,12 +1,12 @@
 digraph {
-	"aca7e2ac-9a09-4fab-a4f6-9b85e71590b6" [label=""]
-	"e4f8807e-bf7b-45d0-8329-06eb4676b005" [label="%0 = alloca None
-br i1 true label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678a30> label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678fa0>"]
-	"aca7e2ac-9a09-4fab-a4f6-9b85e71590b6" -> "e4f8807e-bf7b-45d0-8329-06eb4676b005"
-	"e353820f-0519-47cd-9693-826dc9740f9d" [label="ret i32 2"]
-	"e4f8807e-bf7b-45d0-8329-06eb4676b005" -> "e353820f-0519-47cd-9693-826dc9740f9d"
-	"e8bbcedc-1ee9-4324-93a8-be2649e2a295" [label=""]
-	"e353820f-0519-47cd-9693-826dc9740f9d" -> "e8bbcedc-1ee9-4324-93a8-be2649e2a295"
-	"62414c47-20e9-43d1-82d7-9f426e34316f" [label="%1 = alloca None"]
-	"e4f8807e-bf7b-45d0-8329-06eb4676b005" -> "62414c47-20e9-43d1-82d7-9f426e34316f"
+	"208a72c5-60c9-40f8-9147-56c0050df3f1" [label=""]
+	"ae3b60a4-82ea-4388-b048-1245f15def87" [label="%0 = alloca None
+br i1 <Expressions.TrueExpression.TrueExpression object at 0x7f37c205cbb0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205ca30> label <ControlFlowNode.ControlFlowNode object at 0x7f37c205cfa0>"]
+	"208a72c5-60c9-40f8-9147-56c0050df3f1" -> "ae3b60a4-82ea-4388-b048-1245f15def87"
+	"8889e83c-4305-46ad-a18e-1a2352620fa4" [label="ret i32 2"]
+	"ae3b60a4-82ea-4388-b048-1245f15def87" -> "8889e83c-4305-46ad-a18e-1a2352620fa4"
+	"3a7d057a-aa07-471d-8b82-a0e7ed93c225" [label=""]
+	"8889e83c-4305-46ad-a18e-1a2352620fa4" -> "3a7d057a-aa07-471d-8b82-a0e7ed93c225"
+	"f3e46eba-e73d-4d6d-a0d5-65b832f9b9b3" [label="%1 = alloca None"]
+	"ae3b60a4-82ea-4388-b048-1245f15def87" -> "f3e46eba-e73d-4d6d-a0d5-65b832f9b9b3"
 }

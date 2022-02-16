@@ -8,4 +8,5 @@ class BoolType(Type):
         return BoolType()
 
     def equals(self, other):
-        return isinstance(other, self.__class__)
+        return isinstance(other, self.__class__)\
+

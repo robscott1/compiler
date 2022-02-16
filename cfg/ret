@@ -1,14 +1,14 @@
 digraph {
-	"abb034d6-1cdd-46e4-9010-e66d02b15fa4" [label="%0 = alloca None"]
-	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f04dc631f40>
-%1 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f04dc639160>
-br i1 %1 label <ControlFlowNode.ControlFlowNode object at 0x7f04dc6394f0> label <ControlFlowNode.ControlFlowNode object at 0x7f04dc639580>"]
-	"abb034d6-1cdd-46e4-9010-e66d02b15fa4" -> "3500e54f-5d15-49d7-91a2-c9eee9b9144c"
-	"c4c41868-f321-43e7-b2dc-73e6823dec15" [label="ret i32 1"]
-	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" -> "c4c41868-f321-43e7-b2dc-73e6823dec15"
-	"2d1ab72e-e0ef-4792-9c65-cc7baa24450e" [label=""]
-	"c4c41868-f321-43e7-b2dc-73e6823dec15" -> "2d1ab72e-e0ef-4792-9c65-cc7baa24450e"
-	"f1063297-8ae9-44f6-acf2-f02fef9cd394" [label="ret i32 1"]
-	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" -> "f1063297-8ae9-44f6-acf2-f02fef9cd394"
-	"f1063297-8ae9-44f6-acf2-f02fef9cd394" -> "2d1ab72e-e0ef-4792-9c65-cc7baa24450e"
+	"8cbcea1f-cf22-4a70-bc60-a191acb54fed" [label="%0 = alloca None"]
+	"83208123-97ce-432c-94a8-b9651bf6af50" [label="%0 = load <IntType.IntType object at 0x7f37c2019e50>, <IntType.IntType object at 0x7f37c2019e50>* <Expressions.IntExpression.IntExpression object at 0x7f37c2019ac0>
+%1 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c2019790>
+br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2019ee0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019d00> label <ControlFlowNode.ControlFlowNode object at 0x7f37c2019d90>"]
+	"8cbcea1f-cf22-4a70-bc60-a191acb54fed" -> "83208123-97ce-432c-94a8-b9651bf6af50"
+	"4ab7ddcf-c94c-48cd-8b8b-d2975877a48a" [label="ret i32 1"]
+	"83208123-97ce-432c-94a8-b9651bf6af50" -> "4ab7ddcf-c94c-48cd-8b8b-d2975877a48a"
+	"c8fa82f6-f9b7-4c08-a60a-8d14f3857278" [label=""]
+	"4ab7ddcf-c94c-48cd-8b8b-d2975877a48a" -> "c8fa82f6-f9b7-4c08-a60a-8d14f3857278"
+	"c39d4206-664d-4ada-be1a-710be095f644" [label="ret i32 1"]
+	"83208123-97ce-432c-94a8-b9651bf6af50" -> "c39d4206-664d-4ada-be1a-710be095f644"
+	"c39d4206-664d-4ada-be1a-710be095f644" -> "c8fa82f6-f9b7-4c08-a60a-8d14f3857278"
 }

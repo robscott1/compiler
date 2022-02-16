@@ -52,4 +52,4 @@ class ConditionalInstruction(Instruction):
             return guard
 
     def to_text(self):
-        return f"{self.op} {self.guard.to_value()} {self.then_label} {self.else_label}"
+        return f"{self.op} {self.guard} {self.then_label} {self.else_label}"

@@ -48,5 +48,5 @@ class StoreInstruction(Instruction):
             return source
 
     def to_text(self):
-        return f"{self.result} = load {self.type.to_value()}, " \
-               f"{self.type.to_value()}* {self.location}"
+        return f"{self.result} = load {self.type}, " \
+               f"{self.type}* {self.location}"

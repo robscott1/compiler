@@ -86,8 +86,19 @@ class ControlFlowNode:
                     curr_node = cls.next_node(link_me)
 
             elif isinstance(stmt, WhileStatement):
-                link_me.add(curr_node)
-                curr_node = ControlFlowNode.generate(stmt.guard, link_me, leaf_nodes)
+                # Make new guard node and then build off that
+                if len(curr_node.statements) != 0:
+                    link_me.add(curr_node)
+                    guard = ControlFlowNode()
+                    guard.statements.append(stmt)
+                    for node in link_me:
+                        node.successors.append(guard)
+                        guard.predecessors.append(node)
+                    link_me.clear()
+                    curr_node = guard
+                else:
+                    curr_node.statements.append(stmt)
+
                 link_me.add(curr_node)
                 then_do = ControlFlowNode.generate(stmt.body, link_me, leaf_nodes)
                 if then_do.no_children():

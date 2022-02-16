@@ -1,18 +1,18 @@
 digraph {
-	"e8134ebc-bc0c-40f0-8b6b-bd332339559f" [label=""]
-	"c1c2471f-a038-4519-8b1a-fd206552be14" [label="%0 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f04dca0f310>
-br i1 %0 label <ControlFlowNode.ControlFlowNode object at 0x7f04dca0ffa0> label <ControlFlowNode.ControlFlowNode object at 0x7f04dca0fee0>"]
-	"e8134ebc-bc0c-40f0-8b6b-bd332339559f" -> "c1c2471f-a038-4519-8b1a-fd206552be14"
-	"5976a626-c09f-4e04-8ea7-a6ae8719ecf9" [label="ret i32 2"]
-	"c1c2471f-a038-4519-8b1a-fd206552be14" -> "5976a626-c09f-4e04-8ea7-a6ae8719ecf9"
-	"f1758fa8-137b-448c-ba8c-9b9481bd85a0" [label=""]
-	"5976a626-c09f-4e04-8ea7-a6ae8719ecf9" -> "f1758fa8-137b-448c-ba8c-9b9481bd85a0"
-	"916bdd37-b594-442d-9884-c2d5ae02b094" [label="%1 = icmp lt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f04dca0f460>
-br i1 %1 label <ControlFlowNode.ControlFlowNode object at 0x7f04dca0fdf0> label <ControlFlowNode.ControlFlowNode object at 0x7f04dca0f100>"]
-	"c1c2471f-a038-4519-8b1a-fd206552be14" -> "916bdd37-b594-442d-9884-c2d5ae02b094"
-	"d4625651-e7c3-4bb5-be60-84e775f84dde" [label="%2 = alloca None"]
-	"916bdd37-b594-442d-9884-c2d5ae02b094" -> "d4625651-e7c3-4bb5-be60-84e775f84dde"
-	"b32e1d5f-e26a-425a-9589-37acad4a0af3" [label="ret i32 0"]
-	"916bdd37-b594-442d-9884-c2d5ae02b094" -> "b32e1d5f-e26a-425a-9589-37acad4a0af3"
-	"b32e1d5f-e26a-425a-9589-37acad4a0af3" -> "f1758fa8-137b-448c-ba8c-9b9481bd85a0"
+	"b5343891-6312-45a9-8b6f-3c9426aea34a" [label=""]
+	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" [label="%0 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c23f3310>
+br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2277a00> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3fa0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3ee0>"]
+	"b5343891-6312-45a9-8b6f-3c9426aea34a" -> "9604989a-36e2-4ba3-80c1-10d4ce4ee7bb"
+	"cdb860bc-4169-4750-b4c4-4599ae1cb68f" [label="ret i32 2"]
+	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" -> "cdb860bc-4169-4750-b4c4-4599ae1cb68f"
+	"8f9f5632-94eb-49f0-b091-2fb0e5dfc933" [label=""]
+	"cdb860bc-4169-4750-b4c4-4599ae1cb68f" -> "8f9f5632-94eb-49f0-b091-2fb0e5dfc933"
+	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" [label="%1 = icmp lt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f37c23f3460>
+br i1 <Instructions.BinOpInstruction.BinOpInstruction object at 0x7f37c2277af0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3df0> label <ControlFlowNode.ControlFlowNode object at 0x7f37c23f3100>"]
+	"9604989a-36e2-4ba3-80c1-10d4ce4ee7bb" -> "dc8ef69b-459d-4232-adac-4bd7b87f0f45"
+	"ef16a720-2435-464f-8a18-acc01c31d00f" [label="%2 = alloca None"]
+	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" -> "ef16a720-2435-464f-8a18-acc01c31d00f"
+	"d37d4487-ba20-48ce-b9cc-5faaa74c4ce1" [label="ret i32 0"]
+	"dc8ef69b-459d-4232-adac-4bd7b87f0f45" -> "d37d4487-ba20-48ce-b9cc-5faaa74c4ce1"
+	"d37d4487-ba20-48ce-b9cc-5faaa74c4ce1" -> "8f9f5632-94eb-49f0-b091-2fb0e5dfc933"
 }
