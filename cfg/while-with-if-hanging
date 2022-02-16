@@ -1,19 +1,21 @@
 digraph {
-	"55f2c054-c4ae-4514-84b2-693fe7b262e5" [label=""]
-	"09b36b9a-8381-450a-a99e-dada612668af" [label="%0 = alloca None"]
-	"55f2c054-c4ae-4514-84b2-693fe7b262e5" -> "09b36b9a-8381-450a-a99e-dada612668af"
-	"3ef1ffd8-3ba4-44b1-ac9b-8f7386f1a2e8" [label="%1 = alloca None"]
-	"09b36b9a-8381-450a-a99e-dada612668af" -> "3ef1ffd8-3ba4-44b1-ac9b-8f7386f1a2e8"
-	"00343e03-f19c-4556-92b7-65dba59b48e7" [label="%2 = alloca None"]
-	"3ef1ffd8-3ba4-44b1-ac9b-8f7386f1a2e8" -> "00343e03-f19c-4556-92b7-65dba59b48e7"
-	"717628eb-3f45-4684-a6b4-e98ef335234d" [label="%3 = alloca None"]
-	"00343e03-f19c-4556-92b7-65dba59b48e7" -> "717628eb-3f45-4684-a6b4-e98ef335234d"
-	"07af9b3b-d008-4a4b-873d-3c11d11089d7" [label=""]
-	"717628eb-3f45-4684-a6b4-e98ef335234d" -> "07af9b3b-d008-4a4b-873d-3c11d11089d7"
-	"07af9b3b-d008-4a4b-873d-3c11d11089d7" -> "09b36b9a-8381-450a-a99e-dada612668af"
-	"00343e03-f19c-4556-92b7-65dba59b48e7" -> "07af9b3b-d008-4a4b-873d-3c11d11089d7"
-	"b0cfbfdc-5223-4cc6-a6a2-c318ee5fb961" [label=""]
-	"09b36b9a-8381-450a-a99e-dada612668af" -> "b0cfbfdc-5223-4cc6-a6a2-c318ee5fb961"
-	"7c88d5ce-693d-4927-a3e7-910f0584b717" [label=""]
-	"b0cfbfdc-5223-4cc6-a6a2-c318ee5fb961" -> "7c88d5ce-693d-4927-a3e7-910f0584b717"
+	"e3f16b71-2d37-4833-bec6-59e7b7a91d30" [label="%0 = alloca None"]
+	"3af47250-ff8a-4158-a0a1-6714797e41c3" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7ff37d3795e0>"]
+	"e3f16b71-2d37-4833-bec6-59e7b7a91d30" -> "3af47250-ff8a-4158-a0a1-6714797e41c3"
+	"1b0391c1-7b4d-4381-b2f8-438e8cbfd4d2" [label="%1 = alloca None"]
+	"3af47250-ff8a-4158-a0a1-6714797e41c3" -> "1b0391c1-7b4d-4381-b2f8-438e8cbfd4d2"
+	"b7d756f0-700b-4b10-bf8c-abdf6a1056a0" [label="%2 = alloca None"]
+	"1b0391c1-7b4d-4381-b2f8-438e8cbfd4d2" -> "b7d756f0-700b-4b10-bf8c-abdf6a1056a0"
+	"14ef0b0b-d931-42b0-b242-16df4d09947a" [label="%3 = alloca None"]
+	"b7d756f0-700b-4b10-bf8c-abdf6a1056a0" -> "14ef0b0b-d931-42b0-b242-16df4d09947a"
+	"d639cd05-85b3-4635-84bb-a6fb54c84118" [label="%4 = alloca None"]
+	"14ef0b0b-d931-42b0-b242-16df4d09947a" -> "d639cd05-85b3-4635-84bb-a6fb54c84118"
+	"1969ac31-8559-4a40-9972-49b5b7512545" [label=""]
+	"d639cd05-85b3-4635-84bb-a6fb54c84118" -> "1969ac31-8559-4a40-9972-49b5b7512545"
+	"1969ac31-8559-4a40-9972-49b5b7512545" -> "1b0391c1-7b4d-4381-b2f8-438e8cbfd4d2"
+	"14ef0b0b-d931-42b0-b242-16df4d09947a" -> "1969ac31-8559-4a40-9972-49b5b7512545"
+	"15ea933b-8adf-43fb-b1aa-119f94e58a53" [label=""]
+	"1b0391c1-7b4d-4381-b2f8-438e8cbfd4d2" -> "15ea933b-8adf-43fb-b1aa-119f94e58a53"
+	"9bb38a33-1704-409e-8a98-ee87266c4edf" [label=""]
+	"15ea933b-8adf-43fb-b1aa-119f94e58a53" -> "9bb38a33-1704-409e-8a98-ee87266c4edf"
 }

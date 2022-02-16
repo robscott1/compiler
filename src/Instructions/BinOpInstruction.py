@@ -11,6 +11,8 @@ from Operator import Operator
 
 class BinOpInstruction(Instruction):
 
+    ICMP_OPS = {"ne", "eq", "le", "lt", "ge", "gt"}
+
     def __init__(self, op, left, right, result, type):
         super(BinOpInstruction, self).__init__(op)
         self.left = left
@@ -37,9 +39,21 @@ class BinOpInstruction(Instruction):
         elif op == Operator.DIVIDE:
             return "sdiv", "i32"
         elif op == Operator.OR:
-            return "or", "bool"
+            return "or", "i1"
         elif op == Operator.AND:
-            return "and", "bool"
+            return "and", "i1"
+        elif op == Operator.EQ:
+            return "icmp eq", "i1"
+        elif op == Operator.GE:
+            return "icmp ge", "i1"
+        elif op == Operator.GT:
+            return "icmp gt", "i1"
+        elif op == Operator.LE:
+            return "icmp le", "i1"
+        elif op == Operator.LT:
+            return "icmp lt", "i1"
+        elif op == Operator.NE:
+            return "icmp ne", "i1"
         else:
             return "mul", "i32"
 
