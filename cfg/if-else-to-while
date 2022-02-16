@@ -1,29 +1,29 @@
 digraph {
-	37 [label="%0 = alloca None
-%1 = alloca None
-%2 = alloca None"]
-	75 [label="%2 = load i1, i1* true
-br i1 %2 label 9d label f7"]
-	37 -> 75
-	"9d" [label="%0 = load i32, i32* 4"]
-	75 -> "9d"
-	c7 [label="br i1 %2 label 2c label ef"]
-	"9d" -> c7
-	"2c" [label="%0 = load i32, i32* 1
+	a6 [label="%0 = alloca i32
+%1 = alloca i32
+%2 = alloca i1"]
+	ff [label="%2 = load i1, i1* true
+br i1 %2 label 6f label 83"]
+	a6 -> ff
+	"6f" [label="%0 = load i32, i32* 4"]
+	ff -> "6f"
+	"8d" [label="br i1 %2 label 25 label 84"]
+	"6f" -> "8d"
+	25 [label="%0 = load i32, i32* 1
 %3 = icmp lt i1 %0, 5
 %2 = load i1, i1* %3
 %4 = add i32 %0, 1
 %0 = load i32, i32* %4"]
-	c7 -> "2c"
-	78 [label="br label c7"]
-	"2c" -> 78
-	78 -> c7
-	ef [label="ret i32 2"]
-	c7 -> ef
-	"8a" [label=""]
-	ef -> "8a"
-	f7 [label="%5 = add i32 3, 2
+	"8d" -> 25
+	71 [label="br label 8d"]
+	25 -> 71
+	71 -> "8d"
+	84 [label="ret i32 2"]
+	"8d" -> 84
+	"3f" [label=""]
+	84 -> "3f"
+	83 [label="%5 = add i32 3, 2
 %2 = load i32, i32* %5"]
-	75 -> f7
-	f7 -> c7
+	ff -> 83
+	83 -> "8d"
 }

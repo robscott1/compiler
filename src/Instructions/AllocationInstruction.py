@@ -26,7 +26,7 @@ class AllocationInstruction(Instruction):
     @classmethod
     def generate(cls, instr_mngr: InstructionsManager, code: Declaration):
         result = instr_mngr.next_tmp()
-        type = cls.type_switch(code.type)
+        type = cls.type_switch(code.type, instr_mngr.type_map)
         instr = AllocationInstruction("alloca", type, result)
         instr_mngr.store(code.id, result)
         instr_mngr.add_instruction(instr)
@@ -39,9 +39,9 @@ class AllocationInstruction(Instruction):
         return f"{self.result}"
 
     @classmethod
-    def type_switch(cls, t):
-        if t == "int":
+    def type_switch(cls, t, type_map):
+        if isinstance(t.of_type(type_map), IntType):
             return "i32"
-        elif t == "bool":
-            return "bool"
+        elif isinstance(t.of_type(type_map), BoolType):
+            return "i1"
 

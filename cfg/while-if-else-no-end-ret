@@ -1,20 +1,20 @@
 digraph {
-	60 [label=""]
-	b3 [label="br i1 true label 96 label ff"]
-	60 -> b3
-	96 [label="br i1 true label e9 label 51"]
-	b3 -> 96
-	e9 [label="%0 = alloca None"]
-	96 -> e9
-	"0f" [label="br label b3"]
-	e9 -> "0f"
-	"0f" -> b3
-	51 [label="ret i32 1"]
-	96 -> 51
-	51 -> "0f"
-	f6 [label=""]
-	51 -> f6
-	ff [label="ret i32 1"]
-	b3 -> ff
-	ff -> f6
+	10 [label=""]
+	c2 [label="br i1 true label 49 label 16"]
+	10 -> c2
+	49 [label="br i1 true label 88 label 80"]
+	c2 -> 49
+	88 [label="%0 = alloca i32"]
+	49 -> 88
+	ea [label="br label c2"]
+	88 -> ea
+	ea -> c2
+	80 [label="ret i32 1"]
+	49 -> 80
+	80 -> ea
+	"9f" [label=""]
+	80 -> "9f"
+	16 [label="ret i32 1"]
+	c2 -> 16
+	16 -> "9f"
 }

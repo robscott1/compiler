@@ -1,18 +1,18 @@
 digraph {
-	c1 [label=""]
-	c4 [label="%0 = icmp gt i1 None, 0
-br i1 %0 label 87 label 53"]
-	c1 -> c4
-	87 [label="ret i32 2"]
-	c4 -> 87
-	"3c" [label=""]
-	87 -> "3c"
-	53 [label="%1 = icmp lt i1 None, 0
-br i1 %1 label 96 label 13"]
-	c4 -> 53
-	96 [label="%2 = alloca None"]
-	53 -> 96
-	13 [label="ret i32 0"]
-	53 -> 13
-	13 -> "3c"
+	ea [label=""]
+	"1d" [label="%0 = icmp gt i1 None, 0
+br i1 %0 label 5c label 10"]
+	ea -> "1d"
+	"5c" [label="ret i32 2"]
+	"1d" -> "5c"
+	09 [label=""]
+	"5c" -> 09
+	10 [label="%1 = icmp lt i1 None, 0
+br i1 %1 label 0b label a1"]
+	"1d" -> 10
+	"0b" [label="%2 = alloca i32"]
+	10 -> "0b"
+	a1 [label="ret i32 0"]
+	10 -> a1
+	a1 -> 09
 }
