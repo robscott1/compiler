@@ -1,15 +1,14 @@
 digraph {
-	"45c5725e-46c6-4499-8ce6-e807bc929fc1" [label="%0 = alloca None"]
-	"8a5ab258-bb6e-4ba1-b41d-6eb3557f3d67" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f46fc1c40a0>"]
-	"45c5725e-46c6-4499-8ce6-e807bc929fc1" -> "8a5ab258-bb6e-4ba1-b41d-6eb3557f3d67"
-	"7a8adb2e-639a-4903-ac18-616f2cc29884" [label="%1 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f46fc1c4220>
-br i1 %1 label <ControlFlowNode.ControlFlowNode object at 0x7f46fc1c4640> label <ControlFlowNode.ControlFlowNode object at 0x7f46fc1c4670>"]
-	"8a5ab258-bb6e-4ba1-b41d-6eb3557f3d67" -> "7a8adb2e-639a-4903-ac18-616f2cc29884"
-	"f283fcd6-3362-459e-9a13-4cd8eb6ccbb0" [label="ret i32 1"]
-	"7a8adb2e-639a-4903-ac18-616f2cc29884" -> "f283fcd6-3362-459e-9a13-4cd8eb6ccbb0"
-	"48109397-6b68-49f6-9da5-898914ea4c81" [label=""]
-	"f283fcd6-3362-459e-9a13-4cd8eb6ccbb0" -> "48109397-6b68-49f6-9da5-898914ea4c81"
-	"43c9b340-f40a-43bf-8feb-1717bf2e71c6" [label="ret i32 1"]
-	"7a8adb2e-639a-4903-ac18-616f2cc29884" -> "43c9b340-f40a-43bf-8feb-1717bf2e71c6"
-	"43c9b340-f40a-43bf-8feb-1717bf2e71c6" -> "48109397-6b68-49f6-9da5-898914ea4c81"
+	"abb034d6-1cdd-46e4-9010-e66d02b15fa4" [label="%0 = alloca None"]
+	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f04dc631f40>
+%1 = icmp gt i1 None, <Expressions.IntExpression.IntExpression object at 0x7f04dc639160>
+br i1 %1 label <ControlFlowNode.ControlFlowNode object at 0x7f04dc6394f0> label <ControlFlowNode.ControlFlowNode object at 0x7f04dc639580>"]
+	"abb034d6-1cdd-46e4-9010-e66d02b15fa4" -> "3500e54f-5d15-49d7-91a2-c9eee9b9144c"
+	"c4c41868-f321-43e7-b2dc-73e6823dec15" [label="ret i32 1"]
+	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" -> "c4c41868-f321-43e7-b2dc-73e6823dec15"
+	"2d1ab72e-e0ef-4792-9c65-cc7baa24450e" [label=""]
+	"c4c41868-f321-43e7-b2dc-73e6823dec15" -> "2d1ab72e-e0ef-4792-9c65-cc7baa24450e"
+	"f1063297-8ae9-44f6-acf2-f02fef9cd394" [label="ret i32 1"]
+	"3500e54f-5d15-49d7-91a2-c9eee9b9144c" -> "f1063297-8ae9-44f6-acf2-f02fef9cd394"
+	"f1063297-8ae9-44f6-acf2-f02fef9cd394" -> "2d1ab72e-e0ef-4792-9c65-cc7baa24450e"
 }

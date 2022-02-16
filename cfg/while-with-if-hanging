@@ -1,21 +1,20 @@
 digraph {
-	"97b37703-5045-482b-b683-10c0e56dc736" [label="%0 = alloca None"]
-	"af7d2489-2a25-4fc0-b256-96693181b67b" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f46fc420af0>"]
-	"97b37703-5045-482b-b683-10c0e56dc736" -> "af7d2489-2a25-4fc0-b256-96693181b67b"
-	"d05f0be5-85c0-407a-b8ca-fe5d60f02374" [label="%1 = alloca None"]
-	"af7d2489-2a25-4fc0-b256-96693181b67b" -> "d05f0be5-85c0-407a-b8ca-fe5d60f02374"
-	"8f911f80-100b-44e5-ae47-db8dfc76b865" [label="%2 = alloca None"]
-	"d05f0be5-85c0-407a-b8ca-fe5d60f02374" -> "8f911f80-100b-44e5-ae47-db8dfc76b865"
-	"188254f5-1a9b-414a-93ae-2c8b17c9389d" [label="br i1 true label <ControlFlowNode.ControlFlowNode object at 0x7f46fc4200a0> label <ControlFlowNode.ControlFlowNode object at 0x7f46fc1bc0a0>"]
-	"8f911f80-100b-44e5-ae47-db8dfc76b865" -> "188254f5-1a9b-414a-93ae-2c8b17c9389d"
-	"8394b3b3-0c13-472f-80f6-9f3177326941" [label="%3 = alloca None"]
-	"188254f5-1a9b-414a-93ae-2c8b17c9389d" -> "8394b3b3-0c13-472f-80f6-9f3177326941"
-	"c1ecc280-58d5-460f-86e5-bae60eff76e2" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f46fc420c10>"]
-	"8394b3b3-0c13-472f-80f6-9f3177326941" -> "c1ecc280-58d5-460f-86e5-bae60eff76e2"
-	"c1ecc280-58d5-460f-86e5-bae60eff76e2" -> "d05f0be5-85c0-407a-b8ca-fe5d60f02374"
-	"188254f5-1a9b-414a-93ae-2c8b17c9389d" -> "c1ecc280-58d5-460f-86e5-bae60eff76e2"
-	"471ac6a3-21db-4e31-8fd4-0a3dbbe3bf4b" [label="ret i32 2"]
-	"d05f0be5-85c0-407a-b8ca-fe5d60f02374" -> "471ac6a3-21db-4e31-8fd4-0a3dbbe3bf4b"
-	"f4c3db6a-8313-4c3e-8df4-60e9de65464a" [label=""]
-	"471ac6a3-21db-4e31-8fd4-0a3dbbe3bf4b" -> "f4c3db6a-8313-4c3e-8df4-60e9de65464a"
+	"44432933-b015-4abe-b64d-44a2717d28c5" [label="%0 = alloca None"]
+	"ccd4084a-6cc7-419f-ba65-62c6a88d360c" [label="%0 = load i32, i32* <Expressions.IntExpression.IntExpression object at 0x7f04dc893670>"]
+	"44432933-b015-4abe-b64d-44a2717d28c5" -> "ccd4084a-6cc7-419f-ba65-62c6a88d360c"
+	"c968f4a7-7bee-4ffa-97f3-ed7de5df6a25" [label="%1 = alloca None"]
+	"ccd4084a-6cc7-419f-ba65-62c6a88d360c" -> "c968f4a7-7bee-4ffa-97f3-ed7de5df6a25"
+	"69f7a58f-60bc-4344-9845-403ad56b9a60" [label="%2 = alloca None
+br i1 true label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678c10> label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678fd0>"]
+	"c968f4a7-7bee-4ffa-97f3-ed7de5df6a25" -> "69f7a58f-60bc-4344-9845-403ad56b9a60"
+	"66cdcacf-4301-4322-aeea-8608d61f9f8e" [label="%3 = alloca None"]
+	"69f7a58f-60bc-4344-9845-403ad56b9a60" -> "66cdcacf-4301-4322-aeea-8608d61f9f8e"
+	"c15abadd-01d9-46a3-87f3-a9c18f90b564" [label="br label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678c40>"]
+	"66cdcacf-4301-4322-aeea-8608d61f9f8e" -> "c15abadd-01d9-46a3-87f3-a9c18f90b564"
+	"c15abadd-01d9-46a3-87f3-a9c18f90b564" -> "c968f4a7-7bee-4ffa-97f3-ed7de5df6a25"
+	"69f7a58f-60bc-4344-9845-403ad56b9a60" -> "c15abadd-01d9-46a3-87f3-a9c18f90b564"
+	"229fe5bb-866e-42dc-81c7-9d9727fae110" [label="ret i32 2"]
+	"c968f4a7-7bee-4ffa-97f3-ed7de5df6a25" -> "229fe5bb-866e-42dc-81c7-9d9727fae110"
+	"5b5fb860-8a80-4a91-8f9d-f46fd139bb96" [label=""]
+	"229fe5bb-866e-42dc-81c7-9d9727fae110" -> "5b5fb860-8a80-4a91-8f9d-f46fd139bb96"
 }

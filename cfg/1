@@ -1,0 +1,13 @@
+digraph {
+	"51eb0516-5301-493f-845b-1097d9b4057a" [label="%0 = alloca None
+%1 = alloca None
+%2 = alloca None
+%3 = alloca None
+%4 = alloca None
+%5 = alloca None"]
+	"c91696ac-9020-4810-9a8d-4f300eaa2fa2" [label="%6 = alloca None
+ret i32 0"]
+	"51eb0516-5301-493f-845b-1097d9b4057a" -> "c91696ac-9020-4810-9a8d-4f300eaa2fa2"
+	"f8ba5437-1b38-41df-ae21-13a21b792286" [label=""]
+	"c91696ac-9020-4810-9a8d-4f300eaa2fa2" -> "f8ba5437-1b38-41df-ae21-13a21b792286"
+}

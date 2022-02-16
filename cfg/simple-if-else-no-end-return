@@ -1,13 +1,12 @@
 digraph {
-	"fb255351-53cf-492f-9088-b4fc81db8665" [label=""]
-	"60778c3c-fcc1-4e0f-8aaa-c2bd24994ec3" [label="%0 = alloca None"]
-	"fb255351-53cf-492f-9088-b4fc81db8665" -> "60778c3c-fcc1-4e0f-8aaa-c2bd24994ec3"
-	"8f5c700c-c5e6-4d99-9eb6-6bf2c198ca29" [label="br i1 true label <ControlFlowNode.ControlFlowNode object at 0x7f46fc205fd0> label <ControlFlowNode.ControlFlowNode object at 0x7f46fc205f40>"]
-	"60778c3c-fcc1-4e0f-8aaa-c2bd24994ec3" -> "8f5c700c-c5e6-4d99-9eb6-6bf2c198ca29"
-	"b749667e-181a-4e98-ae8c-7e3b4057fa9f" [label="ret i32 2"]
-	"8f5c700c-c5e6-4d99-9eb6-6bf2c198ca29" -> "b749667e-181a-4e98-ae8c-7e3b4057fa9f"
-	"18d187e9-269a-4e82-bcd5-e50170efade6" [label=""]
-	"b749667e-181a-4e98-ae8c-7e3b4057fa9f" -> "18d187e9-269a-4e82-bcd5-e50170efade6"
-	"98f66164-7c91-465f-b66e-9b0731e0fc1c" [label="%1 = alloca None"]
-	"8f5c700c-c5e6-4d99-9eb6-6bf2c198ca29" -> "98f66164-7c91-465f-b66e-9b0731e0fc1c"
+	"aca7e2ac-9a09-4fab-a4f6-9b85e71590b6" [label=""]
+	"e4f8807e-bf7b-45d0-8329-06eb4676b005" [label="%0 = alloca None
+br i1 true label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678a30> label <ControlFlowNode.ControlFlowNode object at 0x7f04dc678fa0>"]
+	"aca7e2ac-9a09-4fab-a4f6-9b85e71590b6" -> "e4f8807e-bf7b-45d0-8329-06eb4676b005"
+	"e353820f-0519-47cd-9693-826dc9740f9d" [label="ret i32 2"]
+	"e4f8807e-bf7b-45d0-8329-06eb4676b005" -> "e353820f-0519-47cd-9693-826dc9740f9d"
+	"e8bbcedc-1ee9-4324-93a8-be2649e2a295" [label=""]
+	"e353820f-0519-47cd-9693-826dc9740f9d" -> "e8bbcedc-1ee9-4324-93a8-be2649e2a295"
+	"62414c47-20e9-43d1-82d7-9f426e34316f" [label="%1 = alloca None"]
+	"e4f8807e-bf7b-45d0-8329-06eb4676b005" -> "62414c47-20e9-43d1-82d7-9f426e34316f"
 }

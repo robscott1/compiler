@@ -66,14 +66,7 @@ class ControlFlowNode:
                 leaf_nodes.add(curr_node)
                 break
             elif isinstance(stmt, ConditionalStatement):
-                link_me.add(curr_node)
-                cond = ControlFlowNode()
-                for node in link_me:
-                    node.successors.append(cond)
-                    cond.predecessors.append(node)
-                link_me.clear()
-                cond.statements.append(stmt)
-                curr_node = cond
+                curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
                 if stmt.else_block is None:
