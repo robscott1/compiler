@@ -10,4 +10,7 @@ class StructType(Type):
         return isinstance(other, self.__class__) and other.id == self.id
 
     def of_type(self, type_map):
-        return StructType("1")
+        return self
+
+    def to_value(self):
+        return f"{self.id}"

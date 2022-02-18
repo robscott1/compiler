@@ -1,17 +1,17 @@
 digraph {
-	b3 [label="%0 = alloca i32"]
-	e5 [label="%0 = load i32, i32* 4"]
-	b3 -> e5
-	f5 [label="%1 = icmp lt i1 %0, 4
-br i1 %1 label 5a label 15"]
-	e5 -> f5
-	"5a" [label="%2 = alloca i32"]
-	f5 -> "5a"
-	96 [label="br label f5"]
-	"5a" -> 96
-	96 -> f5
-	15 [label="ret i32 2"]
-	f5 -> 15
-	69 [label=""]
-	15 -> 69
+	24 [label="%0 = alloca i32"]
+	"6c" [label="%0 = load i32, i32* 4"]
+	24 -> "6c"
+	e4 [label="%1 = icmp lt i1 %0, 4
+br i1 %1 label 11 label 25"]
+	"6c" -> e4
+	11 [label="%2 = alloca i32"]
+	e4 -> 11
+	44 [label="br label e4"]
+	11 -> 44
+	44 -> e4
+	25 [label="ret i32 2"]
+	e4 -> 25
+	01 [label=""]
+	25 -> 01
 }

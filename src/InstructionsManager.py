@@ -1,3 +1,4 @@
+
 class InstructionsManager:
 
     def __init__(self, type_map):
@@ -35,6 +36,9 @@ class InstructionsManager:
 
     def current_node(self):
         return self._current_node
+
+    def get_field_index(self, structure: str, field_id: str):
+        return self.type_map.get_struct_field_idx(structure, field_id)
 
 
 

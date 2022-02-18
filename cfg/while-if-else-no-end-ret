@@ -1,18 +1,18 @@
 digraph {
-	d5 [label=""]
-	01 [label="br i1 true label a2 label 31"]
-	d5 -> 01
-	a2 [label="br i1 true label 89 label 00"]
-	01 -> a2
-	89 [label="%0 = alloca i32"]
-	a2 -> 89
-	89 [label="br label 01"]
-	89 -> 89
-	89 -> 01
-	00 [label="ret i32 1"]
-	a2 -> 00
-	00 -> 89
-	31 [label=""]
-	00 -> 31
-	01 -> 31
+	eb [label=""]
+	40 [label="br i1 true label 74 label 82"]
+	eb -> 40
+	74 [label="br i1 true label a6 label a2"]
+	40 -> 74
+	a6 [label="%0 = alloca i32"]
+	74 -> a6
+	19 [label="br label 40"]
+	a6 -> 19
+	19 -> 40
+	a2 [label="ret i32 1"]
+	74 -> a2
+	a2 -> 19
+	82 [label=""]
+	a2 -> 82
+	40 -> 82
 }

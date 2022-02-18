@@ -21,3 +21,9 @@ class TypeDeclaration(Type):
         error_out(self.line,
                             f"Undeclared field within {self.id}",
                             code="005")
+
+    def get_field_index(self, field):
+        for i in range(len(self.fields)):
+            f = self.fields[i]
+            if f.id == field:
+                return i
