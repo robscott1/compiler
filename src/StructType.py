@@ -8,3 +8,6 @@ class StructType(Type):
 
     def equals(self, other):
         return isinstance(other, self.__class__) and other.id == self.id
+
+    def of_type(self, type_map):
+        return StructType("1")
