@@ -1,10 +1,10 @@
 digraph {
-	e7 [label="%0 = alloca %struct.A
+	27 [label="%0 = alloca %struct.A
 %1 = alloca i32"]
-	"8a" [label="%1 = load i32, i32* 4
+	"0e" [label="%1 = load i32, i32* 4
 %2 = getelementptr %struct.A, %struct.A* %0 i1 0, i32 0
 ret i32 %2"]
-	e7 -> "8a"
-	90 [label=""]
-	"8a" -> 90
+	27 -> "0e"
+	ab [label=""]
+	"0e" -> ab
 }

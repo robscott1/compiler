@@ -4,6 +4,7 @@ import pytest as pytest
 
 from ControlFlowNode import ControlFlowNode
 from InstructionsManager import InstructionsManager
+from Statements.BlockStatement import BlockStatement
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
@@ -39,3 +40,15 @@ def test_enter_node_instructions(input_file):
     main_fn.create_cfg()
     cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None, instr_mngr)
     cfg.render(f"../cfg/{input_file}")
+
+@pytest.mark.parametrize(
+    "body, expected", [
+        ([1, 2, BlockStatement(-1, [3, 4])], [1, 2, 3, 4]),
+        ([BlockStatement(-1, [1, 2]), 3, 4], [1, 2, 3, 4]),
+        ([1, BlockStatement(-1, [2, 3]), 4], [1, 2, 3, 4]),
+        ([1,2,3,4], [1,2,3,4])
+    ]
+)
+def test_expand_block_stmts(body, expected):
+    result = ControlFlowNode.expand_block_stmts(body)
+    assert result == expected

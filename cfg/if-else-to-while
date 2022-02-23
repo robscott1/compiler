@@ -1,33 +1,33 @@
 digraph {
-	15 [label="%0 = alloca i32
+	"4e" [label="%0 = alloca i32
 %1 = alloca i32
 %2 = alloca i1
 %3 = alloca %struct.A"]
-	c8 [label="%2 = load i1, i1* true
-br i1 %2 label 27 label aa"]
-	15 -> c8
-	27 [label="%0 = load i32, i32* 4"]
-	c8 -> 27
-	14 [label="br i1 %2 label 97 label b3"]
-	27 -> 14
-	97 [label="%0 = load i32, i32* 1
+	06 [label="%2 = load i1, i1* true
+br i1 %2 label 15 label 61"]
+	"4e" -> 06
+	15 [label="%0 = load i32, i32* 4"]
+	06 -> 15
+	87 [label="br i1 %2 label 52 label 31"]
+	15 -> 87
+	52 [label="%0 = load i32, i32* 1
 %4 = icmp lt i1 %0, 5
 %2 = load i1, i1* %4
 %5 = add i32 %0, 1
 %0 = load i32, i32* %5"]
-	14 -> 97
-	46 [label="br label 14"]
-	97 -> 46
-	46 -> 14
-	b3 [label="%6 = add i32 3, %0
+	87 -> 52
+	16 [label="br label 87"]
+	52 -> 16
+	16 -> 87
+	31 [label="%6 = add i32 3, %0
 %7 = mul i32 4, %6
 %8 = mul i32 %0, %7
 ret i32 %8"]
-	14 -> b3
-	"4e" [label=""]
-	b3 -> "4e"
-	aa [label="%9 = add i32 3, 2
+	87 -> 31
+	57 [label=""]
+	31 -> 57
+	61 [label="%9 = add i32 3, 2
 %2 = load i32, i32* %9"]
-	c8 -> aa
-	aa -> 14
+	06 -> 61
+	61 -> 87
 }

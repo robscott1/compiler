@@ -1,12 +1,12 @@
 digraph {
-	"9b" [label=""]
-	40 [label="%0 = alloca i32
-br i1 true label 51 label 03"]
-	"9b" -> 40
-	51 [label="ret i32 2"]
-	40 -> 51
-	"3c" [label=""]
-	51 -> "3c"
-	03 [label="%1 = alloca i32"]
-	40 -> 03
+	08 [label=""]
+	88 [label="%0 = alloca i32
+br i1 true label 67 label b1"]
+	08 -> 88
+	67 [label="ret i32 2"]
+	88 -> 67
+	84 [label=""]
+	67 -> 84
+	b1 [label="%1 = alloca i32"]
+	88 -> b1
 }

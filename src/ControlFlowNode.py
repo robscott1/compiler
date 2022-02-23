@@ -57,6 +57,8 @@ class ControlFlowNode:
         if isinstance(body, BlockStatement):
             body = body.statements
 
+        body = cls.expand_block_stmts(body)
+
         body = StatementIterator(body)
         while body.has_next():
             stmt = body.next()
@@ -117,6 +119,17 @@ class ControlFlowNode:
                 curr_node.statements.append(stmt)
 
         return root
+
+    @classmethod
+    def expand_block_stmts(cls, body: list):
+        for stmt in body:
+            if isinstance(stmt, BlockStatement):
+                counter = 1
+                for item in stmt.statements:
+                    body.insert(body.index(stmt) + counter, item)
+                    counter += 1
+                body.remove(stmt)
+        return body
 
     def visualize_cfg(self, cfg, prev, instr_mngr):
         if self.visited:

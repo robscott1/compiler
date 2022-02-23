@@ -14,6 +14,7 @@ from Instructions.NewInstruction import NewInstruction
 from Instructions.ReturnInstruction import ReturnInstruction
 from IntType import IntType
 from Statements.AssignmentStatement import AssignmentStatement
+from Statements.BlockStatement import BlockStatement
 from Statements.ConditionalStatement import ConditionalStatement
 from Statements.InvocationStatement import InvocationStatement
 from Statements.JumpStatement import JumpStatement
@@ -47,6 +48,9 @@ class InstructionFactory:
             return JumpInstruction.generate(code, instr_mngr)
         elif isinstance(code, NewExpression):
             return NewInstruction.generate(code, instr_mngr, cls.create_instruction)
+        elif isinstance(code, BlockStatement):
+            for stmt in code.statements:
+                cls.create_instruction(stmt, instr_mngr)
         else:
             return AllocationInstruction.generate(instr_mngr,
                                                   Declaration("32", IntType(), "k"))
