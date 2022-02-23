@@ -1,12 +1,12 @@
 digraph {
-	b7 [label="%0 = alloca %struct.A
+	08 [label="%0 = alloca %struct.A
 %1 = alloca i32"]
-	14 [label="%1 = load i32, i32* 4
+	23 [label="%1 = load i32, i32* 4
 %2 = call i8* @malloc(i32 9)
 %3 = bitcast i8* %2 to %struct.A**
 %4 = getelementptr %struct.A, %struct.A* %3 i1 0, i32 0
 ret i32 %4"]
-	b7 -> 14
-	03 [label=""]
-	14 -> 03
+	08 -> 23
+	bc [label=""]
+	23 -> bc
 }

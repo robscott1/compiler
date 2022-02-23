@@ -11,4 +11,4 @@ class NullExpression(Expression):
         return NullType()
 
     def to_value(self):
-        return "void"
+        return "null"

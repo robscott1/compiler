@@ -1,43 +1,39 @@
 digraph {
-	dd [label="%0 = alloca %struct.A
+	66 [label="%0 = alloca %struct.A
 %1 = alloca i32
 %2 = alloca i32
 %3 = alloca i32
 %4 = alloca i1
 %5 = alloca i32"]
-	47 [label="%1 = load i32, i32* 2
-%7 = alloca i32
-%7 = alloca i32
-%6 = call i32 g (1 %7)
-%8 = icmp lt i1 %1, %6
-br i1 %8 label 3e label 9e"]
-	dd -> 47
-	"3e" [label="%9 = alloca i32"]
-	47 -> "3e"
-	"9e" [label="%11 = alloca i32
-%11 = alloca i32
-%10 = call i32 g (1 %11)
-%12 = icmp gt i1 %1, %10
-br i1 %12 label 8f label d8"]
-	"3e" -> "9e"
-	"8f" [label="%13 = alloca i32"]
-	"9e" -> "8f"
-	"5b" [label="br i1 true label bf label 75"]
-	"8f" -> "5b"
-	bf [label="%14 = alloca i32"]
-	"5b" -> bf
-	f1 [label="br label 5b"]
-	bf -> f1
-	f1 -> "5b"
-	75 [label="%17 = call i8* @malloc(i32 1)
-%18 = call i8* @malloc(i32 1)
-%19 = alloca i32
+	d6 [label="%1 = load i32, i32* 2
+%6 = call i32 g (1 null)
+%7 = icmp lt i1 %1, %6
+br i1 %7 label 73 label c7"]
+	66 -> d6
+	73 [label="%8 = alloca i32"]
+	d6 -> 73
+	c7 [label="%9 = call i32 g (1 null)
+%10 = icmp gt i1 %1, %9
+br i1 %10 label 2f label b0"]
+	73 -> c7
+	"2f" [label="%11 = alloca i32"]
+	c7 -> "2f"
+	46 [label="br i1 true label 3a label 5a"]
+	"2f" -> 46
+	"3a" [label="%12 = alloca i32"]
+	46 -> "3a"
+	"5b" [label="br label 46"]
+	"3a" -> "5b"
+	"5b" -> 46
+	"5a" [label="%15 = call i8* @malloc(i32 1)
+%16 = call i8* @malloc(i32 1)
+%17 = alloca i32
 ret i32 0"]
-	"5b" -> 75
-	64 [label=""]
-	75 -> 64
-	d8 [label="%20 = alloca i32"]
-	"9e" -> d8
-	d8 -> "5b"
-	47 -> "9e"
+	46 -> "5a"
+	a1 [label=""]
+	"5a" -> a1
+	b0 [label="%18 = alloca i32"]
+	c7 -> b0
+	b0 -> 46
+	d6 -> c7
 }

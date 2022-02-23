@@ -3,6 +3,7 @@ from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
 from Expressions.InvocationExpression import InvocationExpression
+from Expressions.NullExpression import NullExpression
 from Expressions.TrueExpression import TrueExpression
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
@@ -36,7 +37,8 @@ class InvocationInstruction(Instruction):
             return instr_mngr.get(arg.id)
         elif not (isinstance(arg, IntExpression) \
                   or isinstance(arg, TrueExpression) \
-                  or isinstance(arg, FalseExpression)
+                  or isinstance(arg, FalseExpression) \
+                    or isinstance(arg, NullExpression)
         ):
             instr = factory_fn(arg, instr_mngr)
             instr_mngr.add_instruction(instr)
