@@ -1,6 +1,7 @@
 from BoolType import BoolType
 from Instructions.Instruction import Instruction
 from IntType import IntType
+from StructType import StructType
 
 
 class Declaration:
@@ -11,12 +12,11 @@ class Declaration:
         self.id = id
         self.initialized = False
 
-    def __repr__(self):
-        return f"{self.id} ({self.type}) on line {self.line}"
-
     def of_type(self, tc):
         if self.type == "int":
             return IntType()
         elif self.type == "bool":
             return BoolType()
+        else:
+            return StructType(self.id);
 

@@ -4,7 +4,9 @@ from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
 from Expressions.InvocationExpression import InvocationExpression
+from Expressions.NewExpression import NewExpression
 from Expressions.TrueExpression import TrueExpression
+from Instructions.BitcastInstruction import BitcastInstruction
 from InstructionsManager import InstructionsManager
 
 
@@ -41,6 +43,15 @@ class DotInstruction:
             instr = factory_fn(left, instr_mngr)
             instr_mngr.add_instruction(instr)
             return instr
+        elif isinstance(left, NewExpression):
+            instr = factory_fn(left, instr_mngr)
+            instr_mngr.add_instruction(instr)
+            bitcast_instr = BitcastInstruction("i8*",
+                                               instr.to_value(),
+                                               left.of_type(instr_mngr.type_map).to_value(1),
+                                               instr_mngr.next_tmp())
+            instr_mngr.add_instruction(bitcast_instr)
+            return bitcast_instr.to_value()
         if isinstance(left, IdentifierExpression):
             return instr_mngr.get(left.id)
         else:
@@ -52,8 +63,11 @@ class DotInstruction:
         return instr_mngr.get_field_index(struct_type, field)
 
     def to_value(self):
-        return self.result
+        return f"{self.result}"
 
     def to_text(self):
-        return f"{self.op} %struct.{self.struct_type}, %struct.{self.struct_type}*" \
-               f" {self.ptr_value} i1 0, i32 {self.index}"
+        ptr_value = self.ptr_value if isinstance(self.ptr_value, str) \
+                                        else self.ptr_value.to_value()
+        return f"{self.result} = " \
+               f"{self.op} %struct.{self.struct_type}, %struct.{self.struct_type}*" \
+               f" {ptr_value} i1 0, i32 {self.index}"

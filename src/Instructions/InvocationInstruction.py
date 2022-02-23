@@ -32,11 +32,11 @@ class InvocationInstruction(Instruction):
                   factory_fn):
         if isinstance(arg, InvocationExpression):
             return cls.generate(arg, instr_mngr, factory_fn)
-        if isinstance(arg, IdentifierExpression):
+        elif isinstance(arg, IdentifierExpression):
             return instr_mngr.get(arg.id)
         elif not (isinstance(arg, IntExpression) \
-                or isinstance(arg, TrueExpression) \
-                or isinstance(arg, FalseExpression)
+                  or isinstance(arg, TrueExpression) \
+                  or isinstance(arg, FalseExpression)
         ):
             instr = factory_fn(arg, instr_mngr)
             instr_mngr.add_instruction(instr)
@@ -45,7 +45,7 @@ class InvocationInstruction(Instruction):
             return arg
 
     def to_value(self):
-        return self.result
+        return f"{self.result}"
 
     def to_text(self):
         args = list(map(lambda x: x.to_value(), self.args))

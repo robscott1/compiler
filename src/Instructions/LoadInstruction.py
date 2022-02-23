@@ -2,7 +2,9 @@ from BoolType import BoolType
 from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
+from Expressions.NewExpression import NewExpression
 from Expressions.TrueExpression import TrueExpression
+from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
 from IntType import IntType
@@ -41,6 +43,15 @@ class StoreInstruction(Instruction):
     def eval_source(cls, source, instr_mngr: InstructionsManager, factory_fn):
         if isinstance(source, IdentifierExpression):
             return instr_mngr.get(source.id)
+        elif isinstance(source, NewExpression):
+            instr = factory_fn(source, instr_mngr)
+            instr_mngr.add_instruction(instr)
+            bitcast_instr = BitcastInstruction("i8*",
+                                               instr.to_value(),
+                                               source.of_type(instr_mngr.type_map).to_value(1),
+                                               instr_mngr.next_tmp())
+            instr_mngr.add_instruction(bitcast_instr)
+            return bitcast_instr.to_value()
         elif (isinstance(source, IntExpression) or \
                   isinstance(source, FalseExpression) or \
                   isinstance(source, TrueExpression)

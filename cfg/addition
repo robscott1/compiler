@@ -1,11 +1,11 @@
 digraph {
-	98 [label="%0 = alloca i32
+	44 [label="%0 = alloca i32
 %1 = alloca i32"]
-	e6 [label="%2 = add i32 4, 2
+	"3e" [label="%2 = add i32 4, 2
 %0 = load i32, i32* %2
 %1 = load i32, i32* %0
 ret i32 3"]
-	98 -> e6
-	95 [label=""]
-	e6 -> 95
+	44 -> "3e"
+	b6 [label=""]
+	"3e" -> b6
 }

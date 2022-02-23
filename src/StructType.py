@@ -12,5 +12,6 @@ class StructType(Type):
     def of_type(self, type_map):
         return self
 
-    def to_value(self):
-        return f"{self.id}"
+    def to_value(self, _to_ptr=None):
+        res = f"{self.id}" if _to_ptr is None else f"{self.id}*"
+        return res

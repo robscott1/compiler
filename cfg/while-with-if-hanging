@@ -1,20 +1,20 @@
 digraph {
-	"1e" [label="%0 = alloca i32"]
-	86 [label="%0 = load i32, i32* 3"]
-	"1e" -> 86
-	62 [label="br i1 true label ac label 94"]
-	86 -> 62
-	ac [label="%1 = alloca i32
-br i1 true label 0f label 3f"]
-	62 -> ac
-	"0f" [label="%2 = alloca i32"]
-	ac -> "0f"
-	"3f" [label="br label 62"]
-	"0f" -> "3f"
-	"3f" -> 62
-	ac -> "3f"
-	94 [label="ret i32 2"]
-	62 -> 94
-	19 [label=""]
-	94 -> 19
+	56 [label="%0 = alloca i32"]
+	de [label="%0 = load i32, i32* 3"]
+	56 -> de
+	65 [label="br i1 true label 46 label 50"]
+	de -> 65
+	46 [label="%1 = alloca i32
+br i1 true label d2 label 76"]
+	65 -> 46
+	d2 [label="%2 = alloca i32"]
+	46 -> d2
+	76 [label="br label 65"]
+	d2 -> 76
+	76 -> 65
+	46 -> 76
+	50 [label="ret i32 2"]
+	65 -> 50
+	60 [label=""]
+	50 -> 60
 }

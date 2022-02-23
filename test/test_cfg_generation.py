@@ -16,6 +16,8 @@ from conftest import program_to_json
              "if-else-to-while",
              "ret",
              "addition",
+             "dot-invocation",
+             "dot-new"
              ]
 )
 def test_cfg_generation(file):

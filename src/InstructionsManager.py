@@ -40,5 +40,8 @@ class InstructionsManager:
     def get_field_index(self, structure: str, field_id: str):
         return self.type_map.get_struct_field_idx(structure, field_id)
 
+    def get_mem_size(self, structure: str):
+        return self.type_map.get_mem_size(structure)
+
 
 

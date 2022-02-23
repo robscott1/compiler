@@ -1,0 +1,11 @@
+digraph {
+	"4f" [label="%0 = alloca %struct.A
+%1 = alloca i32"]
+	70 [label="%1 = load i32, i32* 4
+%2 = call A foo ()
+%3 = getelementptr %struct.A, %struct.A* %2 i1 0, i32 0
+ret i32 %3"]
+	"4f" -> 70
+	e3 [label=""]
+	70 -> e3
+}

@@ -27,5 +27,5 @@ class DeclarationFactory:
         - type: (str) representation of itself
     '''
     def generate(line: int, id: str, type: str):
-        object_type = type_switch(type)
+        object_type = type_switch(type, )
         return Declaration(line, object_type, id)

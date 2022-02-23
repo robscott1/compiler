@@ -98,4 +98,7 @@ class TypeChecker:
     def get_struct_field_idx(self, structure: str, field: str):
         return self.type_map.get(structure).get_field_index(field)
 
+    def get_mem_size(self, structure):
+        return self.type_map.get(structure).get_mem_size()
+
 
