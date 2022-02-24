@@ -1,3 +1,6 @@
+import filecmp
+import os
+
 import graphviz
 import pytest
 
@@ -8,7 +11,7 @@ from conftest import program_to_json
 
 @pytest.mark.parametrize(
     "file", ["1",
-            "dot",
+             "dot",
              "simple-if-else-no-end-return",
              "ret-error",
              "while-loop",
@@ -27,4 +30,5 @@ def test_cfg_generation(file):
     main_fn = tc.fn_map.get("main")
     main_fn.create_cfg()
     test_cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None, InstructionsManager(tc))
-    test_cfg.render(f"../cfg/{file}")
+    test_cfg.render(f"../cfg/gen/{file}")
+

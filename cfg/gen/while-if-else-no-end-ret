@@ -1,0 +1,18 @@
+digraph {
+	cb [label=""]
+	63 [label="br i1 true label 08 label 90"]
+	cb -> 63
+	08 [label="br i1 true label 08 label c4"]
+	63 -> 08
+	08 [label="%0 = alloca i32"]
+	08 -> 08
+	"7f" [label="br label 63"]
+	08 -> "7f"
+	"7f" -> 63
+	c4 [label="ret i32 1"]
+	08 -> c4
+	c4 -> "7f"
+	90 [label=""]
+	c4 -> 90
+	63 -> 90
+}

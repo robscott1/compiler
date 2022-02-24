@@ -1,0 +1,12 @@
+digraph {
+	b7 [label=""]
+	32 [label="%0 = alloca i32
+br i1 true label 00 label ed"]
+	b7 -> 32
+	00 [label="ret i32 2"]
+	32 -> 00
+	35 [label=""]
+	00 -> 35
+	ed [label="%1 = alloca i32"]
+	32 -> ed
+}

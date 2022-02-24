@@ -1,0 +1,20 @@
+digraph {
+	65 [label="%0 = alloca i32"]
+	d0 [label="%0 = load i32*, i32** 3"]
+	65 -> d0
+	48 [label="br i1 true label f4 label f0"]
+	d0 -> 48
+	f4 [label="%1 = alloca i32
+br i1 true label 13 label 1e"]
+	48 -> f4
+	13 [label="%2 = alloca i32"]
+	f4 -> 13
+	"1e" [label="br label 48"]
+	13 -> "1e"
+	"1e" -> 48
+	f4 -> "1e"
+	f0 [label="ret i32 2"]
+	48 -> f0
+	12 [label=""]
+	f0 -> 12
+}

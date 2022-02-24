@@ -1,0 +1,14 @@
+digraph {
+	a0 [label="%0 = alloca i32"]
+	ff [label="%0 = load i32*, i32** 1
+%1 = icmp gt i1 %0, 0
+br i1 %1 label ee label e5"]
+	a0 -> ff
+	ee [label="ret i32 1"]
+	ff -> ee
+	d6 [label=""]
+	ee -> d6
+	e5 [label="ret i32 1"]
+	ff -> e5
+	e5 -> d6
+}

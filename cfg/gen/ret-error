@@ -1,0 +1,19 @@
+digraph {
+	"1f" [label="%0 = alloca i32"]
+	fa [label="%0 = load i32*, i32** 3
+%1 = icmp gt i1 %0, 0
+br i1 %1 label db label 63"]
+	"1f" -> fa
+	db [label="ret i32 2"]
+	fa -> db
+	12 [label=""]
+	db -> 12
+	63 [label="%2 = icmp lt i1 %0, 0
+br i1 %2 label bd label a5"]
+	fa -> 63
+	bd [label="%3 = alloca i32"]
+	63 -> bd
+	a5 [label="ret i32 0"]
+	63 -> a5
+	a5 -> 12
+}
