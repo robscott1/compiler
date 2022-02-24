@@ -63,5 +63,5 @@ class StoreInstruction(Instruction):
             return instr.result
 
     def to_text(self):
-        return f"{self.result} = load {self.type}, " \
-               f"{self.type}* {self.location}"
+        return f"{self.result} = load {self.type}*, " \
+               f"{self.type}** {self.location}"

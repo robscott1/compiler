@@ -1,14 +1,14 @@
 digraph {
-	"6d" [label="%0 = alloca i32"]
-	d1 [label="%0 = load i32, i32* 1
+	f0 [label="%0 = alloca i32"]
+	93 [label="%0 = load i32*, i32** 1
 %1 = icmp gt i1 %0, 0
-br i1 %1 label 15 label 2f"]
-	"6d" -> d1
-	15 [label="ret i32 1"]
-	d1 -> 15
-	ae [label=""]
-	15 -> ae
-	"2f" [label="ret i32 1"]
-	d1 -> "2f"
-	"2f" -> ae
+br i1 %1 label 01 label 3e"]
+	f0 -> 93
+	01 [label="ret i32 1"]
+	93 -> 01
+	86 [label=""]
+	01 -> 86
+	"3e" [label="ret i32 1"]
+	93 -> "3e"
+	"3e" -> 86
 }
