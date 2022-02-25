@@ -1,8 +1,5 @@
-from CompilerError import CompilerError
 from ErrorOut import error_out
 from Expressions.Expression import Expression
-from StructType import StructType
-from Type import Type
 
 
 class IdentifierExpression(Expression):

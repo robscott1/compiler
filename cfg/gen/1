@@ -1,45 +1,43 @@
 digraph {
-	fb [label="%0 = alloca %struct.A
+	"8a" [label="%0 = alloca %struct.A*
 %1 = alloca i32
 %2 = alloca i32
 %3 = alloca i32
 %4 = alloca i1
 %5 = alloca i32"]
-	14 [label="%1 = load i32*, i32** 2
-%6 = call i32 g (1 null)
+	"8a" [label="%1 = load i32, i32* 2
 %6 = call i32 g (1 null)
 %7 = icmp lt i1 %1, %6
-br i1 %7 label a9 label e1"]
-	fb -> 14
-	a9 [label="%8 = alloca i32"]
-	14 -> a9
-	e1 [label="%9 = call i32 g (1 null)
-%9 = call i32 g (1 null)
+br i1 %7 label d7 label 53"]
+	"8a" -> "8a"
+	d7 [label="%8 = alloca i32"]
+	"8a" -> d7
+	53 [label="%9 = call i32 g (1 null)
 %10 = icmp gt i1 %1, %9
-br i1 %10 label 87 label 74"]
-	a9 -> e1
-	87 [label="%11 = alloca i32"]
-	e1 -> 87
-	af [label="br i1 true label 01 label d7"]
-	87 -> af
-	01 [label="%12 = alloca i32"]
-	af -> 01
-	31 [label="br label af"]
-	01 -> 31
-	31 -> af
-	d7 [label="%15 = call i8* @malloc(i32 1)
-%16 = bitcast i8* %15 to %struct.B**
+br i1 %10 label ad label 5a"]
+	d7 -> 53
+	ad [label="%11 = alloca i32"]
+	53 -> ad
+	32 [label="br i1 true label e5 label ed"]
+	ad -> 32
+	e5 [label="%12 = alloca i32"]
+	32 -> e5
+	89 [label="br label 32"]
+	e5 -> 89
+	89 -> 32
+	ed [label="%15 = call i8* @malloc(i32 1)
+%16 = bitcast i8* %15 to %struct.B*
 %14 = call i32 g (1 %16)
 %17 = call i8* @malloc(i32 1)
-%18 = bitcast i8* %17 to %struct.B**
-%13 = call A f (%14 %18)
+%18 = bitcast i8* %17 to %struct.B*
+%13 = call %struct.A* f (%14 %18)
 %19 = alloca i32
 ret i32 0"]
-	af -> d7
-	96 [label=""]
-	d7 -> 96
-	74 [label="%20 = alloca i32"]
-	e1 -> 74
-	74 -> af
-	14 -> e1
+	32 -> ed
+	19 [label=""]
+	ed -> 19
+	"5a" [label="%20 = alloca i32"]
+	53 -> "5a"
+	"5a" -> 32
+	"8a" -> 53
 }

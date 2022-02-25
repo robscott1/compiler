@@ -28,7 +28,7 @@ class NewInstruction(Instruction):
         result = instr_mngr.next_tmp()
 
         instr = NewInstruction(op, lib_fn, exp_type_return, args, result)
-
+        instr_mngr.add_instruction(instr)
 
         return instr
 

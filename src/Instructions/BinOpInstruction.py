@@ -25,10 +25,13 @@ class BinOpInstruction(Instruction):
                  instr_mngr: InstructionsManager,
                  factory_fn):
         op, type = cls.type_switch(code.operator)
+        type = code.of_type(instr_mngr.type_map)
         left = cls.eval_operand(code.lft, instr_mngr, factory_fn)
         right = cls.eval_operand(code.rht, instr_mngr, factory_fn)
         result = instr_mngr.next_tmp()
-        return BinOpInstruction(op, left, right, result, type)
+        instr = BinOpInstruction(op, left, right, result, type)
+        instr_mngr.add_instruction(instr)
+        return instr
 
     @classmethod
     def type_switch(cls, op):
@@ -68,7 +71,6 @@ class BinOpInstruction(Instruction):
                 or isinstance(operand, FalseExpression)
         ):
             instr = factory_fn(operand, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         else:
             return operand.to_value()
@@ -79,5 +81,5 @@ class BinOpInstruction(Instruction):
     def to_text(self):
         left = self.left if isinstance(self.left, str) else self.left.to_value()
         right = self.right if isinstance(self.right, str) else self.right.to_value()
-        return f"{self.result} = {self.op} {self.type} {left}, " \
+        return f"{self.result} = {self.op} {self.type.to_text()} {left}, " \
                f"{right}"

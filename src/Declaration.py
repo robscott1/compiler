@@ -1,7 +1,6 @@
-from BoolType import BoolType
-from Instructions.Instruction import Instruction
-from IntType import IntType
-from StructType import StructType
+from Types.BoolType import BoolType
+from Types.IntType import IntType
+from Types.StructType import StructType
 
 
 class Declaration:

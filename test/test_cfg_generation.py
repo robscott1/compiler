@@ -1,6 +1,3 @@
-import filecmp
-import os
-
 import graphviz
 import pytest
 

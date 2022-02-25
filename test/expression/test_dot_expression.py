@@ -2,7 +2,7 @@ import pytest
 
 from Expressions.DotExpression import DotExpression
 from Factories.ExpressionFactory import ExpressionFactory
-from IntType import IntType
+from Types.IntType import IntType
 
 
 @pytest.mark.parametrize(

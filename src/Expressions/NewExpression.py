@@ -1,6 +1,5 @@
-from CompilerError import CompilerError
 from Expressions.Expression import Expression
-from StructType import StructType
+from Types.StructType import StructType
 
 
 class NewExpression(Expression):

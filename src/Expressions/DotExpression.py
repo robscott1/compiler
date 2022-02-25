@@ -1,7 +1,6 @@
-from CompilerError import CompilerError
 from ErrorOut import error_out
 from Expressions.Expression import Expression
-from StructType import StructType
+from Types.StructType import StructType
 from TypeDeclaration import TypeDeclaration
 
 

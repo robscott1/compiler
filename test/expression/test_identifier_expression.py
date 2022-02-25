@@ -2,7 +2,7 @@ import pytest
 
 from Declaration import Declaration
 from Factories.ExpressionFactory import ExpressionFactory
-from IntType import IntType
+from Types.IntType import IntType
 
 
 @pytest.mark.parametrize(

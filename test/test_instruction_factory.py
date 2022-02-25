@@ -1,10 +1,10 @@
 import pytest
 
-from BoolType import BoolType
+from Types.BoolType import BoolType
 from Declaration import Declaration
 from Factories.InstructionFactory import InstructionFactory
 from InstructionsManager import InstructionsManager
-from IntType import IntType
+from Types.IntType import IntType
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 

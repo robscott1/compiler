@@ -1,5 +1,4 @@
-from BoolType import BoolType
-from CompilerError import CompilerError
+from Types.BoolType import BoolType
 from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory

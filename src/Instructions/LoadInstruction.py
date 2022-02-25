@@ -1,4 +1,4 @@
-from BoolType import BoolType
+from Types.BoolType import BoolType
 from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.IntExpression import IntExpression
@@ -7,11 +7,10 @@ from Expressions.TrueExpression import TrueExpression
 from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
-from IntType import IntType
 from Statements.AssignmentStatement import AssignmentStatement
 
 
-class StoreInstruction(Instruction):
+class LoadInstruction(Instruction):
 
     def __init__(self, result, type, type_cast, location):
         self.result = result
@@ -24,10 +23,10 @@ class StoreInstruction(Instruction):
                  instr_mngr: InstructionsManager,
                  factory_fn):
         result = instr_mngr.get(code.target.id)
-        type = cls.type_switch(code.source, instr_mngr.type_map)
+        type = code.source.of_type(instr_mngr.type_map)
         location = cls.eval_source(code.source, instr_mngr, factory_fn)
 
-        instruction = StoreInstruction(result, type, type, location)
+        instruction = LoadInstruction(result, type, type, location)
         instr_mngr.add_instruction(instruction)
         return instruction
 
@@ -45,10 +44,9 @@ class StoreInstruction(Instruction):
             return instr_mngr.get(source.id)
         elif isinstance(source, NewExpression):
             instr = factory_fn(source, instr_mngr)
-            instr_mngr.add_instruction(instr)
             bitcast_instr = BitcastInstruction("i8*",
                                                instr.to_value(),
-                                               source.of_type(instr_mngr.type_map).to_value(1),
+                                               source.of_type(instr_mngr.type_map),
                                                instr_mngr.next_tmp())
             instr_mngr.add_instruction(bitcast_instr)
             return bitcast_instr.to_value()
@@ -59,9 +57,8 @@ class StoreInstruction(Instruction):
             return source.to_value()
         else:
             instr = factory_fn(source, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr.result
 
     def to_text(self):
-        return f"{self.result} = load {self.type}*, " \
-               f"{self.type}** {self.location}"
+        return f"{self.result} = load {self.type.to_text()}, " \
+               f"{self.type.cast_up().to_text()} {self.location}"

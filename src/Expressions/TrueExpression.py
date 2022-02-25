@@ -1,4 +1,4 @@
-from BoolType import BoolType
+from Types.BoolType import BoolType
 from Expressions.Expression import Expression
 
 
