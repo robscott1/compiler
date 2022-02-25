@@ -37,10 +37,9 @@ class ReturnInstruction(Instruction):
             return instr_mngr.get(arg.id)
         elif isinstance(arg, NewExpression):
             instr = factory_fn(arg, instr_mngr)
-            instr_mngr.add_instruction(instr)
             bitcast_instr = BitcastInstruction("i8*",
                                                instr.to_value(),
-                                               arg.of_type(instr_mngr.type_map).to_value(1),
+                                               arg.of_type(instr_mngr.type_map),
                                                instr_mngr.next_tmp())
             instr_mngr.add_instruction(bitcast_instr)
             return bitcast_instr.to_value()
@@ -49,7 +48,6 @@ class ReturnInstruction(Instruction):
                 or isinstance(arg, FalseExpression)
         ):
             instr = factory_fn(arg, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         else:
             return arg
@@ -58,4 +56,4 @@ class ReturnInstruction(Instruction):
         if self.value == "void":
             return "ret void"
         else:
-            return f"ret {self.type.to_value()} {self.value}"
+            return f"ret {self.type.to_text()} {self.value}"

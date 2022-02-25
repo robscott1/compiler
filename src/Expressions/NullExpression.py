@@ -1,5 +1,5 @@
 from Expressions.Expression import Expression
-from NullType import NullType
+from Types.NullType import NullType
 
 
 class NullExpression(Expression):

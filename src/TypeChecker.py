@@ -1,6 +1,5 @@
-from BoolType import BoolType
-from ControlFlowNode import ControlFlowNode
-from IntType import IntType
+from Types.BoolType import BoolType
+from Types.IntType import IntType
 from Factories.TypeFactory import TypeFactory as tf
 from Factories.DeclarationFactory import DeclarationFactory as df
 from Factories.FunctionFactory import FunctionFactory as ff

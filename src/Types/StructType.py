@@ -5,13 +5,19 @@ class StructType(Type):
 
     def __init__(self, id):
         self.id = id
+        self._ptr_status = "*"
 
     def equals(self, other):
         return isinstance(other, self.__class__) and other.id == self.id
 
-    def of_type(self, type_map):
+    def of_type(self, tc):
         return self
 
-    def to_value(self, _to_ptr=None):
-        res = f"{self.id}" if _to_ptr is None else f"{self.id}*"
+    def to_text(self, _to_ptr=None):
+        res = f"%struct.{self.id}{self._ptr_status}"
         return res
+
+    def cast_up(self):
+        self._ptr_status = "**"
+        return self
+

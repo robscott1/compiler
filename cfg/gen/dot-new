@@ -1,0 +1,12 @@
+digraph {
+	"7e" [label="%0 = alloca %struct.A*
+%1 = alloca i32"]
+	e0 [label="%1 = load i32, i32* 4
+%2 = call i8* @malloc(i32 9)
+%3 = bitcast i8* %2 to %struct.A*
+%4 = getelementptr %struct.A*, %struct.A** %3 i1 0, i32 0
+ret i32 %4"]
+	"7e" -> e0
+	45 [label=""]
+	e0 -> 45
+}

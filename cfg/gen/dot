@@ -1,0 +1,16 @@
+digraph {
+	b4 [label="%0 = alloca %struct.A*
+%1 = alloca i32"]
+	b5 [label="%2 = call i32 f ()
+%3 = icmp lt i1 0, %2
+br i1 %3 label bb label ed"]
+	b4 -> b5
+	bb [label="ret i32 4"]
+	b5 -> bb
+	c4 [label=""]
+	bb -> c4
+	ed [label="%4 = getelementptr %struct.A*, %struct.A** %0 i1 0, i32 0
+ret i32 %4"]
+	b5 -> ed
+	ed -> c4
+}

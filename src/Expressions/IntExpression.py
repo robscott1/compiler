@@ -1,5 +1,5 @@
 from Expressions.Expression import Expression
-from IntType import IntType
+from Types.IntType import IntType
 
 
 class IntExpression(Expression):

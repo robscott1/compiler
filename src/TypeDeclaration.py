@@ -1,8 +1,6 @@
-from BoolType import BoolType
-from CompilerError import CompilerError
+from Types.BoolType import BoolType
 from ErrorOut import error_out
-from InstructionsManager import InstructionsManager
-from IntType import IntType
+from Types.IntType import IntType
 from Type import Type
 
 

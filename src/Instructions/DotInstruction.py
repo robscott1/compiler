@@ -25,12 +25,13 @@ class DotInstruction:
                  factory_fn
     ):
         op = "getelementptr"
-        struct_type = code.left.of_type(instr_mngr.type_map).to_value()
+        struct_type = code.left.of_type(instr_mngr.type_map)
         ptr_value = cls.eval_left(code.left, instr_mngr, factory_fn)
         index = cls.get_field_idx(struct_type, code.id, instr_mngr)
         result = instr_mngr.next_tmp()
 
         instr = DotInstruction(op, struct_type, ptr_value, index, result)
+        instr_mngr.add_instruction(instr)
 
         return instr
 
@@ -41,14 +42,12 @@ class DotInstruction:
     ):
         if isinstance(left, InvocationExpression):
             instr = factory_fn(left, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         elif isinstance(left, NewExpression):
             instr = factory_fn(left, instr_mngr)
-            instr_mngr.add_instruction(instr)
             bitcast_instr = BitcastInstruction("i8*",
                                                instr.to_value(),
-                                               left.of_type(instr_mngr.type_map).to_value(1),
+                                               left.of_type(instr_mngr.type_map),
                                                instr_mngr.next_tmp())
             instr_mngr.add_instruction(bitcast_instr)
             return bitcast_instr.to_value()
@@ -60,7 +59,7 @@ class DotInstruction:
     @classmethod
     def get_field_idx(cls, struct_type: str, field: str,
                       instr_mngr: InstructionsManager):
-        return instr_mngr.get_field_index(struct_type, field)
+        return instr_mngr.get_field_index(struct_type.id, field)
 
     def to_value(self):
         return f"{self.result}"
@@ -69,5 +68,5 @@ class DotInstruction:
         ptr_value = self.ptr_value if isinstance(self.ptr_value, str) \
                                         else self.ptr_value.to_value()
         return f"{self.result} = " \
-               f"{self.op} %struct.{self.struct_type}, %struct.{self.struct_type}*" \
+               f"{self.op} {self.struct_type.to_text()}, {self.struct_type.cast_up().to_text()}" \
                f" {ptr_value} i1 0, i32 {self.index}"

@@ -1,0 +1,12 @@
+digraph {
+	"9f" [label=""]
+	"3e" [label="%0 = alloca i32
+br i1 true label 76 label 5f"]
+	"9f" -> "3e"
+	76 [label="ret i32 2"]
+	"3e" -> 76
+	e3 [label=""]
+	76 -> e3
+	"5f" [label="%1 = alloca i32"]
+	"3e" -> "5f"
+}

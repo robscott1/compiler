@@ -1,0 +1,18 @@
+digraph {
+	f4 [label=""]
+	10 [label="br i1 true label 56 label 3c"]
+	f4 -> 10
+	56 [label="br i1 true label f1 label 50"]
+	10 -> 56
+	f1 [label="%0 = alloca i32"]
+	56 -> f1
+	"3d" [label="br label 10"]
+	f1 -> "3d"
+	"3d" -> 10
+	50 [label="ret i32 1"]
+	56 -> 50
+	50 -> "3d"
+	"3c" [label=""]
+	50 -> "3c"
+	10 -> "3c"
+}

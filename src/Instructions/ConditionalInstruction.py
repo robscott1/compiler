@@ -37,7 +37,6 @@ class ConditionalInstruction(Instruction):
                    ):
         if isinstance(guard, InvocationExpression):
             instr = factory_fn(guard, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         if isinstance(guard, IdentifierExpression):
             return instr_mngr.get(guard.id)
@@ -46,7 +45,6 @@ class ConditionalInstruction(Instruction):
                   or isinstance(guard, FalseExpression)
         ):
             instr = factory_fn(guard, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         else:
             return guard.to_value()

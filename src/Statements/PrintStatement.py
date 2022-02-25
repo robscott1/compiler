@@ -1,8 +1,7 @@
-from CompilerError import CompilerError
 from ErrorOut import error_out
 from Expressions.Expression import Expression
 from Factories.ExpressionFactory import ExpressionFactory
-from IntType import IntType
+from Types.IntType import IntType
 from Statements.Statement import Statement
 
 

@@ -41,10 +41,9 @@ class InvocationInstruction(Instruction):
             return instr_mngr.get(arg.id)
         elif isinstance(arg, NewExpression):
             instr = factory_fn(arg, instr_mngr)
-            instr_mngr.add_instruction(instr)
             bitcast_instr = BitcastInstruction("i8*",
                                                instr.to_value(),
-                                               arg.of_type(instr_mngr.type_map).to_value(1),
+                                               arg.of_type(instr_mngr.type_map),
                                                instr_mngr.next_tmp())
             instr_mngr.add_instruction(bitcast_instr)
             return bitcast_instr
@@ -54,7 +53,6 @@ class InvocationInstruction(Instruction):
                     or isinstance(arg, NullExpression)
         ):
             instr = factory_fn(arg, instr_mngr)
-            instr_mngr.add_instruction(instr)
             return instr
         else:
             return arg
@@ -64,4 +62,4 @@ class InvocationInstruction(Instruction):
 
     def to_text(self):
         args = list(map(lambda x: x.to_value(), self.args))
-        return f"{self.result} = call {self.type.to_value()} {self.fn_id} ({' '.join(args)})"
+        return f"{self.result} = call {self.type.to_text()} {self.fn_id} ({' '.join(args)})"

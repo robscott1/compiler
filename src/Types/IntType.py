@@ -4,6 +4,7 @@ class IntType(Type):
 
     def __init__(self):
         super()
+        self._ptr_status = ""
 
     def of_type(self, tc):
         return IntType()
@@ -11,5 +12,11 @@ class IntType(Type):
     def equals(self, other):
         return isinstance(other, self.__class__)
 
-    def to_value(self):
-        return "i32"
+    def to_text(self):
+        return f"i32{self._ptr_status}"
+
+    def cast_up(self):
+        self._ptr_status = "*"
+        return self
+
+

@@ -1,0 +1,11 @@
+digraph {
+	25 [label="%0 = alloca i32
+%1 = alloca i32"]
+	90 [label="%2 = add i32 4, 2
+%0 = load i32, i32* %2
+%1 = load i32, i32* %0
+ret i32 3"]
+	25 -> 90
+	52 [label=""]
+	90 -> 52
+}

@@ -1,0 +1,14 @@
+digraph {
+	45 [label="%0 = alloca i32"]
+	24 [label="%0 = load i32, i32* 1
+%1 = icmp gt i1 %0, 0
+br i1 %1 label 76 label 80"]
+	45 -> 24
+	76 [label="ret i32 1"]
+	24 -> 76
+	38 [label=""]
+	76 -> 38
+	80 [label="ret i32 1"]
+	24 -> 80
+	80 -> 38
+}

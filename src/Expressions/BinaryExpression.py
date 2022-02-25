@@ -1,10 +1,7 @@
-from enum import Enum
-
-from BoolType import BoolType
-from CompilerError import CompilerError
+from Types.BoolType import BoolType
 from ErrorOut import error_out
 from Expressions.Expression import Expression
-from IntType import IntType
+from Types.IntType import IntType
 from Operator import Operator
 
 

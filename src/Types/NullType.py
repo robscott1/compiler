@@ -8,3 +8,9 @@ class NullType(Type):
 
     def equals(self, other):
         return isinstance(other, self.__class__)
+
+    def to_value(self):
+        return "void"
+
+    def of_type(self, tc=None):
+        return "void"

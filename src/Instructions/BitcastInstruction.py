@@ -8,7 +8,7 @@ class BitcastInstruction:
 
     def to_text(self):
         return f"{self.result} = bitcast {self.og_type} " \
-               f"{self.value} to %struct.{self.new_type}*"
+               f"{self.value} to {self.new_type.to_text()}"
 
     def to_value(self):
         return f"{self.result}"
