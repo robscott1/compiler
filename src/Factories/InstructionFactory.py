@@ -11,7 +11,9 @@ from Instructions.InvocationInstruction import InvocationInstruction
 from Instructions.JumpInstruction import JumpInstruction
 from Instructions.LoadInstruction import LoadInstruction
 from Instructions.NewInstruction import NewInstruction
+from Instructions.PrintInstruction import PrintInstruction
 from Instructions.ReturnInstruction import ReturnInstruction
+from Statements.PrintStatement import PrintStatement
 from Types.IntType import IntType
 from Statements.AssignmentStatement import AssignmentStatement
 from Statements.BlockStatement import BlockStatement
@@ -51,6 +53,8 @@ class InstructionFactory:
         elif isinstance(code, BlockStatement):
             for stmt in code.statements:
                 cls.create_instruction(stmt, instr_mngr)
+        elif isinstance(code, PrintStatement):
+            return PrintInstruction.generate(code, instr_mngr, cls.create_instruction)
         else:
             return AllocationInstruction.generate(instr_mngr,
                                                   Declaration("32", IntType(), "k"))

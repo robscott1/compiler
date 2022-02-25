@@ -1,33 +1,33 @@
 digraph {
-	"4a" [label="%0 = alloca i32
+	"0f" [label="%0 = alloca i32
 %1 = alloca i32
 %2 = alloca i1
 %3 = alloca %struct.A*"]
-	"9d" [label="%2 = load i1, i1 true
-br i1 %2 label 7d label 41"]
-	"4a" -> "9d"
-	"7d" [label="%0 = load i32, i32* 4"]
-	"9d" -> "7d"
-	"3d" [label="br i1 %2 label 96 label d9"]
-	"7d" -> "3d"
-	96 [label="%0 = load i32, i32* 1
+	c0 [label="%2 = load i1, i1 true
+br i1 %2 label cc label e8"]
+	"0f" -> c0
+	cc [label="%0 = load i32, i32* 4"]
+	c0 -> cc
+	"7e" [label="br i1 %2 label 32 label 79"]
+	cc -> "7e"
+	32 [label="%0 = load i32, i32* 1
 %4 = icmp lt i1 %0, 5
 %2 = load i1, i1 %4
 %5 = add i32 %0, 1
 %0 = load i32, i32* %5"]
-	"3d" -> 96
-	87 [label="br label 3d"]
-	96 -> 87
-	87 -> "3d"
-	d9 [label="%6 = add i32 3, %0
+	"7e" -> 32
+	53 [label="br label 7e"]
+	32 -> 53
+	53 -> "7e"
+	79 [label="%6 = add i32 3, %0
 %7 = mul i32 4, %6
 %8 = mul i32 %0, %7
 ret i32 %8"]
-	"3d" -> d9
-	69 [label=""]
-	d9 -> 69
-	41 [label="%9 = add i32 3, 2
+	"7e" -> 79
+	ce [label=""]
+	79 -> ce
+	e8 [label="%9 = add i32 3, 2
 %2 = load i32, i32* %9"]
-	"9d" -> 41
-	41 -> "3d"
+	c0 -> e8
+	e8 -> "7e"
 }

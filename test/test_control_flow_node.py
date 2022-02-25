@@ -13,11 +13,9 @@ from conftest import program_to_json
     "input_file, exp_outcome", [
         ("ret", True),
         ("ret-error", False),
-        ("simple-if-else-no-end-return", False),
         ("while-loop", True),
         ("while-with-if-hanging", True),
         ("if-else-to-while", True),
-        ("while-if-else-no-end-ret", True),
     ]
 )
 def test_valid_control_flow(input_file, exp_outcome):

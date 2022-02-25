@@ -9,11 +9,9 @@ from conftest import program_to_json
 @pytest.mark.parametrize(
     "file", ["1",
              "dot",
-             "simple-if-else-no-end-return",
              "ret-error",
              "while-loop",
              "while-with-if-hanging",
-             "while-if-else-no-end-ret",
              "if-else-to-while",
              "ret",
              "addition",
