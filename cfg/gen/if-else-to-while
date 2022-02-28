@@ -1,33 +1,35 @@
 digraph {
-	"0f" [label="%0 = alloca i32
+	f2 [label="%0 = alloca i32
 %1 = alloca i32
 %2 = alloca i1
 %3 = alloca %struct.A*"]
-	c0 [label="%2 = load i1, i1 true
-br i1 %2 label cc label e8"]
-	"0f" -> c0
-	cc [label="%0 = load i32, i32* 4"]
-	c0 -> cc
-	"7e" [label="br i1 %2 label 32 label 79"]
-	cc -> "7e"
-	32 [label="%0 = load i32, i32* 1
-%4 = icmp lt i1 %0, 5
-%2 = load i1, i1 %4
-%5 = add i32 %0, 1
-%0 = load i32, i32* %5"]
-	"7e" -> 32
-	53 [label="br label 7e"]
-	32 -> 53
-	53 -> "7e"
-	79 [label="%6 = add i32 3, %0
-%7 = mul i32 4, %6
-%8 = mul i32 %0, %7
-ret i32 %8"]
-	"7e" -> 79
-	ce [label=""]
-	79 -> ce
-	e8 [label="%9 = add i32 3, 2
-%2 = load i32, i32* %9"]
-	c0 -> e8
-	e8 -> "7e"
+	04 [label="%2 = load i1, i1 true
+br i1 %2 label 28 label e1"]
+	f2 -> 04
+	28 [label="%0 = load i32, i32* 4
+%4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %0)"]
+	04 -> 28
+	44 [label="br i1 %2 label 0f label 14"]
+	28 -> 44
+	"0f" [label="%0 = load i32, i32* 1
+%5 = icmp lt i1 %0, 5
+%2 = load i1, i1 %5
+%6 = add i32 %0, 1
+%0 = load i32, i32* %6"]
+	44 -> "0f"
+	d3 [label="br label 44"]
+	"0f" -> d3
+	d3 -> 44
+	14 [label="%7 = add i32 3, %0
+%8 = mul i32 4, %7
+%9 = mul i32 %0, %8
+ret i32 %9"]
+	44 -> 14
+	30 [label=""]
+	14 -> 30
+	e1 [label="%10 = add i32 3, 2
+%2 = load i32, i32* %10
+%11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %2)"]
+	04 -> e1
+	e1 -> 44
 }

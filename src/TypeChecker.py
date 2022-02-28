@@ -15,6 +15,7 @@ class TypeChecker:
         self.fn_map = self.build_fn_map(json.get("functions"))
         self.current_scope = self.fn_map.get("main")
         self.control_flow = None
+        self.dynamic_memory = dict()
 
     '''
     Checks to make sure there is not a Type with the same name.
@@ -99,5 +100,12 @@ class TypeChecker:
 
     def get_mem_size(self, structure):
         return self.type_map.get(structure).get_mem_size()
+
+    def add_dynamic_mem(self, _id):
+        self.dynamic_memory[_id] = True
+
+    def remove_dynamic_mem(self, _id):
+        self.dynamic_memory[_id] = False
+
 
 

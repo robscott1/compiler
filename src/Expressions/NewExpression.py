@@ -14,6 +14,7 @@ class NewExpression(Expression):
         return NewExpression(**exp)
 
     def of_type(self, tc):
+        tc.add_dynamic_mem(self.id)
         if self.id not in tc.type_map:
             error_out(
                 self.line, "Undeclared type reference", code="400"

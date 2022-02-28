@@ -1,16 +1,16 @@
 digraph {
-	77 [label="%0 = alloca %struct.A*
+	b2 [label="%0 = alloca %struct.A*
 %1 = alloca i32"]
-	bf [label="%2 = call i32 f ()
+	"5b" [label="%2 = call i32 f ()
 %3 = icmp lt i1 0, %2
-br i1 %3 label 7a label 83"]
-	77 -> bf
-	"7a" [label="ret i32 4"]
-	bf -> "7a"
-	80 [label=""]
-	"7a" -> 80
-	83 [label="%4 = getelementptr %struct.A*, %struct.A** %0 i1 0, i32 0
+br i1 %3 label 75 label 60"]
+	b2 -> "5b"
+	75 [label="ret i32 4"]
+	"5b" -> 75
+	"9f" [label=""]
+	75 -> "9f"
+	60 [label="%4 = getelementptr %struct.A*, %struct.A** %0 i1 0, i32 0
 ret i32 %4"]
-	bf -> 83
-	83 -> 80
+	"5b" -> 60
+	60 -> "9f"
 }
