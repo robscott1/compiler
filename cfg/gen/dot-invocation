@@ -1,11 +1,11 @@
 digraph {
-	ab [label="%1 = alloca %struct.A*
+	cd [label="%1 = alloca %struct.A*
 %2 = alloca i32"]
-	fe [label="%2 = load i32, i32* 4
+	79 [label="%2 = load i32, i32* 4
 %3 = call %struct.A* foo ()
 %4 = getelementptr %struct.A*, %struct.A** %3 i1 0, i32 0
 ret i32 %4"]
-	ab -> fe
-	ce [label=""]
-	fe -> ce
+	cd -> 79
+	53 [label=""]
+	79 -> 53
 }

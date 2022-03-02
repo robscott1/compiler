@@ -10,7 +10,7 @@ from InstructionsManager import InstructionsManager
         (ReadExpression(44),
          "%1 = (i8* ...) @__isoc99__scanf" \
                f"(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, " \
-               f"i32 0, i32 0) i32 %0",
+               f"i32 0, i32 0) i32 %0)",
          "%0")
     ]
 )
