@@ -3,7 +3,9 @@ class InstructionsManager:
 
     def __init__(self, type_map):
         self._current_number = 0
-        self._values = dict()
+        self._values = {
+            "READ_MEM": self.next_tmp()
+        }
         self.type_map = type_map
         self._ordered_instr_list = list()
         self._current_node = None

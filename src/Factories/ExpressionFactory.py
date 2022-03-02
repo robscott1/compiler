@@ -6,6 +6,7 @@ from Expressions.IntExpression import IntExpression
 from Expressions.InvocationExpression import InvocationExpression
 from Expressions.NewExpression import NewExpression
 from Expressions.NullExpression import NullExpression
+from Expressions.ReadExpression import ReadExpression
 from Expressions.TrueExpression import TrueExpression
 
 
@@ -32,6 +33,8 @@ class ExpressionFactory:
             return IdentifierExpression(exp.get("line"), exp.get("id"))
         elif e == "null":
             return NullExpression(exp.get("line"))
+        elif e == "read":
+            return ReadExpression(exp.get("line"))
 
         else:
             raise Exception("Invalid Expression.")

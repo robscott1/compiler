@@ -11,6 +11,7 @@ class BitcastInstruction:
             isinstance(self.new_type, str) else self.new_type
         og_type = self.og_type.cast_up().to_text() if not \
             isinstance(self.og_type, str) else self.og_type
+
         return f"{self.result} = bitcast {og_type} " \
                f"{self.value} to {new_type}"
 

@@ -16,7 +16,8 @@ from conftest import program_to_json
              "ret",
              "addition",
              "dot-invocation",
-             "dot-new"
+             "dot-new",
+             "read"
              ]
 )
 def test_cfg_generation(file):

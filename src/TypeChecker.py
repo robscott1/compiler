@@ -3,6 +3,7 @@ from Types.IntType import IntType
 from Factories.TypeFactory import TypeFactory as tf
 from Factories.DeclarationFactory import DeclarationFactory as df
 from Factories.FunctionFactory import FunctionFactory as ff
+from Types.StructType import StructType
 
 GLOBAL_FLAG = 0
 
@@ -46,7 +47,10 @@ class TypeChecker:
     '''
     @classmethod
     def build_type_map(cls, types: list):
-        type_map = {"int": IntType, "bool": BoolType}
+        type_map = {
+            "int": IntType,
+            "bool": BoolType
+        }
         for td in types:
             t = tf.generate(td)
             type_map[t.id] = t

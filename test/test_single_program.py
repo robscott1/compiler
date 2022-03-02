@@ -4,7 +4,7 @@ from InstructionsManager import InstructionsManager
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
-PROGRAM = "new-delete"
+PROGRAM = "read"
 
 def test_single_program_cfg():
     file = PROGRAM

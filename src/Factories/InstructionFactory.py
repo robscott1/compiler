@@ -3,6 +3,7 @@ from Expressions.BinaryExpression import BinaryExpression
 from Expressions.DotExpression import DotExpression
 from Expressions.InvocationExpression import InvocationExpression
 from Expressions.NewExpression import NewExpression
+from Expressions.ReadExpression import ReadExpression
 from Instructions.AllocationInstruction import AllocationInstruction
 from Instructions.BinOpInstruction import BinOpInstruction
 from Instructions.ConditionalInstruction import ConditionalInstruction
@@ -13,6 +14,7 @@ from Instructions.JumpInstruction import JumpInstruction
 from Instructions.LoadInstruction import LoadInstruction
 from Instructions.NewInstruction import NewInstruction
 from Instructions.PrintInstruction import PrintInstruction
+from Instructions.ReadInstruction import ReadInstruction
 from Instructions.ReturnInstruction import ReturnInstruction
 from Statements.DeleteStatement import DeleteStatement
 from Statements.PrintStatement import PrintStatement
@@ -59,6 +61,8 @@ class InstructionFactory:
             return PrintInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, DeleteStatement):
             return DeleteInstruction.generate(code, instr_mngr, cls.create_instruction)
+        elif isinstance(code, ReadExpression):
+            return ReadInstruction.generate(instr_mngr)
         else:
             return AllocationInstruction.generate(instr_mngr,
                                                   Declaration("32", IntType(), "k"))

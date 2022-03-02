@@ -2,6 +2,7 @@ import pytest
 
 from Expressions.BinaryExpression import BinaryExpression
 from Expressions.IntExpression import IntExpression
+from Expressions.ReadExpression import ReadExpression
 from Factories.InstructionFactory import InstructionFactory
 from InstructionsManager import InstructionsManager
 from LvalueId import LvalueId
@@ -15,9 +16,11 @@ from Statements.AssignmentStatement import AssignmentStatement
                                BinaryExpression(44, Operator.PLUS,
                                                 IntExpression(44, "3"),
                                                 IntExpression(44, "2"))),
-         "%0 = load i32, i32* %1"),
+         "%1 = load i32, i32* %2"),
         (AssignmentStatement(44, LvalueId(44, "k"), IntExpression(44, '3')),
-         "%0 = load i32, i32* 3")
+         "%1 = load i32, i32* 3"),
+        (AssignmentStatement(44, LvalueId(44, "k"), ReadExpression(44)),
+         "%1 = load i32, i32* %0")
 
     ]
 )

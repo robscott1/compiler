@@ -55,9 +55,11 @@ class LoadInstruction(Instruction):
                   isinstance(source, TrueExpression)
         ):
             return source.to_value()
+        elif isinstance(source, str):
+            return source
         else:
             instr = factory_fn(source, instr_mngr)
-            return instr.result
+            return instr.to_value()
 
     def to_text(self):
         return f"{self.result} = load {self.type.to_text()}, " \
