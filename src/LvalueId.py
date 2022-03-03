@@ -8,3 +8,11 @@ class LvalueId(Lvalue):
         self.line = line
         self.id = id
 
+    def get_id(self):
+        return self.id
+
+    def get_type(self, tc):
+        return tc.get_id_type(self.id)
+
+
+

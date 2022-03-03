@@ -1,35 +1,35 @@
 digraph {
-	ac [label="%1 = alloca i32
+	"5e" [label="%1 = alloca i32
 %2 = alloca i32
 %3 = alloca i1
 %4 = alloca %struct.A*"]
-	a6 [label="%3 = load i1, i1 true
-br i1 %3 label 7a label 0c"]
-	ac -> a6
-	"7a" [label="%1 = load i32, i32* 4
+	a5 [label="%3 = load i1, i1 true
+br i1 %3 label 41 label ae"]
+	"5e" -> a5
+	41 [label="%1 = load i32, i32* 4
 %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %1)"]
-	a6 -> "7a"
-	c4 [label="br i1 %3 label 6d label e7"]
-	"7a" -> c4
-	"6d" [label="%1 = load i32, i32* 1
+	a5 -> 41
+	"4e" [label="br i1 %3 label e7 label bd"]
+	41 -> "4e"
+	e7 [label="%1 = load i32, i32* 1
 %6 = icmp lt i1 %1, 5
 %3 = load i1, i1 %6
 %7 = add i32 %1, 1
 %1 = load i32, i32* %7"]
-	c4 -> "6d"
-	"9b" [label="br label c4"]
-	"6d" -> "9b"
-	"9b" -> c4
-	e7 [label="%8 = add i32 3, %1
+	"4e" -> e7
+	18 [label="br label 4e"]
+	e7 -> 18
+	18 -> "4e"
+	bd [label="%8 = add i32 3, %1
 %9 = mul i32 4, %8
 %10 = mul i32 %1, %9
 ret i32 %10"]
-	c4 -> e7
-	ea [label=""]
-	e7 -> ea
-	"0c" [label="%11 = add i32 3, 2
+	"4e" -> bd
+	"2f" [label=""]
+	bd -> "2f"
+	ae [label="%11 = add i32 3, 2
 %3 = load i32, i32* %11
 %12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %3)"]
-	a6 -> "0c"
-	"0c" -> c4
+	a5 -> ae
+	ae -> "4e"
 }

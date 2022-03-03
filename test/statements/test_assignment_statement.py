@@ -29,6 +29,11 @@ def test_assignment_statement(input):
              "source": {"line": 48, "exp": "new", "id": "A"},
              "target": {"line": 48, "id": "a"}
              },
+        {
+            "line": 44,
+            "source": {"line": 44, "exp": "num", "value": "2"},
+            "target": {"line": 44, "left": {"line": 33, "id": "a"}, "id": "i"}
+        }
 
     ]
 )
@@ -48,7 +53,12 @@ def test_assignment_analyze(input, type_checker):
         ({"line": 44,
            "source": {"line": 48, "exp": "new", "id": "A"},
            "target": {"line": 48, "id": "j"}
-           }, "201")
+           }, "201"),
+        ({
+            "line": 44,
+            "source": {"line": 44, "exp": "num", "value": "2"},
+            "target": {"line": 44, "left": {"line": 33, "id": "a"}, "id": "x"}
+        }, "005")
     ]
 )
 def test_assignment_analyze_unhappy_path(input, exp_code, type_checker):
