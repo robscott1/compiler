@@ -1,11 +1,11 @@
 digraph {
-	c3 [label="%1 = alloca i32
+	fe [label="%1 = alloca i32
 %2 = alloca i32"]
-	af [label="%3 = add i32 4, 2
+	26 [label="%3 = add i32 4, 2
 %1 = load i32, i32* %3
 %2 = load i32, i32* %1
 ret i32 3"]
-	c3 -> af
-	"6e" [label=""]
-	af -> "6e"
+	fe -> 26
+	c7 [label=""]
+	26 -> c7
 }

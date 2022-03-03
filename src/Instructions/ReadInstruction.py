@@ -1,8 +1,5 @@
 from Instructions.Instruction import Instruction
-from Instructions.LoadInstruction import LoadInstruction
 from InstructionsManager import InstructionsManager
-from Statements.AssignmentStatement import AssignmentStatement
-from Types.StructType import StructType
 
 
 class ReadInstruction(Instruction):
@@ -26,5 +23,6 @@ class ReadInstruction(Instruction):
         return f"{self.read_success} = (i8* ...) @__isoc99__scanf" \
                f"(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, " \
                f"i32 0, i32 0) i32 {self.global_read_ptr})"
+
     def to_value(self):
         return f"{self.global_read_ptr}"
