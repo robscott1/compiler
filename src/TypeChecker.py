@@ -99,6 +99,9 @@ class TypeChecker:
             self.current_scope = self.fn_map.get(fn.id)
             fn.analyze(self)
 
+    def get_struct_field_type(self, structure: str, field: str):
+        return self.type_map.get(structure).get_field_type(field)
+
     def get_struct_field_idx(self, structure: str, field: str):
         return self.type_map.get(structure).get_field_index(field)
 

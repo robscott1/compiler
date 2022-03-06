@@ -1,20 +1,20 @@
 digraph {
-	"1d" [label="%1 = alloca i32"]
-	ac [label="%1 = load i32, i32* 3"]
-	"1d" -> ac
-	ca [label="br i1 true label 11 label 33"]
-	ac -> ca
-	11 [label="%2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
-br i1 true label ef label 0a"]
-	ca -> 11
-	ef [label="%3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
-	11 -> ef
-	"0a" [label="br label ca"]
-	ef -> "0a"
-	"0a" -> ca
-	11 -> "0a"
-	33 [label="ret i32 2"]
-	ca -> 33
-	ee [label=""]
-	33 -> ee
+	fc [label="%1 = alloca i32"]
+	"7d" [label="%1 = load i32, i32* 3"]
+	fc -> "7d"
+	"1d" [label="br i1 true label cc label ff"]
+	"7d" -> "1d"
+	cc [label="%2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
+br i1 true label bc label 30"]
+	"1d" -> cc
+	bc [label="%3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	cc -> bc
+	30 [label="br label 1d"]
+	bc -> 30
+	30 -> "1d"
+	cc -> 30
+	ff [label="ret i32 2"]
+	"1d" -> ff
+	87 [label=""]
+	ff -> 87
 }
