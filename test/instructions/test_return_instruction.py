@@ -25,4 +25,4 @@ def test_return_instruction(type_checker, exp, stmt):
     node = ControlFlowNode.generate([stmt], set(), set())
     instr_mngr.set_current_node(node)
     instr = InstructionFactory.create_instruction(stmt, instr_mngr)
-    assert instr.to_text() == exp
+    assert instr.to_text == exp

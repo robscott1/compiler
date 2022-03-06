@@ -19,4 +19,7 @@ class IntType(Type):
         self._ptr_status = "*"
         return self
 
+    def to_llvm_type(self):
+        return "i32"
+
 

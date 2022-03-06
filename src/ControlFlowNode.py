@@ -191,3 +191,12 @@ class ControlFlowNode:
 
         return "\n".join(list(map(lambda x: x.to_text(),
                                   instr_mngr.get_complete_instructions())))
+
+    def generate_llvm_text(self, instr_mngr: InstructionsManager):
+        instr_mngr.clear_instructions_list()
+        instr_mngr.set_current_node(self)
+        for stmt in self.statements:
+            InstructionFactory.create_instruction(stmt, instr_mngr)
+
+        return "\n".join(list(map(lambda x: "\t" + x.to_text(),
+                                  instr_mngr.get_complete_instructions())))

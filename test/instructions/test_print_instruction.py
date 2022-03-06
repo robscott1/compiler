@@ -29,4 +29,4 @@ from Statements.PrintStatement import PrintStatement
 def test_print_instr_gen(type_checker, stmt, exp):
     instr_mngr = InstructionsManager(type_checker)
     instr = PrintInstruction.generate(stmt, instr_mngr, InstructionFactory.create_instruction)
-    assert instr.to_text() == exp
+    assert instr.to_text == exp

@@ -1,14 +1,14 @@
 digraph {
-	"3d" [label="%1 = alloca %struct.A*
+	"2d" [label="%1 = alloca %struct.A*
 %2 = alloca i32"]
-	"2c" [label="%2 = load i32, i32* 4
+	ab [label="%2 = load i32, i32* 4
 %3 = bitcast %struct.A** %1 to i8*
 call void @free(i8* %1)
 %4 = call i8* @malloc(i32 9)
 %5 = bitcast i8* %4 to %struct.A*
 %6 = getelementptr %struct.A*, %struct.A** %5 i1 0, i32 0
 ret i32 %6"]
-	"3d" -> "2c"
-	dc [label=""]
-	"2c" -> dc
+	"2d" -> ab
+	c9 [label=""]
+	ab -> c9
 }

@@ -1,31 +1,31 @@
 digraph {
-	"8a" [label="%1 = alloca %struct.A*
+	"1b" [label="%1 = alloca %struct.A*
 %2 = alloca i32
 %3 = alloca i32
 %4 = alloca i32
 %5 = alloca i1
 %6 = alloca i32"]
-	b0 [label="%2 = load i32, i32* 2
+	"5b" [label="%2 = load i32, i32* 2
 %7 = call i32 g (1 null)
 %8 = icmp lt i1 %2, %7
-br i1 %8 label 8d label 97"]
-	"8a" -> b0
-	"8d" [label="%9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
-	b0 -> "8d"
-	97 [label="%10 = call i32 g (1 null)
+br i1 %8 label 14 label 38"]
+	"1b" -> "5b"
+	14 [label="%9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	"5b" -> 14
+	38 [label="%10 = call i32 g (1 null)
 %11 = icmp gt i1 %2, %10
-br i1 %11 label ea label 9a"]
-	"8d" -> 97
-	ea [label="%12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
-	97 -> ea
-	"3d" [label="br i1 true label f0 label d7"]
-	ea -> "3d"
-	f0 [label="%13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 7)"]
-	"3d" -> f0
-	01 [label="br label 3d"]
-	f0 -> 01
-	01 -> "3d"
-	d7 [label="%16 = call i8* @malloc(i32 1)
+br i1 %11 label f1 label db"]
+	14 -> 38
+	f1 [label="%12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	38 -> f1
+	e4 [label="br i1 true label 76 label 48"]
+	f1 -> e4
+	76 [label="%13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 7)"]
+	e4 -> 76
+	af [label="br label e4"]
+	76 -> af
+	af -> e4
+	48 [label="%16 = call i8* @malloc(i32 1)
 %17 = bitcast i8* %16 to %struct.B*
 %15 = call i32 g (1 %17)
 %18 = call i8* @malloc(i32 1)
@@ -40,11 +40,11 @@ br i1 %11 label ea label 9a"]
 %26 = getelementptr %struct.A*, %struct.A** %20 i1 0, i32 0
 %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %26)
 ret i32 0"]
-	"3d" -> d7
-	a3 [label=""]
-	d7 -> a3
-	"9a" [label="%28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 3)"]
-	97 -> "9a"
-	"9a" -> "3d"
-	b0 -> 97
+	e4 -> 48
+	60 [label=""]
+	48 -> 60
+	db [label="%28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 3)"]
+	38 -> db
+	db -> e4
+	"5b" -> 38
 }

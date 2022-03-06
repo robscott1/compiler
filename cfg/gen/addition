@@ -1,11 +1,11 @@
 digraph {
-	db [label="%1 = alloca i32
+	"0a" [label="%1 = alloca i32
 %2 = alloca i32"]
-	f2 [label="%3 = add i32 4, 2
+	"5c" [label="%3 = add i32 4, 2
 %1 = load i32, i32* %3
 %2 = load i32, i32* %1
 ret i32 3"]
-	db -> f2
-	94 [label=""]
-	f2 -> 94
+	"0a" -> "5c"
+	"0f" [label=""]
+	"5c" -> "0f"
 }

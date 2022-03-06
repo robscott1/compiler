@@ -25,4 +25,4 @@ def test_invocation_instruction(type_checker, exp, expr):
     stmt = InvocationStatement(44, expr)
     instr_mngr = InstructionsManager(type_checker)
     instr = InstructionFactory.create_instruction(stmt, instr_mngr)
-    assert instr.to_text() == exp
+    assert instr.to_text == exp

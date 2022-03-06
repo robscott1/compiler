@@ -16,4 +16,4 @@ from Types.StructType import StructType
 def test_allocation_instr_gen(type_checker, input, exp):
     instr_mngr = InstructionsManager(type_checker)
     instr = AllocationInstruction.generate(instr_mngr, input)
-    assert instr.to_text() == exp
+    assert instr.to_text == exp
