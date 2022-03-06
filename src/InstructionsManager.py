@@ -3,10 +3,8 @@ class InstructionsManager:
 
     def __init__(self, type_map):
         self._current_number = 0
-        self._values = {
-            "READ_MEM": self.next_tmp()
-        }
         self.type_map = type_map
+        self._values = self.set_values()
         self._ordered_instr_list = list()
         self._current_node = None
 
@@ -14,6 +12,14 @@ class InstructionsManager:
         result = f"%{self._current_number}"
         self._current_number += 1
         return result
+
+    def set_values(self):
+        values = {}
+        values["READ_MEM"] = self.next_tmp()
+        for _id in self.type_map.global_map.keys():
+            values[_id] = f"@{_id}"
+        return values
+
 
     def get(self, id):
         return self._values.get(id)
