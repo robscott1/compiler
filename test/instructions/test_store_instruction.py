@@ -28,4 +28,4 @@ def test_load_instruction(type_checker, stmt, exp):
     instr_mngr = InstructionsManager(type_checker)
     instr_mngr.store("k", instr_mngr.next_tmp())
     instr = InstructionFactory.create_instruction(stmt, instr_mngr)
-    assert instr.to_text == exp
+    assert instr.to_text() == exp

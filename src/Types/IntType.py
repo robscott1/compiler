@@ -21,5 +21,3 @@ class IntType(Type):
 
     def to_llvm_type(self):
         return "i32"
-
-

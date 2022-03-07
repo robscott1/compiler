@@ -19,4 +19,4 @@ def test_delete_instruction_gen(type_checker, stmt, exp):
     delete = DeleteInstruction.generate(
         stmt, instr_mngr, InstructionFactory.create_instruction
     )
-    assert delete.to_text == exp
+    assert delete.to_text() == exp

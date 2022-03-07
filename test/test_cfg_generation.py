@@ -7,8 +7,7 @@ from conftest import program_to_json
 
 
 @pytest.mark.parametrize(
-    "file", ["1",
-             "dot",
+    "file", ["dot",
              "ret-error",
              "while-loop",
              "while-with-if-hanging",
@@ -21,10 +20,10 @@ from conftest import program_to_json
              ]
 )
 def test_cfg_generation(file):
-    param = program_to_json(f"../mini/{file}.mini")
+    param = program_to_json(f"{file}")
     tc = TypeChecker(param)
     main_fn = tc.fn_map.get("main")
     main_fn.create_cfg()
     test_cfg = main_fn.cfg.visualize_cfg(graphviz.Digraph(), None, InstructionsManager(tc))
-    test_cfg.render(f"../cfg/gen/{file}")
+    test_cfg.render(f"../cfg/{file}")
 

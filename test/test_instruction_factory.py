@@ -16,7 +16,7 @@ from conftest import program_to_json
     ]
 )
 def test_allocation_instruction(file, code):
-    params = program_to_json(f"../mini/{file}.mini")
+    params = program_to_json(file)
     tc = TypeChecker(params)
     instr_mngr = InstructionsManager(tc)
     instr = InstructionFactory.create_instruction(code, instr_mngr)

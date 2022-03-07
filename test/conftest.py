@@ -167,9 +167,9 @@ def control_flow_example():
 
 
 def program_to_json(filename):
-    with open(f"../json/{filename}.json", 'w') as out_file:
-        subprocess.run(["java", "-jar", "../MiniCompiler.jar", filename], stdout=out_file)
-    with open(f"../json/{filename}.json", 'r') as out_file:
+    with open(f"../mini/{filename}.json", 'w') as out_file:
+        subprocess.run(["java", "-jar", "../MiniCompiler.jar", f"../mini/{filename}.mini"], stdout=out_file)
+    with open(f"../mini/{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
     return json_repr

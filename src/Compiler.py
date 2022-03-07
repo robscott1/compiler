@@ -8,15 +8,13 @@ from TypeChecker import TypeChecker
 
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: Compiler <filename>")
 
     filename = sys.argv[1]
     print(filename)
-    with open(f"{filename}.json", 'w') as out_file:
-        subprocess.run(["java", "-jar", "../MiniCompiler.jar", filename], stdout=out_file)
+    with open(f"../mini/{filename}.json", 'w') as out_file:
+        subprocess.run(["java", "-jar", "../MiniCompiler.jar", f"../mini/{filename}.mini"], stdout=out_file)
 
-    with open(f"{filename}.json", 'r') as out_file:
+    with open(f"../mini/{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))
 
     tc = TypeChecker(json_repr)
@@ -29,7 +27,12 @@ def main():
         print(e.__repr__())
 
     program = Program(tc)
-    program.print_program()
+    string = program.print_program()
+    with open(f"../llvm/{filename}.ll", 'w') as w:
+        w.write(string)
+
+    if len(sys.argv) >= 3 and sys.argv[2] == "--stack":
+        print(string)
 
 
 if __name__ == "__main__":

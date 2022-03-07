@@ -19,7 +19,7 @@ from conftest import program_to_json
     ]
 )
 def test_valid_control_flow(input_file, exp_outcome):
-    params = program_to_json(f"../mini/{input_file}.mini")
+    params = program_to_json(input_file)
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
         root = ControlFlowNode.generate(fn.body, set(), set())
@@ -31,7 +31,7 @@ def test_valid_control_flow(input_file, exp_outcome):
     ]
 )
 def test_enter_node_instructions(input_file):
-    params = program_to_json(f"../mini/{input_file}.mini")
+    params = program_to_json(input_file)
     tc = TypeChecker(params)
     main_fn = tc.fn_map.get("main")
     instr_mngr = InstructionsManager(tc)

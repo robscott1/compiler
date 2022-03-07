@@ -27,7 +27,7 @@ def test_binop_generation(type_checker, exp, operator, right, left):
     expr = BinaryExpression(44, operator, left, right)
     instr_mngr = InstructionsManager(type_checker)
     instr = InstructionFactory.create_instruction(expr, instr_mngr)
-    assert instr.to_text == exp
+    assert instr.to_text() == exp
 
 
 @pytest.mark.parametrize(
@@ -46,4 +46,4 @@ def test_binop_generation(type_checker, exp, operator, right, left):
 def test_comparison_binop(type_checker, exp, expr):
     instr_mngr = InstructionsManager(type_checker)
     instr = InstructionFactory.create_instruction(expr, instr_mngr)
-    assert instr.to_text == exp
+    assert instr.to_text() == exp

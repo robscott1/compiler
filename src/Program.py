@@ -7,13 +7,11 @@ class Program:
         self._functions = tc.fn_map
 
     def print_program(self):
-        types = self.get_types()
-        globals = self.get_globals()
-        functions = self.get_functions()
+        types = "\n".join(self.get_types())
+        globals = "\n".join(self.get_globals())
+        functions = "\n".join(self.get_functions())
 
-        print("\n".join(types))
-        print("\n".join(globals))
-        print("\n".join(functions))
+        return f"{types}{globals}{functions}"
 
     """
     get_types

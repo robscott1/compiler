@@ -18,5 +18,5 @@ def test_read_instruction(type_checker, exp, expected_str, expected_val):
     instr_mngr = InstructionsManager(type_checker)
     instr = ReadInstruction.generate(instr_mngr)
 
-    assert instr.to_text == expected_str
+    assert instr.to_text() == expected_str
     assert instr.to_value() == expected_val

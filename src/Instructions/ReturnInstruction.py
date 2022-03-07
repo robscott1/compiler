@@ -22,7 +22,7 @@ class ReturnInstruction(Instruction):
     def generate(cls, code: ReturnStatement,
                  instr_mngr: InstructionsManager, factory_fn):
         type = code.expression.of_type(instr_mngr.type_map)
-        value = cls.eval_value(code.expression, instr_mngr, factory_fn).to_value()
+        value = cls.eval_value(code.expression, instr_mngr, factory_fn)
         instr = ReturnInstruction("ret", type, value)
         instr_mngr.add_instruction(instr)
         return instr
@@ -55,5 +55,5 @@ class ReturnInstruction(Instruction):
     def to_text(self):
         if self.value == "void":
             return "ret void"
-        else:
-            return f"ret {self.type.to_text()} {self.value}"
+        value = self.value if isinstance(self.value, str) else self.value.to_value()
+        return f"ret {self.type.to_text()} {value}"

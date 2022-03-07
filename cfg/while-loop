@@ -1,0 +1,18 @@
+digraph {
+	e0 [label="%1 = alloca i32
+%2 = alloca i32"]
+	a3 [label="%1 = load i32, i32* 4"]
+	e0 -> a3
+	52 [label="%3 = icmp lt i1 %1, 4
+br i1 %3 label 8f label 39"]
+	a3 -> 52
+	"8f" [label="%4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	52 -> "8f"
+	"9a" [label="br label 52"]
+	"8f" -> "9a"
+	"9a" -> 52
+	39 [label="ret i32 2"]
+	52 -> 39
+	e3 [label=""]
+	39 -> e3
+}

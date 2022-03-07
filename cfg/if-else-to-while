@@ -1,0 +1,34 @@
+digraph {
+	ba [label="%1 = alloca i32
+%2 = alloca i32
+%3 = alloca %struct.A*
+%4 = alloca i32"]
+	b3 [label="%5 = icmp lt i1 4, 5
+br i1 %5 label 76 label b4"]
+	ba -> b3
+	76 [label="%1 = load i32, i32* 4
+%6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 @z)"]
+	b3 -> 76
+	dc [label="%7 = icmp lt i1 4, 6
+br i1 %7 label 29 label cf"]
+	76 -> dc
+	29 [label="%1 = load i32, i32* 1
+%8 = add i32 %1, 1
+%1 = load i32, i32* %8"]
+	dc -> 29
+	39 [label="br label dc"]
+	29 -> 39
+	39 -> dc
+	cf [label="%9 = add i32 3, %1
+%10 = mul i32 4, %9
+%11 = mul i32 %1, %10
+ret i32 %11"]
+	dc -> cf
+	28 [label=""]
+	cf -> 28
+	b4 [label="%12 = add i32 3, 2
+%2 = load i32, i32* %12
+%13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %2)"]
+	b3 -> b4
+	b4 -> dc
+}

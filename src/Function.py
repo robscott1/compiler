@@ -48,7 +48,7 @@ class Function:
         link_me = set()
         root = ControlFlowNode.generate(self.body, link_me, leaf_nodes)
         enter_node = ControlFlowNode()
-        enter_node.statements = self.locals
+        enter_node.statements = self.locals + self.parameters
         enter_node.successors.append(root)
         exit_node = ControlFlowNode(label="Exit")
         for leaf in leaf_nodes:
@@ -76,6 +76,7 @@ class Function:
     def bfs_nodes(self, node: ControlFlowNode, node_instr_list, instr_mngr):
         node.visited = True
         if node.statements:
+            instr_mngr.type_map.current_scope = self
             node_instr_list.append(f"\n\t; <label>: {node.id}")
             node_instr = node.generate_llvm_text(instr_mngr)
             node_instr_list.append(node_instr)
