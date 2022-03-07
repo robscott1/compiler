@@ -66,33 +66,23 @@ class Function:
 
         # recreate CFG so that the nodes arent marked as visited
         self.create_cfg()
+
         lines.append(self.llvm_signature())
         body = self.bfs_nodes(self.cfg, [], instr_mngr)
         lines.append("\n".join(body))
         lines.append("}")
         return "\n".join(lines)
 
-
-
     def bfs_nodes(self, node: ControlFlowNode, node_instr_list, instr_mngr):
         node.visited = True
-        node_instr_list.append(f"\n\t; <label>: {node.id}")
-        node_instr = node.generate_llvm_text(instr_mngr)
-        node_instr_list.append(node_instr)
+        if node.statements:
+            node_instr_list.append(f"\n\t; <label>: {node.id}")
+            node_instr = node.generate_llvm_text(instr_mngr)
+            node_instr_list.append(node_instr)
         for successor in node.successors:
             if not successor.visited:
                 node_instr_list = self.bfs_nodes(successor, node_instr_list, instr_mngr)
         return node_instr_list
 
-
     def llvm_signature(self):
         return f"define dso_local <TYPE> @{self.id} {{"
-
-
-
-
-
-
-
-
-
