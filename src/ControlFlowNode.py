@@ -79,7 +79,7 @@ class ControlFlowNode:
                     # Gotta add it again because it got cleared on the then_block
                     link_me.add(curr_node)
                     else_node = ControlFlowNode.generate(stmt.else_block, link_me, leaf_nodes)
-                    if len(else_node.successors) == 0 and not then_node.has_return:
+                    if len(else_node.successors) == 0 and not else_node.has_return:
                         link_me.add(else_node)
                     if len(then_node.successors) == 0 and not then_node.has_return:
                         link_me.add(then_node)

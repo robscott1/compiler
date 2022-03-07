@@ -1,10 +1,10 @@
-%struct.A = type { i32 i32 %struct.<Types.StructType.StructType object at 0x7f29ceb7d130> }define dso_local <TYPE> @main() {
+%struct.A = type { i32 i32 %struct.<Types.StructType.StructType object at 0x7f40cbb0d130> }define dso_local <TYPE> @main() {
 
-	; <label>: 13
+	; <label>: 95
 	%1 = alloca %struct.A*
 	%2 = alloca i32
 
-	; <label>: a7
+	; <label>: a3
 	%2 = load i32, i32* 4
 	%3 = bitcast %struct.A** %1 to i8*
 	call void @free(i8* %1)

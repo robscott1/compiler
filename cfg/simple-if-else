@@ -1,0 +1,15 @@
+digraph {
+	f5 [label="%1 = alloca i32"]
+	85 [label="%2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %1)
+br i1 true label 3f label c9"]
+	f5 -> 85
+	"3f" [label="ret i32 2"]
+	85 -> "3f"
+	"2d" [label=""]
+	"3f" -> "2d"
+	c9 [label="%3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	85 -> c9
+	"9f" [label="ret i32 1"]
+	c9 -> "9f"
+	"9f" -> "2d"
+}

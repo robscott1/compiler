@@ -1,10 +1,9 @@
 digraph {
-	38 [label="%1 = alloca %struct.A*
-%2 = alloca i32"]
-	bc [label="%3 = (i8* ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0) i32 %0)
-%2 = load i32, i32* %0
+	15 [label="%1 = alloca i32"]
+	"3c" [label="%2 = (i8* ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0) i32 %0)
+%1 = load i32, i32* %0
 ret i32 3"]
-	38 -> bc
-	29 [label=""]
-	bc -> 29
+	15 -> "3c"
+	13 [label=""]
+	"3c" -> 13
 }

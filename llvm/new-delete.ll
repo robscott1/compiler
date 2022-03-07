@@ -1,9 +1,9 @@
 %struct.A = type { i32 i32 }define dso_local <TYPE> @main() {
 
-	; <label>: 2e
+	; <label>: 15
 	%1 = alloca %struct.A*
 
-	; <label>: c8
+	; <label>: 55
 	%2 = call i8* @malloc(i32 8)
 	%3 = bitcast i8* %2 to %struct.A*
 	%1 = load %struct.A*, %struct.A** %3
