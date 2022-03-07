@@ -10,7 +10,6 @@ from TypeChecker import TypeChecker
 def main():
 
     filename = sys.argv[1]
-    print(filename)
     with open(f"../mini/{filename}.json", 'w') as out_file:
         subprocess.run(["java", "-jar", "../MiniCompiler.jar", f"../mini/{filename}.mini"], stdout=out_file)
 
@@ -28,11 +27,7 @@ def main():
 
     program = Program(tc)
     string = program.print_program()
-    with open(f"../llvm/{filename}.ll", 'w') as w:
-        w.write(string)
-
-    if len(sys.argv) >= 3 and sys.argv[2] == "--stack":
-        print(string)
+    print(string)
 
 
 if __name__ == "__main__":

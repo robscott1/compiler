@@ -1,27 +1,28 @@
-%struct.A = type { i32 }define dso_local <TYPE> @main() {
+%struct.A = type { i32 }
+define dso_local <TYPE> @main() {
 
-	; <label>: 25
+	; <label>: d6
 	%1 = alloca %struct.A*
 	%2 = alloca i32
 
-	; <label>: 12
+	; <label>: 87
 	%3 = call i32 f ()
 	%4 = icmp lt i1 0, %3
-	br i1 %4 label 74 label 45
+	br i1 %4 label 39 label ba
 
-	; <label>: 74
+	; <label>: 39
 	ret i32 4
 
-	; <label>: 45
+	; <label>: ba
 	%5 = getelementptr %struct.A*, %struct.A** %1 i1 0, i32 0
 	ret i32 %5
 }
 define dso_local <TYPE> @f() {
 
-	; <label>: da
+	; <label>: c3
 	%1 = alloca i32
 
-	; <label>: 86
+	; <label>: 10
 	%1 = load i32, i32* 4
 	ret i32 %1
 }

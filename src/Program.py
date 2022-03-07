@@ -11,7 +11,7 @@ class Program:
         globals = "\n".join(self.get_globals())
         functions = "\n".join(self.get_functions())
 
-        return f"{types}{globals}{functions}"
+        return f"{types}\n{globals}{functions}"
 
     """
     get_types

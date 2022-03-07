@@ -1,22 +1,23 @@
+
 define dso_local <TYPE> @main(i32) {
 
-	; <label>: 6c
+	; <label>: 12
 	%1 = alloca i32
 	%2 = alloca i32
 
-	; <label>: d8
+	; <label>: b9
 	%1 = load i32, i32* 4
 
-	; <label>: a0
+	; <label>: 5d
 	%3 = icmp lt i1 %1, 4
-	br i1 %3 label 9b label e2
+	br i1 %3 label 4a label 95
 
-	; <label>: 9b
+	; <label>: 4a
 	%4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
 
-	; <label>: ae
-	br label a0
+	; <label>: 1a
+	br label 5d
 
-	; <label>: e2
+	; <label>: 95
 	ret i32 2
 }
