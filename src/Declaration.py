@@ -25,7 +25,7 @@ class Declaration:
         elif self.type == "bool" or isinstance(self.type, BoolType):
             return "i1"
         else:
-            return f"%struct.{self.type}"
+            return f"%struct.{self.type.id}"
 
     def to_global_declaration(self):
         return f"@{self.id} = common dso_local global {self.to_llvm_type()} 0"

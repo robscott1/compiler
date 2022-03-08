@@ -46,17 +46,17 @@ class BinOpInstruction(Instruction):
         elif op == Operator.AND:
             return "and", "i1"
         elif op == Operator.EQ:
-            return "icmp eq", "i1"
+            return "icmp eq", "i32"
         elif op == Operator.GE:
-            return "icmp sge", "i1"
+            return "icmp sge", "i32"
         elif op == Operator.GT:
-            return "icmp sgt", "i1"
+            return "icmp sgt", "i32"
         elif op == Operator.LE:
-            return "icmp sle", "i1"
+            return "icmp sle", "i32"
         elif op == Operator.LT:
-            return "icmp slt", "i1"
+            return "icmp slt", "i32"
         elif op == Operator.NE:
-            return "icmp ne", "i1"
+            return "icmp ne", "i32"
         else:
             return "mul", "i32"
 
