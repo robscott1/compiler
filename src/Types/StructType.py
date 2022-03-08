@@ -17,6 +17,9 @@ class StructType(Type):
         res = f"%struct.{self.id}{self._ptr_status}"
         return res
 
+    def to_llvm_type(self):
+        return f"%struct.{self.id}"
+
     def cast_up(self):
         self._ptr_status = "**"
         return self

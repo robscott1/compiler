@@ -1,9 +1,9 @@
 digraph {
-	15 [label="%1 = alloca i32"]
-	"3c" [label="%2 = (i8* ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0) i32 %0)
+	44 [label="%1 = alloca i32"]
+	23 [label="%2 = (i8* ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0) i32 %0)
 %1 = load i32, i32* %0
 ret i32 3"]
-	15 -> "3c"
-	13 [label=""]
-	"3c" -> 13
+	44 -> 23
+	ca [label=""]
+	23 -> ca
 }

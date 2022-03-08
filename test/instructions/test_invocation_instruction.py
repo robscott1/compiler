@@ -12,13 +12,13 @@ from Statements.InvocationStatement import InvocationStatement
     "expr, exp", [
         # !!! This "f" fn lives with type_checker fixture
         (InvocationExpression(44, "f", [IntExpression(44, "2")]),
-         "%1 = call i32 f (2)"),
+         "%1 = call i32 f(2)"),
         (InvocationExpression(44, "f", [IntExpression(44, "2"), (TrueExpression(44))]),
-         "%1 = call i32 f (2 true)"),
+         "%1 = call i32 f(2 true)"),
         (InvocationExpression(44, "f", [
             InvocationExpression(44, "f", [IntExpression(44, 4), IntExpression(44, "2")]),
             (IntExpression(44, "2"))]),
-         "%1 = call i32 f (%2 2)")
+         "%1 = call i32 f(%2 2)")
     ]
 )
 def test_invocation_instruction(type_checker, exp, expr):

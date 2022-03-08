@@ -1,19 +1,19 @@
 
-define dso_local <TYPE> @main(i32) {
+define dso_local i32 @main(i32) {
 
-	; <label>: 0c
+	; <label>: e6
 	%1 = alloca i32
 
-	; <label>: cf
+	; <label>: 24
 	%2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %1)
-	br i1 true label 79 label 85
+	br i1 true label 3a label c7
 
-	; <label>: 79
+	; <label>: 3a
 	ret i32 2
 
-	; <label>: 85
+	; <label>: c7
 	%3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
 
-	; <label>: aa
+	; <label>: 53
 	ret i32 1
 }

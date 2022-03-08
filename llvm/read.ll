@@ -1,10 +1,10 @@
 %struct.A = type { i32 i32 }
-define dso_local <TYPE> @main() {
+define dso_local i32 @main() {
 
-	; <label>: 3c
+	; <label>: 7b
 	%1 = alloca i32
 
-	; <label>: ab
+	; <label>: d9
 	%2 = (i8* ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0) i32 %0)
 	%1 = load i32, i32* %0
 	ret i32 3

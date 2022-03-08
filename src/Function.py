@@ -86,5 +86,6 @@ class Function:
         return node_instr_list
 
     def llvm_signature(self):
+        type = self.return_type.to_llvm_type()
         params = f"({', '.join(list(map(lambda x: x.to_llvm_type(), self.parameters)))})"
-        return f"define dso_local <TYPE> @{self.id}{params} {{"
+        return f"define dso_local {type} @{self.id}{params} {{"

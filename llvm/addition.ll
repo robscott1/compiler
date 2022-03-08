@@ -1,11 +1,11 @@
 
-define dso_local <TYPE> @main() {
+define dso_local i32 @main() {
 
-	; <label>: 78
+	; <label>: 0e
 	%1 = alloca i32
 	%2 = alloca i32
 
-	; <label>: 03
+	; <label>: 81
 	%3 = add i32 4, 2
 	%1 = load i32, i32* %3
 	%2 = load i32, i32* %1

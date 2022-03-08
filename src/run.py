@@ -40,9 +40,8 @@ def run(flag):
     for f in mini_files:
         fname = f.split(".mini")[0]
         if flag == TEST_FLAG:
-            with open(f"../llvm/{fname}.llvm", 'w') as f:
+            with open(f"../llvm/{fname}.ll", 'w') as f:
                 subprocess.run(["python3", "Compiler.py", f"{fname}"], stdout=f)
-    diff_test()
 
 if __name__ == "__main__":
     main()

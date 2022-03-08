@@ -27,7 +27,12 @@ def main():
 
     program = Program(tc)
     string = program.print_program()
-    print(string)
+
+    with open(f"../llvm/{filename}.ll", 'w') as w:
+        w.write(string)
+
+    if len(sys.argv) == 3:
+        print(string)
 
 
 if __name__ == "__main__":
