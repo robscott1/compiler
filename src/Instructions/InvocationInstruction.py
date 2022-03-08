@@ -60,4 +60,4 @@ class InvocationInstruction(Instruction):
 
     def to_text(self):
         args = list(map(lambda x: x.to_value(), self.args))
-        return f"{self.result} = call {self.type.to_text()} {self.fn_id}({' '.join(args)})"
+        return f"{self.result} = call {self.type.to_text()} @{self.fn_id}({' '.join(args)})"

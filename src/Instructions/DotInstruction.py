@@ -104,5 +104,5 @@ class DotInstruction:
         ptr_value = self.ptr_value if isinstance(self.ptr_value, str) \
                                         else self.ptr_value.to_value()
         return f"{self.result} = " \
-               f"{self.op} {self.struct_type.to_llvm_type()}, {self.struct_type.cast_up().to_text()}" \
+               f"{self.op} {self.struct_type.to_llvm_type()}, {self.struct_type.to_text()}" \
                f" {ptr_value} i1 0, i32 {self.index}"

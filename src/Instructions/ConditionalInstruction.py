@@ -49,4 +49,4 @@ class ConditionalInstruction(Instruction):
 
     def to_text(self):
         guard = self.guard if isinstance(self.guard, str) else self.guard.to_value()
-        return f"{self.op} {guard} {self.then_label} {self.else_label}"
+        return f"{self.op} {guard}, {self.then_label}, {self.else_label}"
