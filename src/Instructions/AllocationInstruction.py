@@ -45,5 +45,5 @@ class AllocationInstruction(Instruction):
         elif isinstance(t.of_type(type_map), BoolType):
             return "i1"
         else:
-            return f"%tstruct.{t.id}"
+            return f"%struct.{t.id}"
 

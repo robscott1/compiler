@@ -1,21 +1,22 @@
 %tstruct.A = type { i32 }
 define dso_local i32 @main() {
 
-	; <label>: 6c
-	%t1 = alloca %tstruct.A*
+	; <label>: e9
+	%t1 = alloca %struct.A*
 	%t2 = alloca i32
 
-	; <label>: 69
-	%t2 = load i32, i32* 4
-	%t3 = call %tstruct.A* foo ()
-	%t4 = getelementptr %tstruct.A*, %tstruct.A** %t3 i1 0, i32 0
+	; <label>: 5c
+	store 4 i32, i32* %t2
+	%t3 = call %struct.A* foo()
+	%t4 = getelementptr %struct.A, %struct.A** %t3 i1 0, i32 0
 	ret i32 %t4
 }
-define dso_local %tstruct.A @foo() {
+define dso_local %struct.A @foo() {
 
-	; <label>: be
-	%t1 = alloca %tstruct.A*
+	; <label>: 93
+	%t1 = alloca %struct.A*
 
-	; <label>: 1f
-	ret %tstruct.A* %t1
+	; <label>: 6f
+	%t2 = load %struct.A*, %struct.A** %t1
+	ret %struct.A** %t2
 }

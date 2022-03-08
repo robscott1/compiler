@@ -64,8 +64,7 @@ class BinOpInstruction(Instruction):
     def eval_operand(cls, operand: Expression,
                      instr_mngr: InstructionsManager,
                      factory_fn):
-        if isinstance(operand, IdentifierExpression):
-            return instr_mngr.get(operand.id)
+
         if not (isinstance(operand, IntExpression) \
                 or isinstance(operand, TrueExpression) \
                 or isinstance(operand, FalseExpression)

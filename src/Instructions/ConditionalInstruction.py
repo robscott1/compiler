@@ -38,8 +38,6 @@ class ConditionalInstruction(Instruction):
         if isinstance(guard, InvocationExpression):
             instr = factory_fn(guard, instr_mngr)
             return instr
-        if isinstance(guard, IdentifierExpression):
-            return instr_mngr.get(guard.id)
         elif not (isinstance(guard, IntExpression) \
                   or isinstance(guard, TrueExpression) \
                   or isinstance(guard, FalseExpression)

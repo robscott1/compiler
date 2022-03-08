@@ -16,8 +16,9 @@ class IntType(Type):
         return f"i32{self._ptr_status}"
 
     def cast_up(self):
-        self._ptr_status = "*"
-        return self
+        new = IntType()
+        new._ptr_status = "*"
+        return new
 
     def to_llvm_type(self):
         return "i32"

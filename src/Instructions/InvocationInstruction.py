@@ -37,8 +37,6 @@ class InvocationInstruction(Instruction):
                   factory_fn):
         if isinstance(arg, InvocationExpression):
             return cls.generate(arg, instr_mngr, factory_fn)
-        elif isinstance(arg, IdentifierExpression):
-            return instr_mngr.get(arg.id)
         elif isinstance(arg, NewExpression):
             instr = factory_fn(arg, instr_mngr)
             bitcast_instr = BitcastInstruction("i8*",
