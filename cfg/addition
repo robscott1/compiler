@@ -1,12 +1,12 @@
 digraph {
-	58 [label="%t1 = alloca i32
+	"9f" [label="%t1 = alloca i32
 %t2 = alloca i32"]
-	fd [label="%t3 = add i32 4, 2
+	19 [label="%t3 = add i32 4, 2
 store %t3 i32, i32* %t1
 %t4 = load i32, i32* %t1
-store %t4 i32*, i32* %t2
+store %t4 i32, i32* %t2
 ret i32 3"]
-	58 -> fd
-	a0 [label=""]
-	fd -> a0
+	"9f" -> 19
+	"7f" [label=""]
+	19 -> "7f"
 }

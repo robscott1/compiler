@@ -1,17 +1,17 @@
 digraph {
-	00 [label="%t1 = alloca %struct.A*
+	"9c" [label="%t1 = alloca %struct.A*
 %t2 = alloca i32"]
-	e4 [label="%t3 = call i32 f()
+	52 [label="%t3 = call i32 f()
 %t4 = icmp lt i1 0, %t3
-br i1 %t4 label 31 label f2"]
-	00 -> e4
-	31 [label="ret i32 4"]
-	e4 -> 31
-	c0 [label=""]
-	31 -> c0
-	f2 [label="%t5 = load %struct.A*, %struct.A** %t1
+br i1 %t4 label 8d label 9f"]
+	"9c" -> 52
+	"8d" [label="ret i32 4"]
+	52 -> "8d"
+	"8d" [label=""]
+	"8d" -> "8d"
+	"9f" [label="%t5 = load %struct.A*, %struct.A** %t1
 %t6 = getelementptr %struct.A, %struct.A** %t5 i1 0, i32 0
 ret i32 %t6"]
-	e4 -> f2
-	f2 -> c0
+	52 -> "9f"
+	"9f" -> "8d"
 }

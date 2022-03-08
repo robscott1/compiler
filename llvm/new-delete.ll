@@ -1,10 +1,10 @@
-%tstruct.A = type { i32 i32 }
+%struct.A = type { i32, i32 }
 define dso_local i32 @main() {
 
-	; <label>: 56
+	; <label>: 2d
 	%t1 = alloca %struct.A*
 
-	; <label>: c0
+	; <label>: b4
 	%t2 = call i8* @malloc(i32 8)
 	%t3 = bitcast i8* %t2 to %struct.A*
 	store %t3 %struct.A*, %struct.A** %t1
