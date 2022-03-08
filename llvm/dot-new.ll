@@ -1,11 +1,11 @@
-%struct.A = type { i32, i32, %struct.<Types.StructType.StructType object at 0x7fe91fe1c100> }
+%struct.A = type { i32, i32, %struct.<Types.StructType.StructType object at 0x7f8560eea100> }
 define dso_local i32 @main() {
 
-	; <label>: a8
+	; <label>: 10
 	%t1 = alloca %struct.A*
 	%t2 = alloca i32
 
-	; <label>: ef
+	; <label>: 2b
 	store i32 4, i32* %t2
 	%t3 = load %struct.A*, %struct.A** %t1
 	%t4 = bitcast %struct.A** %t3 to i8*
