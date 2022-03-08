@@ -1,11 +1,11 @@
-%tstruct.A = type { i32 i32 }
+%struct.A = type { i32 i32 }
 define dso_local i32 @main() {
 
-	; <label>: 47
+	; <label>: e2
 	%t1 = alloca %struct.A*
 	%t2 = alloca i32
 
-	; <label>: d1
+	; <label>: f4
 	store 3 i32, i32* %t2
 	%t3 = call i8* @malloc(i32 8)
 	%t4 = bitcast i8* %t3 to %struct.A*
@@ -13,7 +13,7 @@ define dso_local i32 @main() {
 	%t5 = load %struct.A*, %struct.A** %t1
 	%t6 = getelementptr %struct.A, %struct.A** %t5 i1 0, i32 0
 	%t7 = load i32, i32* %t2
-	store %t7 i32*, i32* %t6
+	store %t7 i32, i32* %t6
 	%t8 = load %struct.A*, %struct.A** %t1
 	%t9 = getelementptr %struct.A, %struct.A** %t8 i1 0, i32 0
 	ret i32 %t9

@@ -47,10 +47,10 @@ class TypeDeclaration(Type):
         return f"{total_bytes}"
 
     def to_text(self):
-        return f"%tstruct.{self.id} = " \
+        return f"%struct.{self.id} = " \
                f"type {{ {' '.join(list(map(lambda x: x.to_llvm_type(), self.fields)))}" \
                f" }}"
 
     def to_llvm_type(self):
-        return f"%tstruct.{self.id}"
+        return f"%struct.{self.id}"
 
