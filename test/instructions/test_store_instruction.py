@@ -1,7 +1,9 @@
 import pytest
 
 from Expressions.BinaryExpression import BinaryExpression
+from Expressions.DotExpression import DotExpression
 from Expressions.IntExpression import IntExpression
+from Expressions.NewExpression import NewExpression
 from Expressions.ReadExpression import ReadExpression
 from Factories.InstructionFactory import InstructionFactory
 from InstructionsManager import InstructionsManager
@@ -20,7 +22,10 @@ from Statements.AssignmentStatement import AssignmentStatement
         (AssignmentStatement(44, LvalueId(44, "k"), IntExpression(44, '3')),
          "store 3 i32, i32* %t1"),
         (AssignmentStatement(44, LvalueId(44, "k"), ReadExpression(44)),
-         "store %t0 i32, i32* %t1")
+         "store %t0 i32, i32* %t1"),
+        (AssignmentStatement(33, LvalueId(44, "k"),
+                             DotExpression(44, NewExpression(44, "A"), "i")),
+         "store %t4 i32, i32* %t1")
 
     ]
 )

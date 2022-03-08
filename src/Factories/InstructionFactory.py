@@ -1,6 +1,7 @@
 from Declaration import Declaration
 from Expressions.BinaryExpression import BinaryExpression
 from Expressions.DotExpression import DotExpression
+from Expressions.IdentifierExpression import IdentifierExpression
 from Expressions.InvocationExpression import InvocationExpression
 from Expressions.NewExpression import NewExpression
 from Expressions.ReadExpression import ReadExpression
@@ -64,6 +65,8 @@ class InstructionFactory:
             return DeleteInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, ReadExpression):
             return ReadInstruction.generate(instr_mngr)
+        elif isinstance(code, IdentifierExpression):
+            return LoadInstruction.generate(code, instr_mngr, cls.create_instruction)
         else:
             return AllocationInstruction.generate(instr_mngr,
                                                   Declaration("32", IntType(), "k"))

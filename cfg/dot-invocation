@@ -1,11 +1,11 @@
 digraph {
-	"3e" [label="%t1 = alloca %tstruct.A*
+	"8c" [label="%t1 = alloca %tstruct.A*
 %t2 = alloca i32"]
-	50 [label="%t2 = load i32, i32* 4
+	58 [label="store 4 i32, i32* %t2
 %t3 = call %tstruct.A* foo()
 %t4 = getelementptr %tstruct.A*, %tstruct.A** %t3 i1 0, i32 0
 ret i32 %t4"]
-	"3e" -> 50
-	e8 [label=""]
-	50 -> e8
+	"8c" -> 58
+	"0c" [label=""]
+	58 -> "0c"
 }

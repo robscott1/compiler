@@ -1,7 +1,9 @@
 from Expressions.Expression import Expression
 from Expressions.IntExpression import IntExpression
+from Expressions.NewExpression import NewExpression
 from Expressions.NullExpression import NullExpression
 from Expressions.TrueExpression import TrueExpression
+from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
 from Statements.AssignmentStatement import AssignmentStatement
@@ -39,6 +41,14 @@ class StoreInstruction(Instruction):
             or isinstance(source, NullExpression)
         ):
             return source
+        elif isinstance(source, NewExpression):
+            instr = factory_fn(source, instr_mngr)
+            bitcast_instr = BitcastInstruction("i8*",
+                                               instr.to_value(),
+                                               source.of_type(instr_mngr.type_map),
+                                               instr_mngr.next_tmp())
+            instr_mngr.add_instruction(bitcast_instr)
+            return bitcast_instr.to_value()
         else:
             instr = factory_fn(source, instr_mngr)
             return instr
