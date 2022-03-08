@@ -14,11 +14,11 @@ class StructType(Type):
         return self
 
     def to_text(self, _to_ptr=None):
-        res = f"%struct.{self.id}{self._ptr_status}"
+        res = f"%tstruct.{self.id}{self._ptr_status}"
         return res
 
     def to_llvm_type(self):
-        return f"%struct.{self.id}"
+        return f"%tstruct.{self.id}"
 
     def cast_up(self):
         self._ptr_status = "**"

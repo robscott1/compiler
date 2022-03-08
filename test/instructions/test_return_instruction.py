@@ -16,7 +16,7 @@ from Statements.ReturnStatement import ReturnStatement
          "ret i32 4"),
         (ReturnStatement(44, InvocationExpression(44, "f",
             [IntExpression(44, "2"), (TrueExpression(44))])),
-        "ret i32 %1")
+        "ret i32 %t1")
 
     ]
 )

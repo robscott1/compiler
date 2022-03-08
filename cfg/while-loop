@@ -1,18 +1,18 @@
 digraph {
-	dc [label="%1 = alloca i32
-%2 = alloca i32"]
-	"4d" [label="%1 = load i32, i32* 4"]
-	dc -> "4d"
-	"7f" [label="%3 = icmp lt i1 %1, 4
-br i1 %3 label 0a label 78"]
-	"4d" -> "7f"
-	"0a" [label="%4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
-	"7f" -> "0a"
-	48 [label="br label 7f"]
-	"0a" -> 48
-	48 -> "7f"
-	78 [label="ret i32 2"]
-	"7f" -> 78
-	73 [label=""]
-	78 -> 73
+	10 [label="%t1 = alloca i32
+%t2 = alloca i32"]
+	ee [label="%t1 = load i32, i32* 4"]
+	10 -> ee
+	48 [label="%t3 = icmp lt i1 %t1, 4
+br i1 %t3 label 8f label fa"]
+	ee -> 48
+	"8f" [label="%t4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	48 -> "8f"
+	c2 [label="br label 48"]
+	"8f" -> c2
+	c2 -> 48
+	fa [label="ret i32 2"]
+	48 -> fa
+	63 [label=""]
+	fa -> 63
 }

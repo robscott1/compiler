@@ -10,7 +10,7 @@ from Statements.DeleteStatement import DeleteStatement
 @pytest.mark.parametrize(
     "stmt, exp", [
         (DeleteStatement(44, IdentifierExpression(44, "x")),
-         "call void @free(i8* %1)")
+         "call void @free(i8* %t1)")
     ]
 )
 def test_delete_instruction_gen(type_checker, stmt, exp):

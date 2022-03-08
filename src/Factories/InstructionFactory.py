@@ -16,6 +16,7 @@ from Instructions.NewInstruction import NewInstruction
 from Instructions.PrintInstruction import PrintInstruction
 from Instructions.ReadInstruction import ReadInstruction
 from Instructions.ReturnInstruction import ReturnInstruction
+from Instructions.StoreInstruction import StoreInstruction
 from Statements.DeleteStatement import DeleteStatement
 from Statements.PrintStatement import PrintStatement
 from Types.IntType import IntType
@@ -39,7 +40,7 @@ class InstructionFactory:
         elif isinstance(code, BinaryExpression):
             return BinOpInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, AssignmentStatement):
-            return LoadInstruction.generate(code, instr_mngr, cls.create_instruction)
+            return StoreInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, InvocationStatement):
             return InvocationInstruction.generate(code.exp, instr_mngr, cls.create_instruction)
         elif isinstance(code, ReturnStatement):

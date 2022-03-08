@@ -9,8 +9,8 @@ from Types.StructType import StructType
 
 @pytest.mark.parametrize(
     "input, exp", [
-        (Declaration(44, StructType("A"), "id"), "%1 = alloca %struct.A*"),
-        (Declaration(44, IntType(), "x"), "%1 = alloca i32")
+        (Declaration(44, StructType("A"), "id"), "%t1 = alloca %tstruct.A*"),
+        (Declaration(44, IntType(), "x"), "%t1 = alloca i32")
     ]
 )
 def test_allocation_instr_gen(type_checker, input, exp):

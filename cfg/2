@@ -1,46 +1,46 @@
 digraph {
-	cb [label="%0 = alloca %struct.A
-%1 = alloca i32
-%2 = alloca i32
-%3 = alloca i32
-%4 = alloca i1
-%5 = alloca i32"]
-	a4 [label="%1 = load i32, i32* 2
-%6 = call i32 g (1 null)
-%6 = call i32 g (1 null)
-%7 = icmp lt i1 %1, %6
-br i1 %7 label 3f label 42"]
+	cb [label="%t0 = alloca %tstruct.A
+%t1 = alloca i32
+%t2 = alloca i32
+%t3 = alloca i32
+%t4 = alloca i1
+%t5 = alloca i32"]
+	a4 [label="%t1 = load i32, i32* 2
+%t6 = call i32 g (1 null)
+%t6 = call i32 g (1 null)
+%t7 = icmp lt i1 %t1, %t6
+br i1 %t7 label 3f label 42"]
 	cb -> a4
-	"3f" [label="%8 = alloca i32"]
+	"3f" [label="%t8 = alloca i32"]
 	a4 -> "3f"
-	42 [label="%9 = call i32 g (1 null)
-%9 = call i32 g (1 null)
-%10 = icmp gt i1 %1, %9
-br i1 %10 label 80 label b6"]
+	42 [label="%t9 = call i32 g (1 null)
+%t9 = call i32 g (1 null)
+%t10 = icmp gt i1 %t1, %t9
+br i1 %t10 label 80 label b6"]
 	"3f" -> 42
-	80 [label="%11 = alloca i32"]
+	80 [label="%t11 = alloca i32"]
 	42 -> 80
-	58 [label="%12 = icmp eq i1 true, false
-br i1 %12 label 1d label a8"]
+	58 [label="%t12 = icmp eq i1 true, false
+br i1 %t12 label 1d label a8"]
 	80 -> 58
-	"1d" [label="%13 = alloca i32"]
+	"1d" [label="%t13 = alloca i32"]
 	58 -> "1d"
 	e9 [label="br label 58"]
 	"1d" -> e9
 	e9 -> 58
-	a8 [label="%16 = call i8* @malloc(i32 1)
-%17 = bitcast i8* %16 to %struct.B**
-%15 = call i32 g (1 %17)
-%18 = call i8* @malloc(i32 1)
-%19 = bitcast i8* %18 to %struct.B**
-%14 = call A f (%15 %19)
-%20 = alloca i32
-%21 = alloca i32
+	a8 [label="%t16 = call i8* @malloc(i32 1)
+%t17 = bitcast i8* %t16 to %tstruct.B**
+%t15 = call i32 g (1 %t17)
+%t18 = call i8* @malloc(i32 1)
+%t19 = bitcast i8* %t18 to %tstruct.B**
+%t14 = call A f (%t15 %t19)
+%t20 = alloca i32
+%t21 = alloca i32
 ret i32 0"]
 	58 -> a8
 	87 [label=""]
 	a8 -> 87
-	b6 [label="%22 = alloca i32"]
+	b6 [label="%t22 = alloca i32"]
 	42 -> b6
 	b6 -> 58
 	a4 -> 42

@@ -8,10 +8,10 @@ from InstructionsManager import InstructionsManager
 @pytest.mark.parametrize(
     "exp, expected_str, expected_val",[
         (ReadExpression(44),
-         "%1 = (i8* ...) @__isoc99__scanf" \
+         "%t1 = (i8* ...) @__isoc99__scanf" \
                f"(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, " \
-               f"i32 0, i32 0) i32 %0)",
-         "%0")
+               f"i32 0, i32 0) i32 %t0)",
+         "%t0")
     ]
 )
 def test_read_instruction(type_checker, exp, expected_str, expected_val):

@@ -2,11 +2,11 @@
 define dso_local i32 @main(i32) {
 
 	; <label>: 8d
-	%1 = alloca i32
-	%2 = alloca i32
+	%t1 = alloca i32
+	%t2 = alloca i32
 
 	; <label>: 07
-	%1 = load i32, i32* 3
+	%t1 = load i32, i32* 3
 
 	; <label>: b6
 	br i1 true label 7a label 40

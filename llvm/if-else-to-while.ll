@@ -1,10 +1,10 @@
-%struct.A = type { i32 }
+%tstruct.A = type { i32 }
 @z = common dso_local global i32 0
 @a = common dso_local global i32 0define dso_local i32 @foo(i32, i32) {
 
 	; <label>: 49
-	%1 = alloca i32
-	%2 = alloca i32
+	%t1 = alloca i32
+	%t2 = alloca i32
 
 	; <label>: 3c
 	ret i32 1
@@ -12,18 +12,18 @@
 define dso_local i32 @main(i32) {
 
 	; <label>: 47
-	%1 = alloca i32
-	%2 = alloca i32
-	%3 = alloca %struct.A*
-	%4 = alloca i32
+	%t1 = alloca i32
+	%t2 = alloca i32
+	%t3 = alloca %tstruct.A*
+	%t4 = alloca i32
 
 	; <label>: 09
-	%5 = icmp lt i1 4, 5
-	br i1 %5 label e2 label 07
+	%t5 = icmp lt i1 4, 5
+	br i1 %t5 label e2 label 07
 
 	; <label>: e2
-	%1 = load i32, i32* 4
-	%6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 @z)
+	%t1 = load i32, i32* 4
+	%t6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 @z)
 
 	; <label>: ea
 	%7 = icmp lt i1 4, 6

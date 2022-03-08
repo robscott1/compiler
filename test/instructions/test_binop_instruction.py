@@ -13,13 +13,13 @@ from Operator import Operator
     "left, right, operator, exp",
     [
         (IntExpression(44, "3"), IntExpression(44, "2"),
-         Operator.PLUS, "%1 = add i32 3, 2"),
+         Operator.PLUS, "%t1 = add i32 3, 2"),
         (BinaryExpression(44, Operator.PLUS, IntExpression(44, "3"), IntExpression(44, "2")),
          IntExpression(44, "2"), Operator.PLUS,
-         "%2 = add i32 %1, 2"),
+         "%t2 = add i32 %t1, 2"),
         (BinaryExpression(44, Operator.OR, TrueExpression(44), FalseExpression(44)),
          FalseExpression(44), Operator.AND,
-         "%2 = and i1 %1, false")
+         "%t2 = and i1 %t1, false")
 
     ]
 )
@@ -35,12 +35,12 @@ def test_binop_generation(type_checker, exp, operator, right, left):
         (BinaryExpression(44, Operator.LT,
                           IntExpression(44, "4"),
                           IntExpression(44, "4")),
-         "%1 = icmp lt i1 4, 4"),
+         "%t1 = icmp lt i1 4, 4"),
         (BinaryExpression(44, Operator.EQ,
                           BinaryExpression(44, Operator.PLUS,
                                            IntExpression(44, "3"), IntExpression(44, "3")),
                           IntExpression(44, "4")),
-         "%2 = icmp eq i1 %1, 4")
+         "%t2 = icmp eq i1 %t1, 4")
     ]
 )
 def test_comparison_binop(type_checker, exp, expr):

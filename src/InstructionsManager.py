@@ -9,7 +9,7 @@ class InstructionsManager:
         self._current_node = None
 
     def next_tmp(self):
-        result = f"%{self._current_number}"
+        result = f"%t{self._current_number}"
         self._current_number += 1
         return result
 

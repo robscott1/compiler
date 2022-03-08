@@ -16,11 +16,11 @@ from Statements.AssignmentStatement import AssignmentStatement
                                BinaryExpression(44, Operator.PLUS,
                                                 IntExpression(44, "3"),
                                                 IntExpression(44, "2"))),
-         "%1 = load i32, i32* %2"),
+         "store %t2 i32, i32* %t1"),
         (AssignmentStatement(44, LvalueId(44, "k"), IntExpression(44, '3')),
-         "%1 = load i32, i32* 3"),
+         "store 3 i32, i32* %t1"),
         (AssignmentStatement(44, LvalueId(44, "k"), ReadExpression(44)),
-         "%1 = load i32, i32* %0")
+         "store %t0 i32, i32* %t1")
 
     ]
 )
