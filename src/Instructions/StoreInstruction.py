@@ -71,6 +71,6 @@ class StoreInstruction(Instruction):
 
     def to_text(self):
         source = self.source if isinstance(self.source, str) else self.source.to_value()
-        return f"store {source} {self.ll_type.to_text()}, " \
+        return f"store {self.ll_type.to_text()} {source}, " \
                f"{self.ll_type.cast_up().to_text()} {self.target}"
 
