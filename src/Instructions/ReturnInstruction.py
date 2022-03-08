@@ -33,8 +33,6 @@ class ReturnInstruction(Instruction):
                   factory_fn):
         if isinstance(arg, InvocationExpression):
             return factory_fn(arg, instr_mngr)
-        elif isinstance(arg, IdentifierExpression):
-            return instr_mngr.get(arg.id)
         elif isinstance(arg, NewExpression):
             instr = factory_fn(arg, instr_mngr)
             bitcast_instr = BitcastInstruction("i8*",

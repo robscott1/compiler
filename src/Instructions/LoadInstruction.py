@@ -30,6 +30,8 @@ class LoadInstruction(Instruction):
         instr_mngr.add_instruction(instruction)
         return instruction
 
+    def to_value(self):
+        return f"{self.result}"
 
     def to_text(self):
         return f"{self.result} = load {self.type.to_text()}, " \

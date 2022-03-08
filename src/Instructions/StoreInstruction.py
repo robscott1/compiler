@@ -4,9 +4,13 @@ from Expressions.NewExpression import NewExpression
 from Expressions.NullExpression import NullExpression
 from Expressions.TrueExpression import TrueExpression
 from Instructions.BitcastInstruction import BitcastInstruction
+from Instructions.DotInstruction import DotInstruction
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
+from LvalueId import LvalueId
+from LvalueStructField import LvalueStructField
 from Statements.AssignmentStatement import AssignmentStatement
+from l_value import Lvalue
 
 
 class StoreInstruction(Instruction):
@@ -21,7 +25,7 @@ class StoreInstruction(Instruction):
                  instr_mngr: InstructionsManager,
                  factory_fn
     ):
-        target = instr_mngr.get(code.target.get_id())
+        target = cls.eval_target(code.target, instr_mngr, factory_fn)
         source = cls.eval_source(code.source, instr_mngr, factory_fn)
         ll_type = code.source.of_type(instr_mngr.type_map)
 
@@ -29,6 +33,17 @@ class StoreInstruction(Instruction):
         instr_mngr.add_instruction(instr)
 
         return instr
+
+    @classmethod
+    def eval_target(cls, target: Lvalue,
+                    instr_mngr: InstructionsManager,
+                    factory_fn
+    ):
+        if isinstance(target, LvalueStructField):
+            dot = DotInstruction.generate_assign(target, instr_mngr, factory_fn)
+            return dot.to_value()
+        else:
+            return instr_mngr.get(target.get_id())
 
     @classmethod
     def eval_source(cls, source: Expression,
@@ -56,6 +71,6 @@ class StoreInstruction(Instruction):
 
     def to_text(self):
         source = self.source if isinstance(self.source, str) else self.source.to_value()
-        type = self.ll_type if isinstance(self.ll_type, str) else self.ll_type.to_llvm_type()
-        return f"store {source} {type}, {type}* {self.target}"
+        return f"store {source} {self.ll_type.to_text()}, " \
+               f"{self.ll_type.cast_up().to_text()} {self.target}"
 

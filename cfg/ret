@@ -1,15 +1,16 @@
 digraph {
-	46 [label="%t1 = alloca i32
+	ed [label="%t1 = alloca i32
 %t2 = alloca i32"]
-	"0c" [label="store 1 i32, i32* %t1
-%t3 = icmp gt i1 %t1, 0
-br i1 %t3 label 32 label 3c"]
-	46 -> "0c"
-	32 [label="ret i32 1"]
-	"0c" -> 32
-	48 [label=""]
-	32 -> 48
-	"3c" [label="ret i32 1"]
-	"0c" -> "3c"
-	"3c" -> 48
+	de [label="store 1 i32, i32* %t1
+%t3 = load i32, i32* %t1
+%t4 = icmp gt i1 %t3, 0
+br i1 %t4 label 1a label 08"]
+	ed -> de
+	"1a" [label="ret i32 1"]
+	de -> "1a"
+	"8b" [label=""]
+	"1a" -> "8b"
+	08 [label="ret i32 1"]
+	de -> 08
+	08 -> "8b"
 }

@@ -37,7 +37,7 @@ class InstructionFactory:
         if isinstance(code, Declaration):
             return AllocationInstruction.generate(instr_mngr, code)
         elif isinstance(code, DotExpression):
-            return DotInstruction.generate(code, instr_mngr, cls.create_instruction)
+            return DotInstruction.generate_retrieve(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, BinaryExpression):
             return BinOpInstruction.generate(code, instr_mngr, cls.create_instruction)
         elif isinstance(code, AssignmentStatement):

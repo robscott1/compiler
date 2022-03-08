@@ -12,4 +12,7 @@ class LvalueStructField(LvalueId):
 
     def get_type(self, tc):
         structure = tc.get_id_type(self.left)
-        return tc.get_struct_field_type(structure, self.id)
+        return tc.get_struct_field_type(structure.id, self.id)
+
+    def get_struct_type(self, tc):
+        return tc.get_id_type(self.left)

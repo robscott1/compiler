@@ -2,49 +2,54 @@
 @z = common dso_local global i32 0
 @a = common dso_local global i32 0define dso_local i32 @foo(i32, i32) {
 
-	; <label>: 49
+	; <label>: 45
 	%t1 = alloca i32
 	%t2 = alloca i32
 
-	; <label>: 3c
+	; <label>: 19
 	ret i32 1
 }
 define dso_local i32 @main(i32) {
 
-	; <label>: 47
+	; <label>: f7
 	%t1 = alloca i32
 	%t2 = alloca i32
-	%t3 = alloca %tstruct.A*
+	%t3 = alloca %struct.A*
 	%t4 = alloca i32
 
-	; <label>: 09
+	; <label>: 5d
 	%t5 = icmp lt i1 4, 5
-	br i1 %t5 label e2 label 07
+	br i1 %t5 label 08 label db
 
-	; <label>: e2
-	%t1 = load i32, i32* 4
-	%t6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 @z)
+	; <label>: 08
+	store 4 i32, i32* %t1
+	%t6 = load i32, i32* @z
+	%t7 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %t6)
 
-	; <label>: ea
-	%7 = icmp lt i1 4, 6
-	br i1 %7 label 23 label 7a
+	; <label>: 9a
+	%t8 = icmp lt i1 4, 6
+	br i1 %t8 label 95 label 56
 
-	; <label>: 23
-	%1 = load i32, i32* 1
-	%8 = add i32 %1, 1
-	%1 = load i32, i32* %8
+	; <label>: 95
+	store 1 i32, i32* %t1
+	%t9 = load i32, i32* %t1
+	%t10 = add i32 %t9, 1
+	store %t10 i32, i32* %t1
 
-	; <label>: e4
-	br label ea
+	; <label>: 1b
+	br label 9a
 
-	; <label>: 7a
-	%9 = add i32 3, %1
-	%10 = mul i32 4, %9
-	%11 = mul i32 %1, %10
-	ret i32 %11
+	; <label>: 56
+	%t11 = load i32*, i32* %t1
+	%t12 = load i32*, i32* %t1
+	%t13 = add i32 3, %t12
+	%t14 = mul i32 4, %t13
+	%t15 = mul i32 %t11, %t14
+	ret i32 %t15
 
-	; <label>: 07
-	%12 = add i32 3, 2
-	%2 = load i32, i32* %12
-	%13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %2)
+	; <label>: db
+	%t16 = add i32 3, 2
+	store %t16 i32, i32* %t2
+	%t17 = load i32, i32* %t2
+	%t18 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %t17)
 }

@@ -9,7 +9,7 @@ from Types.StructType import StructType
 
 @pytest.mark.parametrize(
     "input, exp", [
-        (Declaration(44, StructType("A"), "id"), "%t1 = alloca %tstruct.A*"),
+        (Declaration(44, StructType("A"), "id"), "%t1 = alloca %struct.A*"),
         (Declaration(44, IntType(), "x"), "%t1 = alloca i32")
     ]
 )
