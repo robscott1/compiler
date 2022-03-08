@@ -1,6 +1,7 @@
 from Expressions.Expression import Expression
 from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.Instruction import Instruction
+from Instructions.LoadInstruction import LoadInstruction
 from InstructionsManager import InstructionsManager
 from Statements.DeleteStatement import DeleteStatement
 
@@ -17,23 +18,23 @@ class DeleteInstruction(Instruction):
                  factory_fn
     ):
         # Assuming this will always be IdentifierExpression
-        expression = instr_mngr.get(code.expression.id)
+        load_instr = factory_fn(code.expression, instr_mngr)
 
-        bitcast = cls._generate_bitcast(code.expression, instr_mngr)
+        bitcast = cls._generate_bitcast(load_instr, instr_mngr)
         instr_mngr.add_instruction(bitcast)
 
-        instr = DeleteInstruction(expression)
+        instr = DeleteInstruction(load_instr.to_value())
         instr_mngr.add_instruction(instr)
 
         return instr
 
     @classmethod
-    def _generate_bitcast(cls, expression: Expression,
+    def _generate_bitcast(cls, load_instr: LoadInstruction,
                           instr_mngr: InstructionsManager):
         args = {
-            "og_type": expression.of_type(instr_mngr.type_map),
+            "og_type": load_instr.type,
             # Assuming expression is always IdentifierExpression
-            "value": instr_mngr.get(expression.id),
+            "value": load_instr.to_value(),
             "new_type": "i8*",
             "result": instr_mngr.next_tmp()
         }
