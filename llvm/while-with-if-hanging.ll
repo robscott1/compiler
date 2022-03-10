@@ -1,26 +1,30 @@
 
 define dso_local i32 @main(i32) {
 
-	; <label>: LABEL@fd
+L48:
 	%t1 = alloca i32
 	%t2 = alloca i32
+	br label %L16
 
-	; <label>: LABEL@d6
+L16:
 	store i32 3, i32* %t1
+	br label %L45
 
-	; <label>: LABEL@36
-	br i1 true, label LABEL@83, label LABEL@2b
+L45:
+	br i1 true, label %L58, label %L57
 
-	; <label>: LABEL@83
+L58:
 	%t3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
-	br i1 true, label LABEL@13, label LABEL@56
+	br i1 true, label %L79, label %L65
 
-	; <label>: LABEL@13
+L79:
 	%t4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
+	br label %L65
 
-	; <label>: LABEL@56
-	br label LABEL@36
+L65:
+	br label %L45
+	br label %L45
 
-	; <label>: LABEL@2b
+L57:
 	ret i32 2
 }
