@@ -1,7 +1,9 @@
 import uuid
+from random import random, randint
 
 from Expressions.Expression import Expression
 from Factories.InstructionFactory import InstructionFactory
+from Instructions.JumpInstruction import JumpInstruction
 from InstructionsManager import InstructionsManager
 from StatementIterator import StatementIterator
 from Statements.BlockStatement import BlockStatement
@@ -32,7 +34,7 @@ class ControlFlowNode:
     """
 
     def __init__(self, label=None):
-        self.id = "LABEL@" + str(uuid.uuid4())[-3:-1]
+        self.id = f"%L{randint(1, 100)}"
         self.predecessors = []
         self.successors = []
         self.statements = []
@@ -188,6 +190,9 @@ class ControlFlowNode:
         instr_mngr.set_current_node(self)
         for stmt in self.statements:
             InstructionFactory.create_instruction(stmt, instr_mngr)
+        if self.successors == 1 and not self.has_return:
+            successor = self.successors[0]
+            instr_mngr.add_instruction(JumpInstruction("br", successor.id))
 
         return "\n".join(list(map(lambda x: x.to_text(),
                                   instr_mngr.get_complete_instructions())))
@@ -197,6 +202,11 @@ class ControlFlowNode:
         instr_mngr.set_current_node(self)
         for stmt in self.statements:
             InstructionFactory.create_instruction(stmt, instr_mngr)
+        if len(self.successors) == 1 and \
+                not self.has_return \
+                and not isinstance(self, JumpInstruction):
+            successor = self.successors[0]
+            instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 
         return "\n".join(list(map(lambda x: "\t" + x.to_text(),
                                   instr_mngr.get_complete_instructions())))

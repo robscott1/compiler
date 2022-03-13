@@ -23,7 +23,7 @@ class DeleteInstruction(Instruction):
         bitcast = cls._generate_bitcast(load_instr, instr_mngr)
         instr_mngr.add_instruction(bitcast)
 
-        instr = DeleteInstruction(load_instr.to_value())
+        instr = DeleteInstruction(bitcast.to_value())
         instr_mngr.add_instruction(instr)
 
         return instr

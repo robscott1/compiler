@@ -68,6 +68,5 @@ class InstructionFactory:
         elif isinstance(code, IdentifierExpression):
             return LoadInstruction.generate(code, instr_mngr, cls.create_instruction)
         else:
-            return AllocationInstruction.generate(instr_mngr,
-                                                  Declaration("32", IntType(), "k"))
+            return AllocationInstruction.generate(instr_mngr, code)
 

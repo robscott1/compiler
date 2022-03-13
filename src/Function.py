@@ -70,14 +70,14 @@ class Function:
         lines.append(self.llvm_signature())
         body = self.bfs_nodes(self.cfg, [], instr_mngr)
         lines.append("\n".join(body))
-        lines.append("}")
+        lines.append("}\n")
         return "\n".join(lines)
 
     def bfs_nodes(self, node: ControlFlowNode, node_instr_list, instr_mngr):
         node.visited = True
         if node.statements:
             instr_mngr.type_map.current_scope = self
-            node_instr_list.append(f"\n\t; <label>: {node.id}")
+            node_instr_list.append(f"\n{node.id.split('%')[1]}:")
             node_instr = node.generate_llvm_text(instr_mngr)
             node_instr_list.append(node_instr)
         for successor in node.successors:
@@ -88,4 +88,5 @@ class Function:
     def llvm_signature(self):
         type = self.return_type.to_llvm_type()
         params = f"({', '.join(list(map(lambda x: x.to_llvm_type(), self.parameters)))})"
-        return f"define dso_local {type} @{self.id}{params} {{"
+        ptr = "" if "%" not in type else "*"
+        return f"define dso_local {type}{ptr} @{self.id}{params} {{"

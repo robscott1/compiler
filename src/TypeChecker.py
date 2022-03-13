@@ -108,11 +108,6 @@ class TypeChecker:
     def get_mem_size(self, structure):
         return self.type_map.get(structure).get_mem_size()
 
-    def add_dynamic_mem(self, _id):
-        self.dynamic_memory[_id] = True
-
-    def remove_dynamic_mem(self, _id):
-        self.dynamic_memory[_id] = False
 
 
 

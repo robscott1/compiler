@@ -1,3 +1,17 @@
+STANDARD_GLOBALS = [
+    "\n@.str = private unnamed_addr constant [3 x i8] c\"%d\\00\"",
+    "@.str.1 = private unnamed_addr constant [4 x i8] c\"%d\\0A\\00\"",
+    "@READ_MEM = common global i32 0",
+
+]
+
+STANDARD_FUNCS = [
+    "\ndeclare dso_local void @free(i8*) #1",
+    "declare dso_local i32 @printf(i8*, ...) #1",
+    "declare dso_local i8* @malloc(i32) #1",
+    "declare dso_local i32 @__isoc99__scanf(i8*, ...) #1"
+]
+
 class Program:
 
     def __init__(self, tc):
@@ -10,8 +24,9 @@ class Program:
         types = "\n".join(self.get_types())
         globals = "\n".join(self.get_globals())
         functions = "\n".join(self.get_functions())
+        stdlib_includes = "\n".join(STANDARD_FUNCS)
 
-        return f"{types}\n{globals}{functions}"
+        return f"{types}\n{globals}\n{functions}\n{stdlib_includes}"
 
     """
     get_types
@@ -34,7 +49,7 @@ class Program:
         globals = []
         for d in self._globals.values():
             globals.append(d.to_global_declaration())
-        return globals
+        return globals + STANDARD_GLOBALS
 
     """
     get_functions

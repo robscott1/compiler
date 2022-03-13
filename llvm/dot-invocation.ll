@@ -1,24 +1,36 @@
 %struct.A = type { i32 }
+
+@.str = private unnamed_addr constant [3 x i8] c"%d\00"
+@.str.1 = private unnamed_addr constant [4 x i8] c"%d\0A\00"
+@READ_MEM = common global i32 0
 define dso_local i32 @main() {
 
-L35:
-	%t1 = alloca %struct.A*
-	%t2 = alloca i32
-	br label %L83
+L67:
+	%t0 = alloca %struct.A*
+	%t1 = alloca i32
+	br label %L25
 
-L83:
-	store i32 4, i32* %t2
-	%t3 = call %struct.A* @foo()
-	%t4 = getelementptr %struct.A, %struct.A* %t3, i1 0, i32 0
+L25:
+	store i32 4, i32* %t1
+	%t2 = call %struct.A* @foo()
+	%t3 = getelementptr %struct.A, %struct.A* %t2, i32 0, i32 0
+	%t4 = load i32, i32* %t3
 	ret i32 %t4
 }
-define dso_local %struct.A @foo() {
 
-L68:
-	%t1 = alloca %struct.A*
-	br label %L34
+define dso_local %struct.A* @foo() {
 
-L34:
-	%t2 = load %struct.A*, %struct.A** %t1
-	ret %struct.A* %t2
+L44:
+	%t0 = alloca %struct.A*
+	br label %L89
+
+L89:
+	%t1 = load %struct.A*, %struct.A** %t0
+	ret %struct.A* %t1
 }
+
+
+declare dso_local void @free(i8*) #1
+declare dso_local i32 @printf(i8*, ...) #1
+declare dso_local i8* @malloc(i32) #1
+declare dso_local i32 @__isoc99__scanf(i8*, ...) #1

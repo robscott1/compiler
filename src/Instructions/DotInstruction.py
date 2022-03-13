@@ -10,6 +10,7 @@ from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.LoadInstruction import LoadInstruction
 from InstructionsManager import InstructionsManager
 from LvalueStructField import LvalueStructField
+from Types.StructType import StructType
 
 
 class DotInstruction:
@@ -35,7 +36,17 @@ class DotInstruction:
         instr = DotInstruction(op, struct_type, ptr_value, index, result)
         instr_mngr.add_instruction(instr)
 
-        return instr
+        load_instr_param = {
+            "result": instr_mngr.next_tmp(),
+            "type": cls.get_field_type(struct_type, code.id, instr_mngr),
+            "type_cast": cls.get_field_type(struct_type, code.id, instr_mngr),
+            "location": instr.to_value()
+        }
+
+        load_instr = LoadInstruction(**load_instr_param)
+        instr_mngr.add_instruction(load_instr)
+
+        return load_instr
 
     @classmethod
     def generate_assign(cls, code: LvalueStructField,
@@ -93,9 +104,14 @@ class DotInstruction:
             return left.to_value()
 
     @classmethod
-    def get_field_idx(cls, struct_type: str, field: str,
+    def get_field_idx(cls, struct_type: StructType, field: str,
                       instr_mngr: InstructionsManager):
         return instr_mngr.get_field_index(struct_type.id, field)
+
+    @classmethod
+    def get_field_type(cls, struct_type: StructType, field: str,
+                       instr_mngr: InstructionsManager):
+        return instr_mngr.get_field_type(struct_type.id, field)
 
     def to_value(self):
         return f"{self.result}"
@@ -105,4 +121,4 @@ class DotInstruction:
                                         else self.ptr_value.to_value()
         return f"{self.result} = " \
                f"{self.op} {self.struct_type.to_llvm_type()}, {self.struct_type.to_text()}" \
-               f" {ptr_value} i1 0, i32 {self.index}"
+               f" {ptr_value}, i32 0, i32 {self.index}"

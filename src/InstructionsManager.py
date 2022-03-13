@@ -15,7 +15,7 @@ class InstructionsManager:
 
     def set_values(self):
         values = {}
-        values["READ_MEM"] = self.next_tmp()
+        values["@READ_MEM"] = f"@READ_MEM"
         for _id in self.type_map.global_map.keys():
             values[_id] = f"@{_id}"
         return values
@@ -47,6 +47,9 @@ class InstructionsManager:
 
     def get_field_index(self, structure: str, field_id: str):
         return self.type_map.get_struct_field_idx(structure, field_id)
+
+    def get_field_type(self, structure: str, field_id: str):
+        return self.type_map.get_struct_field_type(structure, field_id)
 
     def get_mem_size(self, structure: str):
         return self.type_map.get_mem_size(structure)

@@ -1,28 +1,38 @@
 
+
+@.str = private unnamed_addr constant [3 x i8] c"%d\00"
+@.str.1 = private unnamed_addr constant [4 x i8] c"%d\0A\00"
+@READ_MEM = common global i32 0
 define dso_local i32 @main(i32) {
 
-L26:
+L43:
+	%t0 = alloca i32
 	%t1 = alloca i32
-	%t2 = alloca i32
-	br label %L32
+	br label %L93
 
-L32:
-	store i32 4, i32* %t1
-	br label %L99
+L93:
+	store i32 4, i32* %t0
+	br label %L43
 
-L99:
-	%t3 = load i32, i32* %t1
-	%t4 = icmp slt i32 %t3, 4
-	br i1 %t4, label %L74, label %L91
+L43:
+	%t2 = load i32, i32* %t0
+	%t3 = icmp slt i32 %t2, 4
+	br i1 %t3, label %L6, label %L61
 
-L74:
-	%t5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
-	br label %L73
+L6:
+	%t4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
+	br label %L78
 
-L73:
-	br label %L99
-	br label %L99
+L78:
+	br label %L43
+	br label %L43
 
-L91:
+L61:
 	ret i32 2
 }
+
+
+declare dso_local void @free(i8*) #1
+declare dso_local i32 @printf(i8*, ...) #1
+declare dso_local i8* @malloc(i32) #1
+declare dso_local i32 @__isoc99__scanf(i8*, ...) #1

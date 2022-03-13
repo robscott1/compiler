@@ -52,5 +52,5 @@ class TypeDeclaration(Type):
                f" }}"
 
     def to_llvm_type(self):
-        return f"%struct.{self.id}"
+        return f"%struct.{self.id}*"
 
