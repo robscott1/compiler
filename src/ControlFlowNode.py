@@ -42,6 +42,7 @@ class ControlFlowNode:
         self.visited = False
         self.label = label
         self.instructions = []
+        self.values = dict()
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -73,6 +74,7 @@ class ControlFlowNode:
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
+
                 if stmt.else_block is None:
                     if len(then_node.successors) == 0 and not then_node.has_return:
                         link_me.add(then_node)
@@ -194,8 +196,10 @@ class ControlFlowNode:
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br", successor.id))
 
+        self.instructions = instr_mngr.get_complete_instructions()
+
         return "\n".join(list(map(lambda x: x.to_text(),
-                                  instr_mngr.get_complete_instructions())))
+                                  self.instructions)))
 
     def generate_llvm_text(self, instr_mngr: InstructionsManager):
         instr_mngr.clear_instructions_list()
@@ -208,5 +212,8 @@ class ControlFlowNode:
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 
-        return "\n".join(list(map(lambda x: "\t" + x.to_text(),
-                                  instr_mngr.get_complete_instructions())))
+        self.instructions = instr_mngr.get_complete_instructions()
+
+    def get_llvm_text(self):
+        return "\n".join(list(map(lambda x: x.to_text(),
+                                  self.instructions)))

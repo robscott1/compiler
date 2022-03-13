@@ -78,7 +78,10 @@ class Function:
         if node.statements:
             instr_mngr.type_map.current_scope = self
             node_instr_list.append(f"\n{node.id.split('%')[1]}:")
-            node_instr = node.generate_llvm_text(instr_mngr)
+            node.generate_llvm_text(instr_mngr)
+            # Generate the text, then operate on it to get phi nodes
+
+            node_instr = node.get_llvm_text()
             node_instr_list.append(node_instr)
         for successor in node.successors:
             if not successor.visited:

@@ -7,8 +7,8 @@ from InstructionsManager import InstructionsManager
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
-PROGRAM = "simple-if-else"
-@pytest.mark.skip("only for debugging purposes, not for test suite")
+PROGRAM = "phi-test"
+# @pytest.mark.skip("only for debugging purposes, not for test suite")
 def test_single_program_cfg():
     file = PROGRAM
     param = program_to_json(f"{file}")
