@@ -8,9 +8,12 @@ class InstructionsManager:
         self._ordered_instr_list = list()
         self._current_node = None
 
-    def next_tmp(self):
-        result = f"%t{self._current_number}"
-        self._current_number += 1
+    def next_tmp(self, __id=None):
+        if __id is not None:
+            result = f"%{__id}"
+        else:
+            result = f"%t{self._current_number}"
+            self._current_number += 1
         return result
 
     def set_values(self):

@@ -25,7 +25,7 @@ class AllocationInstruction(Instruction):
     """
     @classmethod
     def generate(cls, instr_mngr: InstructionsManager, code: Declaration):
-        result = instr_mngr.next_tmp()
+        result = instr_mngr.next_tmp(code.id)
         type = code.type.of_type(instr_mngr.type_map)
         instr = AllocationInstruction("alloca", type, result)
         instr_mngr.store(code.id, result)
