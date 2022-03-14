@@ -1,23 +1,23 @@
 digraph {
-	"%L73" [label="%g = alloca i32
+	"%L98" [label="%g = alloca i32
 %f = alloca i32"]
-	"%L31" [label="%t0 = add i32 4, 2
+	"%L3" [label="%t0 = add i32 4, 2
 store i32 %t0, i32* %g
 %t0 = load i32, i32* %g
 %t1 = icmp slt i32 %t0, 5
-br i1 %t1, label %L76, label %L73"]
-	"%L73" -> "%L31"
-	"%L76" [label="store i32 8, i32* %g"]
-	"%L31" -> "%L76"
-	"%L85" [label="<PhiNode.PhiNode object at 0x7fc6b24e2670> = load i32, i32* %g
-%t2 = add i32 <PhiNode.PhiNode object at 0x7fc6b24e2670>, 3
-store i32 %t2, i32* %f
-%t2 = load i32, i32* %f
-ret i32 %t2"]
-	"%L76" -> "%L85"
-	"%L96" [label=""]
-	"%L85" -> "%L96"
-	"%L73" [label="store i32 1, i32* %g"]
-	"%L31" -> "%L73"
-	"%L73" -> "%L85"
+br i1 %t1, label %L10, label %L92"]
+	"%L98" -> "%L3"
+	"%L10" [label="store i32 8, i32* %g"]
+	"%L3" -> "%L10"
+	"%L22" [label="%t2 = load i32, i32* %g
+%t3 = add i32 %t2, 3
+store i32 %t3, i32* %f
+%t3 = load i32, i32* %f
+ret i32 %t3"]
+	"%L10" -> "%L22"
+	"%L59" [label=""]
+	"%L22" -> "%L59"
+	"%L92" [label="store i32 1, i32* %g"]
+	"%L3" -> "%L92"
+	"%L92" -> "%L22"
 }

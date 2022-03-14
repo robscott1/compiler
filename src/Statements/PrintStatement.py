@@ -23,6 +23,3 @@ class PrintStatement(Statement):
             error_out(
                 self.line, "Print statement must print an int"
             )
-
-    def to_string(self):
-        return "print"

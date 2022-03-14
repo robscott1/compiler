@@ -43,6 +43,7 @@ class ControlFlowNode:
         self.label = label
         self.instructions = []
         self.phi_nodes = []
+        self.ssa_sealed = True
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -148,6 +149,12 @@ class ControlFlowNode:
         for node in self.successors:
             node.visualize_cfg(cfg, self, instr_mngr)
         return cfg
+
+    def has_back_edge(self):
+        for stmt in self.statements:
+            if isinstance(stmt, WhileStatement):
+                return True
+        return False
 
     @classmethod
     def next_node(cls, link_me):
