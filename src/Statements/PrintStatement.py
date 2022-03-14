@@ -7,15 +7,15 @@ from Statements.Statement import Statement
 
 class PrintStatement(Statement):
 
-    def __init__(self, line: int, exp: Expression):
+    def __init__(self, line: int, exp: Expression, endl: str):
         super(PrintStatement, self).__init__(line)
         self.expression = exp
+        self.endl = endl
 
     @classmethod
     def generate(cls, stmt: dict):
         stmt["exp"] = ExpressionFactory.generate(stmt.get("exp"))
         stmt.pop("stmt")
-        stmt.pop("endl")
         return PrintStatement(**stmt)
 
     def analyze(self, tc):

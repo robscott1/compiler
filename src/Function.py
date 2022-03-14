@@ -84,6 +84,7 @@ class Function:
             node_instr_list.append(f"\n{node.id.split('%')[1]}:")
             node.generate_llvm_text(instr_mngr)
             # Generate the text, then operate on it to get phi nodes
+            node.instructions = node.phi_nodes + node.instructions
             node_instr = node.get_llvm_text()
             node_instr_list.append(node_instr)
         for successor in node.successors:

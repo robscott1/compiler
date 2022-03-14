@@ -25,7 +25,7 @@ class LoadInstruction(Instruction):
         type = code.of_type(instr_mngr.type_map)
         location = instr_mngr.get(code.id)
 
-        result = instr_mngr.ssa_mngr.read_variable(location, instr_mngr.current_node())
+        result = instr_mngr.ssa_read_variable(location)
 
         instruction = LoadInstruction(result, type, type, location)
         instr_mngr.add_instruction(instruction)

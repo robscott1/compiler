@@ -26,7 +26,7 @@ class PrintInstruction(Instruction):
     ):
         content = cls.eval_args(code.expression, instr_mngr, factory_fn)
         result = instr_mngr.next_tmp()
-        instr = PrintInstruction(content, True, result)
+        instr = PrintInstruction(content, code.endl, result)
         instr_mngr.add_instruction(instr)
 
         return instr
@@ -57,5 +57,7 @@ class PrintInstruction(Instruction):
 
     def to_text(self):
         content = self.content.to_value() if not isinstance(self.content, str) else self.content
+        newline = "[4 x i8], [4 x i8]* @.str.1" if self.newline \
+            else "[3 x i8], [3 x i8]* @.str"
         return f"{self.result} = call i32 (i8*, ...) @printf(i8* getelementptr " \
-               f"inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 {content})"
+               f"inbounds ({newline}, i32 0, i32 0), i32 {content})"

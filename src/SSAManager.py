@@ -53,6 +53,7 @@ class SSAManager:
         else:
             value = PhiNode(block)
             self.write_variable(variable, block, value)
+            self.add_phi_operands(variable, value)
 
         self.write_variable(variable, block, value)
         return value
