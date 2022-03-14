@@ -1,3 +1,5 @@
+from SSAManager import SSAManager
+
 
 class InstructionsManager:
 
@@ -7,6 +9,7 @@ class InstructionsManager:
         self._values = self.set_values()
         self._ordered_instr_list = list()
         self._current_node = None
+        self.ssa_mngr = SSAManager()
 
     def next_tmp(self, __id=None):
         if __id is not None:

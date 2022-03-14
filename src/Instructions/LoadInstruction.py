@@ -22,9 +22,10 @@ class LoadInstruction(Instruction):
     def generate(cls, code: IdentifierExpression,
                  instr_mngr: InstructionsManager,
                  factory_fn):
-        result = instr_mngr.next_tmp()
         type = code.of_type(instr_mngr.type_map)
         location = instr_mngr.get(code.id)
+
+        result = instr_mngr.ssa_mngr.read_variable(location, instr_mngr.current_node())
 
         instruction = LoadInstruction(result, type, type, location)
         instr_mngr.add_instruction(instruction)

@@ -1,6 +1,7 @@
 from ControlFlowNode import ControlFlowNode
 from ErrorOut import error_out
 from InstructionsManager import InstructionsManager
+from SSAManager import SSAManager
 from Type import Type
 
 
@@ -73,6 +74,9 @@ class Function:
         lines.append("}\n")
         return "\n".join(lines)
 
+    def gather_phi_nodes(self, ssa_mngr: SSAManager):
+        print(ssa_mngr.current_def)
+
     def bfs_nodes(self, node: ControlFlowNode, node_instr_list, instr_mngr):
         node.visited = True
         if node.statements:
@@ -80,12 +84,12 @@ class Function:
             node_instr_list.append(f"\n{node.id.split('%')[1]}:")
             node.generate_llvm_text(instr_mngr)
             # Generate the text, then operate on it to get phi nodes
-
             node_instr = node.get_llvm_text()
             node_instr_list.append(node_instr)
         for successor in node.successors:
             if not successor.visited:
                 node_instr_list = self.bfs_nodes(successor, node_instr_list, instr_mngr)
+        self.gather_phi_nodes(instr_mngr.ssa_mngr)
         return node_instr_list
 
     def llvm_signature(self):

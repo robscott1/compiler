@@ -42,7 +42,7 @@ class ControlFlowNode:
         self.visited = False
         self.label = label
         self.instructions = []
-        self.values = dict()
+        self.phi_nodes = []
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):

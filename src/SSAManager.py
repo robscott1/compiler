@@ -1,4 +1,3 @@
-from ControlFlowNode import ControlFlowNode
 from PhiNode import PhiNode
 
 
@@ -16,7 +15,9 @@ class SSAManager:
     Writes variable value to respective variable WITHIN its CFG block
     """
 
-    def write_variable(self, variable: str, block: ControlFlowNode, value: str):
+    def write_variable(self, variable: str, block, value: str):
+        if variable not in self.current_def:
+            self.current_def[variable] = dict()
         self.current_def[variable][block.id] = value
 
     """
@@ -24,9 +25,9 @@ class SSAManager:
     
     Reads current value of variable within respective CFG block
     """
-    def read_variable(self, variable: str, block: ControlFlowNode):
+    def read_variable(self, variable: str, block):
         if block.id in self.current_def[variable]:
-            return self.current_def[variable][block]
+            return self.current_def[variable][block.id]
         else:
             return self.read_variable_from_predecessors(
                 variable, block
@@ -39,9 +40,11 @@ class SSAManager:
     be assigned, either a new phi node or a value recently assigned
     that came from a sealed block.
     """
-    def read_variable_from_predecessors(self, variable: str, block: ControlFlowNode):
+    def read_variable_from_predecessors(self, variable: str, block):
         if block.id not in self.sealed_blocks:
             value = PhiNode(block)
+            if block.id not in self.incomplete_phis:
+                self.incomplete_phis[block.id] = dict()
             self.incomplete_phis[block.id][variable] = value
         elif len(block.predecessors) == 0:
             value = None
@@ -58,7 +61,7 @@ class SSAManager:
         for pred in phi.block.predecessors:
             phi.append_operator(self.read_variable(variable, pred))
 
-    def seal_block(self, block: ControlFlowNode):
+    def seal_block(self, block):
         for variable in self.incomplete_phis[block.id].values():
             self.add_phi_operands(variable, self.incomplete_phis[block.id][variable])
         self.sealed_blocks[block.id] = block

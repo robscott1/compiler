@@ -29,6 +29,10 @@ class StoreInstruction(Instruction):
         source = cls.eval_source(code.source, instr_mngr, factory_fn)
         ll_type = code.source.of_type(instr_mngr.type_map)
 
+        source = source if isinstance(source, str) else source.to_value()
+
+        instr_mngr.ssa_mngr.write_variable(target, instr_mngr.current_node(), source)
+
         instr = StoreInstruction(target, source, ll_type)
         instr_mngr.add_instruction(instr)
 
