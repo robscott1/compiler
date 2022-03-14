@@ -81,11 +81,14 @@ class Function:
         print(ssa_mngr.current_def)
 
     def bfs_nodes(self, node: ControlFlowNode, instr_mngr):
+        unsealed_nodes = []
         node_instr_list = []
         q = list()
         q.append(node)
         while len(q) != 0:
             curr = q.pop(0)
+            if self.node_has_back_edge(curr):
+                unsealed_nodes.append(curr)
             if curr.statements:
                 instr_mngr.type_map.current_scope = self
                 node_instr_list.append(f"\n{curr.id.split('%')[1]}:")
@@ -98,7 +101,15 @@ class Function:
                 if not successor.visited:
                     successor.visited = True
                     q.append(successor)
+                else:
+                    self.back_edge_check(successor, unsealed_nodes, instr_mngr)
         return node_instr_list
+
+    def back_edge_check(self, node, unsealed_nodes, instr_mngr):
+        for unsealed in unsealed_nodes:
+            if unsealed.id == node.id:
+                instr_mngr.ssa_mngr.seal_block(node)
+
 
 
     """

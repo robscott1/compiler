@@ -1,3 +1,4 @@
+from SSAStorageObject import SSAStorageObject
 from Types.BoolType import BoolType
 from Expressions.FalseExpression import FalseExpression
 from Expressions.IdentifierExpression import IdentifierExpression
@@ -26,12 +27,16 @@ class LoadInstruction(Instruction):
         location = instr_mngr.get(code.id)
         result = instr_mngr.next_tmp()
 
-        location = instr_mngr.ssa_read_variable(location)
-        location = location.to_value() if not isinstance(location, str) else location
+        ssa_loc, from_phi_node = instr_mngr.ssa_read_variable(location)
+        location = ssa_loc.to_value() if not isinstance(ssa_loc, str) else ssa_loc
+
+        if from_phi_node:
+            return location
 
         instruction = LoadInstruction(result, type, type, location)
         instr_mngr.add_instruction(instruction)
         return instruction
+
 
     def to_value(self):
         return f"{self.result}"

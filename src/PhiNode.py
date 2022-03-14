@@ -21,7 +21,7 @@ class PhiNode:
         self.result = reg
 
     def to_text(self):
-        operands = list(map(lambda x: x.to_value() if isinstance(x, SSAStorageObject) else x, self.operands))
+        operands = list(map(lambda x: x.to_text() if isinstance(x, SSAStorageObject) else x, self.operands))
         return f"{self.result} = phi({' '.join(operands)})"
 
     def to_value(self):

@@ -20,14 +20,20 @@ class InstructionsManager:
             self._current_number += 1
         return result
 
+    """
+    @returns: location, from_phi
+        - location: where the value is stored currently, or constant val
+        - from_phi: Boolean decides whether or not to subsequently load
+        the result
+    """
     def ssa_read_variable(self, location: str):
         result = self.ssa_mngr.read_variable(location, self._current_node)
         if isinstance(result, PhiNode):
             phi_register_location = self.next_tmp()
             result.set_result_register(phi_register_location)
             self._current_node.phi_nodes.append(result)
-            return phi_register_location
-        return result
+            return phi_register_location, True
+        return result, False
 
     def set_values(self):
         values = {}

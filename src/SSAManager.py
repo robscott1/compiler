@@ -51,7 +51,7 @@ class SSAManager:
             if block.id not in self.incomplete_phis:
                 self.incomplete_phis[block.id] = dict()
             self.incomplete_phis[block.id][variable] = value
-        if len(block.predecessors) == 0:
+        elif len(block.predecessors) == 0:
             value = None
         elif len(block.predecessors) == 1:
             value = self.read_variable(variable, block.predecessors[0])
