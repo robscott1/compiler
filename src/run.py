@@ -39,6 +39,7 @@ def run(flag):
 
     for f in mini_files:
         fname = f.split(".mini")[0]
+        print(fname)
         if flag == TEST_FLAG:
             with open(f"../llvm/{fname}.ll", 'w') as f:
                 subprocess.run(["python3", "Compiler.py", f"{fname}"], stdout=f)

@@ -71,7 +71,7 @@ class Function:
 
         # recreate CFG so that the nodes arent marked as visited
         self.create_cfg()
-
+        type_map.current_scope = self
         orchestrator = InstructionOrchestrator(self.cfg, instr_mngr)
         text = orchestrator.run(self.return_type, self.parameters, self.id)
 

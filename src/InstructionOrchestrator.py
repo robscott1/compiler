@@ -2,6 +2,7 @@ from ControlFlowNode import ControlFlowNode
 from Factories.InstructionFactory import InstructionFactory
 from Instructions.JumpInstruction import JumpInstruction
 from InstructionsManager import InstructionsManager
+from Statements.JumpStatement import JumpStatement
 from Statements.WhileStatement import WhileStatement
 
 
@@ -113,10 +114,6 @@ class InstructionOrchestrator:
                     return False
             return True
 
-
-
-
-
     """
     node_has_back_edge
 
@@ -138,8 +135,8 @@ class InstructionOrchestrator:
             InstructionFactory.create_instruction(stmt, self.instr_mngr)
         if (len(node.successors) == 1 and \
             not node.has_return and \
-            not isinstance(node.statements[0], JumpInstruction
-        )):
+            not isinstance(node.statements[0], JumpStatement)
+        ):
             successor = node.successors[0]
             self.instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 

@@ -27,6 +27,11 @@ class AllocationInstruction(Instruction):
     def generate(cls, instr_mngr: InstructionsManager, code: Declaration):
         result = instr_mngr.next_tmp(code.id)
         type = code.type.of_type(instr_mngr.type_map)
+
+        instr_mngr.ssa_mngr.write_variable(
+            f"%{code.id}",instr_mngr.current_node(), "None"
+        )
+
         instr = AllocationInstruction("alloca", type, result)
         instr_mngr.store(code.id, result)
         instr_mngr.add_instruction(instr)

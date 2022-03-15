@@ -5,12 +5,12 @@
 @READ_MEM = common global i32 0
 define dso_local i32 @main() {
 
-L26:
+L20:
 %g = alloca i32
 %f = alloca i32
-br label %L28
+br label %L83
 
-L28:
+L83:
 %t0 = add i32 4, 2
 store i32 %t0, i32* %g
 %t1 = load i32, i32* %t0
