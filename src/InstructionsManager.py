@@ -53,7 +53,8 @@ class InstructionsManager:
         self._ordered_instr_list.append(instr)
 
     def get_complete_instructions(self):
-        return self._ordered_instr_list
+        new_list = self._ordered_instr_list
+        return new_list
 
     def has_value(self, id):
         return id in self._values

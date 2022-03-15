@@ -113,6 +113,7 @@ class ControlFlowNode:
                 jmp = JumpStatement(stmt.line, curr_node)
                 converge = ControlFlowNode.generate([jmp], link_me, leaf_nodes)
                 converge.successors.append(curr_node)
+                curr_node.predecessors.append(converge)
                 link_me.add(curr_node)
 
                 if body.has_next():

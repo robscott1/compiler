@@ -92,25 +92,26 @@ class Function:
             if curr.statements:
                 instr_mngr.type_map.current_scope = self
                 node_instr_list.append(f"\n{curr.id.split('%')[1]}:")
-                curr.generate_llvm_text(instr_mngr)
                 # Generate the text, then operate on it to get phi nodes
+                for successor in curr.successors:
+                    if not successor.visited:
+                        successor.visited = True
+                        q.append(successor)
+                    else:
+                        self.back_edge_check(successor, unsealed_nodes, instr_mngr)
+
+                curr.generate_llvm_text(instr_mngr)
                 curr.instructions = curr.phi_nodes + curr.instructions
                 node_instr = curr.get_llvm_text()
                 node_instr_list.append(node_instr)
-            for successor in curr.successors:
-                if not successor.visited:
-                    successor.visited = True
-                    q.append(successor)
-                else:
-                    self.back_edge_check(successor, unsealed_nodes, instr_mngr)
+
         return node_instr_list
 
     def back_edge_check(self, node, unsealed_nodes, instr_mngr):
         for unsealed in unsealed_nodes:
             if unsealed.id == node.id:
                 instr_mngr.ssa_mngr.seal_block(node)
-
-
+                node.ssa_sealed = True
 
     """
     node_has_back_edge

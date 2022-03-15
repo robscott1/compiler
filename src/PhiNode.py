@@ -1,4 +1,18 @@
-from SSAStorageObject import SSAStorageObject
+
+
+class SSAStorageObject:
+
+    def __init__(self, location, block):
+        self.location = location
+        self.block = block
+
+    def to_text(self):
+        return f"[{self.location}, {self.block.id}]"
+
+    def to_value(self):
+        if isinstance(self.location, PhiNode):
+            return self.location.to_value()
+        return self.location
 
 
 class PhiNode:
@@ -14,6 +28,7 @@ class PhiNode:
     
     Adds a value read directly from read_value within SSAManager
     """
+
     def append_operand(self, op: str):
         self.operands.append(op)
 
@@ -26,5 +41,3 @@ class PhiNode:
 
     def to_value(self):
         return self.result
-
-

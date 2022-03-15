@@ -1,5 +1,4 @@
-from PhiNode import PhiNode
-from SSAStorageObject import SSAStorageObject
+from PhiNode import PhiNode, SSAStorageObject
 
 
 class SSAManager:
@@ -28,6 +27,8 @@ class SSAManager:
     """
 
     def read_variable(self, variable: str, block):
+        if isinstance(variable, PhiNode):
+            variable = variable.var_target
         if variable not in self.current_def:
             self.current_def[variable] = dict()
         if block.id in self.current_def[variable]:
@@ -70,7 +71,8 @@ class SSAManager:
     def seal_block(self, block):
         if block.id not in self.incomplete_phis:
             self.incomplete_phis[block.id] = dict()
-        for variable in self.incomplete_phis[block.id].values():
+        incomplete_phi = list(self.incomplete_phis[block.id].values())
+        for variable in incomplete_phi:
             self.add_phi_operands(variable, self.incomplete_phis[block.id][variable.var_target])
         self.sealed_blocks.add(block.id)
 
