@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from PhiNode import PhiNode
 from SSAManager import SSAManager
 
@@ -35,6 +37,9 @@ class InstructionsManager:
             return phi_register_location, True
         return result, False
 
+    def ssa_seal_block(self, node):
+        self.ssa_mngr.seal_block(node)
+
     def set_values(self):
         values = {}
         values["@READ_MEM"] = f"@READ_MEM"
@@ -53,7 +58,7 @@ class InstructionsManager:
         self._ordered_instr_list.append(instr)
 
     def get_complete_instructions(self):
-        new_list = self._ordered_instr_list
+        new_list = deepcopy(self._ordered_instr_list)
         return new_list
 
     def has_value(self, id):

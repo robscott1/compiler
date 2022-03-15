@@ -2,6 +2,7 @@ from queue import Queue
 
 from ControlFlowNode import ControlFlowNode
 from ErrorOut import error_out
+from InstructionOrchestrator import InstructionOrchestrator
 from InstructionsManager import InstructionsManager
 from SSAManager import SSAManager
 from Statements.WhileStatement import WhileStatement
@@ -71,11 +72,14 @@ class Function:
         # recreate CFG so that the nodes arent marked as visited
         self.create_cfg()
 
-        lines.append(self.llvm_signature())
-        body = self.bfs_nodes(self.cfg, instr_mngr)
-        lines.append("\n".join(body))
-        lines.append("}\n")
-        return "\n".join(lines)
+        orchestrator = InstructionOrchestrator(self.cfg, instr_mngr)
+        text = orchestrator.run(self.return_type, self.parameters, self.id)
+
+        # lines.append(self.llvm_signature())
+        # body = self.bfs_nodes(self.cfg, instr_mngr)
+        # lines.append("\n".join(body))
+        # lines.append("}\n")
+        return text
 
     def gather_phi_nodes(self, ssa_mngr: SSAManager):
         print(ssa_mngr.current_def)

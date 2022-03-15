@@ -43,7 +43,7 @@ class ControlFlowNode:
         self.label = label
         self.instructions = []
         self.phi_nodes = []
-        self.ssa_sealed = True
+        self.ssa_sealed = False
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -216,7 +216,7 @@ class ControlFlowNode:
             InstructionFactory.create_instruction(stmt, instr_mngr)
         if len(self.successors) == 1 and \
                 not self.has_return \
-                and not isinstance(self, JumpInstruction):
+                and self.statements[0] is not isinstance(self, JumpInstruction):
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 
