@@ -7,28 +7,28 @@ define dso_local i32 @foo(i32) {
 
 L24:
 %i = alloca i32
-br label %L50
+br label %L51
 
-L50:
-ret i32 %i
+L51:
+ret i32 0
 }
 
 define dso_local i32 @main(i32) {
 
-L67:
+L71:
 %a = alloca i32
 %i = alloca i32
-br label %L10
+br label %L57
 
-L10:
+L57:
 store i32 1, i32* %a
-%t1 = icmp sgt i32 1, 0
-br i1 %t1, label %L35, label %L74
+%t0 = icmp sgt i32 1, 0
+br i1 %t0, label %L4, label %L59
 
-L35:
+L4:
 ret i32 1
 
-L74:
+L59:
 ret i32 1
 }
 
