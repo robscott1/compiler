@@ -22,7 +22,7 @@ def test_valid_control_flow(input_file, exp_outcome):
     params = program_to_json(input_file)
     tc = TypeChecker(params)
     for fn in tc.fn_map.values():
-        root = ControlFlowNode.generate(set(), set(),, None
+        root = ControlFlowNode.generate(fn.body, set(), set())
         assert root.valid_control_flow() == exp_outcome
 
 @pytest.mark.parametrize(

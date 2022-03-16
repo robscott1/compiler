@@ -1,12 +1,12 @@
 digraph {
-	"%L50" [label="%x = alloca %struct.A*
+	"%L39" [label="%x = alloca %struct.A*
 %j = alloca i32"]
-	"%L61" [label="store i32 4, i32* %j
+	"%L33" [label="store i32 4, i32* %j
 %t0 = call %struct.A* @foo()
 %t1 = getelementptr %struct.A, %struct.A* %t0, i32 0, i32 0
 %t2 = load i32, i32* %t1
 ret i32 %t2"]
-	"%L50" -> "%L61"
-	"%L22" [label=""]
-	"%L61" -> "%L22"
+	"%L39" -> "%L33"
+	"%L54" [label=""]
+	"%L33" -> "%L54"
 }

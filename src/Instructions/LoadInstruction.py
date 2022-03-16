@@ -24,18 +24,11 @@ class LoadInstruction(Instruction):
                  factory_fn):
         type = code.of_type(instr_mngr.type_map)
         location = instr_mngr.get(code.id)
-        result = instr_mngr.next_tmp()
 
-        ssa_loc, from_phi_node = instr_mngr.ssa_read_variable(location)
+        ssa_loc = instr_mngr.ssa_read_variable(location, type)
         location = ssa_loc.to_value() if not isinstance(ssa_loc, str) else ssa_loc
 
-        if from_phi_node:
-            return location
-
-        instruction = LoadInstruction(result, type, type, location)
-        instr_mngr.add_instruction(instruction)
-        return instruction
-
+        return location
 
     def to_value(self):
         return f"{self.result}"

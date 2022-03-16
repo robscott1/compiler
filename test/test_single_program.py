@@ -7,7 +7,7 @@ from InstructionsManager import InstructionsManager
 from TypeChecker import TypeChecker
 from conftest import program_to_json
 
-PROGRAM = "while-loop"
+PROGRAM = "simple-if-else"
 # @pytest.mark.skip("only for debugging purposes, not for test suite")
 def test_single_program_cfg():
     file = PROGRAM

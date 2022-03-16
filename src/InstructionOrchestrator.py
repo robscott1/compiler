@@ -14,8 +14,41 @@ class InstructionOrchestrator:
 
     def run(self, return_type, params, id):
         self.instruction_gen_traverse()
+        self.remove_trivial_phi_nodes()
         text = self.generate_function_text(return_type, params, id)
         return text
+
+    def remove_trivial_phi_nodes(self):
+        phi_nodes = self.gather_phi_nodes()
+        # for phi in phi_nodes:
+        #     associated_block = phi.block
+        #     result_reg = phi.result
+        #     if result_reg not in associated_block.get_llvm_text():
+        #         associated_block.phi_nodes.remove(phi)
+
+
+    def gather_phi_nodes(self):
+        root: ControlFlowNode = self.cfg
+        q = list()
+        visited = set()
+        q.append(root)
+
+        phi_nodes = []
+        while q:
+            node = q.pop(0)
+            if not node.statements:
+                continue
+            visited.add(node.id)
+            phi_nodes += node.phi_nodes
+
+            for successor in node.successors:
+                if successor.id not in visited:
+                    visited.add(successor.id)
+                    q.append(successor)
+
+        return phi_nodes
+
+
 
     def generate_function_text(self, return_type, params, id):
         return_type = return_type.to_llvm_type()
@@ -68,6 +101,8 @@ class InstructionOrchestrator:
         while q:
             node = q.pop(0)
             if not node.statements:
+                self.instr_mngr.ssa_seal_block(node)
+                node.ssa_sealed = True
                 continue
             # Might be revisiting unsealed nodes, only generate
             # instructions if it has not been sealed yet

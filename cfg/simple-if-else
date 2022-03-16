@@ -1,15 +1,16 @@
 digraph {
-	f5 [label="%t1 = alloca i32"]
-	85 [label="%t2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 %t1)
-br i1 true label 3f label c9"]
-	f5 -> 85
-	"3f" [label="ret i32 2"]
-	85 -> "3f"
-	"2d" [label=""]
-	"3f" -> "2d"
-	c9 [label="%t3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
-	85 -> c9
-	"9f" [label="ret i32 1"]
-	c9 -> "9f"
-	"9f" -> "2d"
+	"%L37" [label="%i = alloca i32"]
+	"%L74" [label="br i1 true, label %L41, label %L19"]
+	"%L37" -> "%L74"
+	"%L41" [label="store i32 3, i32* %i
+ret i32 2"]
+	"%L74" -> "%L41"
+	"%L66" [label=""]
+	"%L41" -> "%L66"
+	"%L19" [label="store i32 4, i32* %i
+%t0 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)"]
+	"%L74" -> "%L19"
+	"%L56" [label="ret i32 4"]
+	"%L19" -> "%L56"
+	"%L56" -> "%L66"
 }

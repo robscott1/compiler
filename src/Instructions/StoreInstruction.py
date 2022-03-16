@@ -7,7 +7,6 @@ from Instructions.BitcastInstruction import BitcastInstruction
 from Instructions.DotInstruction import DotInstruction
 from Instructions.Instruction import Instruction
 from InstructionsManager import InstructionsManager
-from LvalueId import LvalueId
 from LvalueStructField import LvalueStructField
 from Statements.AssignmentStatement import AssignmentStatement
 from l_value import Lvalue

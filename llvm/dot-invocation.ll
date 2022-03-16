@@ -5,12 +5,12 @@
 @READ_MEM = common global i32 0
 define dso_local i32 @main() {
 
-L48:
+L25:
 %x = alloca %struct.A*
 %j = alloca i32
-br label %L9
+br label %L46
 
-L9:
+L46:
 store i32 4, i32* %j
 %t0 = call %struct.A* @foo()
 %t1 = getelementptr %struct.A, %struct.A* %t0, i32 0, i32 0
@@ -20,11 +20,11 @@ ret i32 %t2
 
 define dso_local %struct.A* @foo() {
 
-L70:
+L35:
 %x = alloca %struct.A*
-br label %L38
+br label %L69
 
-L38:
+L69:
 %t0 = call i8* @malloc(i32 4)
 %t1 = bitcast i8* %t0 to %struct.A*
 store %struct.A* %t1, %struct.A** %x

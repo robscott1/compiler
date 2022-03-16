@@ -17,11 +17,13 @@ class SSAStorageObject:
 
 class PhiNode:
 
-    def __init__(self, block: str, var_target: str):
+    def __init__(self, block: str, var_target: str, type, predecessors):
         self.block = block
         self.operands = []
         self.result = None
         self.var_target = var_target
+        self.type = type
+        self.predecessors = predecessors
 
     """
     add_operand
@@ -35,8 +37,10 @@ class PhiNode:
         self.result = reg
 
     def to_text(self):
-        operands = list(map(lambda x: x.to_text() if isinstance(x, SSAStorageObject) else x, self.operands))
-        return f"{self.result} = phi i32 ({' '.join(operands)})"
+        operands = []
+        for x, y in zip(self.operands, self.predecessors):
+            operands.append(f"[{x}, {y.id}]")
+        return f"{self.result} = phi {self.type.to_text()} {', '.join(operands)}"
 
     def to_value(self):
         return self.result

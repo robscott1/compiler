@@ -1,21 +1,20 @@
 digraph {
-	"%L17" [label="%a = alloca i32
+	"%L49" [label="%a = alloca i32
 %i = alloca i32"]
-	"%L39" [label="store i32 4, i32* %a"]
-	"%L17" -> "%L39"
-	"%L60" [label="%t2 = icmp slt i32 %t1, 4
-br i1 %t2, label %L68, label %L39"]
-	"%L39" -> "%L60"
-	"%L68" [label="%t3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
-%t4 = load i32, i32* %t1
-%t5 = add i32 %t4, 1
-store i32 %t5, i32* %a"]
-	"%L60" -> "%L68"
-	"%L50" [label="br label %L60"]
-	"%L68" -> "%L50"
-	"%L50" -> "%L60"
-	"%L39" [label="ret i32 2"]
-	"%L60" -> "%L39"
-	"%L18" [label=""]
-	"%L39" -> "%L18"
+	"%L44" [label="store i32 4, i32* %a"]
+	"%L49" -> "%L44"
+	"%L42" [label="%t1 = icmp slt i32 %t0, 4
+br i1 %t1, label %L43, label %L63"]
+	"%L44" -> "%L42"
+	"%L43" [label="%t2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
+%t3 = add i32 %t0, 1
+store i32 %t3, i32* %a"]
+	"%L42" -> "%L43"
+	"%L14" [label="br label %L42"]
+	"%L43" -> "%L14"
+	"%L14" -> "%L42"
+	"%L63" [label="ret i32 %t0"]
+	"%L42" -> "%L63"
+	"%L9" [label=""]
+	"%L63" -> "%L9"
 }

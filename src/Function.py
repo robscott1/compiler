@@ -75,10 +75,6 @@ class Function:
         orchestrator = InstructionOrchestrator(self.cfg, instr_mngr)
         text = orchestrator.run(self.return_type, self.parameters, self.id)
 
-        # lines.append(self.llvm_signature())
-        # body = self.bfs_nodes(self.cfg, instr_mngr)
-        # lines.append("\n".join(body))
-        # lines.append("}\n")
         return text
 
     def gather_phi_nodes(self, ssa_mngr: SSAManager):

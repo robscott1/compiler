@@ -29,7 +29,7 @@ class AllocationInstruction(Instruction):
         type = code.type.of_type(instr_mngr.type_map)
 
         instr_mngr.ssa_mngr.write_variable(
-            f"%{code.id}",instr_mngr.current_node(), "None"
+            f"%{code.id}",instr_mngr.current_node(), result
         )
 
         instr = AllocationInstruction("alloca", type, result)

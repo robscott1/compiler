@@ -1,16 +1,15 @@
 digraph {
-	"%L4" [label="%a = alloca i32
+	"%L45" [label="%a = alloca i32
 %i = alloca i32"]
-	"%L21" [label="store i32 1, i32* %a
-%t0 = load i32, i32* %a
-%t1 = icmp sgt i32 %t0, 0
-br i1 %t1, label %L62, label %L58"]
-	"%L4" -> "%L21"
-	"%L62" [label="ret i32 1"]
-	"%L21" -> "%L62"
-	"%L70" [label=""]
-	"%L62" -> "%L70"
-	"%L58" [label="ret i32 1"]
-	"%L21" -> "%L58"
-	"%L58" -> "%L70"
+	"%L61" [label="store i32 1, i32* %a
+%t0 = icmp sgt i32 1, 0
+br i1 %t0, label %L49, label %L70"]
+	"%L45" -> "%L61"
+	"%L49" [label="ret i32 1"]
+	"%L61" -> "%L49"
+	"%L50" [label=""]
+	"%L49" -> "%L50"
+	"%L70" [label="ret i32 1"]
+	"%L61" -> "%L70"
+	"%L70" -> "%L50"
 }
