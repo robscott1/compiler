@@ -204,7 +204,7 @@ class ControlFlowNode:
             InstructionFactory.create_instruction(stmt, instr_mngr)
         if len(self.successors) == 1 and \
                 not self.has_return \
-                and not isinstance(self, JumpInstruction):
+                and not isinstance(self.statements[0], JumpStatement):
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 
