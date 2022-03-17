@@ -1,6 +1,11 @@
+from queue import Queue
+
 from ControlFlowNode import ControlFlowNode
 from ErrorOut import error_out
+from InstructionOrchestrator import InstructionOrchestrator
 from InstructionsManager import InstructionsManager
+from SSAManager import SSAManager
+from Statements.WhileStatement import WhileStatement
 from Type import Type
 
 
@@ -66,24 +71,64 @@ class Function:
 
         # recreate CFG so that the nodes arent marked as visited
         self.create_cfg()
+        type_map.current_scope = self
+        orchestrator = InstructionOrchestrator(self.cfg, instr_mngr)
+        text = orchestrator.run(self.return_type, self.parameters, self.id)
 
-        lines.append(self.llvm_signature())
-        body = self.bfs_nodes(self.cfg, [], instr_mngr)
-        lines.append("\n".join(body))
-        lines.append("}\n")
-        return "\n".join(lines)
+        # lines.append(self.llvm_signature())
+        # body = self.bfs_nodes(self.cfg, instr_mngr)
+        # lines.append("\n".join(body))
+        # lines.append("}\n")
+        return text
 
-    def bfs_nodes(self, node: ControlFlowNode, node_instr_list, instr_mngr):
-        node.visited = True
-        if node.statements:
-            instr_mngr.type_map.current_scope = self
-            node_instr_list.append(f"\n{node.id.split('%')[1]}:")
-            node_instr = node.generate_llvm_text(instr_mngr)
-            node_instr_list.append(node_instr)
-        for successor in node.successors:
-            if not successor.visited:
-                node_instr_list = self.bfs_nodes(successor, node_instr_list, instr_mngr)
+    def gather_phi_nodes(self, ssa_mngr: SSAManager):
+        print(ssa_mngr.current_def)
+
+    def bfs_nodes(self, node: ControlFlowNode, instr_mngr):
+        unsealed_nodes = []
+        node_instr_list = []
+        q = list()
+        q.append(node)
+        while len(q) != 0:
+            curr = q.pop(0)
+            if self.node_has_back_edge(curr):
+                unsealed_nodes.append(curr)
+            if curr.statements:
+                instr_mngr.type_map.current_scope = self
+                node_instr_list.append(f"\n{curr.id.split('%')[1]}:")
+                # Generate the text, then operate on it to get phi nodes
+                for successor in curr.successors:
+                    if not successor.visited:
+                        successor.visited = True
+                        q.append(successor)
+                    else:
+                        self.back_edge_check(successor, unsealed_nodes, instr_mngr)
+
+                curr.generate_llvm_text(instr_mngr)
+                curr.instructions = curr.phi_nodes + curr.instructions
+                node_instr = curr.get_llvm_text()
+                node_instr_list.append(node_instr)
+
         return node_instr_list
+
+    def back_edge_check(self, node, unsealed_nodes, instr_mngr):
+        for unsealed in unsealed_nodes:
+            if unsealed.id == node.id:
+                instr_mngr.ssa_mngr.seal_block(node)
+                node.ssa_sealed = True
+
+    """
+    node_has_back_edge
+    
+    Check to see if this node has a WhileStatement in its statements. 
+    That is the only node that is potentially not sealed and is not 
+    ready to read from predecessors.
+    """
+    def node_has_back_edge(self, node: ControlFlowNode):
+        for stmt in node.statements:
+            if isinstance(stmt, WhileStatement):
+                return True
+        return False
 
     def llvm_signature(self):
         type = self.return_type.to_llvm_type()

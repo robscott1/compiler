@@ -1,3 +1,8 @@
+from copy import deepcopy
+
+from PhiNode import PhiNode
+from SSAManager import SSAManager
+
 
 class InstructionsManager:
 
@@ -7,11 +12,33 @@ class InstructionsManager:
         self._values = self.set_values()
         self._ordered_instr_list = list()
         self._current_node = None
+        self.ssa_mngr = SSAManager()
 
-    def next_tmp(self):
-        result = f"%t{self._current_number}"
-        self._current_number += 1
+    def next_tmp(self, __id=None):
+        if __id is not None:
+            result = f"%{__id}"
+        else:
+            result = f"%t{self._current_number}"
+            self._current_number += 1
         return result
+
+    """
+    @returns: location, from_phi
+        - location: where the value is stored currently, or constant val
+        - from_phi: Boolean decides whether or not to subsequently load
+        the result
+    """
+    def ssa_read_variable(self, location: str):
+        result = self.ssa_mngr.read_variable(location, self._current_node)
+        if isinstance(result, PhiNode):
+            phi_register_location = self.next_tmp()
+            result.set_result_register(phi_register_location)
+            self._current_node.phi_nodes.append(result)
+            return phi_register_location, True
+        return result, False
+
+    def ssa_seal_block(self, node):
+        self.ssa_mngr.seal_block(node)
 
     def set_values(self):
         values = {}
@@ -31,7 +58,8 @@ class InstructionsManager:
         self._ordered_instr_list.append(instr)
 
     def get_complete_instructions(self):
-        return self._ordered_instr_list
+        new_list = deepcopy(self._ordered_instr_list)
+        return new_list
 
     def has_value(self, id):
         return id in self._values

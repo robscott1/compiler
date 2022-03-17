@@ -8,7 +8,6 @@ from conftest import program_to_json
 
 @pytest.mark.parametrize(
     "file", ["dot",
-             "ret-error",
              "while-loop",
              "while-with-if-hanging",
              "if-else-to-while",

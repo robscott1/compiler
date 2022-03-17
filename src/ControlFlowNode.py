@@ -42,6 +42,8 @@ class ControlFlowNode:
         self.visited = False
         self.label = label
         self.instructions = []
+        self.phi_nodes = []
+        self.ssa_sealed = False
 
     @classmethod
     def generate(cls, body, link_me, leaf_nodes):
@@ -73,6 +75,7 @@ class ControlFlowNode:
                 curr_node.statements.append(stmt)
                 link_me.add(curr_node)
                 then_node = ControlFlowNode.generate(stmt.then_block, link_me, leaf_nodes)
+
                 if stmt.else_block is None:
                     if len(then_node.successors) == 0 and not then_node.has_return:
                         link_me.add(then_node)
@@ -110,6 +113,7 @@ class ControlFlowNode:
                 jmp = JumpStatement(stmt.line, curr_node)
                 converge = ControlFlowNode.generate([jmp], link_me, leaf_nodes)
                 converge.successors.append(curr_node)
+                curr_node.predecessors.append(converge)
                 link_me.add(curr_node)
 
                 if body.has_next():
@@ -146,6 +150,12 @@ class ControlFlowNode:
         for node in self.successors:
             node.visualize_cfg(cfg, self, instr_mngr)
         return cfg
+
+    def has_back_edge(self):
+        for stmt in self.statements:
+            if isinstance(stmt, WhileStatement):
+                return True
+        return False
 
     @classmethod
     def next_node(cls, link_me):
@@ -194,8 +204,10 @@ class ControlFlowNode:
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br", successor.id))
 
+        self.instructions = instr_mngr.get_complete_instructions()
+
         return "\n".join(list(map(lambda x: x.to_text(),
-                                  instr_mngr.get_complete_instructions())))
+                                  self.instructions)))
 
     def generate_llvm_text(self, instr_mngr: InstructionsManager):
         instr_mngr.clear_instructions_list()
@@ -204,9 +216,16 @@ class ControlFlowNode:
             InstructionFactory.create_instruction(stmt, instr_mngr)
         if len(self.successors) == 1 and \
                 not self.has_return \
+<<<<<<< HEAD
                 and not isinstance(self.statements[0], JumpStatement):
+=======
+                and self.statements[0] is not isinstance(self, JumpInstruction):
+>>>>>>> ff18075d4211711693276c37fb5089cb7d44c407
             successor = self.successors[0]
             instr_mngr.add_instruction(JumpInstruction("br label", successor.id))
 
-        return "\n".join(list(map(lambda x: "\t" + x.to_text(),
-                                  instr_mngr.get_complete_instructions())))
+        self.instructions = instr_mngr.get_complete_instructions()
+
+    def get_llvm_text(self):
+        return "\n".join(list(map(lambda x: x.to_text(),
+                                  self.instructions)))
