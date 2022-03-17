@@ -9,7 +9,7 @@ TEST_FLAG = 3
 
 def main():
     flag = check_flags()
-    run(flag)
+    run()
 
 def get_files(dir):
     return filter(lambda x: ".json" not in x, os.listdir(f"../{dir}"))
@@ -24,25 +24,19 @@ def check_flags():
         return TEST_FLAG
 
 
-def diff_test():
-    for x, y in zip(get_files("llvm"), get_files("llvm")):
-        with open(f"../llvm/test/diff-output/{x}", 'w') as f:
-            subprocess.run(["diff", "-I", "label", f"../llvm/{x}", f"../llvm/test/{y}"], stdout=f)
-    if get_files("llvm/test/diff-output") == []:
-        subprocess.run("rm", "-rf", "../llvm/test/")
-    else:
-        print(f"Differences detected in the following files..\n{', '.join(get_files('llvm/test/diff-output'))}")
-
-def run(flag):
+def run():
     mini_files = get_files("mini")
     mini_files = list(filter(lambda x: ".json" not in x, mini_files))
 
     for f in mini_files:
         fname = f.split(".mini")[0]
-        print(fname)
-        if flag == TEST_FLAG:
-            with open(f"../llvm/{fname}.ll", 'w') as f:
-                subprocess.run(["python3", "Compiler.py", f"{fname}"], stdout=f)
+        print(f"Compiling {f}...")
+        with open(f"../llvm/{fname}.ll", 'w') as f:
+            subprocess.run(["python3", "Compiler.py", f"{fname}"], stdout=f)
+        print(f"Converting {fname}.ll to executable...")
+        subprocess.run(["mv", f"../llvm/{fname}.ll", f"../executable/{fname}.o"])
+        #subprocess.run(["clang", "-m32", f"../llvm/{fname}.ll", "-o", f"../executable/{fname}.o"])
+        print("\n")
 
 if __name__ == "__main__":
     main()

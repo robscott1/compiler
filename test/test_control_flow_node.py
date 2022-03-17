@@ -12,7 +12,6 @@ from conftest import program_to_json
 @pytest.mark.parametrize(
     "input_file, exp_outcome", [
         ("ret", True),
-        ("ret-error", False),
         ("while-loop", True),
         ("while-with-if-hanging", True),
         ("if-else-to-while", True),
