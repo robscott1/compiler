@@ -10,8 +10,7 @@ from TypeChecker import TypeChecker
 def main():
 
     filename = sys.argv[1]
-    with open(f"../mini/{filename}.json", 'w') as out_file:
-        subprocess.run(["java", "-jar", "../MiniCompiler.jar", f"../mini/{filename}.mini"], stdout=out_file)
+    filename = filename.split(".")[0]
 
     with open(f"../mini/{filename}.json", 'r') as out_file:
         json_repr = dict(json.load(out_file))

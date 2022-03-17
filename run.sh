@@ -16,7 +16,7 @@ for (( x=1; x <= $NUM_TEST_FILES; x++ ))
       	echo "${GREEN} SUCESS.${RESET}"
       else
 	echo "${RED} FAILED${RESET}"
-    fi
+    fiz
 done
 
 echo "Running ret.mini WITH ERRORS..."

@@ -1,0 +1,2 @@
+ - use json files and run entirely on server
+  - edit script to compile using clang
