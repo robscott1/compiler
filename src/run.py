@@ -34,8 +34,7 @@ def run():
         with open(f"../llvm/{fname}.ll", 'w') as f:
             subprocess.run(["python3", "Compiler.py", f"{fname}"], stdout=f)
         print(f"Converting {fname}.ll to executable...")
-        subprocess.run(["mv", f"../llvm/{fname}.ll", f"../executable/{fname}.o"])
-        #subprocess.run(["clang", "-m32", f"../llvm/{fname}.ll", "-o", f"../executable/{fname}.o"])
+        subprocess.run(["clang", "-m32", f"../llvm/{fname}.ll", "-o", f"../executable/{fname}.o"])
         print("\n")
 
 if __name__ == "__main__":
