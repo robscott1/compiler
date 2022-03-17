@@ -7,9 +7,9 @@ define dso_local i32 @main() {
 
 L86:
 %x = alloca i32
-br label %L40
+br label %L13
 
-L40:
+L13:
 %t0 = call i32 (i8*, ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0), i32* @READ_MEM)
 %t1 = load i32, i32* @READ_MEM
 store i32 %t1, i32* %x
