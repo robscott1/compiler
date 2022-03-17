@@ -1,19 +1,25 @@
-%struct.A = type { i32, i32 }
+
 
 @.str = private unnamed_addr constant [3 x i8] c"%d\00"
 @.str.1 = private unnamed_addr constant [4 x i8] c"%d\0A\00"
 @READ_MEM = common global i32 0
-define dso_local i32 @main() {
+define dso_local i32 @main(i32) {
 
-L10:
-%x = alloca i32
-br label %L25
+L66:
+%a = alloca i32
+%i = alloca i32
+br label %L91
 
-L25:
-%t0 = call i32 (i8*, ...) @__isoc99__scanf(i8* getelementptr([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0), i32* @READ_MEM)
-%t1 = load i32, i32* @READ_MEM
-store i32 %t1, i32* %x
-ret i32 3
+L91:
+store i32 1, i32* %a
+%t0 = icmp sgt i32 1, 0
+br i1 %t0, label %L20, label %L73
+
+L20:
+ret i32 1
+
+L73:
+%t1 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
 }
 
 

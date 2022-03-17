@@ -20,7 +20,9 @@ class DeleteInstruction(Instruction):
         # Assuming this will always be IdentifierExpression
         load_instr = factory_fn(code.expression, instr_mngr)
 
-        bitcast = cls._generate_bitcast(load_instr, instr_mngr)
+        bitcast = cls._generate_bitcast(
+            load_instr, instr_mngr,
+            code.expression.of_type(instr_mngr.type_map))
         instr_mngr.add_instruction(bitcast)
 
         instr = DeleteInstruction(bitcast.to_value())
@@ -29,12 +31,13 @@ class DeleteInstruction(Instruction):
         return instr
 
     @classmethod
-    def _generate_bitcast(cls, load_instr: LoadInstruction,
-                          instr_mngr: InstructionsManager):
+    def _generate_bitcast(cls, load_instr,
+                          instr_mngr: InstructionsManager,
+                          type):
         args = {
-            "og_type": load_instr.type,
+            "og_type": type,
             # Assuming expression is always IdentifierExpression
-            "value": load_instr.to_value(),
+            "value": load_instr,
             "new_type": "i8*",
             "result": instr_mngr.next_tmp()
         }

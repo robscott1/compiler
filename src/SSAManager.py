@@ -18,7 +18,7 @@ class SSAManager:
     def write_variable(self, variable: str, block, value: str):
         if variable not in self.current_def:
             self.current_def[variable] = dict()
-        self.current_def[variable][block.id] = SSAStorageObject(value, block)
+        self.current_def[variable][block.id] = value
 
     """
     read_variable
@@ -26,7 +26,7 @@ class SSAManager:
     Reads current value of variable within respective CFG block
     """
 
-    def read_variable(self, variable: str, block):
+    def read_variable(self, variable: str, block, type):
         if isinstance(variable, PhiNode):
             variable = variable.var_target
         if variable not in self.current_def:
@@ -35,7 +35,7 @@ class SSAManager:
             return self.current_def[variable][block.id]
         else:
             return self.read_variable_from_predecessors(
-                variable, block
+                variable, block, type
             )
 
     """
@@ -46,18 +46,19 @@ class SSAManager:
     that came from a sealed block.
     """
 
-    def read_variable_from_predecessors(self, variable: str, block):
+    def read_variable_from_predecessors(self, variable: str, block, type):
         if block.has_back_edge():
-            value = PhiNode(block, variable)
+            value = PhiNode(block, variable, type)
             if block.id not in self.incomplete_phis:
                 self.incomplete_phis[block.id] = dict()
             self.incomplete_phis[block.id][variable] = value
         elif len(block.predecessors) == 0:
             value = "None"
         elif len(block.predecessors) == 1:
-            value = self.read_variable(variable, block.predecessors[0])
+            value = self.read_variable(variable, block.predecessors[0], type)
+            value = value.to_value() if isinstance(value, PhiNode) else value
         else:
-            value = PhiNode(block, variable)
+            value = PhiNode(block, variable, type)
             self.write_variable(variable, block, value)
             self.add_phi_operands(variable, value)
 
@@ -66,7 +67,7 @@ class SSAManager:
 
     def add_phi_operands(self, variable: str, phi: PhiNode):
         for pred in phi.block.predecessors:
-            phi.append_operand(self.read_variable(variable, pred))
+            phi.append_operand(self.read_variable(variable, pred, phi.type))
 
     def seal_block(self, block):
         if block.id not in self.incomplete_phis:

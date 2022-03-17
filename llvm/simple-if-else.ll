@@ -5,23 +5,23 @@
 @READ_MEM = common global i32 0
 define dso_local i32 @main(i32) {
 
-L97:
+L63:
 %i = alloca i32
-br label %L47
+br label %L32
 
-L47:
-br i1 true, label %L27, label %L72
+L32:
+br i1 true, label %L67, label %L88
 
-L27:
+L67:
 store i32 3, i32* %i
 ret i32 2
 
-L72:
+L88:
 store i32 4, i32* %i
 %t0 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32 1)
-br label %L41
+br label %L96
 
-L41:
+L96:
 ret i32 4
 }
 

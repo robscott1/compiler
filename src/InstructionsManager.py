@@ -28,14 +28,14 @@ class InstructionsManager:
         - from_phi: Boolean decides whether or not to subsequently load
         the result
     """
-    def ssa_read_variable(self, location: str):
-        result = self.ssa_mngr.read_variable(location, self._current_node)
+    def ssa_read_variable(self, location: str, type):
+        result = self.ssa_mngr.read_variable(location, self._current_node, type)
         if isinstance(result, PhiNode):
             phi_register_location = self.next_tmp()
             result.set_result_register(phi_register_location)
             self._current_node.phi_nodes.append(result)
-            return phi_register_location, True
-        return result, False
+            return phi_register_location
+        return result
 
     def ssa_seal_block(self, node):
         self.ssa_mngr.seal_block(node)
